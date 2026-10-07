@@ -1364,7 +1364,7 @@
           📊 Comparador de Precios
           <span class="header-badge">Samsung Galaxy</span>
             <span class="header-badge" style="background:rgba(37,99,235,0.12); color:var(--primary); border:1px solid rgba(37,99,235,0.3); font-weight:700; letter-spacing:0.3px;">✍️ Autor: BR</span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 01:35 PM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 01:54 PM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -2595,11 +2595,11 @@
         const fnSearch = RETAILER_SEARCH_URLS[retailerKey];
         const linkUrl = prodUrl || (fnSearch ? fnSearch(modeloNombre) : "");
         const nomTienda = obtenerRetailerNombre(retailerKey);
-        const tooltip = nombreProducto ? ' title="En ' + nomTienda + ': ' + nombreProducto.replace(/"/g, '&quot;') + ' (Clic para abrir en la tienda oficial)"' : ' title="Abrir en ' + nomTienda + '"';
+        const tooltip = nombreProducto ? ' title="En ' + nomTienda + ': ' + nombreProducto.replace(/"/g, '&quot;') + '"' : ' title="' + nomTienda + '"';
         const colorTag = color ? ' <span class="pill-color-tag">' + color + '</span>' : '';
-        const linkIcon = linkUrl ? ' <span class="pill-link-icon" title="Abrir en tienda oficial" style="font-size:9.5px; opacity:0.75;">🔗</span>' : '';
+        const linkBtn = linkUrl ? ' <a href="' + linkUrl + '" target="_blank" rel="noopener" class="pill-link-icon" title="Ver en tienda oficial ' + nomTienda + '" style="margin-left:4px; font-size:11px; text-decoration:none; opacity:0.85;">🔗</a>' : '';
 
-        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + (linkUrl ? ' onclick="window.open('' + linkUrl + '', '_blank')" style="cursor:pointer;"' : '') + '><span>' + formatoMoneda(precio) + '</span>' + subText + colorTag + linkIcon + '</div></td>';
+        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + '><span>' + formatoMoneda(precio) + '</span>' + subText + colorTag + linkBtn + '</div></td>';
       }
 
       function renderMejorOferta(f) {
