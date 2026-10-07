@@ -1364,7 +1364,7 @@
           📊 Comparador de Precios
           <span class="header-badge">Samsung Galaxy</span>
             <span class="header-badge" style="background:rgba(37,99,235,0.12); color:var(--primary); border:1px solid rgba(37,99,235,0.3); font-weight:700; letter-spacing:0.3px;">✍️ Autor: BR</span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 01:54 PM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 02:01 PM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -2039,15 +2039,15 @@
       // CONSOLIDADO DE DESFASES
       
     const RETAILER_LOGOS = {
-      "max": "/static/logos/max.svg",
-      "elektra": "/static/logos/elektra.png",
-      "elektra_hn": "/static/logos/elektra.png",
-      "gallo": "/static/logos/gallo.png",
-      "siman": "/static/logos/siman.svg",
-      "curacao_sv": "/static/logos/curacao_sv.png",
-      "prado": "/static/logos/prado.svg",
-      "jetstereo": "/static/logos/jetstereo.svg",
-      "diunsa": "/static/logos/diunsa.png"
+      "max": "static/logos/max.svg",
+      "elektra": "static/logos/elektra.png",
+      "elektra_hn": "static/logos/elektra.png",
+      "gallo": "static/logos/gallo.png",
+      "siman": "static/logos/siman.svg",
+      "curacao_sv": "static/logos/curacao_sv.png",
+      "prado": "static/logos/prado.svg",
+      "jetstereo": "static/logos/jetstereo.svg",
+      "diunsa": "static/logos/diunsa.png"
     };
 
     const RETAILER_EMOJIS = {
@@ -2113,7 +2113,7 @@
             const countCls = items.length > 0 ? "count-alert" : "count-zero";
 
             const iconHtml = logoUrl 
-              ? '<span class="retailer-icon" style="width:24px; height:24px; background:#ffffff; border-radius:6px; padding:2px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 1px 2px rgba(0,0,0,0.12); border:1px solid var(--border);"><img src="' + logoUrl + '" alt="' + nombre + '" style="width:20px; height:20px; object-fit:contain;"></span>'
+              ? '<span class="retailer-icon" style="width:24px; height:24px; background:#ffffff; border-radius:6px; padding:2px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 1px 2px rgba(0,0,0,0.12); border:1px solid var(--border);"><img src="' + logoUrl + '" alt="' + nombre + '" onerror="this.style.display=\'none\'" style="width:20px; height:20px; object-fit:contain;"></span>'
               : '<span class="retailer-icon icon-' + key + '" style="width:22px; height:22px; font-size:11px;">' + iconLetter + '</span>';
             
             let rowsHtml = "";
@@ -2696,7 +2696,7 @@
           if (th) th.setAttribute("data-sort", k);
           if (thName) {
             if (logoUrl) {
-              thName.innerHTML = '<span style="display:inline-flex; align-items:center; gap:6px;"><img src="' + logoUrl + '" alt="' + nom + '" style="width:20px; height:20px; object-fit:contain; background:#ffffff; border-radius:4px; padding:1px; box-shadow:0 1px 2px rgba(0,0,0,0.15); vertical-align:middle;"> <span>' + nom + '</span></span>';
+              thName.innerHTML = '<span style="display:inline-flex; align-items:center; gap:6px;"><img src="' + logoUrl + '" alt="' + nom + '" onerror="this.style.display=\'none\'" style="width:20px; height:20px; object-fit:contain; background:#ffffff; border-radius:4px; padding:1px; box-shadow:0 1px 2px rgba(0,0,0,0.15); vertical-align:middle;"> <span>' + nom + '</span></span>';
             } else {
               thName.textContent = nom;
             }
@@ -2873,7 +2873,7 @@
             const logoUrl = obtenerLogoRetailer(key);
             const iconLetter = nombre.charAt(0).toUpperCase();
             const iconHtml = logoUrl 
-              ? '<div class="retailer-icon" style="background:#ffffff; padding:2px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,0.12); border-radius:6px; border:1px solid var(--border);"><img src="' + logoUrl + '" alt="' + nombre + '" style="width:24px; height:24px; object-fit:contain;"></div>'
+              ? '<div class="retailer-icon" style="background:#ffffff; padding:2px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,0.12); border-radius:6px; border:1px solid var(--border);"><img src="' + logoUrl + '" alt="' + nombre + '" onerror="this.style.display=\'none\'" style="width:24px; height:24px; object-fit:contain;"></div>'
               : '<div class="retailer-icon icon-' + key + '">' + iconLetter + '</div>';
 
             const st = reporte?.status?.[key] || {};
