@@ -1364,7 +1364,7 @@
           📊 Comparador de Precios
           <span class="header-badge">Samsung Galaxy</span>
             <span class="header-badge" style="background:rgba(37,99,235,0.12); color:var(--primary); border:1px solid rgba(37,99,235,0.3); font-weight:700; letter-spacing:0.3px;">✍️ Autor: BR</span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 02:45 PM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 07/10/2026 02:54 PM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -3256,12 +3256,68 @@
       }
 
       // INICIALIZACIÓN DE EVENTOS
+            async function actualizarTodos() {
+        const btn = document.getElementById("btn-actualizar-todos");
+        if (!btn || btn.disabled) return;
+        const origText = btn.innerHTML;
+        btn.disabled = true;
+
+        const retObj = ultimoReporte?.retailers || PAISES_INFO[paisActual]?.retailers || {};
+        const keys = Object.keys(retObj);
+        if (!keys.length) {
+          showToast("No hay tiendas configuradas para este país", "warning");
+          btn.disabled = false;
+          return;
+        }
+
+        const paisNombre = PAISES_INFO[paisActual]?.nombre || paisActual.toUpperCase();
+        showToast("Iniciando actualización completa de " + paisNombre + "...", "info", 3000);
+
+        try {
+          for (let i = 0; i < keys.length; i++) {
+            const k = keys[i];
+            const nom = retObj[k] || k;
+            btn.innerHTML = "⏳ [" + (i + 1) + "/" + keys.length + "] " + nom + "...";
+            showToast("[" + (i + 1) + "/" + keys.length + "] Consultando " + nom + "...", "info", 2500);
+
+            const indBtn = document.querySelector(`button[data-retailer="${k}"]`);
+            if (indBtn) { indBtn.disabled = true; indBtn.textContent = "⏳..."; }
+
+            try {
+              const resp = await fetch("/api/actualizar/" + k, { method: "POST" });
+              const data = await resp.json();
+              if (data.ok) {
+                if (data.report) aplicarReporte(data.report);
+                showToast("✓ " + nom + " actualizado con éxito", "success", 2000);
+              } else {
+                showToast("⚠️ " + nom + ": " + (data.error || "error"), "warning", 3500);
+              }
+            } catch (err) {
+              showToast("Error al conectar con " + nom, "error", 2500);
+            } finally {
+              if (indBtn) { indBtn.disabled = false; indBtn.textContent = "Actualizar"; }
+            }
+          }
+
+          await cargarDatos();
+          showToast("🎉 ¡Todas las tiendas de " + paisNombre + " actualizadas con éxito!", "success", 4000);
+        } catch (e) {
+          showToast("Error general al actualizar tiendas", "error");
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         const temaActual = document.documentElement.getAttribute("data-theme") || "light";
         aplicarTema(temaActual);
 
         const btnExp = document.getElementById("btn-export-csv");
         if (btnExp) btnExp.addEventListener("click", exportarVistaCsv);
+
+        const btnAll = document.getElementById("btn-actualizar-todos");
+        if (btnAll) btnAll.addEventListener("click", actualizarTodos);
 
         const btnSave = document.getElementById("btn-guardar-precios");
         if (btnSave) btnSave.addEventListener("click", () => ejecutarGuardarPrecios(true));
