@@ -1364,7 +1364,7 @@
           📊 Comparador de Precios
           <span class="header-badge">Samsung Galaxy</span>
             <span class="header-badge" style="background:rgba(37,99,235,0.12); color:var(--primary); border:1px solid rgba(37,99,235,0.3); font-weight:700; letter-spacing:0.3px;">✍️ Autor: BR</span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 08/10/2026 05:56 PM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 08/10/2026 06:04 PM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -3099,6 +3099,10 @@
       }
 
       async function actualizarRetailer(retailer, btn) {
+        if (window.location.hostname.includes("github.io")) {
+          showToast("ℹ️ Modo Nube: El scraping de tiendas requiere Python y se ejecuta en tu PC o vía tarea automática. Para publicar nuevos precios, abre 'subir_a_github.bat' en tu PC.", "info", 6000);
+          return;
+        }
         const originalText = btn.textContent;
         btn.disabled = true;
         btn.textContent = "Iniciando...";
@@ -3257,6 +3261,10 @@
 
       // INICIALIZACIÓN DE EVENTOS
             async function actualizarTodos() {
+        if (window.location.hostname.includes("github.io")) {
+          showToast("ℹ️ Modo Nube: El scraping de tiendas corre en tu PC (localhost:5000) o a las 8:00 AM. Para actualizar la web en este momento, haz doble clic en 'subir_a_github.bat'.", "info", 6000);
+          return;
+        }
         const btn = document.getElementById("btn-actualizar-todos");
         if (!btn || btn.disabled) return;
         const origText = btn.innerHTML;
