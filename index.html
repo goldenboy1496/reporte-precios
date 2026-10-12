@@ -1364,7 +1364,7 @@
           📊 Comparador de Precios
           <span class="header-badge">Samsung Galaxy</span>
             <span class="header-badge" style="background:rgba(37,99,235,0.12); color:var(--primary); border:1px solid rgba(37,99,235,0.3); font-weight:700; letter-spacing:0.3px;">✍️ Autor: BR</span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 12/10/2026 02:52 PM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 12/10/2026 02:54 PM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -3278,7 +3278,32 @@
       }
 
       // INICIALIZACIÓN DE EVENTOS
-            async function actualizarTodos() {
+            
+      async function sincronizarConGitHub() {
+        if (window.location.protocol === "file:" || window.location.hostname.includes("github.io")) {
+          showToast("ℹ️ Esta opción se ejecuta desde tu dashboard local (http://localhost:5000) o ejecutando 'subir_a_github.bat'.", "info", 5000);
+          return;
+        }
+        const btn = document.getElementById("btn-sync-github");
+        const orig = btn ? btn.innerHTML : "";
+        if (btn) { btn.disabled = true; btn.innerHTML = "⏳ Publicando..."; }
+        showToast("Compilando datos y enviando a GitHub Pages...", "info", 3000);
+        try {
+          const resp = await fetch("/api/publicar-github", { method: "POST" });
+          const data = await resp.json();
+          if (data.ok) {
+            showToast("🚀 ¡Reporte publicado en GitHub Pages exitosamente!", "success", 4000);
+          } else {
+            showToast("⚠️ " + (data.error || "No se pudo subir a GitHub"), "warning", 4500);
+          }
+        } catch (e) {
+          showToast("Error de conexión al sincronizar con GitHub", "error");
+        } finally {
+          if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+        }
+      }
+
+      async function actualizarTodos() {
         if (window.location.protocol === "file:") {
           showToast("⚠️ Modo Archivo Local: Para actualizar en vivo debes abrir http://localhost:5000 o ejecutar 'subir_a_github.bat'.", "warning", 6000);
           return;
@@ -3330,7 +3355,8 @@
           }
 
           await cargarDatos();
-          showToast("🎉 ¡Todas las tiendas de " + paisNombre + " actualizadas con éxito!", "success", 4000);
+          showToast("🎉 ¡Todas las tiendas de " + paisNombre + " actualizadas con éxito! Publicando en GitHub Pages...", "success", 4000);
+          try { await fetch("/api/publicar-github", { method: "POST" }); } catch(err) {}
         } catch (e) {
           showToast("Error general al actualizar tiendas", "error");
         } finally {
@@ -3348,6 +3374,8 @@
 
         const btnAll = document.getElementById("btn-actualizar-todos");
         if (btnAll) btnAll.addEventListener("click", actualizarTodos);
+        const btnSyncGh = document.getElementById("btn-sync-github");
+        if (btnSyncGh) btnSyncGh.addEventListener("click", sincronizarConGitHub);
 
         const btnSave = document.getElementById("btn-guardar-precios");
         if (btnSave) btnSave.addEventListener("click", () => ejecutarGuardarPrecios(true));
