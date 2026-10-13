@@ -1453,7 +1453,7 @@
       background: radial-gradient(circle at 50% 25%, rgba(30, 58, 138, 0.45), rgba(10, 15, 29, 0.96) 75%);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -1740,7 +1740,7 @@
               👤 <span id="auth-user-name">Usuario</span>
               <button id="btn-auth-logout" onclick="cerrarSesion()" class="btn btn-ghost" style="padding: 1px 6px; font-size: 11px; margin-left: 4px; border-radius: 4px; color: var(--text-muted); cursor: pointer;" title="Cerrar sesión">Salir 🚪</button>
             </span>
-            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 13/10/2026 11:53 AM</span>
+            <span class="header-badge" id="badge-ultima-actualizacion" style="background:rgba(16,185,129,0.12); color:var(--emerald); border:1px solid rgba(16,185,129,0.3); font-weight:700; letter-spacing:0.2px; display:inline-flex; align-items:center; gap:5px;">🕒 Última actualización: 13/10/2026 11:57 AM</span>
         </h1>
         <p id="lbl-header-sub">Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
       </div>
@@ -4107,6 +4107,16 @@
     }
 
     function inicializarSeguridad() {
+      // Si estamos en localhost / entorno de desarrollo local, entrar directo sin pedir contraseña
+      const esLocal = window.location.hostname === "localhost" || 
+                      window.location.hostname === "127.0.0.1" || 
+                      window.location.hostname === "";
+      if (esLocal) {
+        aplicarSesionValida({ usuario: "bryan", nombre: "Bryan Roblero (Admin)", rol: "admin" });
+        return;
+      }
+
+      // En entornos externos / GitHub Pages, verificar autenticación
       const raw = localStorage.getItem("reporte_auth_sesion") || sessionStorage.getItem("reporte_auth_sesion");
       if (raw) {
         try {
