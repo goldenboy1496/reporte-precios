@@ -1102,5 +1102,53 @@
     "diferencia": 495.0,
     "pct_cambio": 10.21,
     "tipo": "subida"
+  },
+  {
+    "id": "1792013931_GT_max_Watch7 40mm_SM-L300",
+    "fecha": "2026-10-14 15:38:51",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Watch7 40mm",
+    "memoria": "SM-L300",
+    "categoria": "Wearables",
+    "precio_anterior": 1599.0,
+    "precio_nuevo": 1299.0,
+    "diferencia": -300.0,
+    "pct_cambio": -18.76,
+    "tipo": "baja"
+  },
+  {
+    "id": "1792014182_GT_elektra_Galaxy-A56 5G_8+256",
+    "fecha": "2026-10-14 15:43:02",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A56 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3770.0,
+    "precio_nuevo": 3599.0,
+    "diferencia": -171.0,
+    "pct_cambio": -4.54,
+    "tipo": "baja"
+  },
+  {
+    "id": "1792014182_GT_elektra_Galaxy-A56 5G_12+256",
+    "fecha": "2026-10-14 15:43:02",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A56 5G",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3770.0,
+    "precio_nuevo": 3599.0,
+    "diferencia": -171.0,
+    "pct_cambio": -4.54,
+    "tipo": "baja"
   }
 ]
