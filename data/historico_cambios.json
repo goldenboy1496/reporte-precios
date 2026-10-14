@@ -1150,5 +1150,21 @@
     "diferencia": -171.0,
     "pct_cambio": -4.54,
     "tipo": "baja"
+  },
+  {
+    "id": "1792022163_GT_max_Watch7 40mm_SM-L300",
+    "fecha": "2026-10-14 17:56:03",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Watch7 40mm",
+    "memoria": "SM-L300",
+    "categoria": "Wearables",
+    "precio_anterior": 1299.0,
+    "precio_nuevo": 1599.0,
+    "diferencia": 300.0,
+    "pct_cambio": 23.09,
+    "tipo": "subida"
   }
 ]

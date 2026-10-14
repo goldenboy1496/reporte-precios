@@ -695,6 +695,7 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
 
     filas = []
     alertas = []
+    alertas_vistas = set()
     total_evaluado = 0
     total_alineado = 0
 
@@ -734,16 +735,19 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
                 if estado == "ok":
                     total_alineado += 1
                 else:
-                    alertas.append({
-                        "retailer": r_info["nombre"],
-                        "retailer_key": r_key,
-                        "mobile": cat["mobile"],
-                        "memoria": cat["memoria"],
-                        "precio_retailer": precio,
-                        "base": mi_precio_base,
-                        "diff_pct": diff_pct,
-                        "color": color_ret,
-                    })
+                    alert_key = (r_key, cat["mobile"].strip().upper(), str(cat["memoria"]).strip().upper())
+                    if alert_key not in alertas_vistas:
+                        alertas_vistas.add(alert_key)
+                        alertas.append({
+                            "retailer": r_info["nombre"],
+                            "retailer_key": r_key,
+                            "mobile": cat["mobile"],
+                            "memoria": cat["memoria"],
+                            "precio_retailer": precio,
+                            "base": mi_precio_base,
+                            "diff_pct": diff_pct,
+                            "color": color_ret,
+                        })
 
         filas.append(fila)
 

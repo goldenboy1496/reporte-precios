@@ -31,11 +31,11 @@ def es_telefono_operador(nombre: str) -> bool:
 def scroll_down(driver):
     total_height = driver.execute_script("return document.body.scrollHeight")
     current_position = 0
-    step = 600
+    step = 1000
     while current_position < total_height:
         current_position += step
         driver.execute_script(f"window.scrollTo(0, {current_position});")
-        time.sleep(0.4)
+        time.sleep(0.2)
         new_height = driver.execute_script("return document.body.scrollHeight")
         if new_height > total_height:
             total_height = new_height
@@ -43,9 +43,15 @@ def scroll_down(driver):
 
 def main():
     options = webdriver.ChromeOptions()
+    options.page_load_strategy = "eager"
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--disable-notifications")
+    options.add_argument("--blink-settings=imagesEnabled=false")
+    options.add_experimental_option("prefs", {
+        "profile.managed_default_content_settings.images": 2,
+        "profile.default_content_setting_values.notifications": 2
+    })
     options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36")
 
     if "--visible" not in sys.argv:
@@ -70,7 +76,7 @@ def main():
         for url in urls:
             print(f"\nConsultando MAX: {url} ...")
             driver.get(url)
-            time.sleep(3.5)
+            time.sleep(1.2)
             scroll_down(driver)
 
             try:

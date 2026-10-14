@@ -52,11 +52,17 @@ def main():
     print(f"Iniciando scraping de Diunsa Honduras (Modo: {'Visible' if visible else 'Invisible'})...")
 
     options = Options()
+    options.page_load_strategy = "eager"
     if not visible:
         options.add_argument("--headless=new")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--window-size=1920,1080")
+    options.add_argument("--blink-settings=imagesEnabled=false")
+    options.add_experimental_option("prefs", {
+        "profile.managed_default_content_settings.images": 2,
+        "profile.default_content_setting_values.notifications": 2
+    })
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
     driver = webdriver.Chrome(options=options)
@@ -81,11 +87,11 @@ def main():
             url = f"https://www.diunsa.hn/todos?search={q.replace(' ', '%20')}"
             print(f"Consultando Diunsa: {url} ...")
             driver.get(url)
-            time.sleep(3.5)
+            time.sleep(1.5)
 
             for _ in range(2):
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                time.sleep(0.8)
+                time.sleep(0.4)
 
             links = driver.find_elements(By.CSS_SELECTOR, "a[href*='/smartphones/'], a[href*='/celulares/'], a[href*='/tablets/'], a[href*='/reloj/'], a[href*='/audio/'], a[href*='/p']")
             for a in links:

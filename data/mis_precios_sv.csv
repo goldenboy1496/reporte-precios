@@ -1,74 +1,73 @@
 mobile,memoria,mi_precio
-Buds Core,SM-R410,54
-Fit3,SM-R390,54
-Galaxy Buds 3 [Jelly],SM-R530,134
-Galaxy Buds 3FE,SM-R420,114
-Galaxy Buds 4,SM-R540,159
-Galaxy Buds3 Pro [Paran],SM-R630,169
-Galaxy Buds4 Pro,SM-R640,229
-Galaxy S25 Ultra,12+256,1145
-Galaxy S25 Ultra,12+512GB,1409
-Galaxy S26,12+256,1079
-Galaxy S26 FE,8+128,889
-Galaxy S26 Ultra,256GB,1369
-Galaxy S26 Ultra,12+512GB,1599
-Galaxy S26+,12+256,1299
-Galaxy Tab A11 LTE,4+64GB,219
-Galaxy Tab A11 Wifi,4+64GB,169
-Galaxy Tab A11+ 5G,6+128GB,379
-Galaxy Tab A11+ Wifi,6+128GB,289
-Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,499
-Galaxy Tab S10 FE+ WIFI (Book Cover Inbox),128GB,649
-Galaxy Tab S11Ultra WIFI (Keyboard Inbox),12+256,1449
-Galaxy Watch Ultra,SM-L705,455
-Galaxy Watch Ultra Refresh,SM-L705,455
-Galaxy Watch Ultra2,SM-L715F,649
-Galaxy Z Flip8,12GB_256GB,1299
-Galaxy Z Fold8,12GB_256GB,1799
-Galaxy Z Fold8 Ultra,12GB_256GB,2199
-Galaxy-A07,4+128,159
-Galaxy-A17,4+128,249
-Galaxy-A17,8+256,345
-Galaxy-A27 5G,6+128,369
-Galaxy-A27 5G,8+256,469
-Galaxy-A37 5G,8+256,509
-Galaxy-A57 5G,8+256,639
-Galaxy-A57 5G,12+512,809
-Watch8 40mm BT,SM-L320,259
-Watch8 44mm BT,SM-L330,299
-Watch8 Classic 46mm BT,SM-L500,499
-Watch9 40mm BT,SM-L340N,355
-Watch9 44mm BT,SM-L350N,384
-Galaxy BudsFE,SM-R400,59
+Buds Core,SM-R410,54.0
+Fit3,SM-R390,54.0
+Galaxy Buds 3 [Jelly],SM-R530,134.0
+Galaxy Buds 3FE,SM-R420,114.0
+Galaxy Buds 4,SM-R540,159.0
+Galaxy Buds3 Pro [Paran],SM-R630,169.0
+Galaxy Buds4 Pro,SM-R640,229.0
+Galaxy S25 Ultra,12+256,1145.0
+Galaxy S25 Ultra,12+512GB,1409.0
+Galaxy S26,12+256,1079.0
+Galaxy S26 FE,8+128,889.0
+Galaxy S26 Ultra,256GB,1369.0
+Galaxy S26 Ultra,12+512GB,1599.0
+Galaxy S26+,12+256,1299.0
+Galaxy Tab A11 LTE,4+64GB,219.0
+Galaxy Tab A11 Wifi,4+64GB,169.0
+Galaxy Tab A11+ 5G,6+128GB,379.0
+Galaxy Tab A11+ Wifi,6+128GB,289.0
+Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,499.0
+Galaxy Tab S10 FE+ WIFI (Book Cover Inbox),128GB,649.0
+Galaxy Tab S11Ultra WIFI (Keyboard Inbox),12+256,1449.0
+Galaxy Watch Ultra,SM-L705,455.0
+Galaxy Watch Ultra Refresh,SM-L705,455.0
+Galaxy Watch Ultra2,SM-L715F,649.0
+Galaxy Z Flip8,12GB_256GB,1299.0
+Galaxy Z Fold8,12GB_256GB,1799.0
+Galaxy Z Fold8 Ultra,12GB_256GB,2199.0
+Galaxy-A07,4+128,159.0
+Galaxy-A17,4+128,249.0
+Galaxy-A17,8+256,345.0
+Galaxy-A27 5G,6+128,369.0
+Galaxy-A27 5G,8+256,469.0
+Galaxy-A37 5G,8+256,509.0
+Galaxy-A57 5G,8+256,639.0
+Galaxy-A57 5G,12+512,809.0
+Watch8 40mm BT,SM-L320,259.0
+Watch8 44mm BT,SM-L330,299.0
+Watch8 Classic 46mm BT,SM-L500,499.0
+Watch9 40mm BT,SM-L340N,355.0
+Watch9 44mm BT,SM-L350N,384.0
+Galaxy BudsFE,SM-R400,59.0
 Galaxy S10Lite 5G,6+128GB,
-Galaxy S10lite WIFI,6+128GB,309
-Galaxy S10lite WIFI,6+128GB,369
-Galaxy S24 FE,8+256,605
-Galaxy S25 FE,8+256,705
-Galaxy S25+,12+512GB,1159
-Galaxy S26 FE,8+256,999
-Galaxy Tab A9 LTE,64GB,139
-Galaxy Tab A9 Wifi,64GB,119
-Galaxy Tab A9+ LTE,64GB,189
-Galaxy Tab A9+ Wifi,64GB,159
-Galaxy Tab S10 Ultra Wifi-KB Cover,256 GB,1209
-Galaxy Tab S10+ Wifi-KB Cover,256 GB,999
-Galaxy Tab S11 WIFI (Keyboard Inbox),12GB_128GB,979
-Galaxy Tab S12+ WIFI (No Keyboard Inbox),12+256,1459
-Galaxy Tab S12Ultra WIFI (No Keyboard Inbox),12+256,1699
-Galaxy Z Flip7,12+512GB,1279
-Galaxy Z Flip7 FE,8+256,899
-Galaxy-A07s,64GB,190
-Galaxy-A07s,4+128,230
-Galaxy-A08,4+64,209
-Galaxy-A08,4+128,255
-Galaxy-A18,4+128,295
-Galaxy-A36 5G,8+128,355
-Galaxy-A36 5G,8+256,409
-Galaxy-A37 5G,6+128,425
-Galaxy-A56 5G,8+256,499
-Galaxy-A56 5G,12+256,499
-Galaxy-A57 5G,8+128,525
-Watch FE,SM-R861,139
-Watch7 40mm,SM-L300,199
-Watch7 44mm,SM-L310,269
+Galaxy S10lite WIFI,6+128GB,309.0
+Galaxy S24 FE,8+256,605.0
+Galaxy S25 FE,8+256,705.0
+Galaxy S25+,12+512GB,1159.0
+Galaxy S26 FE,8+256,999.0
+Galaxy Tab A9 LTE,64GB,139.0
+Galaxy Tab A9 Wifi,64GB,119.0
+Galaxy Tab A9+ LTE,64GB,189.0
+Galaxy Tab A9+ Wifi,64GB,159.0
+Galaxy Tab S10 Ultra Wifi-KB Cover,256 GB,1209.0
+Galaxy Tab S10+ Wifi-KB Cover,256 GB,999.0
+Galaxy Tab S11 WIFI (Keyboard Inbox),12GB_128GB,979.0
+Galaxy Tab S12+ WIFI (No Keyboard Inbox),12+256,1459.0
+Galaxy Tab S12Ultra WIFI (No Keyboard Inbox),12+256,1699.0
+Galaxy Z Flip7,12+512GB,1279.0
+Galaxy Z Flip7 FE,8+256,899.0
+Galaxy-A07s,64GB,190.0
+Galaxy-A07s,4+128,230.0
+Galaxy-A08,4+64,209.0
+Galaxy-A08,4+128,255.0
+Galaxy-A18,4+128,295.0
+Galaxy-A36 5G,8+128,355.0
+Galaxy-A36 5G,8+256,409.0
+Galaxy-A37 5G,6+128,425.0
+Galaxy-A56 5G,8+256,499.0
+Galaxy-A56 5G,12+256,499.0
+Galaxy-A57 5G,8+128,525.0
+Watch FE,SM-R861,139.0
+Watch7 40mm,SM-L300,199.0
+Watch7 44mm,SM-L310,269.0
