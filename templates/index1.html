@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de Precios</title>
+<style>
+  :root {
+    --azul: #1d4ed8;
+    --azul-claro: #eff6ff;
+    --verde: #16a34a;
+    --verde-claro: #f0fdf4;
+    --naranja: #c2410c;
+    --naranja-claro: #fff7ed;
+    --rojo: #dc2626;
+    --rojo-claro: #fef2f2;
+    --gris: #6b7280;
+    --gris-claro: #f9fafb;
+    --borde: #e5e7eb;
+    --texto: #111827;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--texto);
+    background: #ffffff;
+    padding: 24px;
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 4px 0;
+  }
+  .subtitulo {
+    color: var(--gris);
+    font-size: 14px;
+    margin: 0 0 20px 0;
+  }
+
+  .barra {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+    padding: 14px;
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+  }
+  .grupo-retailer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+  }
+  .grupo-retailer .nombre {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .estado {
+    font-size: 12px;
+    color: var(--gris);
+    min-width: 90px;
+  }
+  .estado.ok { color: var(--verde); }
+  .estado.error { color: var(--rojo); }
+  .estado.corriendo { color: var(--azul); }
+
+  button {
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid var(--azul);
+    background: var(--azul);
+    color: #fff;
+    padding: 7px 12px;
+    font-weight: 500;
+  }
+  button:hover { opacity: 0.9; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.secundario {
+    background: #fff;
+    color: var(--azul);
+  }
+  button.guardar {
+    background: var(--verde);
+    border-color: var(--verde);
+  }
+
+  .toolbar-derecha { margin-left: auto; display: flex; gap: 8px; }
+
+  .resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .tarjeta-resumen {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+  }
+  .tarjeta-resumen.ok { background: var(--verde-claro); border-color: #bbf7d0; }
+  .tarjeta-resumen.alerta { background: var(--rojo-claro); border-color: #fecaca; }
+  .tarjeta-resumen .icono {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .tarjeta-resumen.ok .icono { background: var(--verde); }
+  .tarjeta-resumen.alerta .icono { background: var(--rojo); }
+  .tarjeta-resumen .titulo { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .tarjeta-resumen.ok .titulo { color: #14532d; }
+  .tarjeta-resumen.alerta .titulo { color: #7f1d1d; }
+  .tarjeta-resumen ul {
+    margin: 6px 0 0 0;
+    padding-left: 18px;
+    font-size: 12.5px;
+    color: #7f1d1d;
+    max-height: 160px;
+    overflow: auto;
+  }
+  .tarjeta-resumen ul li { margin-bottom: 3px; }
+  .tarjeta-resumen p { margin: 0; font-size: 12.5px; color: #374151; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--azul);
+    color: #fff;
+    text-align: left;
+    padding: 6px 8px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--borde);
+    white-space: nowrap;
+  }
+  tbody tr:hover { background: var(--gris-claro); }
+  td.modelo { font-weight: 600; white-space: normal; }
+  td.memoria { color: var(--gris); }
+
+  .precio-vacio { color: var(--gris); }
+  td.sin-base { background: var(--gris-claro); color: var(--gris); }
+
+  td.precio-ok { background: var(--verde-claro); color: var(--verde); font-weight: 600; }
+  td.precio-menor { background: var(--rojo-claro); color: var(--rojo); font-weight: 700; }
+
+  input.mi-precio-input {
+    width: 78px;
+    padding: 3px 6px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  input.mi-precio-input:focus { outline: 2px solid var(--azul); border-color: var(--azul); }
+  input.mi-precio-input.valor-automatico { color: var(--gris); font-style: italic; }
+
+  .contenedor-tabla {
+    max-height: 65vh;
+    overflow: auto;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+  }
+
+  .leyenda {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+    font-size: 12px;
+    color: var(--gris);
+  }
+  .leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .caja { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .caja.rojo { background: var(--rojo-claro); border: 1px solid var(--rojo); }
+  .caja.verde { background: var(--verde-claro); border: 1px solid var(--verde); }
+
+  details {
+    margin-top: 22px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+  summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+  .lista-sin-match {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .lista-sin-match h4 { margin: 0 0 6px 0; font-size: 13px; }
+  .lista-sin-match ul { margin: 0; padding-left: 18px; font-size: 12px; color: var(--gris); max-height: 200px; overflow: auto; }
+
+  .catalogo-editor { margin-top: 12px; }
+  .catalogo-editor table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .catalogo-editor th {
+    text-align: left;
+    padding: 6px 6px;
+    font-size: 12px;
+    color: var(--gris);
+    border-bottom: 1px solid var(--borde);
+  }
+  .catalogo-editor td { padding: 4px 6px; border-bottom: 1px solid var(--borde); }
+  .catalogo-editor input {
+    width: 100%;
+    padding: 5px 6px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .catalogo-editor input:focus { outline: 2px solid var(--azul); border-color: var(--azul); }
+  .fila-eliminar {
+    background: #fff;
+    color: var(--rojo);
+    border-color: var(--rojo-claro);
+    padding: 4px 9px;
+    font-size: 13px;
+  }
+  .catalogo-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--borde);
+  }
+  .catalogo-importar {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .catalogo-importar input[type="file"] { font-size: 12.5px; }
+  .catalogo-nota { color: var(--gris); font-size: 12px; margin: 4px 0 0 0; }
+
+  .aviso {
+    padding: 10px 14px;
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    display: none;
+    white-space: pre-wrap;
+    max-height: 220px;
+    overflow: auto;
+  }
+  .aviso.visible { display: block; }
+</style>
+</head>
+<body>
+
+  <h1>Reporte de Precios — Samsung Galaxy</h1>
+  <p class="subtitulo">Compara tu precio contra el precio de mercado (MSRP) y los precios actuales de cada retailer. Mientras no escribas tu precio, se usa el MSRP como referencia.</p>
+
+  <div id="aviso" class="aviso"></div>
+
+  <div class="barra">
+    <div class="grupo-retailer">
+      <span class="nombre">Elektra</span>
+      <span class="estado" id="estado-elektra">sin datos</span>
+      <button class="secundario" data-retailer="elektra">Actualizar</button>
+    </div>
+    <div class="grupo-retailer">
+      <span class="nombre">MAX</span>
+      <span class="estado" id="estado-max">sin datos</span>
+      <button class="secundario" data-retailer="max">Actualizar</button>
+    </div>
+    <div class="grupo-retailer">
+      <span class="nombre">Gallo más Gallo</span>
+      <span class="estado" id="estado-gallo">sin datos</span>
+      <button class="secundario" data-retailer="gallo">Actualizar</button>
+    </div>
+    <div class="toolbar-derecha">
+      <button id="btn-actualizar-todos">Actualizar todos</button>
+      <button class="guardar" id="btn-guardar-precios">Guardar mis precios</button>
+    </div>
+  </div>
+
+  <div class="resumen" id="resumen"></div>
+
+  <div class="leyenda">
+    <span><span class="caja verde"></span> Precio OK (igual o arriba de Mi Precio / MSRP)</span>
+    <span><span class="caja rojo"></span> Precio MENOR que Mi Precio / MSRP (revisar)</span>
+    <span>— sin dato disponible todavía</span>
+  </div>
+
+  <div class="contenedor-tabla">
+    <table>
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Memoria</th>
+          <th>Precio Mercado (MSRP)</th>
+          <th>Mi Precio</th>
+          <th>Elektra</th>
+          <th>MAX</th>
+          <th>Gallo más Gallo</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-body">
+        <tr><td colspan="7" style="text-align:center; padding:24px; color:#6b7280;">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details>
+    <summary>Productos scrapeados que no se pudieron emparejar con el catálogo</summary>
+    <div class="lista-sin-match" id="sin-match"></div>
+  </details>
+
+  <details id="detalle-catalogo">
+    <summary>Editar catálogo (agregar, editar o borrar modelos)</summary>
+    <div class="catalogo-editor">
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Memoria</th>
+            <th>RRP</th>
+            <th>MSRP</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="catalogo-body"></tbody>
+      </table>
+      <div class="catalogo-acciones">
+        <button class="secundario" id="btn-agregar-modelo" type="button">+ Agregar modelo</button>
+        <button class="guardar" id="btn-guardar-catalogo" type="button">Guardar catálogo</button>
+      </div>
+      <div class="catalogo-importar">
+        <label for="archivo-excel"><strong>Importar desde Excel:</strong></label>
+        <input type="file" id="archivo-excel" accept=".xlsx,.xls">
+        <button id="btn-importar-excel" type="button">Reemplazar catálogo con este archivo</button>
+      </div>
+      <p class="catalogo-nota">El Excel debe tener columnas llamadas MOBILE (o Modelo), Memoria, RRP y MSRP. Al importar, reemplaza TODO el catálogo actual.</p>
+    </div>
+  </details>
+
+<script>
+const RETAILER_NOMBRES = { elektra: "Elektra", max: "MAX", gallo: "Gallo más Gallo" };
+let ultimoReporte = null;
+
+function formatoQ(valor) {
+  if (valor === null || valor === undefined) return "—";
+  return "Q" + Number(valor).toLocaleString("es-GT", { maximumFractionDigits: 0 });
+}
+
+function formatoPct(valor) {
+  if (valor === null || valor === undefined) return "";
+  const signo = valor > 0 ? "+" : "";
+  return `${signo}${valor.toFixed(1)}%`;
+}
+
+function celdaRetailer(precio, estado) {
+  const clases = [];
+  if (estado === "ok") clases.push("precio-ok");
+  else if (estado === "menor") clases.push("precio-menor");
+  else if (estado === "sin_base") clases.push("sin-base");
+  const texto = precio === null || precio === undefined ? '<span class="precio-vacio">—</span>' : formatoQ(precio);
+  return `<td class="${clases.join(' ')}">${texto}</td>`;
+}
+
+function pintarTabla(filas) {
+  const body = document.getElementById("tabla-body");
+  if (!filas.length) {
+    body.innerHTML = '<tr><td colspan="7" style="text-align:center; padding:24px; color:#6b7280;">No hay datos en el catálogo (data/precios_mercado.csv).</td></tr>';
+    return;
+  }
+  body.innerHTML = filas.map((f, i) => {
+    const miPrecioValor = f.mi_precio === null || f.mi_precio === undefined ? "" : f.mi_precio;
+    const claseAuto = f.mi_precio_personalizado ? "" : "valor-automatico";
+    return `
+      <tr>
+        <td class="modelo" title="${f.mobile}">${f.mobile}</td>
+        <td class="memoria">${f.memoria}</td>
+        <td>${formatoQ(f.msrp)}</td>
+        <td>
+          <input type="number" class="mi-precio-input ${claseAuto}" data-index="${i}"
+                 data-msrp="${f.msrp ?? ''}" data-personalizado="${f.mi_precio_personalizado ? '1' : '0'}"
+                 value="${miPrecioValor}" placeholder="Q"
+                 title="${f.mi_precio_personalizado ? 'Precio propio' : 'Usando el MSRP como referencia (no lo has personalizado)'}">
+        </td>
+        ${celdaRetailer(f.elektra, f.elektra_estado)}
+        ${celdaRetailer(f.max, f.max_estado)}
+        ${celdaRetailer(f.gallo, f.gallo_estado)}
+      </tr>`;
+  }).join("");
+}
+
+function pintarResumen(resumen) {
+  const cont = document.getElementById("resumen");
+  if (!resumen) { cont.innerHTML = ""; return; }
+
+  const tarjetas = [];
+
+  if (resumen.total_evaluado > 0) {
+    tarjetas.push(`
+      <div class="tarjeta-resumen ok">
+        <div class="icono">✓</div>
+        <div>
+          <div class="titulo">${resumen.pct_ok}% de los precios están OK</div>
+          <p>${resumen.total_ok} de ${resumen.total_evaluado} comparaciones (retailer vs. Mi Precio / MSRP) están iguales o arriba de la referencia.</p>
+        </div>
+      </div>`);
+  }
+
+  const alertasTexto = (resumen.alertas || []).map(a => {
+    return `<li><strong>${a.retailer}</strong> tiene MENOR precio en ${a.mobile} ${a.memoria}: ${formatoQ(a.precio_retailer)} vs ${formatoQ(a.base)} (${formatoPct(a.diff_pct)})</li>`;
+  });
+
+  const MAX_FALTANTES = 5;
+  const faltantes = resumen.faltantes || [];
+  const faltantesTexto = faltantes.slice(0, MAX_FALTANTES).map(f => `<li>${f.retailer}: ${f.mobile} ${f.memoria} (sin dato)</li>`);
+  if (faltantes.length > MAX_FALTANTES) {
+    faltantesTexto.push(`<li>y ${faltantes.length - MAX_FALTANTES} más sin dato…</li>`);
+  }
+
+  if (alertasTexto.length || faltantesTexto.length) {
+    tarjetas.push(`
+      <div class="tarjeta-resumen alerta">
+        <div class="icono">!</div>
+        <div>
+          <div class="titulo">${alertasTexto.length} precio(s) por debajo de tu referencia</div>
+          <ul>${alertasTexto.join("") + faltantesTexto.join("")}</ul>
+        </div>
+      </div>`);
+  }
+
+  cont.innerHTML = tarjetas.join("");
+}
+
+let catalogoFilas = [];
+
+function pintarCatalogo(filas) {
+  catalogoFilas = filas || [];
+  const body = document.getElementById("catalogo-body");
+  body.innerHTML = catalogoFilas.map((f, i) => `
+    <tr>
+      <td><input type="text" data-campo="mobile" data-index="${i}" value="${(f.mobile ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Galaxy-A17"></td>
+      <td><input type="text" data-campo="memoria" data-index="${i}" value="${(f.memoria ?? '').replace(/"/g, '&quot;')}" placeholder="ej. 4+128"></td>
+      <td><input type="text" data-campo="rrp" data-index="${i}" value="${(f.rrp ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Q1,599"></td>
+      <td><input type="text" data-campo="msrp" data-index="${i}" value="${(f.msrp ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Q1,299"></td>
+      <td><button class="fila-eliminar" data-eliminar="${i}" type="button" title="Eliminar este modelo">✕</button></td>
+    </tr>`).join("");
+}
+
+function leerCatalogoDelDom() {
+  const filas = catalogoFilas.map(f => ({ ...f }));
+  document.querySelectorAll("#catalogo-body input[data-campo]").forEach(input => {
+    const i = Number(input.dataset.index);
+    const campo = input.dataset.campo;
+    if (filas[i]) filas[i][campo] = input.value;
+  });
+  return filas;
+}
+
+async function cargarCatalogo() {
+  const resp = await fetch("/api/catalogo");
+  const data = await resp.json();
+  pintarCatalogo(data.filas || []);
+}
+
+document.getElementById("catalogo-body").addEventListener("click", (e) => {
+  const boton = e.target.closest("button[data-eliminar]");
+  if (!boton) return;
+  const filasActuales = leerCatalogoDelDom();
+  const i = Number(boton.dataset.eliminar);
+  filasActuales.splice(i, 1);
+  pintarCatalogo(filasActuales);
+});
+
+document.getElementById("btn-agregar-modelo").addEventListener("click", () => {
+  const filasActuales = leerCatalogoDelDom();
+  filasActuales.push({ mobile: "", memoria: "", rrp: "", msrp: "" });
+  pintarCatalogo(filasActuales);
+});
+
+document.getElementById("btn-guardar-catalogo").addEventListener("click", async (e) => {
+  const boton = e.target;
+  const filas = leerCatalogoDelDom();
+  boton.disabled = true;
+  boton.textContent = "Guardando…";
+  try {
+    const resp = await fetch("/api/catalogo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filas }),
+    });
+    const data = await resp.json();
+    if (data.ok) {
+      pintarCatalogo(data.catalogo || []);
+      aplicarReporte(data.report);
+      mostrarAviso("Catálogo guardado correctamente.");
+      setTimeout(() => mostrarAviso(""), 2500);
+    } else {
+      mostrarAviso(`Error guardando el catálogo: ${data.error || "desconocido"}`);
+    }
+  } finally {
+    boton.disabled = false;
+    boton.textContent = "Guardar catálogo";
+  }
+});
+
+document.getElementById("btn-importar-excel").addEventListener("click", async (e) => {
+  const inputArchivo = document.getElementById("archivo-excel");
+  const archivo = inputArchivo.files[0];
+  if (!archivo) {
+    mostrarAviso("Primero selecciona un archivo Excel.");
+    return;
+  }
+  if (!confirm("Esto va a REEMPLAZAR todo el catálogo actual con lo que traiga el Excel. ¿Continuar?")) {
+    return;
+  }
+  const boton = e.target;
+  boton.disabled = true;
+  boton.textContent = "Importando…";
+  const formData = new FormData();
+  formData.append("archivo", archivo);
+  try {
+    const resp = await fetch("/api/catalogo/importar-excel", { method: "POST", body: formData });
+    const data = await resp.json();
+    if (data.ok) {
+      pintarCatalogo(data.catalogo || []);
+      aplicarReporte(data.report);
+      mostrarAviso(`Catálogo reemplazado: ${data.filas_importadas} modelo(s) importado(s) desde el Excel.`);
+      setTimeout(() => mostrarAviso(""), 4000);
+      inputArchivo.value = "";
+    } else {
+      mostrarAviso(`Error importando el Excel: ${data.error || "desconocido"}`);
+    }
+  } catch (err) {
+    mostrarAviso(`No se pudo importar el Excel: ${err}`);
+  } finally {
+    boton.disabled = false;
+    boton.textContent = "Reemplazar catálogo con este archivo";
+  }
+});
+
+function pintarSinMatch(sinCoincidencia) {
+  const cont = document.getElementById("sin-match");
+  cont.innerHTML = Object.keys(RETAILER_NOMBRES).map(key => {
+    const items = (sinCoincidencia && sinCoincidencia[key]) || [];
+    const lis = items.map(n => `<li>${n}</li>`).join("") || "<li>(ninguno)</li>";
+    return `<div><h4>${RETAILER_NOMBRES[key]} (${items.length})</h4><ul>${lis}</ul></div>`;
+  }).join("");
+}
+
+function pintarEstado(status) {
+  Object.keys(RETAILER_NOMBRES).forEach(key => {
+    const el = document.getElementById(`estado-${key}`);
+    const info = (status && status[key]) || null;
+    if (!info) { el.textContent = "sin datos"; el.className = "estado"; return; }
+    if (info.estado === "corriendo") {
+      el.textContent = "corriendo…";
+      el.className = "estado corriendo";
+    } else if (info.estado === "ok") {
+      el.textContent = "actualizado " + new Date(info.ultima_actualizacion * 1000).toLocaleTimeString("es-GT");
+      el.className = "estado ok";
+    } else if (info.estado === "error") {
+      el.textContent = "error al actualizar";
+      el.className = "estado error";
+    }
+  });
+}
+
+function mostrarAviso(texto) {
+  const aviso = document.getElementById("aviso");
+  if (!texto) { aviso.classList.remove("visible"); return; }
+  aviso.textContent = texto;
+  aviso.classList.add("visible");
+}
+
+function aplicarReporte(reporte) {
+  ultimoReporte = reporte;
+  pintarTabla(reporte.filas || []);
+  pintarResumen(reporte.resumen || null);
+  pintarSinMatch(reporte.sin_coincidencia || {});
+  pintarEstado(reporte.status || {});
+  if (reporte.catalogo_vacio) {
+    mostrarAviso("No se encontró data/precios_mercado.csv o está vacío.");
+  } else {
+    mostrarAviso("");
+  }
+}
+
+async function cargarDatos() {
+  const resp = await fetch("/api/data");
+  const reporte = await resp.json();
+  aplicarReporte(reporte);
+}
+
+async function actualizarRetailer(retailer, boton) {
+  const originalTexto = boton.textContent;
+  boton.disabled = true;
+  boton.textContent = "Actualizando…";
+  pintarEstado({ ...(ultimoReporte?.status || {}), [retailer]: { estado: "corriendo" } });
+  try {
+    const resp = await fetch(`/api/actualizar/${retailer}`, { method: "POST" });
+    const data = await resp.json();
+    if (data.ok) {
+      aplicarReporte(data.report);
+    } else {
+      const detalle = data.log ? `\n\nDetalle técnico:\n${data.log}` : "";
+      mostrarAviso(`Error actualizando ${RETAILER_NOMBRES[retailer]}: ${data.error || "desconocido"}${detalle}`);
+      await cargarDatos();
+    }
+  } catch (e) {
+    mostrarAviso(`No se pudo conectar con el servidor local: ${e}`);
+  } finally {
+    boton.disabled = false;
+    boton.textContent = originalTexto;
+  }
+}
+
+document.querySelectorAll("button[data-retailer]").forEach(btn => {
+  btn.addEventListener("click", () => actualizarRetailer(btn.dataset.retailer, btn));
+});
+
+document.getElementById("btn-actualizar-todos").addEventListener("click", async (e) => {
+  const boton = e.target;
+  boton.disabled = true;
+  boton.textContent = "Actualizando todos…";
+  for (const retailer of Object.keys(RETAILER_NOMBRES)) {
+    const btnIndividual = document.querySelector(`button[data-retailer="${retailer}"]`);
+    await actualizarRetailer(retailer, btnIndividual);
+  }
+  boton.disabled = false;
+  boton.textContent = "Actualizar todos";
+});
+
+document.getElementById("btn-guardar-precios").addEventListener("click", async (e) => {
+  if (!ultimoReporte) return;
+  const boton = e.target;
+  boton.disabled = true;
+  boton.textContent = "Guardando…";
+  const filas = ultimoReporte.filas.map((f, i) => {
+    const input = document.querySelector(`.mi-precio-input[data-index="${i}"]`);
+    const valorActual = input ? input.value : "";
+    const msrpTexto = input ? input.dataset.msrp : "";
+    const yaEraPersonalizado = input ? input.dataset.personalizado === "1" : false;
+    // Si el campo nunca fue personalizado y sigue igual al MSRP que se autocompletó,
+    // lo dejamos "vacío" para que siga siguiendo al MSRP automáticamente en el futuro.
+    const esValorAutocompletado = !yaEraPersonalizado && valorActual !== "" && msrpTexto !== "" && Number(valorActual) === Number(msrpTexto);
+    const valor = esValorAutocompletado ? "" : valorActual;
+    return { mobile: f.mobile, memoria: f.memoria, mi_precio: valor };
+  });
+  try {
+    const resp = await fetch("/api/mis-precios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filas }),
+    });
+    const data = await resp.json();
+    if (data.ok) {
+      aplicarReporte(data.report);
+      mostrarAviso("Mis precios guardados correctamente.");
+      setTimeout(() => mostrarAviso(""), 2500);
+    }
+  } finally {
+    boton.disabled = false;
+    boton.textContent = "Guardar mis precios";
+  }
+});
+
+cargarDatos();
+cargarCatalogo();
+</script>
+</body>
+</html>

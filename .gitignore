@@ -1,0 +1,10 @@
+﻿__pycache__/
+*.py[cod]
+*$py.class
+*.log
+*.bak
+cloudflared.exe
+data/*_page_source.html
+data/debug_page_source.html
+reporte_publico.html
+.tempmediaStorage/

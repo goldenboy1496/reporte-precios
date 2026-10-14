@@ -1,15 +1,20 @@
-﻿@echo off
-title Conectar con GitHub Pages
-cd /d "C:\Users\Bryan Roblero\Documents\reporte_web"
+@echo off
+chcp 65001 >nul
+title Actualizar y Subir Reporte a GitHub Pages
+cd /d C:\Users\Bryan Roblero\Documents\reporte
 echo ========================================================
-echo   SUBIENDO REPORTE A GITHUB PAGES...
+echo   COMPILANDO DATOS Y SUBIENDO A GITHUB PAGES...
 echo ========================================================
 echo.
-echo Se abrira una ventana en tu navegador para autorizar tu cuenta de GitHub.
+python exportar_reporte_estatico.py
 echo.
-git push -u origin main
+git add -A
+git commit -m "Actualizacion automatica del reporte" >nul 2>&1
+git push origin main
 echo.
 echo ========================================================
-echo   LISTO! Presiona cualquier tecla para salir.
+echo   LISTO! Reporte en vivo actualizado en la web:
+echo   https://goldenboy1496.github.io/reporte-precios/
 echo ========================================================
+echo.
 pause

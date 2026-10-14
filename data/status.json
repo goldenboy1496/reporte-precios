@@ -1,0 +1,66 @@
+{
+  "elektra": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791992894.8404608,
+    "duracion_segundos": 118.5
+  },
+  "gallo": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993103.2817469,
+    "duracion_segundos": 17.5
+  },
+  "max": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993084.757779,
+    "duracion_segundos": 188.9
+  },
+  "diunsa": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993978.4608538,
+    "duracion_segundos": 557.6
+  },
+  "elektra_hn": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993419.8418002,
+    "duracion_segundos": 2.7
+  },
+  "jetstereo": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993416.0830564,
+    "duracion_segundos": 43.7
+  },
+  "siman": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993127.36082,
+    "duracion_segundos": 17.4
+  },
+  "curacao_sv": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993290.0358922,
+    "duracion_segundos": 161.7
+  },
+  "prado": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993365.2780776,
+    "duracion_segundos": 74.2
+  },
+  "walmart": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791991775.19108
+  },
+  "walmart_sv": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993371.343884,
+    "duracion_segundos": 5.0
+  },
+  "walmart_hn": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993985.5616577,
+    "duracion_segundos": 6.1
+  },
+  "walmart_gt": {
+    "estado": "ok",
+    "ultima_actualizacion": 1791993108.9140801,
+    "duracion_segundos": 4.6
+  }
+}

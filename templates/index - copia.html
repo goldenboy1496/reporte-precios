@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Precios • Samsung Galaxy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-elevated: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-sub: #94a3b8;
+      --border: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      
+      --emerald: #10b981;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      --emerald-text: #047857;
+      
+      --rose: #f43f5e;
+      --rose-light: #fff1f2;
+      --rose-border: #fecdd3;
+      --rose-text: #be123c;
+      
+      --amber: #f59e0b;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+      --amber-text: #b45309;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
+    }
+
+    [data-theme="dark"] {
+      --bg-page: #0b0f19;
+      --bg-card: #131b2e;
+      --bg-elevated: #1a243b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-sub: #64748b;
+      --border: #1e293b;
+      --border-subtle: #172033;
+      
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --primary-border: #1e3a8a;
+      
+      --emerald: #10b981;
+      --emerald-light: rgba(16, 185, 129, 0.15);
+      --emerald-border: #064e3b;
+      --emerald-text: #34d399;
+      
+      --rose: #f43f5e;
+      --rose-light: rgba(244, 63, 94, 0.15);
+      --rose-border: #881337;
+      --rose-text: #fb7185;
+      
+      --amber: #fbbf24;
+      --amber-light: rgba(245, 158, 11, 0.15);
+      --amber-border: #78350f;
+      --amber-text: #fcd34d;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      padding: 24px 32px;
+      line-height: 1.5;
+      min-height: 100vh;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Contenedor principal */
+    .app-container {
+      max-width: 1540px;
+      margin: 0 auto;
+    }
+
+    /* Header superior */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-info h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+    .header-info p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Botones generales */
+    button, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    button:active { transform: scale(0.98); }
+    button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--bg-elevated);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn-success {
+      background: var(--emerald);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
+    }
+    .btn-success:hover:not(:disabled) {
+      filter: brightness(0.92);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: transparent;
+      padding: 7px 10px;
+    }
+    .btn-ghost:hover {
+      background: var(--border-subtle);
+      color: var(--text-main);
+    }
+    .btn-sm {
+      padding: 5px 9px;
+      font-size: 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Barra de Retailers y Controles */
+    .control-deck {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+      align-items: center;
+    }
+    @media (max-width: 1024px) {
+      .control-deck { grid-template-columns: 1fr; }
+    }
+
+    .retailers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .retailer-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: border-color 0.15s ease;
+    }
+    .retailer-card:hover {
+      border-color: var(--primary-border);
+    }
+    .retailer-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
+      color: white;
+    }
+    .icon-elektra { background: linear-gradient(135deg, #ea580c, #c2410c); }
+    .icon-max { background: linear-gradient(135deg, #0284c7, #0369a1); }
+    .icon-gallo { background: linear-gradient(135deg, #16a34a, #15803d); }
+
+    .retailer-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .retailer-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .retailer-status {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-sub);
+    }
+    .status-dot.ok { background: var(--emerald); }
+    .status-dot.corriendo {
+      background: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+      animation: pulse 1.5s infinite;
+    }
+    .status-dot.error { background: var(--rose); }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 0.6; transform: scale(0.9); }
+    }
+
+    .master-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Auto-save & Polling status indicator */
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .live-status-pill.saving {
+      color: var(--amber-text);
+      border-color: var(--amber-border);
+      background: var(--amber-light);
+    }
+    .live-status-pill.saved {
+      color: var(--emerald-text);
+      border-color: var(--emerald-border);
+      background: var(--emerald-light);
+    }
+
+    /* Tarjetas KPI / Métricas */
+    .kpi-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--border);
+    }
+    .kpi-card.kpi-alert::before { background: var(--rose); }
+    .kpi-card.kpi-success::before { background: var(--emerald); }
+    .kpi-card.kpi-info::before { background: var(--primary); }
+
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 8px 0 2px 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .kpi-card.kpi-alert .kpi-value { color: var(--rose-text); }
+    .kpi-card.kpi-success .kpi-value { color: var(--emerald-text); }
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Barra de Búsqueda y Filtros Rápidos */
+    .filter-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .search-box-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+      max-width: 480px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-sub);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 9px 36px 9px 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 13.5px;
+      color: var(--text-main);
+      transition: all 0.15s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 14px;
+      cursor: pointer;
+      display: none;
+      padding: 4px;
+    }
+    .search-clear.visible { display: block; }
+
+    .filter-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .filter-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .filter-pill:hover {
+      border-color: var(--primary-border);
+      color: var(--text-main);
+    }
+    .filter-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+    }
+    .filter-pill-badge {
+      background: rgba(0, 0, 0, 0.08);
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+    .filter-pill.active .filter-pill-badge {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Tabla de Datos Principal */
+    .table-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .table-scroll {
+      max-height: 68vh;
+      overflow: auto;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13px;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      user-select: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    thead th:hover {
+      background: var(--border-subtle);
+      color: var(--text-main);
+    }
+    thead th .th-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    thead th.sort-asc .th-wrap::after { content: "▲"; font-size: 9px; color: var(--primary); }
+    thead th.sort-desc .th-wrap::after { content: "▼"; font-size: 9px; color: var(--primary); }
+
+    tbody tr {
+      transition: background-color 0.1s ease;
+    }
+    tbody tr:hover {
+      background-color: var(--border-subtle);
+    }
+    tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .td-model {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 13.5px;
+    }
+    .td-memoria {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-page);
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      display: inline-block;
+    }
+    .td-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+
+    /* Celda de Mi Precio Editable */
+    .input-precio-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .currency-symbol {
+      position: absolute;
+      left: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-sub);
+      pointer-events: none;
+    }
+    .mi-precio-input {
+      width: 105px;
+      padding: 5px 8px 5px 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 600;
+      background: var(--bg-page);
+      color: var(--text-main);
+      transition: all 0.15s ease;
+    }
+    .mi-precio-input:focus {
+      outline: none;
+      background: var(--bg-card);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .mi-precio-input.valor-auto {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 500;
+      border-style: dashed;
+    }
+    .mi-precio-input.modified {
+      border-color: var(--amber);
+      background: var(--amber-light);
+    }
+
+    /* Estados de Precio de Retailers */
+    .price-pill {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      min-width: 95px;
+      transition: transform 0.1s ease;
+      cursor: default;
+    }
+    .price-pill .price-diff {
+      font-size: 10.5px;
+      font-weight: 700;
+      margin-top: 1px;
+      letter-spacing: -0.02em;
+    }
+    .price-pill.ok {
+      background: var(--emerald-light);
+      color: var(--emerald-text);
+      border: 1px solid var(--emerald-border);
+    }
+    .price-pill.menor {
+      background: var(--rose-light);
+      color: var(--rose-text);
+      border: 1px solid var(--rose-border);
+      animation: alertGlow 2s ease infinite;
+    }
+    .price-pill.best-price {
+      outline: 2px solid var(--rose);
+      box-shadow: 0 0 8px rgba(244, 63, 94, 0.25);
+    }
+    .price-pill.sin-base {
+      background: var(--bg-page);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .price-empty {
+      color: var(--text-sub);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    @keyframes alertGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(0.95); }
+    }
+
+    /* Barra inferior de la tabla (conteo y leyendas) */
+    .table-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .table-legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .legend-chip {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+    .legend-chip.green { background: var(--emerald); }
+    .legend-chip.red { background: var(--rose); }
+    .legend-chip.gray { background: var(--text-sub); }
+
+    /* Secciones Acordeón Colapsables (Sin match & Catálogo) */
+    .accordion-section {
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .accordion-header {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      background: var(--bg-card);
+      transition: background 0.15s ease;
+    }
+    .accordion-header:hover {
+      background: var(--border-subtle);
+    }
+    .accordion-title {
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .accordion-chevron {
+      transition: transform 0.2s ease;
+      color: var(--text-sub);
+    }
+    .accordion-section.open .accordion-chevron {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-page);
+    }
+    .accordion-section.open .accordion-body {
+      display: block;
+    }
+
+    /* Tabs de Sin Match */
+    .unmatched-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .unmatched-tab {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .unmatched-tab.active {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .unmatched-list {
+      list-style: none;
+      max-height: 280px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .unmatched-item {
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .unmatched-item:hover {
+      color: var(--text-main);
+      border-color: var(--primary-border);
+    }
+
+    /* Editor de Catálogo */
+    .catalog-table-wrap {
+      max-height: 380px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      margin-bottom: 16px;
+    }
+    .catalog-actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .excel-import-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      padding: 10px 14px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    /* Toast Notifications Flotantes */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast {
+      pointer-events: auto;
+      min-width: 280px;
+      max-width: 420px;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast-icon {
+      font-size: 16px;
+    }
+    .toast.toast-success {
+      border-left: 4px solid var(--emerald);
+    }
+    .toast.toast-error {
+      border-left: 4px solid var(--rose);
+    }
+    .toast.toast-info {
+      border-left: 4px solid var(--primary);
+    }
+
+    /* Modal Alertas Detalle */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      max-width: 600px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalPop 0.2s ease-out;
+    }
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* Tooltip personalizado */
+    [data-tooltip] {
+      position: relative;
+    }
+    [data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: pre-wrap;
+      max-width: 280px;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="header-info">
+        <h1>
+          📊 Comparador de Precios
+          <span class="header-badge">Samsung Galaxy</span>
+        </h1>
+        <p>Monitoreo automático y emparejamiento de catálogo con Elektra, MAX y El Gallo más Gallo</p>
+      </div>
+
+      <div class="header-actions">
+        <!-- Live Polling Toggle -->
+        <label class="btn btn-secondary btn-sm" style="cursor: pointer; gap: 8px;">
+          <input type="checkbox" id="toggle-autopoll" checked style="accent-color: var(--primary);">
+          <span>Auto-monitoreo</span>
+        </label>
+
+        <!-- Dark/Light Mode Switcher -->
+        <button id="btn-theme-toggle" class="btn btn-ghost" title="Cambiar tema">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <!-- Botón Exportar CSV -->
+        <button id="btn-export-csv" class="btn btn-secondary btn-sm" title="Descargar vista actual en Excel / CSV">
+          📥 Exportar CSV
+        </button>
+
+        <!-- Guardar precios -->
+        <button id="btn-guardar-precios" class="btn btn-success">
+          💾 Guardar mis precios
+        </button>
+      </div>
+    </header>
+
+    <!-- Deck de Control y Retailers -->
+    <div class="control-deck">
+      <div class="retailers-grid">
+        <!-- Elektra -->
+        <div class="retailer-card" id="card-elektra">
+          <div class="retailer-icon icon-elektra">E</div>
+          <div class="retailer-meta">
+            <span class="retailer-name">Elektra</span>
+            <span class="retailer-status">
+              <span class="status-dot" id="dot-elektra"></span>
+              <span id="status-elektra">cargando...</span>
+            </span>
+          </div>
+          <button class="btn btn-secondary btn-sm" data-retailer="elektra" title="Ejecutar scraping de Elektra">
+            Actualizar
+          </button>
+        </div>
+
+        <!-- MAX -->
+        <div class="retailer-card" id="card-max">
+          <div class="retailer-icon icon-max">M</div>
+          <div class="retailer-meta">
+            <span class="retailer-name">MAX</span>
+            <span class="retailer-status">
+              <span class="status-dot" id="dot-max"></span>
+              <span id="status-max">cargando...</span>
+            </span>
+          </div>
+          <button class="btn btn-secondary btn-sm" data-retailer="max" title="Ejecutar scraping de MAX">
+            Actualizar
+          </button>
+        </div>
+
+        <!-- El Gallo más Gallo -->
+        <div class="retailer-card" id="card-gallo">
+          <div class="retailer-icon icon-gallo">G</div>
+          <div class="retailer-meta">
+            <span class="retailer-name">El Gallo más Gallo</span>
+            <span class="retailer-status">
+              <span class="status-dot" id="dot-gallo"></span>
+              <span id="status-gallo">cargando...</span>
+            </span>
+          </div>
+          <button class="btn btn-secondary btn-sm" data-retailer="gallo" title="Ejecutar scraping de Gallo más Gallo">
+            Actualizar
+          </button>
+        </div>
+      </div>
+
+      <div class="master-actions">
+        <button id="btn-actualizar-todos" class="btn btn-primary">
+          ⚡ Actualizar todos
+        </button>
+        
+        <!-- Live status pill -->
+        <span id="live-save-status" class="live-status-pill saved">
+          ✓ Todo sincronizado
+        </span>
+      </div>
+    </div>
+
+    <!-- KPIs de Resumen Inteligente -->
+    <div class="kpi-container" id="kpi-deck">
+      <div class="kpi-card kpi-info">
+        <div class="kpi-header">
+          <span>Modelos en Catálogo</span>
+          <span>📱</span>
+        </div>
+        <div class="kpi-value" id="kpi-total-modelos">0</div>
+        <div class="kpi-sub" id="kpi-sub-modelos">Catálogo activo</div>
+      </div>
+
+      <div class="kpi-card kpi-alert" id="card-kpi-alertas" style="cursor: pointer;" title="Clic para ver detalle de alertas">
+        <div class="kpi-header">
+          <span>Alertas de Competencia</span>
+          <span>⚠️</span>
+        </div>
+        <div class="kpi-value" id="kpi-alertas">0</div>
+        <div class="kpi-sub" id="kpi-sub-alertas">Precios menores a tu referencia</div>
+      </div>
+
+      <div class="kpi-card kpi-success">
+        <div class="kpi-header">
+          <span>Competitividad</span>
+          <span>📈</span>
+        </div>
+        <div class="kpi-value" id="kpi-pct-ok">0%</div>
+        <div class="kpi-sub" id="kpi-sub-ok">Precios iguales o arriba</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span>Sin Datos / Faltantes</span>
+          <span>🔎</span>
+        </div>
+        <div class="kpi-value" id="kpi-faltantes">0</div>
+        <div class="kpi-sub">Puntos de venta sin dato</div>
+      </div>
+    </div>
+
+    <!-- Barra de Búsqueda y Filtros Rápidos -->
+    <div class="filter-toolbar">
+      <div class="search-box-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="filtro-busqueda" class="search-input" placeholder="Buscar modelo o memoria (ej. A16, S25, 256GB)..." autocomplete="off">
+        <button id="btn-search-clear" class="search-clear">✕</button>
+      </div>
+
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filtro="todos">
+          Todos <span class="filter-pill-badge" id="badge-count-todos">0</span>
+        </button>
+        <button class="filter-pill" data-filtro="alertas">
+          🚨 Alertas <span class="filter-pill-badge" id="badge-count-alertas">0</span>
+        </button>
+        <button class="filter-pill" data-filtro="ok">
+          ✅ Precios OK <span class="filter-pill-badge" id="badge-count-ok">0</span>
+        </button>
+        <button class="filter-pill" data-filtro="faltantes">
+          ❓ Faltantes <span class="filter-pill-badge" id="badge-count-faltantes">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabla Principal de Comparación -->
+    <div class="table-card">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="mobile"><div class="th-wrap">Modelo</div></th>
+              <th data-sort="memoria"><div class="th-wrap">Memoria</div></th>
+              <th data-sort="msrp"><div class="th-wrap">MSRP Sugerido</div></th>
+              <th data-sort="mi_precio"><div class="th-wrap">Mi Precio (Base)</div></th>
+              <th data-sort="elektra"><div class="th-wrap">Elektra</div></th>
+              <th data-sort="max"><div class="th-wrap">MAX</div></th>
+              <th data-sort="gallo"><div class="th-wrap">El Gallo más Gallo</div></th>
+              <th data-sort="max_diff"><div class="th-wrap">Mejor Oferta</div></th>
+            </tr>
+          </thead>
+          <tbody id="tabla-body">
+            <tr>
+              <td colspan="8" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                Cargando datos del reporte...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer">
+        <div class="table-legend">
+          <span class="legend-item"><span class="legend-chip green"></span> Verde: Precio OK (igual o superior a tu referencia)</span>
+          <span class="legend-item"><span class="legend-chip red"></span> Rojo: Alerta (competencia vende más barato)</span>
+          <span class="legend-item"><span class="legend-chip gray"></span> — : Sin precio scrapeado disponible</span>
+        </div>
+        <div id="table-record-count">Mostrando 0 modelos</div>
+      </div>
+    </div>
+
+    <!-- Acordeón 1: Productos sin Emparejar -->
+    <div class="accordion-section" id="acc-sin-match">
+      <div class="accordion-header" onclick="toggleAccordion('acc-sin-match')">
+        <div class="accordion-title">
+          <span>📦 Productos scrapeados que no coincidieron con el catálogo</span>
+          <span class="header-badge" id="badge-sin-match-total">0</span>
+        </div>
+        <span class="accordion-chevron">▼</span>
+      </div>
+      <div class="accordion-body">
+        <div class="unmatched-tabs" id="unmatched-tab-buttons">
+          <div class="unmatched-tab active" data-retailer-tab="elektra">Elektra (<span id="count-unmatched-elektra">0</span>)</div>
+          <div class="unmatched-tab" data-retailer-tab="max">MAX (<span id="count-unmatched-max">0</span>)</div>
+          <div class="unmatched-tab" data-retailer-tab="gallo">Gallo más Gallo (<span id="count-unmatched-gallo">0</span>)</div>
+        </div>
+        <ul class="unmatched-list" id="unmatched-list-items">
+          <!-- Items generados dinámicamente -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Acordeón 2: Editor de Catálogo & Excel -->
+    <div class="accordion-section" id="acc-catalogo">
+      <div class="accordion-header" onclick="toggleAccordion('acc-catalogo')">
+        <div class="accordion-title">
+          <span>⚙️ Administrar Catálogo de Referencia (precios_mercado.csv)</span>
+        </div>
+        <span class="accordion-chevron">▼</span>
+      </div>
+      <div class="accordion-body">
+        <div class="catalog-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 30%;">Modelo</th>
+                <th style="width: 25%;">Memoria (RAM+ROM)</th>
+                <th style="width: 20%;">RRP</th>
+                <th style="width: 20%;">MSRP</th>
+                <th style="width: 5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="catalogo-body">
+              <!-- Filas de edición de catálogo -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="catalog-actions-bar">
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="btn-agregar-modelo" type="button">
+              + Agregar modelo
+            </button>
+            <button class="btn btn-success btn-sm" id="btn-guardar-catalogo" type="button">
+              Guardar cambios en catálogo
+            </button>
+          </div>
+
+          <div class="excel-import-box">
+            <span style="font-size: 12px; font-weight: 600;">Importar Excel (.xlsx):</span>
+            <input type="file" id="archivo-excel" accept=".xlsx,.xls" style="font-size: 12px;">
+            <button class="btn btn-secondary btn-sm" id="btn-importar-excel" type="button">
+              Reemplazar catálogo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detalle Alertas -->
+  <div class="modal-backdrop" id="modal-alertas" onclick="if(event.target===this) cerrarModalAlertas()">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+          🚨 Detalle de Precios por Debajo de Tu Referencia
+        </h3>
+        <button class="btn btn-ghost" onclick="cerrarModalAlertas()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-alertas-lista">
+        <!-- Contenido generado -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de Notificaciones Toast -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script>
+    // Configuración y Estado Global
+    const RETAILER_NOMBRES = {
+      elektra: "Elektra",
+      max: "MAX",
+      gallo: "El Gallo más Gallo"
+    };
+
+    let ultimoReporte = null;
+    let catalogoFilas = [];
+    let autoSaveTimeout = null;
+    let autoPollInterval = null;
+    let filtroActivo = "todos";
+    let textoBusqueda = "";
+    let sortColumn = "mobile";
+    let sortDirection = "asc";
+    let activeUnmatchedTab = "elektra";
+
+    // Formateadores numéricos
+    function formatoQ(valor) {
+      if (valor === null || valor === undefined || isNaN(valor)) return "—";
+      return "Q" + Number(valor).toLocaleString("es-GT", { maximumFractionDigits: 0, minimumFractionDigits: 0 });
+    }
+
+    function formatoPct(valor) {
+      if (valor === null || valor === undefined || isNaN(valor)) return "";
+      const signo = valor > 0 ? "+" : "";
+      return `${signo}${valor.toFixed(1)}%`;
+    }
+
+    // Notificaciones Toast
+    function showToast(mensaje, tipo = "info", duracion = 3200) {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = `toast toast-${tipo}`;
+      
+      let icon = "ℹ️";
+      if (tipo === "success") icon = "✅";
+      if (tipo === "error") icon = "❌";
+      if (tipo === "warning") icon = "⚠️";
+
+      toast.innerHTML = `<span class="toast-icon">${icon}</span><span>${mensaje}</span>`;
+      container.appendChild(toast);
+
+      // Trigger animation
+      requestAnimationFrame(() => toast.classList.add("show"));
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 260);
+      }, duracion);
+    }
+
+    // Toggle Acordeón
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle("open");
+    }
+
+    // Render de Celda de Retailer con Tooltip inteligente
+    function renderCeldaRetailer(precio, estado, diffPct, nombreProducto, miPrecio) {
+      if (precio === null || precio === undefined) {
+        return `<td><span class="price-empty">—</span></td>`;
+      }
+
+      let diffHtml = "";
+      if (diffPct !== null && diffPct !== undefined) {
+        diffHtml = `<span class="price-diff">${formatoPct(diffPct)}</span>`;
+      }
+
+      const diffMonto = (miPrecio && precio) ? (precio - miPrecio) : null;
+      let diffMontoTexto = "";
+      if (diffMonto !== null) {
+        const signo = diffMonto > 0 ? "+" : "";
+        diffMontoTexto = `
+Diferencia: ${signo}Q${Math.round(diffMonto).toLocaleString("es-GT")}`;
+      }
+
+      const tooltipText = `${nombreProducto || 'Producto identificado'}${diffMontoTexto}`;
+      const claseEstado = estado === "menor" ? "menor" : (estado === "ok" ? "ok" : "sin-base");
+
+      return `
+        <td>
+          <div class="price-pill ${claseEstado}" data-tooltip="${tooltipText.replace(/"/g, '&quot;')}">
+            <span>${formatoQ(precio)}</span>
+            ${diffHtml}
+          </div>
+        </td>
+      `;
+    }
+
+    // Render de Mejor Oferta
+    function renderMejorOferta(f) {
+      const precios = [];
+      if (f.elektra !== null && f.elektra !== undefined) precios.push({ tienda: "Elektra", precio: f.elektra });
+      if (f.max !== null && f.max !== undefined) precios.push({ tienda: "MAX", precio: f.max });
+      if (f.gallo !== null && f.gallo !== undefined) precios.push({ tienda: "Gallo", precio: f.gallo });
+
+      if (!precios.length) return `<td><span class="price-empty">—</span></td>`;
+
+      precios.sort((a, b) => a.precio - b.precio);
+      const mejor = precios[0];
+      const base = f.mi_precio || f.msrp;
+      let tagExtra = "";
+      if (base && mejor.precio < base) {
+        const ahorro = base - mejor.precio;
+        tagExtra = `<div style="font-size: 10px; color: var(--rose-text); font-weight:700;">-Q${Math.round(ahorro)} vs base</div>`;
+      }
+
+      return `
+        <td>
+          <div style="font-size: 12px; font-weight: 700;">
+            ${formatoQ(mejor.precio)}
+            <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(${mejor.tienda})</span>
+          </div>
+          ${tagExtra}
+        </td>
+      `;
+    }
+
+    // Filtrar y ordenar datos en memoria (Ultra rápido)
+    function obtenerFilasProcesadas() {
+      if (!ultimoReporte || !ultimoReporte.filas) return [];
+
+      let filas = [...ultimoReporte.filas];
+
+      // Filtro de Texto
+      if (textoBusqueda.trim()) {
+        const query = textoBusqueda.toLowerCase().trim();
+        filas = filas.filter(f => {
+          const modelo = (f.mobile || "").toLowerCase();
+          const memoria = (f.memoria || "").toLowerCase();
+          const eNom = (f.elektra_nombre || "").toLowerCase();
+          const mNom = (f.max_nombre || "").toLowerCase();
+          const gNom = (f.gallo_nombre || "").toLowerCase();
+          return modelo.includes(query) || memoria.includes(query) || eNom.includes(query) || mNom.includes(query) || gNom.includes(query);
+        });
+      }
+
+      // Filtro de Píldoras
+      if (filtroActivo === "alertas") {
+        filas = filas.filter(f => f.elektra_estado === "menor" || f.max_estado === "menor" || f.gallo_estado === "menor");
+      } else if (filtroActivo === "ok") {
+        filas = filas.filter(f => f.elektra_estado === "ok" || f.max_estado === "ok" || f.gallo_estado === "ok");
+      } else if (filtroActivo === "faltantes") {
+        filas = filas.filter(f => f.elektra === null || f.max === null || f.gallo === null);
+      }
+
+      // Ordenamiento dinámico
+      filas.sort((a, b) => {
+        let valA = a[sortColumn];
+        let valB = b[sortColumn];
+
+        if (sortColumn === "max_diff") {
+          // Diferencia porcentual más baja (más alerta)
+          valA = Math.min(a.elektra_diff_pct ?? 999, a.max_diff_pct ?? 999, a.gallo_diff_pct ?? 999);
+          valB = Math.min(b.elektra_diff_pct ?? 999, b.max_diff_pct ?? 999, b.gallo_diff_pct ?? 999);
+        }
+
+        if (valA === null || valA === undefined) return 1;
+        if (valB === null || valB === undefined) return -1;
+
+        if (typeof valA === "string") {
+          return sortDirection === "asc" ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        } else {
+          return sortDirection === "asc" ? valA - valB : valB - valA;
+        }
+      });
+
+      return filas;
+    }
+
+    // Render de la tabla principal
+    function pintarTabla() {
+      const body = document.getElementById("tabla-body");
+      const filas = obtenerFilasProcesadas();
+      const countEl = document.getElementById("table-record-count");
+
+      countEl.textContent = `Mostrando ${filas.length} de ${(ultimoReporte?.filas || []).length} modelos`;
+
+      if (!filas.length) {
+        body.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align: center; padding: 42px; color: var(--text-muted);">
+              No se encontraron modelos con los filtros actuales.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      body.innerHTML = filas.map((f, i) => {
+        const miPrecioVal = f.mi_precio === null || f.mi_precio === undefined ? "" : f.mi_precio;
+        const esAuto = !f.mi_precio_personalizado;
+        const claseAuto = esAuto ? "valor-auto" : "";
+        const titleAuto = esAuto ? "Precio sugerido automáticamente desde MSRP (no personalizado)" : "Precio personalizado propio";
+
+        return `
+          <tr data-mobile="${f.mobile}" data-memoria="${f.memoria}">
+            <td class="td-model">${f.mobile}</td>
+            <td><span class="td-memoria">${f.memoria}</span></td>
+            <td class="td-mono">${formatoQ(f.msrp)}</td>
+            <td>
+              <div class="input-precio-wrap">
+                <span class="currency-symbol">Q</span>
+                <input type="number" 
+                       class="mi-precio-input ${claseAuto}" 
+                       data-index="${i}"
+                       data-mobile="${f.mobile}"
+                       data-memoria="${f.memoria}"
+                       data-msrp="${f.msrp ?? ''}" 
+                       data-personalizado="${f.mi_precio_personalizado ? '1' : '0'}"
+                       value="${miPrecioVal}" 
+                       placeholder="${f.msrp ? f.msrp : '—'}"
+                       title="${titleAuto}">
+              </div>
+            </td>
+            ${renderCeldaRetailer(f.elektra, f.elektra_estado, f.elektra_diff_pct, f.elektra_nombre, f.mi_precio)}
+            ${renderCeldaRetailer(f.max, f.max_estado, f.max_diff_pct, f.max_nombre, f.mi_precio)}
+            ${renderCeldaRetailer(f.gallo, f.gallo_estado, f.gallo_diff_pct, f.gallo_nombre, f.mi_precio)}
+            ${renderMejorOferta(f)}
+          </tr>
+        `;
+      }).join("");
+
+      // Bind de inputs de precio con Auto-Save
+      document.querySelectorAll(".mi-precio-input").forEach(input => {
+        input.addEventListener("input", onMiPrecioInput);
+        input.addEventListener("change", onMiPrecioChange);
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            e.target.blur();
+          }
+        });
+      });
+    }
+
+    // Auto-Save Inteligente de Precios
+    function onMiPrecioInput(e) {
+      const input = e.target;
+      input.classList.remove("valor-auto");
+      input.classList.add("modified");
+      input.dataset.personalizado = "1";
+      
+      const statusPill = document.getElementById("live-save-status");
+      statusPill.className = "live-status-pill saving";
+      statusPill.textContent = "⏳ Guardando cambios...";
+
+      clearTimeout(autoSaveTimeout);
+      autoSaveTimeout = setTimeout(() => {
+        ejecutarGuardarPrecios(false);
+      }, 750);
+    }
+
+    function onMiPrecioChange() {
+      clearTimeout(autoSaveTimeout);
+      ejecutarGuardarPrecios(false);
+    }
+
+    // Render de KPIs y Alertas
+    function pintarKpis(reporte) {
+      if (!reporte) return;
+      const totalModelos = (reporte.filas || []).length;
+      document.getElementById("kpi-total-modelos").textContent = totalModelos;
+
+      const resumen = reporte.resumen || {};
+      const alertas = resumen.alertas || [];
+      const faltantes = resumen.faltantes || [];
+
+      document.getElementById("kpi-alertas").textContent = alertas.length;
+      document.getElementById("kpi-pct-ok").textContent = `${resumen.pct_ok || 0}%`;
+      document.getElementById("kpi-faltantes").textContent = faltantes.length;
+
+      // Badges en las píldoras de filtro
+      document.getElementById("badge-count-todos").textContent = totalModelos;
+      document.getElementById("badge-count-alertas").textContent = alertas.length;
+      document.getElementById("badge-count-ok").textContent = resumen.total_ok || 0;
+      document.getElementById("badge-count-faltantes").textContent = faltantes.length;
+
+      // Modal de Alertas
+      const listaModal = document.getElementById("modal-alertas-lista");
+      if (alertas.length === 0) {
+        listaModal.innerHTML = `<div style="text-align:center; padding:20px; color:var(--emerald-text);">🎉 ¡No hay precios menores a tu referencia! Todos los competidores están al nivel o más caros.</div>`;
+      } else {
+        listaModal.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            ${alertas.map(a => `
+              <div style="padding:12px; background:var(--rose-light); border:1px solid var(--rose-border); border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-weight:700; color:var(--rose-text); font-size:13.5px;">${a.mobile} (${a.memoria})</div>
+                  <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">
+                    En <strong>${a.retailer}</strong> a ${formatoQ(a.precio_retailer)} vs tu base ${formatoQ(a.base)}
+                  </div>
+                </div>
+                <div style="font-family:'JetBrains Mono',monospace; font-weight:800; font-size:14px; color:var(--rose-text);">
+                  ${formatoPct(a.diff_pct)}
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+    }
+
+    function abrirModalAlertas() {
+      document.getElementById("modal-alertas").classList.add("open");
+    }
+    function cerrarModalAlertas() {
+      document.getElementById("modal-alertas").classList.remove("open");
+    }
+    document.getElementById("card-kpi-alertas").addEventListener("click", abrirModalAlertas);
+
+    // Render de Productos Sin Match (Acordeón)
+    function pintarSinMatch(sinMatch) {
+      if (!sinMatch) return;
+      
+      const countE = (sinMatch.elektra || []).length;
+      const countM = (sinMatch.max || []).length;
+      const countG = (sinMatch.gallo || []).length;
+      const total = countE + countM + countG;
+
+      document.getElementById("badge-sin-match-total").textContent = total;
+      document.getElementById("count-unmatched-elektra").textContent = countE;
+      document.getElementById("count-unmatched-max").textContent = countM;
+      document.getElementById("count-unmatched-gallo").textContent = countG;
+
+      const listContainer = document.getElementById("unmatched-list-items");
+      const items = sinMatch[activeUnmatchedTab] || [];
+
+      if (!items.length) {
+        listContainer.innerHTML = `<li class="unmatched-item" style="color:var(--emerald-text); justify-content:center;">✓ Todos los productos de esta tienda coincidieron con el catálogo.</li>`;
+        return;
+      }
+
+      listContainer.innerHTML = items.map(nombre => `
+        <li class="unmatched-item">
+          <span>${nombre}</span>
+          <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText('${nombre.replace(/'/g, "\'")}'); showToast('Copiado al portapapeles', 'info', 1500)">
+            Copiar
+          </button>
+        </li>
+      `).join("");
+    }
+
+    // Tabs de Sin Match
+    document.querySelectorAll(".unmatched-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".unmatched-tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        activeUnmatchedTab = tab.dataset.retailerTab;
+        if (ultimoReporte) pintarSinMatch(ultimoReporte.sin_coincidencia);
+      });
+    });
+
+    // Estados de Retailers
+    function pintarEstados(status) {
+      let hayScrapingCorriendo = false;
+
+      Object.keys(RETAILER_NOMBRES).forEach(key => {
+        const dot = document.getElementById(`dot-${key}`);
+        const statusText = document.getElementById(`status-${key}`);
+        const info = (status && status[key]) || null;
+        const btn = document.querySelector(`button[data-retailer="${key}"]`);
+
+        if (!info) {
+          if (dot) dot.className = "status-dot";
+          if (statusText) statusText.textContent = "sin datos";
+          if (btn) btn.disabled = false;
+          return;
+        }
+
+        if (info.estado === "corriendo") {
+          hayScrapingCorriendo = true;
+          if (dot) dot.className = "status-dot corriendo";
+          if (statusText) statusText.textContent = "ejecutando...";
+          if (btn) {
+            btn.disabled = true;
+            btn.textContent = "Scrapeando...";
+          }
+        } else if (info.estado === "ok") {
+          if (dot) dot.className = "status-dot ok";
+          const hora = new Date(info.ultima_actualizacion * 1000).toLocaleTimeString("es-GT", { hour: "2-digit", minute: "2-digit" });
+          if (statusText) statusText.textContent = `Actualizado ${hora}`;
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Actualizar";
+          }
+        } else if (info.estado === "error") {
+          if (dot) dot.className = "status-dot error";
+          if (statusText) statusText.textContent = "error";
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Reintentar";
+          }
+        }
+      });
+
+      return hayScrapingCorriendo;
+    }
+
+    // Aplicar Reporte
+    function aplicarReporte(reporte) {
+      ultimoReporte = reporte;
+      pintarTabla();
+      pintarKpis(reporte);
+      pintarSinMatch(reporte.sin_coincidencia);
+      const enProgreso = pintarEstados(reporte.status);
+
+      if (enProgreso) {
+        activarPollingRapido();
+      }
+    }
+
+    // Cargar Datos API
+    async function cargarDatos(silencioso = false) {
+      try {
+        const resp = await fetch("/api/data");
+        const reporte = await resp.json();
+        aplicarReporte(reporte);
+        if (!silencioso) showToast("Datos sincronizados con éxito", "success", 2000);
+      } catch (err) {
+        if (!silencioso) showToast("Error de conexión con el servidor local", "error");
+      }
+    }
+
+    // Polling Automático
+    let fastPollTimer = null;
+    function activarPollingRapido() {
+      if (fastPollTimer) return;
+      fastPollTimer = setInterval(async () => {
+        try {
+          const resp = await fetch("/api/data");
+          const rep = await resp.json();
+          aplicarReporte(rep);
+          const corriendo = Object.values(rep.status || {}).some(s => s.estado === "corriendo");
+          if (!corriendo) {
+            clearInterval(fastPollTimer);
+            fastPollTimer = null;
+            showToast("Scraping completado. Reporte actualizado.", "success");
+          }
+        } catch (e) {
+          clearInterval(fastPollTimer);
+          fastPollTimer = null;
+        }
+      }, 3500);
+    }
+
+    // Actualizar Retailer Individual
+    async function actualizarRetailer(retailer, btn) {
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Iniciando...";
+      showToast(`Iniciando extracción en ${RETAILER_NOMBRES[retailer]}...`, "info");
+
+      // Reflejar de inmediato estado corriendo
+      const st = { ...(ultimoReporte?.status || {}), [retailer]: { estado: "corriendo" } };
+      pintarEstados(st);
+      activarPollingRapido();
+
+      try {
+        const resp = await fetch(`/api/actualizar/${retailer}`, { method: "POST" });
+        const data = await resp.json();
+        if (data.ok) {
+          aplicarReporte(data.report);
+          showToast(`¡${RETAILER_NOMBRES[retailer]} actualizado con éxito!`, "success");
+        } else {
+          showToast(`Aviso en ${RETAILER_NOMBRES[retailer]}: ${data.error || 'revisar log'}`, "warning", 5000);
+          await cargarDatos(true);
+        }
+      } catch (err) {
+        showToast(`Fallo de conexión al actualizar ${RETAILER_NOMBRES[retailer]}`, "error");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
+
+    document.querySelectorAll("button[data-retailer]").forEach(btn => {
+      btn.addEventListener("click", () => actualizarRetailer(btn.dataset.retailer, btn));
+    });
+
+    // Actualizar Todos
+    document.getElementById("btn-actualizar-todos").addEventListener("click", async (e) => {
+      const btn = e.target;
+      btn.disabled = true;
+      btn.textContent = "⚡ Actualizando...";
+      showToast("Iniciando actualización completa de retailers...", "info");
+
+      for (const retailer of Object.keys(RETAILER_NOMBRES)) {
+        const individualBtn = document.querySelector(`button[data-retailer="${retailer}"]`);
+        await actualizarRetailer(retailer, individualBtn);
+      }
+
+      btn.disabled = false;
+      btn.textContent = "⚡ Actualizar todos";
+    });
+
+    // Guardar Mis Precios (Automático y Manual)
+    async function ejecutarGuardarPrecios(notificar = true) {
+      if (!ultimoReporte) return;
+      const statusPill = document.getElementById("live-save-status");
+      statusPill.className = "live-status-pill saving";
+      statusPill.textContent = "Guardando...";
+
+      // Recopilar valores actuales de los inputs
+      const mapaPrecios = {};
+      document.querySelectorAll(".mi-precio-input").forEach(input => {
+        const mob = input.dataset.mobile;
+        const mem = input.dataset.memoria;
+        const key = `${mob}__${mem}`;
+        const val = input.value.trim();
+        const msrp = input.dataset.msrp;
+        const personalizado = input.dataset.personalizado === "1";
+
+        const esAutocompletado = !personalizado && val !== "" && msrp !== "" && Number(val) === Number(msrp);
+        mapaPrecios[key] = esAutocompletado ? "" : val;
+      });
+
+      const filas = ultimoReporte.filas.map(f => {
+        const key = `${f.mobile}__${f.memoria}`;
+        const val = mapaPrecios[key] !== undefined ? mapaPrecios[key] : (f.mi_precio ?? "");
+        return { mobile: f.mobile, memoria: f.memoria, mi_precio: val };
+      });
+
+      try {
+        const resp = await fetch("/api/mis-precios", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ filas })
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          aplicarReporte(data.report);
+          statusPill.className = "live-status-pill saved";
+          statusPill.textContent = "✓ Precios guardados";
+          if (notificar) showToast("Precios guardados en mis_precios.csv", "success");
+        } else {
+          statusPill.className = "live-status-pill";
+          statusPill.textContent = "⚠️ Error al guardar";
+          if (notificar) showToast("Error al guardar mis precios", "error");
+        }
+      } catch (err) {
+        statusPill.className = "live-status-pill";
+        statusPill.textContent = "⚠️ Error de red";
+      }
+    }
+
+    document.getElementById("btn-guardar-precios").addEventListener("click", () => ejecutarGuardarPrecios(true));
+
+    // Búsqueda instantánea con debouncing ligero
+    const searchInput = document.getElementById("filtro-busqueda");
+    const clearBtn = document.getElementById("btn-search-clear");
+
+    searchInput.addEventListener("input", (e) => {
+      textoBusqueda = e.target.value;
+      clearBtn.classList.toggle("visible", textoBusqueda.length > 0);
+      pintarTabla();
+    });
+
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      textoBusqueda = "";
+      clearBtn.classList.remove("visible");
+      searchInput.focus();
+      pintarTabla();
+    });
+
+    // Píldoras de Filtro
+    document.querySelectorAll(".filter-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        filtroActivo = pill.dataset.filtro;
+        pintarTabla();
+      });
+    });
+
+    // Ordenamiento por Columnas
+    document.querySelectorAll("thead th[data-sort]").forEach(th => {
+      th.addEventListener("click", () => {
+        const col = th.dataset.sort;
+        if (sortColumn === col) {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+        } else {
+          sortColumn = col;
+          sortDirection = "asc";
+        }
+
+        document.querySelectorAll("thead th").forEach(h => {
+          h.classList.remove("sort-asc", "sort-desc");
+        });
+        th.classList.add(sortDirection === "asc" ? "sort-asc" : "sort-desc");
+
+        pintarTabla();
+      });
+    });
+
+    // Exportar CSV
+    document.getElementById("btn-export-csv").addEventListener("click", () => {
+      const filas = obtenerFilasProcesadas();
+      if (!filas.length) {
+        showToast("No hay datos para exportar", "warning");
+        return;
+      }
+
+      let csv = "Modelo,Memoria,MSRP,Mi Precio,Elektra,MAX,Gallo mas Gallo,Elektra Estado,MAX Estado,Gallo Estado\n";
+      filas.forEach(f => {
+        const row = [
+          `"${(f.mobile || '').replace(/"/g, '""')}"`,
+          `"${(f.memoria || '').replace(/"/g, '""')}"`,
+          f.msrp ?? "",
+          f.mi_precio ?? "",
+          f.elektra ?? "",
+          f.max ?? "",
+          f.gallo ?? "",
+          f.elektra_estado ?? "",
+          f.max_estado ?? "",
+          f.gallo_estado ?? ""
+        ];
+        csv += row.join(",") + "\n";
+      });
+
+      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `reporte_precios_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Archivo CSV descargado", "success");
+    });
+
+    // Alternar Tema Oscuro / Claro
+    const btnTheme = document.getElementById("btn-theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    
+    function aplicarTema(tema) {
+      if (tema === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeIcon.textContent = "☀️";
+        localStorage.setItem("reporte-tema", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        themeIcon.textContent = "🌙";
+        localStorage.setItem("reporte-tema", "light");
+      }
+    }
+
+    btnTheme.addEventListener("click", () => {
+      const esDark = document.documentElement.getAttribute("data-theme") === "dark";
+      aplicarTema(esDark ? "light" : "dark");
+    });
+
+    // Cargar preferencia guardada de tema
+    const temaGuardado = localStorage.getItem("reporte-tema") || "light";
+    aplicarTema(temaGuardado);
+
+    // Auto-polling toggle
+    const toggleAutoPoll = document.getElementById("toggle-autopoll");
+    function setupPolling() {
+      if (toggleAutoPoll.checked) {
+        if (!autoPollInterval) {
+          autoPollInterval = setInterval(() => cargarDatos(true), 45000);
+        }
+      } else {
+        if (autoPollInterval) {
+          clearInterval(autoPollInterval);
+          autoPollInterval = null;
+        }
+      }
+    }
+    toggleAutoPoll.addEventListener("change", setupPolling);
+    setupPolling();
+
+    // Administrador de Catálogo
+    function pintarCatalogo(filas) {
+      catalogoFilas = filas || [];
+      const body = document.getElementById("catalogo-body");
+      body.innerHTML = catalogoFilas.map((f, i) => `
+        <tr>
+          <td><input type="text" class="search-input" style="padding:5px 8px; font-size:12.5px;" data-campo="mobile" data-index="${i}" value="${(f.mobile ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Galaxy-A16"></td>
+          <td><input type="text" class="search-input" style="padding:5px 8px; font-size:12.5px;" data-campo="memoria" data-index="${i}" value="${(f.memoria ?? '').replace(/"/g, '&quot;')}" placeholder="ej. 4+128"></td>
+          <td><input type="text" class="search-input" style="padding:5px 8px; font-size:12.5px;" data-campo="rrp" data-index="${i}" value="${(f.rrp ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Q1,299"></td>
+          <td><input type="text" class="search-input" style="padding:5px 8px; font-size:12.5px;" data-campo="msrp" data-index="${i}" value="${(f.msrp ?? '').replace(/"/g, '&quot;')}" placeholder="ej. Q1,099"></td>
+          <td><button class="btn btn-ghost btn-sm" style="color:var(--rose);" data-eliminar="${i}" type="button" title="Eliminar fila">🗑️</button></td>
+        </tr>
+      `).join("");
+    }
+
+    function leerCatalogoDelDom() {
+      const filas = catalogoFilas.map(f => ({ ...f }));
+      document.querySelectorAll("#catalogo-body input[data-campo]").forEach(input => {
+        const i = Number(input.dataset.index);
+        const campo = input.dataset.campo;
+        if (filas[i]) filas[i][campo] = input.value;
+      });
+      return filas;
+    }
+
+    async function cargarCatalogo() {
+      try {
+        const resp = await fetch("/api/catalogo");
+        const data = await resp.json();
+        pintarCatalogo(data.filas || []);
+      } catch (e) {}
+    }
+
+    document.getElementById("catalogo-body").addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-eliminar]");
+      if (!btn) return;
+      const i = Number(btn.dataset.eliminar);
+      const filas = leerCatalogoDelDom();
+      filas.splice(i, 1);
+      pintarCatalogo(filas);
+    });
+
+    document.getElementById("btn-agregar-modelo").addEventListener("click", () => {
+      const filas = leerCatalogoDelDom();
+      filas.push({ mobile: "", memoria: "", rrp: "", msrp: "" });
+      pintarCatalogo(filas);
+    });
+
+    document.getElementById("btn-guardar-catalogo").addEventListener("click", async (e) => {
+      const btn = e.target;
+      const filas = leerCatalogoDelDom();
+      btn.disabled = true;
+      btn.textContent = "Guardando...";
+      try {
+        const resp = await fetch("/api/catalogo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ filas })
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          pintarCatalogo(data.catalogo || []);
+          aplicarReporte(data.report);
+          showToast("Catálogo actualizado con éxito", "success");
+        } else {
+          showToast(`Error al guardar catálogo: ${data.error || 'desconocido'}`, "error");
+        }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Guardar cambios en catálogo";
+      }
+    });
+
+    document.getElementById("btn-importar-excel").addEventListener("click", async (e) => {
+      const input = document.getElementById("archivo-excel");
+      const archivo = input.files[0];
+      if (!archivo) {
+        showToast("Selecciona primero un archivo de Excel (.xlsx)", "warning");
+        return;
+      }
+      if (!confirm("Esto reemplazará todo el catálogo actual de precios_mercado.csv con los datos del Excel. ¿Deseas continuar?")) {
+        return;
+      }
+      const btn = e.target;
+      btn.disabled = true;
+      btn.textContent = "Importando...";
+      const formData = new FormData();
+      formData.append("archivo", archivo);
+      try {
+        const resp = await fetch("/api/catalogo/importar-excel", { method: "POST", body: formData });
+        const data = await resp.json();
+        if (data.ok) {
+          pintarCatalogo(data.catalogo || []);
+          aplicarReporte(data.report);
+          showToast(`Catálogo importado: ${data.filas_importadas} modelos`, "success");
+          input.value = "";
+        } else {
+          showToast(`Error al importar: ${data.error || 'desconocido'}`, "error");
+        }
+      } catch (err) {
+        showToast("Error de conexión al importar Excel", "error");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Reemplazar catálogo";
+      }
+    });
+
+    // Atajos de Teclado
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        ejecutarGuardarPrecios(true);
+      }
+      if (e.key === "/" && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+      if (e.key === "Escape") {
+        if (document.getElementById("modal-alertas").classList.contains("open")) {
+          cerrarModalAlertas();
+        }
+      }
+    });
+
+    // Inicio
+    cargarDatos(true);
+    cargarCatalogo();
+  </script>
+</body>
+</html>

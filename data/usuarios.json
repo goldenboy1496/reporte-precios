@@ -1,0 +1,23 @@
+{
+  "salt": "samsung_retail_2026_ca",
+  "usuarios": [
+    {
+      "usuario": "bryan",
+      "nombre": "Bryan Roblero (Admin)",
+      "password": "Bryan2026!",
+      "rol": "admin"
+    },
+    {
+      "usuario": "retail",
+      "nombre": "Equipo Retail",
+      "password": "Retail2026*",
+      "rol": "comercial"
+    },
+    {
+      "usuario": "gerencia",
+      "nombre": "Gerencia Regional",
+      "password": "Samsung2026#",
+      "rol": "supervisor"
+    }
+  ]
+}

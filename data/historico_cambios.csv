@@ -1,0 +1,70 @@
+id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anterior,precio_nuevo,diferencia,pct_cambio,tipo
+1791503781_GT_gallo_Galaxy-A17_4+128,2026-10-08 17:56:21,GT,Q,El Gallo más Gallo,gallo,Galaxy-A17,4+128,Smartphones,1698.0,1799.0,101.0,5.95,subida
+1791503781_GT_gallo_Galaxy-A36 5G_8+256,2026-10-08 17:56:21,GT,Q,El Gallo más Gallo,gallo,Galaxy-A36 5G,8+256,Smartphones,2598.0,3199.0,601.0,23.13,subida
+1791564047_GT_gallo_Galaxy-A17_4+128,2026-10-09 10:40:47,GT,Q,El Gallo más Gallo,gallo,Galaxy-A17,4+128,Smartphones,1799.0,1898.0,99.0,5.5,subida
+1791564047_GT_gallo_Galaxy-A27 5G_8+256,2026-10-09 10:40:47,GT,Q,El Gallo más Gallo,gallo,Galaxy-A27 5G,8+256,Smartphones,3398.0,3698.0,300.0,8.83,subida
+1791564047_GT_gallo_Galaxy-A57 5G_8+256,2026-10-09 10:40:47,GT,Q,El Gallo más Gallo,gallo,Galaxy-A57 5G,8+256,Smartphones,4798.0,4899.0,101.0,2.11,subida
+1791564047_GT_elektra_Galaxy-A57 5G_12+512,2026-10-09 10:40:47,GT,Q,Elektra,elektra,Galaxy-A57 5G,12+512,Smartphones,6599.0,5699.0,-900.0,-13.64,baja
+1791829233_GT_elektra_Galaxy S25+_12+512GB,2026-10-12 12:20:33,GT,Q,Elektra,elektra,Galaxy S25+,12+512GB,Smartphones,8999.0,7124.0,-1875.0,-20.84,baja
+1791829233_HN_jetstereo_Galaxy S25 Ultra_12+256,2026-10-12 12:20:33,HN,L,Jetstereo,jetstereo,Galaxy S25 Ultra,12+256,Smartphones,31795.0,33995.0,2200.0,6.92,subida
+1791838471_GT_max_Galaxy S26 FE_8+128,2026-10-12 14:54:31,GT,Q,MAX,max,Galaxy S26 FE,8+128,Smartphones,6899.0,6297.0,-602.0,-8.73,baja
+1791840029_HN_diunsa_Galaxy-A27 5G_6+128,2026-10-12 15:20:29,HN,L,Diunsa,diunsa,Galaxy-A27 5G,6+128,Smartphones,9990.0,8990.0,-1000.0,-10.01,baja
+1791840029_HN_diunsa_Galaxy-A27 5G_8+256,2026-10-12 15:20:29,HN,L,Diunsa,diunsa,Galaxy-A27 5G,8+256,Smartphones,9890.0,11990.0,2100.0,21.23,subida
+1791840333_HN_diunsa_Galaxy-A37 5G_8+256,2026-10-12 15:25:33,HN,L,Diunsa,diunsa,Galaxy-A37 5G,8+256,Smartphones,13790.0,11890.0,-1900.0,-13.78,baja
+1791840333_HN_diunsa_Galaxy S25 FE_8+256,2026-10-12 15:25:33,HN,L,Diunsa,diunsa,Galaxy S25 FE,8+256,Smartphones,18990.0,17890.0,-1100.0,-5.79,baja
+1791845863_SV_curacao_sv_Galaxy-A17_4+128,2026-10-12 16:57:43,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,249.0,239.0,-10.0,-4.02,baja
+1791845863_SV_prado_Galaxy-A17_8+256,2026-10-12 16:57:43,SV,$,Prado,prado,Galaxy-A17,8+256,Smartphones,315.95,339.0,23.05,7.3,subida
+1791846553_GT_max_Galaxy S26 FE_8+128,2026-10-12 17:09:13,GT,Q,MAX,max,Galaxy S26 FE,8+128,Smartphones,6297.0,6899.0,602.0,9.56,subida
+1791907025_GT_walmart_Galaxy-A07_4+128,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy-A07,4+128,Smartphones,1099.0,845.0,-254.0,-23.11,baja
+1791907025_GT_walmart_Galaxy-A27 5G_6+128,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy-A27 5G,6+128,Smartphones,2999.0,2485.0,-514.0,-17.14,baja
+1791907025_GT_walmart_Galaxy-A37 5G_6+128,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy-A37 5G,6+128,Smartphones,2909.03,3054.53,145.5,5.0,subida
+1791907025_GT_walmart_Galaxy-A37 5G_8+256,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy-A37 5G,8+256,Smartphones,4359.0,3845.0,-514.0,-11.79,baja
+1791907025_GT_max_Galaxy S26 FE_8+128,2026-10-13 09:57:05,GT,Q,MAX,max,Galaxy S26 FE,8+128,Smartphones,6899.0,6297.0,-602.0,-8.73,baja
+1791907025_GT_walmart_Galaxy S26_12+256,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy S26,12+256,Smartphones,9195.0,7895.0,-1300.0,-14.14,baja
+1791907025_GT_walmart_Galaxy S26 Ultra_12+512GB,2026-10-13 09:57:05,GT,Q,Walmart,walmart,Galaxy S26 Ultra,12+512GB,Smartphones,11635.15,15030.15,3395.0,29.18,subida
+1791907025_SV_walmart_sv_Galaxy-A17_4+128,2026-10-13 09:57:05,SV,$,Walmart,walmart_sv,Galaxy-A17,4+128,Smartphones,199.0,295.0,96.0,48.24,subida
+1791907025_SV_walmart_sv_Galaxy S25 Ultra_12+256,2026-10-13 09:57:05,SV,$,Walmart,walmart_sv,Galaxy S25 Ultra,12+256,Smartphones,1599.0,1099.0,-500.0,-31.27,baja
+1791907025_SV_walmart_sv_Galaxy S26+_12+256,2026-10-13 09:57:05,SV,$,Walmart,walmart_sv,Galaxy S26+,12+256,Smartphones,1299.0,1211.0,-88.0,-6.77,baja
+1791907025_HN_walmart_hn_Galaxy-A27 5G_6+128,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy-A27 5G,6+128,Smartphones,9295.0,11295.0,2000.0,21.52,subida
+1791907025_HN_walmart_hn_Galaxy-A37 5G_8+256,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy-A37 5G,8+256,Smartphones,11895.0,15395.0,3500.0,29.42,subida
+1791907025_HN_walmart_hn_Galaxy-A57 5G_8+256,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy-A57 5G,8+256,Smartphones,14295.0,16995.0,2700.0,18.89,subida
+1791907025_HN_walmart_hn_Galaxy-A57 5G_12+512,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy-A57 5G,12+512,Smartphones,17995.0,16995.0,-1000.0,-5.56,baja
+1791907025_HN_walmart_hn_Galaxy S26+_12+256,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy S26+,12+256,Smartphones,31995.0,39995.0,8000.0,25.0,subida
+1791907025_HN_walmart_hn_Galaxy S26 Ultra_256GB,2026-10-13 09:57:05,HN,L,Walmart,walmart_hn,Galaxy S26 Ultra,256GB,Smartphones,34995.0,40954.0,5959.0,17.03,subida
+1791907025_HN_jetstereo_Galaxy S26 Ultra_12+512GB,2026-10-13 09:57:05,HN,L,Jetstereo,jetstereo,Galaxy S26 Ultra,12+512GB,Smartphones,44995.0,39995.0,-5000.0,-11.11,baja
+1791915663_GT_max_Galaxy S26 FE_8+128,2026-10-13 12:21:03,GT,Q,MAX,max,Galaxy S26 FE,8+128,Smartphones,6297.0,6899.0,602.0,9.56,subida
+1791922052_GT_elektra_Galaxy-A17_8+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A17,8+256,Smartphones,2699.0,2499.0,-200.0,-7.41,baja
+1791922052_GT_elektra_Galaxy-A37 5G_6+128,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A37 5G,6+128,Smartphones,3299.0,3199.0,-100.0,-3.03,baja
+1791922052_GT_elektra_Galaxy-A27 5G_8+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A27 5G,8+256,Smartphones,3695.0,3499.0,-196.0,-5.3,baja
+1791922052_GT_elektra_Galaxy-A37 5G_8+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A37 5G,8+256,Smartphones,3995.0,3799.0,-196.0,-4.91,baja
+1791922052_GT_elektra_Galaxy-A57 5G_8+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A57 5G,8+256,Smartphones,4895.0,4499.0,-396.0,-8.09,baja
+1791922052_GT_elektra_Galaxy S25 FE_8+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy S25 FE,8+256,Smartphones,5399.0,4999.0,-400.0,-7.41,baja
+1791922052_GT_elektra_Galaxy-A57 5G_12+512,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy-A57 5G,12+512,Smartphones,5699.0,5999.0,300.0,5.26,subida
+1791922052_GT_elektra_Galaxy S25 Ultra_12+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy S25 Ultra,12+256,Smartphones,8895.0,7899.0,-996.0,-11.2,baja
+1791922052_GT_elektra_Galaxy Z Flip7_12+512GB,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy Z Flip7,12+512GB,Smartphones,9999.0,8999.0,-1000.0,-10.0,baja
+1791922052_GT_elektra_Galaxy S26+_12+256,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy S26+,12+256,Smartphones,9999.0,8999.0,-1000.0,-10.0,baja
+1791922052_GT_elektra_Galaxy S26 Ultra_12+512GB,2026-10-13 14:07:32,GT,Q,Elektra,elektra,Galaxy S26 Ultra,12+512GB,Smartphones,12995.0,11999.0,-996.0,-7.66,baja
+1791922052_SV_curacao_sv_Galaxy-A17_4+128,2026-10-13 14:07:32,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,239.0,180.0,-59.0,-24.69,baja
+1791922052_SV_curacao_sv_Galaxy S26 FE_8+128,2026-10-13 14:07:32,SV,$,La Curacao,curacao_sv,Galaxy S26 FE,8+128,Smartphones,889.0,999.0,110.0,12.37,subida
+1791922052_SV_curacao_sv_Galaxy S25 Ultra_12+256,2026-10-13 14:07:32,SV,$,La Curacao,curacao_sv,Galaxy S25 Ultra,12+256,Smartphones,1145.0,1129.0,-16.0,-1.4,baja
+1791991772_GT_max_Galaxy-A27 5G_8+256,2026-10-14 09:29:32,GT,Q,MAX,max,Galaxy-A27 5G,8+256,Smartphones,3699.0,3497.0,-202.0,-5.46,baja
+1791991772_GT_max_Galaxy-A57 5G_12+512,2026-10-14 09:29:32,GT,Q,MAX,max,Galaxy-A57 5G,12+512,Smartphones,6595.0,6297.0,-298.0,-4.52,baja
+1791991776_GT_walmart_Galaxy-A27 5G_6+128,2026-10-14 09:29:36,GT,Q,Walmart,walmart,Galaxy-A27 5G,6+128,Smartphones,2485.0,2410.45,-74.55,-3.0,baja
+1791991776_GT_walmart_Galaxy-A37 5G_6+128,2026-10-14 09:29:36,GT,Q,Walmart,walmart,Galaxy-A37 5G,6+128,Smartphones,3054.53,3149.0,94.47,3.09,subida
+1791991776_GT_walmart_Galaxy-A37 5G_8+256,2026-10-14 09:29:36,GT,Q,Walmart,walmart,Galaxy-A37 5G,8+256,Smartphones,3845.0,3729.65,-115.35,-3.0,baja
+1791991776_GT_walmart_Galaxy S26_12+256,2026-10-14 09:29:36,GT,Q,Walmart,walmart,Galaxy S26,12+256,Smartphones,7895.0,7658.15,-236.85,-3.0,baja
+1791991776_GT_walmart_Galaxy S26 Ultra_12+512GB,2026-10-14 09:29:36,GT,Q,Walmart,walmart,Galaxy S26 Ultra,12+512GB,Smartphones,15030.15,15495.0,464.85,3.09,subida
+1791992651_SV_siman_Galaxy S26 FE_8+128,2026-10-14 09:44:11,SV,$,Siman,siman,Galaxy S26 FE,8+128,Smartphones,949.0,889.0,-60.0,-6.32,baja
+1791992651_SV_walmart_sv_Galaxy S26_12+256,2026-10-14 09:44:11,SV,$,Walmart,walmart_sv,Galaxy S26,12+256,Smartphones,959.42,979.0,19.58,2.04,subida
+1791992651_SV_walmart_sv_Galaxy S25 Ultra_12+256,2026-10-14 09:44:11,SV,$,Walmart,walmart_sv,Galaxy S25 Ultra,12+256,Smartphones,1099.0,1077.02,-21.98,-2.0,baja
+1791992651_SV_walmart_sv_Galaxy S26+_12+256,2026-10-14 09:44:11,SV,$,Walmart,walmart_sv,Galaxy S26+,12+256,Smartphones,1211.0,1186.78,-24.22,-2.0,baja
+1791992651_HN_walmart_hn_Galaxy-A17_4+128,2026-10-14 09:44:11,HN,L,Walmart,walmart_hn,Galaxy-A17,4+128,Smartphones,3836.0,4795.0,959.0,25.0,subida
+1791992651_HN_diunsa_Galaxy-A27 5G_6+128,2026-10-14 09:44:11,HN,L,Diunsa,diunsa,Galaxy-A27 5G,6+128,Smartphones,8990.0,9990.0,1000.0,11.12,subida
+1791992651_HN_diunsa_Galaxy-A37 5G_8+256,2026-10-14 09:44:11,HN,L,Diunsa,diunsa,Galaxy-A37 5G,8+256,Smartphones,11890.0,13790.0,1900.0,15.98,subida
+1791992651_HN_diunsa_Galaxy S25 FE_8+256,2026-10-14 09:44:11,HN,L,Diunsa,diunsa,Galaxy S25 FE,8+256,Smartphones,17890.0,18990.0,1100.0,6.15,subida
+1791992651_HN_walmart_hn_Galaxy S25 Ultra_12+512GB,2026-10-14 09:44:11,HN,L,Walmart,walmart_hn,Galaxy S25 Ultra,12+512GB,Smartphones,43595.0,30895.0,-12700.0,-29.13,baja
+1791993991_HN_walmart_hn_Galaxy S26_12+256,2026-10-14 10:06:31,HN,L,Walmart,walmart_hn,Galaxy S26,12+256,Smartphones,29995.0,27995.0,-2000.0,-6.67,baja
+1791993991_HN_walmart_hn_Galaxy S25 Ultra_12+256,2026-10-14 10:06:31,HN,L,Walmart,walmart_hn,Galaxy S25 Ultra,12+256,Smartphones,28721.25,31784.85,3063.6,10.67,subida
+1791993991_HN_walmart_hn_Galaxy S26+_12+256,2026-10-14 10:06:31,HN,L,Walmart,walmart_hn,Galaxy S26+,12+256,Smartphones,39995.0,37995.25,-1999.75,-5.0,baja
+1791993991_HN_walmart_hn_Galaxy S26 Ultra_256GB,2026-10-14 10:06:31,HN,L,Walmart,walmart_hn,Galaxy S26 Ultra,256GB,Smartphones,40954.0,38906.3,-2047.7,-5.0,baja
+1791993991_HN_walmart_hn_Galaxy Tab A11 LTE_4+64GB,2026-10-14 10:06:31,HN,L,Walmart,walmart_hn,Galaxy Tab A11 LTE,4+64GB,Tablets,4846.05,5341.05,495.0,10.21,subida
