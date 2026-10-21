@@ -2878,5 +2878,21 @@
     "diferencia": 150.0,
     "pct_cambio": 20.03,
     "tipo": "subida"
+  },
+  {
+    "id": "1792600507_GT_max_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-10-21 10:35:07",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 8899.0,
+    "precio_nuevo": 8497.0,
+    "diferencia": -402.0,
+    "pct_cambio": -4.52,
+    "tipo": "baja"
   }
 ]
