@@ -251,6 +251,19 @@ def publicar_a_github():
 
 def main():
     modo_visible = "--visible" in sys.argv
+    solo_primera = "--solo-primera-del-dia" in sys.argv
+    marca_path = DATA_DIR / "ultimo_scraping_completo.txt"
+
+    if solo_primera and marca_path.exists():
+        try:
+            ultimo_dia = marca_path.read_text(encoding="utf-8").strip()
+            hoy = datetime.now().strftime("%Y-%m-%d")
+            if ultimo_dia == hoy:
+                log_mensaje(f"[*] El scraping completo ya se ejecuto hoy ({hoy}). Omitiendo ejecucion de inicio.")
+                return
+        except Exception:
+            pass
+
     filtro_pais = None
     for arg in sys.argv:
         if arg.startswith("--pais="):
@@ -278,6 +291,10 @@ def main():
     log_mensaje("=" * 60)
 
     if exitosos > 0:
+        try:
+            marca_path.write_text(datetime.now().strftime("%Y-%m-%d"), encoding="utf-8")
+        except Exception:
+            pass
         publicar_a_github()
 
 
