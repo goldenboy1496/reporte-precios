@@ -2894,5 +2894,21 @@
     "diferencia": -402.0,
     "pct_cambio": -4.52,
     "tipo": "baja"
+  },
+  {
+    "id": "1792600512_GT_walmart_Galaxy-A57 5G_8+256",
+    "fecha": "2026-10-21 10:35:12",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Walmart",
+    "retailer_key": "walmart",
+    "mobile": "Galaxy-A57 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 4995.0,
+    "precio_nuevo": 4595.0,
+    "diferencia": -400.0,
+    "pct_cambio": -8.01,
+    "tipo": "baja"
   }
 ]
