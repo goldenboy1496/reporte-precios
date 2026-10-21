@@ -321,9 +321,13 @@ def parse_price(value):
 
 def load_catalogo(data_dir: Path, pais: str = "gt"):
     path = data_dir / "precios_mercado.csv"
-    if not path.exists():
+    if not path.exists() or path.stat().st_size <= 2:
         return []
-    df = pd.read_csv(path, dtype=str).fillna("")
+    try:
+        df = pd.read_csv(path, dtype=str).fillna("")
+    except Exception as e:
+        print(f"[Aviso] No se pudo leer {path.name}: {e}")
+        return []
     catalogo = []
     
     cfg = PAISES_CONFIG.get(pais, PAISES_CONFIG["gt"])
@@ -366,9 +370,13 @@ def load_mis_precios(data_dir: Path, pais: str = "gt"):
     path = data_dir / cfg["mis_precios_file"]
     if not path.exists() and pais == "gt":
         path = data_dir / "mis_precios.csv"
-    if not path.exists():
+    if not path.exists() or path.stat().st_size <= 2:
         return {}
-    df = pd.read_csv(path, dtype=str).fillna("")
+    try:
+        df = pd.read_csv(path, dtype=str).fillna("")
+    except Exception as e:
+        print(f"[Aviso] No se pudo leer {path.name}: {e}")
+        return {}
     precios = {}
     for _, row in df.iterrows():
         mob = row.get("mobile", "").strip()
@@ -444,9 +452,13 @@ def es_accesorio(nombre: str, cat_tipo: str) -> bool:
     return False
 
 def load_retailer_csv(path: Path, nombre_col, precio_cols):
-    if not path.exists():
+    if not path.exists() or path.stat().st_size <= 2:
         return []
-    df = pd.read_csv(path, dtype=str).fillna("")
+    try:
+        df = pd.read_csv(path, dtype=str).fillna("")
+    except Exception as e:
+        print(f"[Aviso] No se pudo leer {path.name}: {e}")
+        return []
     items = []
     for _, row in df.iterrows():
         nombre = row.get(nombre_col, "").strip()

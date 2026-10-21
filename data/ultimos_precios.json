@@ -124,12 +124,12 @@
   "HN|jetstereo|Galaxy-A56 5G|12+256": 14595.0,
   "HN|elektra_hn|Galaxy-A37 5G|8+256": 13799.0,
   "HN|diunsa|Galaxy-A37 5G|8+256": 13790.0,
-  "HN|jetstereo|Galaxy-A57 5G|8+256": 16295.0,
+  "HN|jetstereo|Galaxy-A57 5G|8+256": 17295.0,
   "HN|elektra_hn|Galaxy-A57 5G|8+256": 17699.0,
   "HN|diunsa|Galaxy-A57 5G|8+256": 17290.0,
   "HN|jetstereo|Galaxy S25 FE|8+256": 18495.0,
   "HN|diunsa|Galaxy S25 FE|8+256": 18990.0,
-  "HN|jetstereo|Galaxy-A57 5G|12+512": 17295.0,
+  "HN|jetstereo|Galaxy-A57 5G|12+512": 21995.0,
   "HN|diunsa|Galaxy-A57 5G|12+512": 21990.0,
   "HN|jetstereo|Galaxy S26 FE|8+128": 24995.0,
   "HN|diunsa|Galaxy S26 FE|8+128": 24290.0,
@@ -298,5 +298,6 @@
   "SV|curacao_sv|Galaxy Tab S12+ WIFI (No Keyboard Inbox)|12+256": 1689.0,
   "SV|curacao_sv|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1969.0,
   "SV|siman|Galaxy Tab S12+ WIFI (No Keyboard Inbox)|12+256": 1599.0,
-  "SV|siman|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1849.0
+  "SV|siman|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1849.0,
+  "HN|walmart_hn|Galaxy S25 FE|8+256": 18052.95
 }

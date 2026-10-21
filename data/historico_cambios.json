@@ -2942,5 +2942,37 @@
     "diferencia": -56.0,
     "pct_cambio": -4.89,
     "tipo": "baja"
+  },
+  {
+    "id": "1792617970_HN_jetstereo_Galaxy-A57 5G_8+256",
+    "fecha": "2026-10-21 15:26:10",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Jetstereo",
+    "retailer_key": "jetstereo",
+    "mobile": "Galaxy-A57 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 16295.0,
+    "precio_nuevo": 17295.0,
+    "diferencia": 1000.0,
+    "pct_cambio": 6.14,
+    "tipo": "subida"
+  },
+  {
+    "id": "1792617970_HN_jetstereo_Galaxy-A57 5G_12+512",
+    "fecha": "2026-10-21 15:26:10",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Jetstereo",
+    "retailer_key": "jetstereo",
+    "mobile": "Galaxy-A57 5G",
+    "memoria": "12+512",
+    "categoria": "Smartphones",
+    "precio_anterior": 17295.0,
+    "precio_nuevo": 21995.0,
+    "diferencia": 4700.0,
+    "pct_cambio": 27.18,
+    "tipo": "subida"
   }
 ]

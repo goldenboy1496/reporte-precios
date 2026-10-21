@@ -183,3 +183,5 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1792600512_GT_walmart_Galaxy-A57 5G_8+256,2026-10-21 10:35:12,GT,Q,Walmart,walmart,Galaxy-A57 5G,8+256,Smartphones,4995.0,4595.0,-400.0,-8.01,baja
 1792605748_SV_prado_Galaxy Tab A11 Wifi_4+64GB,2026-10-21 12:02:28,SV,$,Prado,prado,Galaxy Tab A11 Wifi,4+64GB,Tablets,199.95,169.0,-30.95,-15.48,baja
 1792605768_SV_siman_Galaxy S25 Ultra_12+256,2026-10-21 12:02:48,SV,$,Siman,siman,Galaxy S25 Ultra,12+256,Smartphones,1145.0,1089.0,-56.0,-4.89,baja
+1792617970_HN_jetstereo_Galaxy-A57 5G_8+256,2026-10-21 15:26:10,HN,L,Jetstereo,jetstereo,Galaxy-A57 5G,8+256,Smartphones,16295.0,17295.0,1000.0,6.14,subida
+1792617970_HN_jetstereo_Galaxy-A57 5G_12+512,2026-10-21 15:26:10,HN,L,Jetstereo,jetstereo,Galaxy-A57 5G,12+512,Smartphones,17295.0,21995.0,4700.0,27.18,subida
