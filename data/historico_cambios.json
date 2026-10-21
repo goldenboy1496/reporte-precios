@@ -2910,5 +2910,21 @@
     "diferencia": -400.0,
     "pct_cambio": -8.01,
     "tipo": "baja"
+  },
+  {
+    "id": "1792605748_SV_prado_Galaxy Tab A11 Wifi_4+64GB",
+    "fecha": "2026-10-21 12:02:28",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Prado",
+    "retailer_key": "prado",
+    "mobile": "Galaxy Tab A11 Wifi",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 199.95,
+    "precio_nuevo": 169.0,
+    "diferencia": -30.95,
+    "pct_cambio": -15.48,
+    "tipo": "baja"
   }
 ]
