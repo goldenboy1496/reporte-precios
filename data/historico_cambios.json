@@ -2926,5 +2926,21 @@
     "diferencia": -30.95,
     "pct_cambio": -15.48,
     "tipo": "baja"
+  },
+  {
+    "id": "1792605768_SV_siman_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-10-21 12:02:48",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Siman",
+    "retailer_key": "siman",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 1145.0,
+    "precio_nuevo": 1089.0,
+    "diferencia": -56.0,
+    "pct_cambio": -4.89,
+    "tipo": "baja"
   }
 ]

@@ -91,7 +91,7 @@
   "SV|prado|Galaxy S26 FE|8+256": 999.0,
   "SV|siman|Galaxy S26|12+256": 1079.0,
   "SV|prado|Galaxy S26|12+256": 1079.0,
-  "SV|siman|Galaxy S25 Ultra|12+256": 1145.0,
+  "SV|siman|Galaxy S25 Ultra|12+256": 1089.0,
   "SV|curacao_sv|Galaxy S25 Ultra|12+256": 1145.0,
   "SV|prado|Galaxy S25 Ultra|12+256": 1145.0,
   "SV|siman|Galaxy S26+|12+256": 1299.0,
@@ -296,5 +296,7 @@
   "SV|siman|Watch7 44mm|SM-L310": 269.0,
   "HN|jetstereo|Galaxy S24 FE|8+256": 21995.0,
   "SV|curacao_sv|Galaxy Tab S12+ WIFI (No Keyboard Inbox)|12+256": 1689.0,
-  "SV|curacao_sv|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1969.0
+  "SV|curacao_sv|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1969.0,
+  "SV|siman|Galaxy Tab S12+ WIFI (No Keyboard Inbox)|12+256": 1599.0,
+  "SV|siman|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1849.0
 }
