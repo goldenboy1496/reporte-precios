@@ -4230,12 +4230,18 @@
 
       function obtenerUltimaActualizacionPais(reporte) {
         const retObj = reporte?.retailers || PAISES_INFO[paisActual]?.retailers || {};
-        const status = reporte?.status || {};
+        const status = reporte?.status || ultimoReporte?.status || {};
         let maxTs = 0;
         for (const key of Object.keys(retObj)) {
           const ts = status[key]?.ultima_actualizacion;
           if (ts && ts > maxTs) {
             maxTs = ts;
+          }
+        }
+        if (maxTs === 0 && status) {
+          for (const val of Object.values(status)) {
+            const ts = val?.ultima_actualizacion;
+            if (ts && ts > maxTs) maxTs = ts;
           }
         }
         return maxTs > 0 ? maxTs : null;
@@ -4266,6 +4272,7 @@
         pintarKpis(reporte);
         pintarSinMatch(reporte.sin_coincidencia);
         const enProgreso = pintarEstados(reporte.status);
+        actualizarBadgeUltimaActualizacion(reporte);
 
         if (enProgreso) activarPollingRapido();
       }
