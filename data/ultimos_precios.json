@@ -184,7 +184,7 @@
   "HN|walmart_hn|Galaxy-A57 5G|12+512": 16995.0,
   "HN|walmart_hn|Galaxy S26|12+256": 27995.0,
   "HN|walmart_hn|Galaxy S25 Ultra|12+256": 24254.1,
-  "HN|walmart_hn|Galaxy S25+|12+512GB": 34207.0,
+  "HN|walmart_hn|Galaxy S25+|12+512GB": 34207.4,
   "HN|walmart_hn|Galaxy S26+|12+256": 30395.25,
   "HN|walmart_hn|Galaxy S26 Ultra|256GB": 33245.25,
   "HN|walmart_hn|Galaxy S25 Ultra|12+512GB": 30895.0,
@@ -299,5 +299,9 @@
   "SV|curacao_sv|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1969.0,
   "SV|siman|Galaxy Tab S12+ WIFI (No Keyboard Inbox)|12+256": 1599.0,
   "SV|siman|Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)|12+256": 1849.0,
-  "HN|walmart_hn|Galaxy S25 FE|8+256": 18052.95
+  "HN|walmart_hn|Galaxy S25 FE|8+256": 18052.95,
+  "HN|diunsa|Galaxy-A08|4+64": 5590.0,
+  "HN|diunsa|Galaxy-A07s|4+128": 6390.0,
+  "HN|walmart_hn|Galaxy-A36 5G|8+256": 9000.0,
+  "HN|walmart_hn|Watch8 40mm BT|SM-L320": 3500.0
 }

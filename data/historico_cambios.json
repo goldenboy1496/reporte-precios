@@ -3230,5 +3230,21 @@
     "diferencia": -299.0,
     "pct_cambio": -3.05,
     "tipo": "baja"
+  },
+  {
+    "id": "1792692537_HN_walmart_hn_Galaxy S25+_12+512GB",
+    "fecha": "2026-10-22 12:08:57",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_hn",
+    "mobile": "Galaxy S25+",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 34207.0,
+    "precio_nuevo": 34207.4,
+    "diferencia": 0.4,
+    "pct_cambio": 0.0,
+    "tipo": "subida"
   }
 ]
