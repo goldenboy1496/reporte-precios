@@ -1,10 +1,10 @@
 id,nombre,precio,precio_num,link
+8859948,"Celular Samsung S26 Plus 6.7"" (17.02 cm) 12GB RAM 256GB ROM Celular 6.7"" S26 Plus 12GB/256GB Black","$1,299.00",1299.0,https://sv.siman.com/celular-samsung-s26-plus-6-7---17-02-cm--12gb-ram-256gb-rom/p
+8859949,"Celular Samsung S26 Plus 6.7"" (17.02 cm) 12GB RAM 256GB ROM Celular 6.7"" S26 Plus 12GB/256GB Sky Blue","$1,299.00",1299.0,https://sv.siman.com/celular-samsung-s26-plus-6-7---17-02-cm--12gb-ram-256gb-rom/p
 9107839,"Celular Samsung Galaxy S26 FE 5G 8GB RAM 17.01 cm (6.7"") CELULAR 17.01 cm (6.7"") S26 FE 8GB RAM 128GB ROM VIOLETA",$889.00,889.0,https://sv.siman.com/celular-17-01-cm-6-7-s26-fe-8gb-ram-128gb-rom-negro-105361292/p
 9107841,"Celular Samsung Galaxy S26 FE 5G 8GB RAM 17.01 cm (6.7"") CELULAR 17.01 cm (6.7"") S26 FE 8GB RAM 128GB ROM NEGRO",$889.00,889.0,https://sv.siman.com/celular-17-01-cm-6-7-s26-fe-8gb-ram-128gb-rom-negro-105361292/p
 9107844,"Celular Samsung Galaxy S26 FE 5G 8GB RAM 17.01 cm (6.7"") CELULAR 17.01 cm (6.7"") S26 FE 8GB RAM 128GB ROM VERDE CLARO",$889.00,889.0,https://sv.siman.com/celular-17-01-cm-6-7-s26-fe-8gb-ram-128gb-rom-negro-105361292/p
 8859940,"Celular Samsung S26 5G 6.3"" (16 cm) 12GB RAM 256GB ROM Celular 6.3""  S26 5G 12GB/256GB Sky Blue","$1,079.00",1079.0,https://sv.siman.com/celular-samsung-s26-5g-6-3---16-cm--12gb-ram-256gb-rom-/p
-8859948,"Celular Samsung S26 Plus 6.7"" (17.02 cm) 12GB RAM 256GB ROM Celular 6.7"" S26 Plus 12GB/256GB Black","$1,299.00",1299.0,https://sv.siman.com/celular-samsung-s26-plus-6-7---17-02-cm--12gb-ram-256gb-rom/p
-8859949,"Celular Samsung S26 Plus 6.7"" (17.02 cm) 12GB RAM 256GB ROM Celular 6.7"" S26 Plus 12GB/256GB Sky Blue","$1,299.00",1299.0,https://sv.siman.com/celular-samsung-s26-plus-6-7---17-02-cm--12gb-ram-256gb-rom/p
 8859944,"Celular Samsung S26 Ultra 5G 6.9"" (17.53 cm) 12GB RAM 512GB ROM Celular 6.9"" S26 Ultra 5G 12GB/512GB Black","$1,599.00",1599.0,https://sv.siman.com/celular-samsung-s26-ultra-5g-6-9---17-53-cm--12gb-ram-512gb-rom/p
 8859945,"Celular Samsung S26 Ultra 5G 6.9"" (17.53 cm) 12GB RAM 512GB ROM Celular 6.9"" S26 Ultra 5G 12GB/512GB Sky Blue","$1,599.00",1599.0,https://sv.siman.com/celular-samsung-s26-ultra-5g-6-9---17-53-cm--12gb-ram-512gb-rom/p
 8865228,"Celular Samsung S26 Ultra 5G 6.9"" (17.53 cm) 12GB RAM 256GB ROM CELULAR 17.52 cm (6.9"") S26 ULTRA 12GB RAM 256GB ROM VIOLETA","$1,369.00",1369.0,https://sv.siman.com/celular-samsung-s26-ultra-5g-6-9---17-53-cm--12gb-ram-256gb-rom/p
@@ -41,7 +41,6 @@ id,nombre,precio,precio_num,link
 8025559,Smart band Samsung Galaxy Fit 3 SMART BAND GALAXY FIT 3 PLATA,$54.00,54.0,https://sv.siman.com/smart-band-galaxy-fit-3-gris-oscuro-104500352/p
 8614902,Smartwatch Samsung Galaxy watch 8 44mm Galaxy Watch 8 44mm Silver,$299.00,299.0,https://sv.siman.com/galaxy-watch-8-44mm-dark-gray-104992782/p
 8614903,Smartwatch Samsung Galaxy watch 8 44mm Galaxy Watch 8 44mm Dark Gray,$299.00,299.0,https://sv.siman.com/galaxy-watch-8-44mm-dark-gray-104992782/p
-8220235,Smartwatch Samsung Galaxy watch 7 44mm GALAXY WATCH 7 44MM VERDE,$269.00,269.0,https://sv.siman.com/galaxy-watch-7-44mm-verde-104660253/p
 8614900,Smartwatch Samsung Galaxy watch 8 Classic 46mm Galaxy Watch 8 Classic 46mm White,$499.00,499.0,https://sv.siman.com/galaxy-watch-8-classic-46mm-black-104992784/p
 9054584,Smartwatch Samsung Galaxy Watch9 BT 40 mm SMART WATCH GALAXY WATCH 9 40mm BEIGE,$355.00,355.0,https://sv.siman.com/smart-watch-galaxy-watch-9-40mm-negro-105318515/p
 9054587,Smartwatch Samsung Galaxy Watch9 BT 40 mm SMART WATCH GALAXY WATCH 9 40mm NEGRO,$355.00,355.0,https://sv.siman.com/smart-watch-galaxy-watch-9-40mm-negro-105318515/p
@@ -55,9 +54,9 @@ id,nombre,precio,precio_num,link
 8612772,Audífonos inalámbricos in ear Samsung Galaxy Buds Core con ANC AUDIFONOS IN EAR BT GALAXY BUDS CORE NEGRO,$54.00,54.0,https://sv.siman.com/audifonos-in-ear-bt-galaxy-buds-core-negro-104991034/p
 8612776,Audífonos inalámbricos in ear Samsung Galaxy Buds Core con ANC AUDIFONOS IN EAR BT GALAXY BUDS CORE BLANCO,$54.00,54.0,https://sv.siman.com/audifonos-in-ear-bt-galaxy-buds-core-negro-104991034/p
 9157068,"Samsung Galaxy Tab S12 Ultra gris de 256 GB con 12 GB de RAM y S Pen TABLET DE 35.56 cm (14"") GALAXY TAB S12 ULTRA 12GB RAM - 256GB ROM GRIS","$1,849.00",1849.0,https://sv.siman.com/tablet-de-35-56-cm-14-galaxy-tab-s12-ultra-12gb-ram-256gb-rom-gris-105400170/p
+8220233,Audífono inalámbrico in ear  Samsung Galaxy buds 3 pro con ANC AUDIFONO TWS GALAXY BUDS 3 PRO BLANCO,$169.00,169.0,https://sv.siman.com/audifono-tws-galaxy-buds-3-pro-silver-104660250/p
 8717832,Audífonos inalámbricos in ear Samsung Galaxy buds 3 FE con ANC GALAXY BUDS 3 FE NEGRO,$114.00,114.0,https://sv.siman.com/galaxy-buds-3-fe-negro-105067553/p
 8717833,Audífonos inalámbricos in ear Samsung Galaxy buds 3 FE con ANC GALAXY BUDS 3 FE GRIS,$114.00,114.0,https://sv.siman.com/galaxy-buds-3-fe-negro-105067553/p
-8220233,Audífono inalámbrico in ear  Samsung Galaxy buds 3 pro con ANC AUDIFONO TWS GALAXY BUDS 3 PRO BLANCO,$169.00,169.0,https://sv.siman.com/audifono-tws-galaxy-buds-3-pro-silver-104660250/p
 8870894,Audífonos inalámbricos in ear Samsung Galaxy Buds 4 Pro con ANC Buds4 Pro BLANCO,$229.00,229.0,https://sv.siman.com/buds4-pro-blanco-105173293/p
 8870892,Audífonos inalámbricos in ear Samsung Galaxy Buds 4 Pro con ANC Buds4 Pro NEGRO,$229.00,229.0,https://sv.siman.com/buds4-pro-blanco-105173293/p
 8537311,"Tablet Samsung Galaxy tab S10 FE+ Wi-Fi 8GB RAM + 128GB ROM TABLET DE 13"" GALAXY TAB S10 FE + WIFI 8GB RAM- 128GB ROM GRIS",$649.00,649.0,https://sv.siman.com/tablet-de-13-galaxy-tab-s10-fe-wifi-8gb-ram-128gb-rom-gris-104929012/p

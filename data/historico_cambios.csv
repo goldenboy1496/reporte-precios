@@ -185,3 +185,18 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1792605768_SV_siman_Galaxy S25 Ultra_12+256,2026-10-21 12:02:48,SV,$,Siman,siman,Galaxy S25 Ultra,12+256,Smartphones,1145.0,1089.0,-56.0,-4.89,baja
 1792617970_HN_jetstereo_Galaxy-A57 5G_8+256,2026-10-21 15:26:10,HN,L,Jetstereo,jetstereo,Galaxy-A57 5G,8+256,Smartphones,16295.0,17295.0,1000.0,6.14,subida
 1792617970_HN_jetstereo_Galaxy-A57 5G_12+512,2026-10-21 15:26:10,HN,L,Jetstereo,jetstereo,Galaxy-A57 5G,12+512,Smartphones,17295.0,21995.0,4700.0,27.18,subida
+1792678258_GT_max_Galaxy-A17_8+256,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy-A17,8+256,Smartphones,2495.0,2496.0,1.0,0.04,subida
+1792678258_GT_max_Galaxy-A37 5G_6+128,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy-A37 5G,6+128,Smartphones,3299.0,2996.0,-303.0,-9.18,baja
+1792678258_GT_max_Galaxy-A57 5G_8+256,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy-A57 5G,8+256,Smartphones,4597.0,4596.0,-1.0,-0.02,baja
+1792678258_GT_gallo_Galaxy-A57 5G_8+256,2026-10-22 08:10:57,GT,Q,El Gallo más Gallo,gallo,Galaxy-A57 5G,8+256,Smartphones,4408.0,4899.0,491.0,11.14,subida
+1792678258_GT_gallo_Galaxy S26 FE_8+256,2026-10-22 08:10:57,GT,Q,El Gallo más Gallo,gallo,Galaxy S26 FE,8+256,Smartphones,7998.0,7699.0,-299.0,-3.74,baja
+1792678258_GT_max_Galaxy S26 Ultra_256GB,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy S26 Ultra,256GB,Smartphones,9497.0,9796.0,299.0,3.15,subida
+1792678258_GT_max_Buds Core_SM-R410,2026-10-22 08:10:57,GT,Q,MAX,max,Buds Core,SM-R410,Wearables,399.0,396.0,-3.0,-0.75,baja
+1792678258_GT_max_Galaxy Buds 3FE_SM-R420,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy Buds 3FE,SM-R420,Wearables,1099.0,1196.0,97.0,8.83,subida
+1792678258_GT_max_Galaxy Buds 4_SM-R540,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy Buds 4,SM-R540,Wearables,1499.0,1496.0,-3.0,-0.2,baja
+1792678258_GT_max_Galaxy Buds4 Pro_SM-R640,2026-10-22 08:10:57,GT,Q,MAX,max,Galaxy Buds4 Pro,SM-R640,Wearables,1799.0,1796.0,-3.0,-0.17,baja
+1792678258_GT_max_Watch7 40mm_SM-L300,2026-10-22 08:10:57,GT,Q,MAX,max,Watch7 40mm,SM-L300,Wearables,1299.0,1296.0,-3.0,-0.23,baja
+1792678258_HN_jetstereo_Galaxy-A56 5G_8+256,2026-10-22 08:10:58,HN,L,Jetstereo,jetstereo,Galaxy-A56 5G,8+256,Smartphones,14595.0,13395.0,-1200.0,-8.22,baja
+1792678258_HN_jetstereo_Galaxy-A56 5G_12+256,2026-10-22 08:10:58,HN,L,Jetstereo,jetstereo,Galaxy-A56 5G,12+256,Smartphones,14595.0,13395.0,-1200.0,-8.22,baja
+1792678258_HN_jetstereo_Galaxy S25 Ultra_12+256,2026-10-22 08:10:58,HN,L,Jetstereo,jetstereo,Galaxy S25 Ultra,12+256,Smartphones,33995.0,31995.0,-2000.0,-5.88,baja
+1792678258_HN_walmart_hn_Galaxy S25 Ultra_12+256,2026-10-22 08:10:58,HN,L,Walmart,walmart_hn,Galaxy S25 Ultra,12+256,Smartphones,29870.1,24254.1,-5616.0,-18.8,baja
