@@ -1,7 +1,7 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1792685429.6742103
+    "ultima_actualizacion": 1792685441.4113002
   },
   "gallo": {
     "estado": "corriendo",
@@ -42,8 +42,8 @@
     "duracion_segundos": 92.7
   },
   "walmart": {
-    "estado": "ok",
-    "ultima_actualizacion": 1792685430.0064929
+    "estado": "corriendo",
+    "inicio": 1792685441.6446018
   },
   "walmart_sv": {
     "estado": "ok",
