@@ -228,26 +228,28 @@ def ejecutar_scraper(retailer_info, modo_visible=False):
 def publicar_a_github():
     try:
         from datetime import datetime
-        log_mensaje("🚀 Publicando actualización automáticamente a GitHub Pages...")
+        log_mensaje("[*] Compilando y publicando actualizacion automaticamente a GitHub Pages...")
         export_script = BASE_DIR / "exportar_reporte_estatico.py"
         if export_script.exists():
             res_exp = subprocess.run([sys.executable, str(export_script)], cwd=str(BASE_DIR), capture_output=True, text=True)
             if res_exp.returncode != 0:
-                log_mensaje(f"⚠️ Error al compilar reporte estático: {res_exp.stderr}")
+                log_mensaje(f"[!] Error al compilar reporte estatico: {res_exp.stderr}")
                 return
-        
-        repo_dir = BASE_DIR.parent / "reporte_web"
-        if repo_dir.exists():
-            subprocess.run(["git", "add", "-A"], cwd=str(repo_dir), check=True)
-            fecha_str = datetime.now().strftime("%d/%m/%Y %H:%M")
-            subprocess.run(["git", "commit", "-m", f"Auto-actualizacion de precios: {fecha_str}"], cwd=str(repo_dir))
-            res_push = subprocess.run(["git", "push", "origin", "main"], cwd=str(repo_dir), capture_output=True, text=True)
-            if res_push.returncode == 0:
-                log_mensaje("✅ Reporte publicado en GitHub Pages con éxito: https://goldenboy1496.github.io/reporte-precios/")
-            else:
-                log_mensaje(f"⚠️ Aviso al empujar a GitHub: {res_push.stderr}")
+
+        for d in [BASE_DIR, BASE_DIR.parent / "reporte_web"]:
+            if (d / ".git").exists():
+                try:
+                    subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=str(d), capture_output=True, text=True)
+                    subprocess.run(["git", "add", "-A"], cwd=str(d), check=True)
+                    fecha_str = datetime.now().strftime("%d/%m/%Y %H:%M")
+                    subprocess.run(["git", "commit", "-m", f"Auto-actualizacion de precios: {fecha_str}"], cwd=str(d), capture_output=True)
+                    res_push = subprocess.run(["git", "push", "origin", "main"], cwd=str(d), capture_output=True, text=True)
+                    if res_push.returncode == 0:
+                        log_mensaje(f"[+] Reporte publicado en GitHub Pages con exito desde {d.name}")
+                except Exception as ex:
+                    log_mensaje(f"[!] Aviso git en {d.name}: {ex}")
     except Exception as e:
-        log_mensaje(f"⚠️ No se pudo publicar a GitHub Pages: {e}")
+        log_mensaje(f"[!] No se pudo publicar a GitHub Pages: {e}")
 
 def main():
     modo_visible = "--visible" in sys.argv

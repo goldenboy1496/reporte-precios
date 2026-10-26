@@ -240,3 +240,24 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1792807545_GT_elektra_Galaxy S26 Ultra_12+512GB,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy S26 Ultra,12+512GB,Smartphones,12995.0,10999.0,-1996.0,-15.36,baja
 1792807545_GT_elektra_Watch8 40mm BT_SM-L320,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Watch8 40mm BT,SM-L320,Wearables,1999.0,1799.0,-200.0,-10.01,baja
 1792807545_GT_elektra_Watch9 40mm BT_SM-L340N,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Watch9 40mm BT,SM-L340N,Wearables,2695.0,2599.0,-96.0,-3.56,baja
+1793030452_GT_max_Galaxy S25 Ultra_12+256,2026-10-26 10:00:52,GT,Q,MAX,max,Galaxy S25 Ultra,12+256,Smartphones,8497.0,8899.0,402.0,4.73,subida
+1793030452_GT_max_Galaxy S26 Ultra_256GB,2026-10-26 10:00:52,GT,Q,MAX,max,Galaxy S26 Ultra,256GB,Smartphones,9497.0,9796.0,299.0,3.15,subida
+1793030452_GT_max_Galaxy Watch Ultra_SM-L705,2026-10-26 10:00:52,GT,Q,MAX,max,Galaxy Watch Ultra,SM-L705,Wearables,3297.0,3499.0,202.0,6.13,subida
+1793030452_GT_max_Galaxy Watch Ultra Refresh_SM-L705,2026-10-26 10:00:52,GT,Q,MAX,max,Galaxy Watch Ultra Refresh,SM-L705,Wearables,3297.0,3499.0,202.0,6.13,subida
+1793030452_GT_max_Watch8 44mm BT_SM-L330,2026-10-26 10:00:52,GT,Q,MAX,max,Watch8 44mm BT,SM-L330,Wearables,2197.0,2399.0,202.0,9.19,subida
+1793030452_GT_max_Watch8 40mm BT_SM-L320,2026-10-26 10:00:52,GT,Q,MAX,max,Watch8 40mm BT,SM-L320,Wearables,1697.0,1999.0,302.0,17.8,subida
+1793030452_SV_prado_Galaxy-A17_8+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A17,8+256,Smartphones,339.0,299.0,-40.0,-11.8,baja
+1793030452_SV_prado_Galaxy-A27 5G_6+128,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A27 5G,6+128,Smartphones,369.0,349.0,-20.0,-5.42,baja
+1793030452_SV_prado_Galaxy-A37 5G_6+128,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A37 5G,6+128,Smartphones,419.0,409.0,-10.0,-2.39,baja
+1793030452_SV_prado_Galaxy-A27 5G_8+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A27 5G,8+256,Smartphones,469.0,449.01,-19.99,-4.26,baja
+1793030452_SV_prado_Galaxy-A37 5G_8+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A37 5G,8+256,Smartphones,499.0,484.0,-15.0,-3.01,baja
+1793030452_SV_prado_Galaxy-A57 5G_8+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy-A57 5G,8+256,Smartphones,639.0,569.0,-70.0,-10.95,baja
+1793030452_SV_prado_Galaxy S26 FE_8+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S26 FE,8+256,Smartphones,999.0,939.0,-60.0,-6.01,baja
+1793030452_SV_prado_Galaxy S26_12+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S26,12+256,Smartphones,1079.0,989.0,-90.0,-8.34,baja
+1793030452_SV_prado_Galaxy S25 Ultra_12+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S25 Ultra,12+256,Smartphones,1145.0,1079.0,-66.0,-5.76,baja
+1793030452_SV_prado_Galaxy S26+_12+256,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S26+,12+256,Smartphones,1299.0,1199.0,-100.0,-7.7,baja
+1793030452_SV_prado_Galaxy S26 Ultra_256GB,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S26 Ultra,256GB,Smartphones,1369.0,1359.01,-9.99,-0.73,baja
+1793030452_SV_prado_Galaxy Tab A11 Wifi_4+64GB,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy Tab A11 Wifi,4+64GB,Tablets,169.0,159.0,-10.0,-5.92,baja
+1793030452_SV_prado_Galaxy S10lite WIFI_6+128GB,2026-10-26 10:00:52,SV,$,Prado,prado,Galaxy S10lite WIFI,6+128GB,Tablets,379.0,359.0,-20.0,-5.28,baja
+1793030452_SV_prado_Watch9 44mm BT_SM-L350N,2026-10-26 10:00:52,SV,$,Prado,prado,Watch9 44mm BT,SM-L350N,Wearables,384.0,374.0,-10.0,-2.6,baja
+1793030452_SV_prado_Watch9 40mm BT_SM-L340N,2026-10-26 10:00:52,SV,$,Prado,prado,Watch9 40mm BT,SM-L340N,Wearables,355.0,345.0,-10.0,-2.82,baja
