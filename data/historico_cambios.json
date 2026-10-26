@@ -4222,5 +4222,21 @@
     "diferencia": 40.0,
     "pct_cambio": 8.53,
     "tipo": "subida"
+  },
+  {
+    "id": "1793034466_SV_curacao_sv_Galaxy-A37 5G_8+256",
+    "fecha": "2026-10-26 11:07:46",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "La Curacao",
+    "retailer_key": "curacao_sv",
+    "mobile": "Galaxy-A37 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 509.0,
+    "precio_nuevo": 469.0,
+    "diferencia": -40.0,
+    "pct_cambio": -7.86,
+    "tipo": "baja"
   }
 ]

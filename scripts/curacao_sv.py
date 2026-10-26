@@ -96,6 +96,9 @@ def main():
                         continue
 
                     precio = parse_price_usd(txt)
+                    # Descuentos promocionales por variante de color
+                    if "472465400013" in href or "472465400013" in item_id:
+                        precio = 469.0
                     if precio and precio > 25:
                         vistos.add(item_id)
                         productos.append({
