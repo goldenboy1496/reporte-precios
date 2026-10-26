@@ -202,3 +202,41 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1792678258_HN_walmart_hn_Galaxy S25 Ultra_12+256,2026-10-22 08:10:58,HN,L,Walmart,walmart_hn,Galaxy S25 Ultra,12+256,Smartphones,29870.1,24254.1,-5616.0,-18.8,baja
 1792685470_GT_max_Galaxy S26 Ultra_256GB,2026-10-22 10:11:10,GT,Q,MAX,max,Galaxy S26 Ultra,256GB,Smartphones,9796.0,9497.0,-299.0,-3.05,baja
 1792692537_HN_walmart_hn_Galaxy S25+_12+512GB,2026-10-22 12:08:57,HN,L,Walmart,walmart_hn,Galaxy S25+,12+512GB,Smartphones,34207.0,34207.4,0.4,0.0,subida
+1792738956_GT_elektra_Galaxy-A07_4+128,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A07,4+128,Smartphones,1099.0,1299.0,200.0,18.2,subida
+1792738956_GT_elektra_Galaxy-A17_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A17,8+256,Smartphones,2499.0,2699.0,200.0,8.0,subida
+1792738956_GT_elektra_Galaxy-A37 5G_6+128,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A37 5G,6+128,Smartphones,3199.0,3299.0,100.0,3.13,subida
+1792738956_GT_elektra_Galaxy-A27 5G_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A27 5G,8+256,Smartphones,3499.0,3695.0,196.0,5.6,subida
+1792738956_GT_elektra_Galaxy-A56 5G_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A56 5G,8+256,Smartphones,3599.0,3895.0,296.0,8.22,subida
+1792738956_GT_elektra_Galaxy-A56 5G_12+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A56 5G,12+256,Smartphones,3599.0,3895.0,296.0,8.22,subida
+1792738956_GT_elektra_Galaxy-A37 5G_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A37 5G,8+256,Smartphones,3799.0,3995.0,196.0,5.16,subida
+1792738956_GT_elektra_Galaxy-A57 5G_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A57 5G,8+256,Smartphones,4499.0,4895.0,396.0,8.8,subida
+1792738956_GT_elektra_Galaxy S25 FE_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S25 FE,8+256,Smartphones,4999.0,5399.0,400.0,8.0,subida
+1792738956_GT_elektra_Galaxy-A57 5G_12+512,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy-A57 5G,12+512,Smartphones,5999.0,6499.0,500.0,8.33,subida
+1792738956_GT_elektra_Galaxy S26 FE_8+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S26 FE,8+256,Smartphones,7799.0,7499.0,-300.0,-3.85,baja
+1792738956_GT_elektra_Galaxy S25 Ultra_12+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S25 Ultra,12+256,Smartphones,7899.0,8895.0,996.0,12.61,subida
+1792738956_GT_elektra_Galaxy S25+_12+512GB,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S25+,12+512GB,Smartphones,7124.0,8999.0,1875.0,26.32,subida
+1792738956_GT_elektra_Galaxy Z Flip7_12+512GB,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy Z Flip7,12+512GB,Smartphones,8999.0,9999.0,1000.0,11.11,subida
+1792738956_GT_elektra_Galaxy S26+_12+256,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S26+,12+256,Smartphones,8999.0,9999.0,1000.0,11.11,subida
+1792738956_GT_elektra_Galaxy S26 Ultra_12+512GB,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy S26 Ultra,12+512GB,Smartphones,11999.0,12995.0,996.0,8.3,subida
+1792738956_GT_elektra_Galaxy Buds 4_SM-R540,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy Buds 4,SM-R540,Wearables,1169.0,1199.0,30.0,2.57,subida
+1792738956_GT_elektra_Galaxy Buds4 Pro_SM-R640,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Galaxy Buds4 Pro,SM-R640,Wearables,1644.0,1699.0,55.0,3.35,subida
+1792738956_GT_elektra_Watch7 40mm_SM-L300,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Watch7 40mm,SM-L300,Wearables,1564.0,1599.0,35.0,2.24,subida
+1792738956_GT_elektra_Watch8 40mm BT_SM-L320,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Watch8 40mm BT,SM-L320,Wearables,1934.0,1999.0,65.0,3.36,subida
+1792738956_GT_elektra_Watch9 40mm BT_SM-L340N,2026-10-23 01:02:36,GT,Q,Elektra,elektra,Watch9 40mm BT,SM-L340N,Wearables,2590.0,2695.0,105.0,4.05,subida
+1792738957_SV_siman_Watch7 44mm_SM-L310,2026-10-23 01:02:37,SV,$,Siman,siman,Watch7 44mm,SM-L310,Wearables,269.0,249.0,-20.0,-7.43,baja
+1792764379_SV_curacao_sv_Galaxy-A17_4+128,2026-10-23 08:06:19,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,180.0,249.0,69.0,38.33,subida
+1792764379_SV_siman_Galaxy Watch Ultra_SM-L705,2026-10-23 08:06:19,SV,$,Siman,siman,Galaxy Watch Ultra,SM-L705,Wearables,649.0,573.0,-76.0,-11.71,baja
+1792764379_SV_siman_Galaxy Watch Ultra Refresh_SM-L705,2026-10-23 08:06:19,SV,$,Siman,siman,Galaxy Watch Ultra Refresh,SM-L705,Wearables,649.0,573.0,-76.0,-11.71,baja
+1792764380_HN_jetstereo_Galaxy S26 FE_8+128,2026-10-23 08:06:20,HN,L,Jetstereo,jetstereo,Galaxy S26 FE,8+128,Smartphones,24995.0,24295.0,-700.0,-2.8,baja
+1792793163_GT_elektra_Galaxy S25+_12+512GB,2026-10-23 16:06:03,GT,Q,Elektra,elektra,Galaxy S25+,12+512GB,Smartphones,8999.0,6999.0,-2000.0,-22.22,baja
+1792793163_GT_elektra_Galaxy S26 Ultra_256GB,2026-10-23 16:06:03,GT,Q,Elektra,elektra,Galaxy S26 Ultra,256GB,Smartphones,9995.0,9795.0,-200.0,-2.0,baja
+1792793163_GT_elektra_Galaxy Buds 3 [Jelly]_SM-R530,2026-10-23 16:06:03,GT,Q,Elektra,elektra,Galaxy Buds 3 [Jelly],SM-R530,Wearables,899.0,749.0,-150.0,-16.69,baja
+1792807545_GT_elektra_Galaxy-A17_4+128,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy-A17,4+128,Smartphones,1895.0,1699.0,-196.0,-10.34,baja
+1792807545_GT_elektra_Galaxy-A27 5G_6+128,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy-A27 5G,6+128,Smartphones,2899.0,2299.0,-600.0,-20.7,baja
+1792807545_GT_elektra_Galaxy-A37 5G_6+128,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy-A37 5G,6+128,Smartphones,3299.0,2599.0,-700.0,-21.22,baja
+1792807545_GT_elektra_Galaxy-A27 5G_8+256,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy-A27 5G,8+256,Smartphones,3695.0,2899.0,-796.0,-21.54,baja
+1792807545_GT_elektra_Galaxy-A37 5G_8+256,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy-A37 5G,8+256,Smartphones,3995.0,3699.0,-296.0,-7.41,baja
+1792807545_GT_elektra_Galaxy S26 Ultra_256GB,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy S26 Ultra,256GB,Smartphones,9795.0,9995.0,200.0,2.04,subida
+1792807545_GT_elektra_Galaxy S26 Ultra_12+512GB,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Galaxy S26 Ultra,12+512GB,Smartphones,12995.0,10999.0,-1996.0,-15.36,baja
+1792807545_GT_elektra_Watch8 40mm BT_SM-L320,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Watch8 40mm BT,SM-L320,Wearables,1999.0,1799.0,-200.0,-10.01,baja
+1792807545_GT_elektra_Watch9 40mm BT_SM-L340N,2026-10-23 20:05:45,GT,Q,Elektra,elektra,Watch9 40mm BT,SM-L340N,Wearables,2695.0,2599.0,-96.0,-3.56,baja
