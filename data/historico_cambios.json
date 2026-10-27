@@ -4270,5 +4270,53 @@
     "diferencia": 56.0,
     "pct_cambio": 5.14,
     "tipo": "subida"
+  },
+  {
+    "id": "1793114434_GT_elektra_Galaxy-A07s_4+128",
+    "fecha": "2026-10-27 09:20:34",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A07s",
+    "memoria": "4+128",
+    "categoria": "Smartphones",
+    "precio_anterior": 1399.0,
+    "precio_nuevo": 1699.0,
+    "diferencia": 300.0,
+    "pct_cambio": 21.44,
+    "tipo": "subida"
+  },
+  {
+    "id": "1793114434_GT_elektra_Galaxy S10lite WIFI_6+128GB",
+    "fecha": "2026-10-27 09:20:34",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S10lite WIFI",
+    "memoria": "6+128GB",
+    "categoria": "Tablets",
+    "precio_anterior": 2399.0,
+    "precio_nuevo": 2499.0,
+    "diferencia": 100.0,
+    "pct_cambio": 4.17,
+    "tipo": "subida"
+  },
+  {
+    "id": "1793114434_SV_curacao_sv_Galaxy-A17_4+128",
+    "fecha": "2026-10-27 09:20:34",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "La Curacao",
+    "retailer_key": "curacao_sv",
+    "mobile": "Galaxy-A17",
+    "memoria": "4+128",
+    "categoria": "Smartphones",
+    "precio_anterior": 249.0,
+    "precio_nuevo": 180.0,
+    "diferencia": -69.0,
+    "pct_cambio": -27.71,
+    "tipo": "baja"
   }
 ]

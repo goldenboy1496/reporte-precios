@@ -266,3 +266,6 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1793034466_SV_curacao_sv_Galaxy-A37 5G_8+256,2026-10-26 11:07:46,SV,$,La Curacao,curacao_sv,Galaxy-A37 5G,8+256,Smartphones,509.0,469.0,-40.0,-7.86,baja
 1793052521_GT_elektra_Galaxy S25 Ultra_12+512GB,2026-10-26 16:08:41,GT,Q,Elektra,elektra,Galaxy S25 Ultra,12+512GB,Smartphones,9624.0,8199.0,-1425.0,-14.81,baja
 1793052522_SV_siman_Galaxy S25 Ultra_12+256,2026-10-26 16:08:42,SV,$,Siman,siman,Galaxy S25 Ultra,12+256,Smartphones,1089.0,1145.0,56.0,5.14,subida
+1793114434_GT_elektra_Galaxy-A07s_4+128,2026-10-27 09:20:34,GT,Q,Elektra,elektra,Galaxy-A07s,4+128,Smartphones,1399.0,1699.0,300.0,21.44,subida
+1793114434_GT_elektra_Galaxy S10lite WIFI_6+128GB,2026-10-27 09:20:34,GT,Q,Elektra,elektra,Galaxy S10lite WIFI,6+128GB,Tablets,2399.0,2499.0,100.0,4.17,subida
+1793114434_SV_curacao_sv_Galaxy-A17_4+128,2026-10-27 09:20:34,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,249.0,180.0,-69.0,-27.71,baja
