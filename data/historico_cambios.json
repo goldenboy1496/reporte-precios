@@ -4574,5 +4574,37 @@
     "diferencia": 96.0,
     "pct_cambio": 3.69,
     "tipo": "subida"
+  },
+  {
+    "id": "1793143202_GT_elektra_Galaxy-A56 5G_8+256",
+    "fecha": "2026-10-27 17:20:02",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A56 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3895.0,
+    "precio_nuevo": 3599.0,
+    "diferencia": -296.0,
+    "pct_cambio": -7.6,
+    "tipo": "baja"
+  },
+  {
+    "id": "1793143202_GT_elektra_Galaxy-A56 5G_12+256",
+    "fecha": "2026-10-27 17:20:02",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A56 5G",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3895.0,
+    "precio_nuevo": 3599.0,
+    "diferencia": -296.0,
+    "pct_cambio": -7.6,
+    "tipo": "baja"
   }
 ]
