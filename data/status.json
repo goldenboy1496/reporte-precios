@@ -15,9 +15,8 @@
     "duracion_segundos": 61.1
   },
   "diunsa": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793114426.4082916,
-    "duracion_segundos": 46.4
+    "estado": "corriendo",
+    "inicio": 1793116235.1541123
   },
   "elektra_hn": {
     "estado": "ok",
@@ -26,8 +25,7 @@
   },
   "jetstereo": {
     "estado": "ok",
-    "ultima_actualizacion": 1793114374.7373376,
-    "duracion_segundos": 59.4
+    "ultima_actualizacion": 1793116278.6786685
   },
   "siman": {
     "estado": "ok",
