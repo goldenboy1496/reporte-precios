@@ -27,8 +27,8 @@
     "duracion_segundos": 38.0
   },
   "siman": {
-    "estado": "corriendo",
-    "inicio": 1793204995.5579934
+    "estado": "ok",
+    "ultima_actualizacion": 1793205011.1405954
   },
   "curacao_sv": {
     "estado": "corriendo",
