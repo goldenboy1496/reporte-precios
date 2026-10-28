@@ -27,19 +27,16 @@
     "duracion_segundos": 38.0
   },
   "siman": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793199968.228659,
-    "duracion_segundos": 15.7
+    "estado": "corriendo",
+    "inicio": 1793204995.5579934
   },
   "curacao_sv": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793200159.2012308,
-    "duracion_segundos": 189.9
+    "estado": "corriendo",
+    "inicio": 1793204994.9845212
   },
   "prado": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793200252.5388062,
-    "duracion_segundos": 92.3
+    "estado": "corriendo",
+    "inicio": 1793204996.3944216
   },
   "walmart": {
     "estado": "ok",
@@ -47,8 +44,7 @@
   },
   "walmart_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1793200257.5031862,
-    "duracion_segundos": 3.9
+    "ultima_actualizacion": 1793205002.1806324
   },
   "walmart_hn": {
     "estado": "ok",
