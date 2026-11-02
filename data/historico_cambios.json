@@ -6478,5 +6478,21 @@
     "diferencia": 5309.0,
     "pct_cambio": 41.84,
     "tipo": "subida"
+  },
+  {
+    "id": "1793598854_HN_diunsa_Galaxy Buds4 Pro_SM-R640",
+    "fecha": "2026-11-01 23:54:14",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Diunsa",
+    "retailer_key": "diunsa",
+    "mobile": "Galaxy Buds4 Pro",
+    "memoria": "SM-R640",
+    "categoria": "Wearables",
+    "precio_anterior": 499.0,
+    "precio_nuevo": 5790.0,
+    "diferencia": 5291.0,
+    "pct_cambio": 1060.32,
+    "tipo": "subida"
   }
 ]
