@@ -421,3 +421,10 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1793636218_SV_siman_Galaxy Tab S11Ultra WIFI (Keyboard Inbox)_12+256,2026-11-02 10:16:58,SV,$,Siman,siman,Galaxy Tab S11Ultra WIFI (Keyboard Inbox),12+256,Tablets,1449.0,1459.0,10.0,0.69,subida
 1793636218_SV_siman_Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)_12+256,2026-11-02 10:16:58,SV,$,Siman,siman,Galaxy Tab S12Ultra WIFI (No Keyboard Inbox),12+256,Tablets,1849.0,1699.0,-150.0,-8.11,baja
 1793636218_SV_walmart_sv_Watch8 40mm BT_SM-L320,2026-11-02 10:16:58,SV,$,Walmart,walmart_sv,Watch8 40mm BT,SM-L320,Wearables,259.0,379.0,120.0,46.33,subida
+1793642930_GT_max_Galaxy-A56 5G_8+256,2026-11-02 12:08:50,GT,Q,MAX,max,Galaxy-A56 5G,8+256,Smartphones,3899.0,4145.0,246.0,6.31,subida
+1793642930_GT_max_Galaxy-A56 5G_12+256,2026-11-02 12:08:50,GT,Q,MAX,max,Galaxy-A56 5G,12+256,Smartphones,3899.0,4145.0,246.0,6.31,subida
+1793642930_GT_max_Galaxy Tab A11+ Wifi_6+128GB,2026-11-02 12:08:50,GT,Q,MAX,max,Galaxy Tab A11+ Wifi,6+128GB,Tablets,2395.0,2199.0,-196.0,-8.18,baja
+1793642930_GT_max_Galaxy S10lite WIFI_6+128GB,2026-11-02 12:08:50,GT,Q,MAX,max,Galaxy S10lite WIFI,6+128GB,Tablets,3295.0,2699.0,-596.0,-18.09,baja
+1793642930_GT_max_Watch8 Classic 46mm BT_SM-L500,2026-11-02 12:08:50,GT,Q,MAX,max,Watch8 Classic 46mm BT,SM-L500,Wearables,4195.0,3899.0,-296.0,-7.06,baja
+1793642930_GT_max_Watch8 44mm BT_SM-L330,2026-11-02 12:08:50,GT,Q,MAX,max,Watch8 44mm BT,SM-L330,Wearables,2399.0,2699.0,300.0,12.51,subida
+1793642930_GT_max_Watch8 40mm BT_SM-L320,2026-11-02 12:08:50,GT,Q,MAX,max,Watch8 40mm BT,SM-L320,Wearables,1999.0,1299.0,-700.0,-35.02,baja
