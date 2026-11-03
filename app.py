@@ -550,6 +550,7 @@ def api_catalogo_importar_excel():
 
     report = build_report(DATA_DIR, pais=pais)
     report["status"] = load_status()
+    publicar_a_github_async()
     return jsonify({
         "ok": True,
         "report": report,
