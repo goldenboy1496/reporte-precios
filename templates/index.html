@@ -731,72 +731,141 @@
     }
 
     
-      /* Selector de Categorías (Pestañas Superiores) */
+      /* Selector de Categorías Dinámico (Multi-Selección) */
       .category-nav-bar {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 12px;
-        padding: 5px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+        padding: 8px 14px;
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 12px;
-        overflow-x: auto;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
       }
       [data-theme="dark"] .category-nav-bar {
         background: var(--bg-card);
         border-color: var(--border);
       }
-      [data-theme="dark"] .category-nav-btn {
+      .category-nav-label {
+        font-size: 12px;
+        font-weight: 700;
         color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
-      [data-theme="dark"] .category-nav-btn:hover {
-        background: rgba(255, 255, 255, 0.06);
+      .category-chips-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .category-chip-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 13px;
+        border-radius: 9px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.18s ease;
+        user-select: none;
+      }
+      .category-chip-btn:hover {
+        border-color: var(--primary);
         color: var(--text-main);
+        background: var(--bg-hover);
       }
-      [data-theme="dark"] .category-nav-btn.active {
+      .category-chip-btn.active {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      }
+      [data-theme="dark"] .category-chip-btn.active {
         background: var(--primary);
+        border-color: var(--primary);
         color: #ffffff;
         box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
       }
-      .category-nav-btn {
+      .category-chip-btn .cat-check-icon {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 9px;
-        border: none;
-        background: transparent;
-        color: var(--text-muted);
-        font-size: 13.5px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        white-space: nowrap;
+        justify-content: center;
+        width: 15px;
+        height: 15px;
+        border-radius: 4px;
+        border: 1.5px solid currentColor;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 1;
       }
-      .category-nav-btn:hover {
-        background: var(--bg-hover);
-        color: var(--text-main);
+      .category-chip-btn:not(.active) .cat-check-icon {
+        border-color: var(--text-muted);
+        color: transparent;
       }
-      .category-nav-btn.active {
-        background: #2563eb;
+      .category-chip-btn.active .cat-check-icon {
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.22);
         color: #ffffff;
-        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
       }
       .category-nav-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 2px 8px;
+        padding: 1px 7px;
         font-size: 11px;
         font-weight: 700;
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.08);
         color: inherit;
       }
-      .category-nav-btn.active .category-nav-badge {
-        background: rgba(255, 255, 255, 0.28);
+      .category-chip-btn.active .category-nav-badge {
+        background: rgba(255, 255, 255, 0.25);
         color: #ffffff;
+      }
+      .category-nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+      }
+      .category-quick-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 11px;
+        border-radius: 8px;
+        border: 1px dashed var(--border);
+        background: transparent;
+        color: var(--text-muted);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .category-quick-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--bg-hover);
+      }
+      .category-quick-btn.active {
+        border-color: var(--primary);
+        border-style: solid;
+        color: var(--primary);
+        background: rgba(37, 99, 235, 0.08);
+      }
+      [data-theme="dark"] .category-quick-btn.active {
+        background: rgba(59, 130, 246, 0.15);
       }
 
       /* Etiquetas de Categoría en Filas de Tabla */
@@ -2549,20 +2618,36 @@
     </div>
 
     <!-- Barra de Búsqueda y Filtros Rápidos -->
-          <!-- Selector de Categorías (Pestañas Superiores) -->
+          <!-- Selector de Categorías con Filtro Dinámico Multi-Selección -->
       <div class="category-nav-bar" id="category-nav-bar">
-        <button class="category-nav-btn active" data-categoria="todas">
-          <span>📋</span> Todos los Productos <span class="category-nav-badge" id="cat-badge-todas">73</span>
-        </button>
-        <button class="category-nav-btn" data-categoria="Smartphones">
-          <span>📱</span> Smartphones <span class="category-nav-badge" id="cat-badge-smartphones">35</span>
-        </button>
-        <button class="category-nav-btn" data-categoria="Tablets">
-          <span>💻</span> Tablets <span class="category-nav-badge" id="cat-badge-tablets">19</span>
-        </button>
-        <button class="category-nav-btn" data-categoria="Wearables">
-          <span>⌚</span> Wearables / Audio <span class="category-nav-badge" id="cat-badge-wearables">19</span>
-        </button>
+        <div class="category-nav-label">
+          <span>🏷️ Categorías:</span>
+        </div>
+        <div class="category-chips-wrap">
+          <button type="button" class="category-chip-btn active" data-cat="Smartphones" id="chip-cat-smartphones" title="Clic para mostrar u ocultar Celulares">
+            <span class="cat-check-icon">✓</span>
+            <span>📱 Celulares</span>
+            <span class="category-nav-badge" id="cat-badge-smartphones">35</span>
+          </button>
+          <button type="button" class="category-chip-btn" data-cat="Tablets" id="chip-cat-tablets" title="Clic para mostrar u ocultar Tablets">
+            <span class="cat-check-icon"></span>
+            <span>💻 Tablets</span>
+            <span class="category-nav-badge" id="cat-badge-tablets">18</span>
+          </button>
+          <button type="button" class="category-chip-btn" data-cat="Wearables" id="chip-cat-wearables" title="Clic para mostrar u ocultar Relojes y Wearables">
+            <span class="cat-check-icon"></span>
+            <span>⌚ Relojes y Wearables</span>
+            <span class="category-nav-badge" id="cat-badge-wearables">19</span>
+          </button>
+        </div>
+        <div class="category-nav-actions">
+          <button type="button" class="category-quick-btn active" id="btn-quick-solo-celulares" title="Mostrar únicamente celulares y ocultar todo lo demás">
+            ⚡ Solo Celulares
+          </button>
+          <button type="button" class="category-quick-btn" id="btn-quick-todas" title="Mostrar todas las categorías">
+            📋 Ver Todo
+          </button>
+        </div>
       </div>
 
 <div class="filter-toolbar">
@@ -2719,7 +2804,108 @@
       let autoSaveTimeout = null;
       let autoPollInterval = null;
       let filtroActivo = "todos";
-        let categoriaActiva = "todas";
+      
+      // ==========================================
+      // MANEJO DE CATEGORÍAS (MULTI-SELECCIÓN)
+      // Por defecto: ['Smartphones'] (Solo Celulares)
+      // ==========================================
+      const STORAGE_KEY_CATEGORIAS = "reporte_categorias_seleccionadas_v1";
+
+      function cargarCategoriasIniciales() {
+        try {
+          const guardado = localStorage.getItem(STORAGE_KEY_CATEGORIAS);
+          if (guardado) {
+            const parsed = JSON.parse(guardado);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              return parsed;
+            }
+          }
+        } catch (e) {}
+        // Por defecto: Solo Celulares (Smartphones)
+        return ["Smartphones"];
+      }
+
+      let categoriasSeleccionadas = cargarCategoriasIniciales();
+
+      function guardarCategorias() {
+        try {
+          localStorage.setItem(STORAGE_KEY_CATEGORIAS, JSON.stringify(categoriasSeleccionadas));
+        } catch (e) {}
+      }
+
+      function obtenerAlertasFiltradas() {
+        const todasFilas = ultimoReporte?.filas || [];
+        const catMap = {};
+        todasFilas.forEach(f => {
+          if (f.mobile) catMap[f.mobile.toLowerCase()] = f.categoria || "Smartphones";
+        });
+        return (ultimoReporte?.resumen?.alertas || []).filter(al => {
+          const cat = al.categoria || catMap[(al.mobile || "").toLowerCase()] || "Smartphones";
+          return categoriasSeleccionadas.includes(cat);
+        });
+      }
+
+      function actualizarVisualCategorias() {
+        const chips = document.querySelectorAll(".category-chip-btn");
+        chips.forEach(chip => {
+          const cat = chip.dataset.cat;
+          const activa = categoriasSeleccionadas.includes(cat);
+          chip.classList.toggle("active", activa);
+          const icon = chip.querySelector(".cat-check-icon");
+          if (icon) icon.textContent = activa ? "✓" : "";
+        });
+
+        const btnSoloCel = document.getElementById("btn-quick-solo-celulares");
+        const btnTodas = document.getElementById("btn-quick-todas");
+        
+        const esSoloCelulares = categoriasSeleccionadas.length === 1 && categoriasSeleccionadas[0] === "Smartphones";
+        const sonTodas = ["Smartphones", "Tablets", "Wearables"].every(c => categoriasSeleccionadas.includes(c));
+
+        if (btnSoloCel) btnSoloCel.classList.toggle("active", esSoloCelulares);
+        if (btnTodas) btnTodas.classList.toggle("active", sonTodas);
+      }
+
+      function alternarCategoria(cat) {
+        const idx = categoriasSeleccionadas.indexOf(cat);
+        if (idx > -1) {
+          if (categoriasSeleccionadas.length === 1) {
+            showToast("Debes mantener al menos una categoría seleccionada", "warning", 2000);
+            return;
+          }
+          categoriasSeleccionadas.splice(idx, 1);
+        } else {
+          categoriasSeleccionadas.push(cat);
+        }
+        guardarCategorias();
+        actualizarVisualCategorias();
+        if (ultimoReporte) {
+          pintarTabla();
+          pintarKpis(ultimoReporte);
+        }
+      }
+
+      function establecerSoloCelulares() {
+        categoriasSeleccionadas = ["Smartphones"];
+        guardarCategorias();
+        actualizarVisualCategorias();
+        showToast("Mostrando únicamente Celulares / Smartphones", "info", 1800);
+        if (ultimoReporte) {
+          pintarTabla();
+          pintarKpis(ultimoReporte);
+        }
+      }
+
+      function establecerTodasCategorias() {
+        categoriasSeleccionadas = ["Smartphones", "Tablets", "Wearables"];
+        guardarCategorias();
+        actualizarVisualCategorias();
+        showToast("Mostrando todas las categorías (Celulares, Tablets, Relojes)", "info", 1800);
+        if (ultimoReporte) {
+          pintarTabla();
+          pintarKpis(ultimoReporte);
+        }
+      }
+
       let textoBusqueda = "";
       let sortColumn = "mobile";
       let sortDirection = "asc";
@@ -3079,7 +3265,7 @@
       // ==========================================
 
       function copiarReporteRetailer(retailerNombre) {
-        const alertas = ultimoReporte?.resumen?.alertas || [];
+        const alertas = obtenerAlertasFiltradas();
         const grupos = agruparAlertasPorRetailer(alertas);
         let items = grupos[retailerNombre] || [];
         const moneda = ultimoReporte?.moneda || "Q";
@@ -3141,7 +3327,7 @@
       }
 
       function copiarConsolidadoGeneral() {
-        const alertas = ultimoReporte?.resumen?.alertas || [];
+        const alertas = obtenerAlertasFiltradas();
         if (!alertas.length) {
           showToast("No hay productos desfasados en el consolidado", "info");
           return;
@@ -3638,7 +3824,7 @@
       }
 
       function exportarCsvRetailer(retailerNombre) {
-        const alertas = ultimoReporte?.resumen?.alertas || [];
+        const alertas = obtenerAlertasFiltradas();
         const grupos = agruparAlertasPorRetailer(alertas);
         const items = grupos[retailerNombre] || [];
 
@@ -3812,9 +3998,9 @@
         let filas = [...ultimoReporte.filas];
         const retKeys = Object.keys(ultimoReporte.retailers || {});
 
-        // Filtro por Categoría
-        if (categoriaActiva && categoriaActiva !== "todas") {
-          filas = filas.filter(f => (f.categoria || "Smartphones").toLowerCase() === categoriaActiva.toLowerCase());
+        // Filtro por Categorías seleccionadas (Multi-selección)
+        if (categoriasSeleccionadas && categoriasSeleccionadas.length > 0) {
+          filas = filas.filter(f => categoriasSeleccionadas.includes(f.categoria || "Smartphones"));
         }
 
         // Filtro de texto inteligente
@@ -4014,44 +4200,77 @@
         ejecutarGuardarPrecios(false);
       }
 
-      // KPIS
+      // KPIS DINÁMICOS ADAPTADOS A LAS CATEGORÍAS ACTIVAS
       function pintarKpis(reporte) {
-        const res = reporte.resumen || {};
-        const total = (reporte.filas || []).length;
-        const evaluados = res.total_evaluado || 0;
-        const ok = res.total_ok || 0;
-        const alertas = (res.alertas || []).length;
-        const faltantes = (res.faltantes || []).length;
-        const pctOk = res.pct_ok || (evaluados ? Math.round((ok / evaluados) * 100) : 0);
+        const todasFilas = reporte.filas || [];
+
+        // Contadores totales por categoría para los badges
+        let totalSmartphones = 0;
+        let totalTablets = 0;
+        let totalWearables = 0;
+        todasFilas.forEach(f => {
+          const cat = f.categoria || "Smartphones";
+          if (cat === "Tablets") totalTablets++;
+          else if (cat === "Wearables") totalWearables++;
+          else totalSmartphones++;
+        });
+
+        const bCatSmart = document.getElementById("cat-badge-smartphones");
+        if (bCatSmart) bCatSmart.textContent = totalSmartphones;
+        const bCatTabs = document.getElementById("cat-badge-tablets");
+        if (bCatTabs) bCatTabs.textContent = totalTablets;
+        const bCatWears = document.getElementById("cat-badge-wearables");
+        if (bCatWears) bCatWears.textContent = totalWearables;
+
+        // Filas que corresponden a las categorías activas
+        const filasFiltradas = todasFilas.filter(f => {
+          const cat = f.categoria || "Smartphones";
+          return categoriasSeleccionadas.includes(cat);
+        });
+
+        const total = filasFiltradas.length;
+        const retKeys = Object.keys(reporte.retailers || {});
+        let totalFaltantes = 0;
+        let totalAlertas = 0;
+        let totalOk = 0;
+        let evaluados = 0;
+
+        filasFiltradas.forEach(f => {
+          let tieneAlerta = false;
+          let tieneOk = false;
+          let tieneFaltante = false;
+          let evaluadoEnFila = false;
+          retKeys.forEach(k => {
+            const st = f[k + "_estado"];
+            if (st === "alerta" || st === "menor") { tieneAlerta = true; evaluadoEnFila = true; }
+            else if (st === "ok") { tieneOk = true; evaluadoEnFila = true; }
+            if (f[k] === null || f[k] === undefined) tieneFaltante = true;
+          });
+          if (tieneAlerta) totalAlertas++;
+          if (tieneOk) totalOk++;
+          if (tieneFaltante) totalFaltantes++;
+          if (evaluadoEnFila) evaluados++;
+        });
+
+        const pctOk = evaluados ? Math.round((totalOk / evaluados) * 100) : 0;
 
         const elTotal = document.getElementById("kpi-total-modelos");
         if (elTotal) elTotal.textContent = total;
 
         const elAlertas = document.getElementById("kpi-alertas");
-        if (elAlertas) elAlertas.textContent = alertas;
+        if (elAlertas) elAlertas.textContent = totalAlertas;
 
         const elSubAlertas = document.getElementById("kpi-sub-alertas");
-        if (elSubAlertas) elSubAlertas.textContent = alertas + " desfasados de " + evaluados + " evaluados";
+        if (elSubAlertas) elSubAlertas.textContent = totalAlertas + " desfasados de " + evaluados + " evaluados";
 
         const elPctOk = document.getElementById("kpi-pct-ok");
         if (elPctOk) elPctOk.textContent = pctOk + "%";
 
         const elSubOk = document.getElementById("kpi-sub-ok");
-        if (elSubOk) elSubOk.textContent = ok + " de " + evaluados + " en regla";
+        if (elSubOk) elSubOk.textContent = totalOk + " de " + evaluados + " en regla";
 
         const elFaltantes = document.getElementById("kpi-faltantes");
-        if (elFaltantes) elFaltantes.textContent = faltantes;
-
-        const retKeys = Object.keys(reporte.retailers || {});
-        let totalFaltantes = 0;
-        let totalAlertas = 0;
-        let totalOk = 0;
-
-        (reporte.filas || []).forEach(f => {
-          if (retKeys.some(k => f[k + "_estado"] === "alerta" || f[k + "_estado"] === "menor")) totalAlertas++;
-          if (retKeys.some(k => f[k + "_estado"] === "ok")) totalOk++;
-          if (retKeys.some(k => f[k] === null || f[k] === undefined)) totalFaltantes++;
-        });
+        if (elFaltantes) elFaltantes.textContent = totalFaltantes;
 
         const bTodos = document.getElementById("badge-count-todos");
         if (bTodos) bTodos.textContent = total;
@@ -4062,27 +4281,9 @@
         const bFaltantes = document.getElementById("badge-count-faltantes");
         if (bFaltantes) bFaltantes.textContent = totalFaltantes;
 
-        // Contadores de Categorías
-        let totalSmartphones = 0;
-        let totalTablets = 0;
-        let totalWearables = 0;
-        (reporte.filas || []).forEach(f => {
-          const cat = f.categoria || "Smartphones";
-          if (cat === "Tablets") totalTablets++;
-          else if (cat === "Wearables") totalWearables++;
-          else totalSmartphones++;
-        });
-
-        const bCatTodas = document.getElementById("cat-badge-todas");
-        if (bCatTodas) bCatTodas.textContent = total;
-        const bCatSmart = document.getElementById("cat-badge-smartphones");
-        if (bCatSmart) bCatSmart.textContent = totalSmartphones;
-        const bCatTabs = document.getElementById("cat-badge-tablets");
-        if (bCatTabs) bCatTabs.textContent = totalTablets;
-        const bCatWears = document.getElementById("cat-badge-wearables");
-        if (bCatWears) bCatWears.textContent = totalWearables;
-
-        pintarConsolidadoRetailers(res.alertas || []);
+        // Consolidado de alertas filtrado por las categorías activas
+        const alertasFiltradas = obtenerAlertasFiltradas();
+        pintarConsolidadoRetailers(alertasFiltradas);
       }
 
       // RETAILERS DECK
@@ -4602,15 +4803,25 @@
           });
         });
 
-        // Event listener para Selector de Categorías (Pestañas)
-        document.querySelectorAll(".category-nav-btn").forEach(btn => {
+        // Event listeners para Selector de Categorías (Chips multi-selección)
+        document.querySelectorAll(".category-chip-btn").forEach(btn => {
           btn.addEventListener("click", () => {
-            document.querySelectorAll(".category-nav-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            categoriaActiva = btn.dataset.categoria;
-            pintarTabla();
+            const cat = btn.dataset.cat;
+            if (cat) alternarCategoria(cat);
           });
         });
+
+        const btnQuickSoloCel = document.getElementById("btn-quick-solo-celulares");
+        if (btnQuickSoloCel) {
+          btnQuickSoloCel.addEventListener("click", establecerSoloCelulares);
+        }
+
+        const btnQuickTodas = document.getElementById("btn-quick-todas");
+        if (btnQuickTodas) {
+          btnQuickTodas.addEventListener("click", establecerTodasCategorias);
+        }
+
+        actualizarVisualCategorias();
 
         // Ordenamiento por columnas
         document.querySelectorAll("#tabla-head th").forEach(th => {
