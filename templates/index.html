@@ -731,7 +731,36 @@
     }
 
     
-      /* Selector de Categorías Dinámico (Multi-Selección) */
+      /* Banner de Alerta de Nuevos Precios del Equipo */
+      .banner-alerta-version {
+        position: sticky;
+        top: 0;
+        z-index: 99999;
+        background: linear-gradient(90deg, #1e3a8a, #2563eb);
+        color: #ffffff;
+        padding: 9px 16px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      }
+      .banner-alerta-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 13.5px;
+      }
+
+      /* Botón Precios Base y menú */
+      .btn-precios-menu {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+            /* Selector de Categorías Dinámico (Multi-Selección) */
       .category-nav-bar {
         display: flex;
         align-items: center;
@@ -2338,9 +2367,28 @@
           <span id="badge-historico-header" style="display:none; background: var(--amber); color: #000; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 9999px;">0</span>
         </button>
 
-        <button id="btn-guardar-precios" class="btn btn-success">
+        <button id="btn-guardar-precios" class="btn btn-success" title="Guardar cambios y recalcular">
           💾 Guardar mis precios
         </button>
+
+        <div style="position:relative; display:inline-block;">
+          <button id="btn-opciones-precios" class="btn btn-secondary btn-sm" onclick="toggleMenuPreciosBase()" title="Opciones para compartir, exportar o restaurar precios base">
+            ⚙️ Precios Base ▾
+          </button>
+          <div id="dropdown-menu-precios" style="display:none; position:absolute; right:0; top:calc(100% + 6px); background:var(--bg-card); border:1px solid var(--border); border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.18); min-width:230px; z-index:9999; padding:6px 0;">
+            <a href="javascript:void(0)" onclick="exportarPreciosBaseCsv()" style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--text-main); text-decoration:none; font-size:12.5px; font-weight:600;">
+              📤 Exportar mis precios base (CSV)
+            </a>
+            <label style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--text-main); font-size:12.5px; font-weight:600; cursor:pointer; margin:0;">
+              📥 Importar precios base (CSV)
+              <input type="file" id="input-importar-precios-csv" accept=".csv" style="display:none;" onchange="importarPreciosBaseCsv(this)">
+            </label>
+            <div style="height:1px; background:var(--border); margin:4px 0;"></div>
+            <a href="javascript:void(0)" onclick="restaurarMsrpOficial()" style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--rose-text, #ef4444); text-decoration:none; font-size:12.5px; font-weight:600;">
+              ↺ Restaurar a MSRP Oficial
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -4177,6 +4225,167 @@
         });
       }
 
+      // ==========================================
+      // REACCIÓN REACTIVA EN CALIENTE DEL COMPARATIVO
+      // (Se ejecuta al instante en el navegador)
+      // ==========================================
+      function recalcularFilaEnCaliente(input) {
+        if (!ultimoReporte || !ultimoReporte.filas) return;
+        const mobile = input.dataset.mobile;
+        const memoria = input.dataset.memoria;
+        const valStr = input.value.trim();
+        const nuevoPrecio = (valStr !== "" && !isNaN(valStr)) ? parseFloat(valStr) : null;
+        const msrpVal = parseFloat(input.dataset.msrp) || null;
+
+        // Base de referencia activa: Mi Precio ingresado o MSRP oficial sugerido
+        const baseEfectiva = (nuevoPrecio !== null && nuevoPrecio > 0) ? nuevoPrecio : msrpVal;
+
+        const f = ultimoReporte.filas.find(item => item.mobile === mobile && item.memoria === memoria);
+        if (!f) return;
+
+        f.mi_precio = nuevoPrecio;
+        f.mi_precio_personalizado = (nuevoPrecio !== null && nuevoPrecio > 0);
+
+        const tol = Math.abs(parseFloat(toleranciaDescuentoActual || 5.0));
+        const retObj = ultimoReporte.retailers || PAISES_INFO[paisActual]?.retailers || {};
+        const retKeys = Object.keys(retObj);
+
+        // Recalcular estado y diff_pct en memoria
+        retKeys.forEach(k => {
+          const pRet = f[k];
+          if (pRet !== null && pRet !== undefined && baseEfectiva !== null && baseEfectiva > 0) {
+            const diff = ((pRet - baseEfectiva) / baseEfectiva) * 100;
+            f[k + "_diff_pct"] = diff;
+            f[k + "_estado"] = (diff < -tol) ? "menor" : "ok";
+          } else {
+            f[k + "_diff_pct"] = null;
+            f[k + "_estado"] = (pRet !== null && pRet !== undefined) ? "sin_base" : "sin_dato";
+          }
+        });
+
+        // Actualizar visualmente la fila en el DOM
+        const tr = input.closest("tr");
+        if (tr) {
+          if (nuevoPrecio !== null && nuevoPrecio > 0) {
+            input.classList.remove("valor-auto");
+            input.classList.add("modified");
+          } else {
+            input.classList.add("valor-auto");
+            input.classList.remove("modified");
+          }
+
+          const celdas = tr.querySelectorAll("td");
+          retKeys.forEach((k, idx) => {
+            const tdIndex = 4 + idx;
+            if (celdas[tdIndex]) {
+              const htmlCelda = renderCeldaRetailer(
+                f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], 
+                f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria
+              );
+              const temp = document.createElement("table");
+              temp.innerHTML = "<tr>" + htmlCelda + "</tr>";
+              celdas[tdIndex].innerHTML = temp.querySelector("td").innerHTML;
+            }
+          });
+
+          // Celda Mejor Oferta
+          const tdMejor = celdas[celdas.length - 1];
+          if (tdMejor) {
+            const htmlMejor = renderMejorOferta(f);
+            const temp = document.createElement("table");
+            temp.innerHTML = "<tr>" + htmlMejor + "</tr>";
+            tdMejor.innerHTML = temp.querySelector("td").innerHTML;
+          }
+        }
+
+        // Guardar cambio en localStorage
+        guardarPrecioLocal(mobile, memoria, nuevoPrecio);
+
+        // Actualizar KPIs y Consolidado de Desfases
+        actualizarKpisYConsolidadoEnCaliente();
+      }
+
+      function guardarPrecioLocal(mobile, memoria, precio) {
+        try {
+          const keyStorage = "mis_precios_personalizados_" + paisActual;
+          const raw = localStorage.getItem(keyStorage);
+          const dict = raw ? JSON.parse(raw) : {};
+          const itemKey = mobile + "__" + memoria;
+          if (precio !== null && precio > 0) {
+            dict[itemKey] = precio;
+          } else {
+            delete dict[itemKey];
+          }
+          localStorage.setItem(keyStorage, JSON.stringify(dict));
+        } catch (e) {}
+      }
+
+      function aplicarPreciosLocalesAlReporte(reporte) {
+        if (!reporte || !reporte.filas) return;
+        try {
+          const keyStorage = "mis_precios_personalizados_" + (reporte.pais || paisActual);
+          const raw = localStorage.getItem(keyStorage);
+          if (!raw) return;
+          const dict = JSON.parse(raw);
+          const tol = Math.abs(parseFloat(toleranciaDescuentoActual || 5.0));
+          const retObj = reporte.retailers || PAISES_INFO[reporte.pais || paisActual]?.retailers || {};
+          const retKeys = Object.keys(retObj);
+
+          reporte.filas.forEach(f => {
+            const itemKey = f.mobile + "__" + f.memoria;
+            if (dict[itemKey] !== undefined && dict[itemKey] !== null) {
+              const customPrice = parseFloat(dict[itemKey]);
+              if (!isNaN(customPrice) && customPrice > 0) {
+                f.mi_precio = customPrice;
+                f.mi_precio_personalizado = true;
+                retKeys.forEach(k => {
+                  const pRet = f[k];
+                  if (pRet !== null && pRet !== undefined) {
+                    const diff = ((pRet - customPrice) / customPrice) * 100;
+                    f[k + "_diff_pct"] = diff;
+                    f[k + "_estado"] = (diff < -tol) ? "menor" : "ok";
+                  }
+                });
+              }
+            }
+          });
+        } catch (e) {}
+      }
+
+      function actualizarKpisYConsolidadoEnCaliente() {
+        if (!ultimoReporte) return;
+        const retObj = ultimoReporte.retailers || PAISES_INFO[paisActual]?.retailers || {};
+        const retKeys = Object.keys(retObj);
+        const nuevasAlertas = [];
+
+        (ultimoReporte.filas || []).forEach(f => {
+          const base = f.mi_precio || f.msrp;
+          retKeys.forEach(k => {
+            const pRet = f[k];
+            const estado = f[k + "_estado"];
+            const diffPct = f[k + "_diff_pct"];
+            if ((estado === "alerta" || estado === "menor") && pRet !== null && base !== null) {
+              nuevasAlertas.push({
+                retailer: retObj[k] || k,
+                retailer_key: k,
+                mobile: f.mobile,
+                memoria: f.memoria,
+                precio_retailer: pRet,
+                base: base,
+                diff_pct: diffPct,
+                color: f[k + "_color"] || null,
+                categoria: f.categoria || "Smartphones"
+              });
+            }
+          });
+        });
+
+        if (!ultimoReporte.resumen) ultimoReporte.resumen = {};
+        ultimoReporte.resumen.alertas = nuevasAlertas;
+
+        pintarKpis(ultimoReporte);
+      }
+
       function onMiPrecioInput(e) {
         const input = e.target;
         input.classList.remove("valor-auto");
@@ -4186,16 +4395,20 @@
         const statusPill = document.getElementById("live-save-status");
         if (statusPill) {
           statusPill.className = "live-status-pill saving";
-          statusPill.textContent = "⏳ Guardando cambios...";
+          statusPill.textContent = "⏳ Calculando y guardando...";
         }
+
+        // Reacción instantánea inmediata
+        recalcularFilaEnCaliente(input);
 
         clearTimeout(autoSaveTimeout);
         autoSaveTimeout = setTimeout(() => {
           ejecutarGuardarPrecios(false);
-        }, 750);
+        }, 600);
       }
 
-      function onMiPrecioChange() {
+      function onMiPrecioChange(e) {
+        if (e && e.target) recalcularFilaEnCaliente(e.target);
         clearTimeout(autoSaveTimeout);
         ejecutarGuardarPrecios(false);
       }
@@ -4462,6 +4675,7 @@
       }
 
       function aplicarReporte(reporte) {
+        aplicarPreciosLocalesAlReporte(reporte);
         ultimoReporte = reporte;
         if (reporte.pais) paisActual = reporte.pais;
         if (reporte.resumen?.tolerancia_pct !== undefined) {
@@ -5475,6 +5689,127 @@
       }
     }
 
-    </script>
+          // Menú de opciones de Precios Base
+      function toggleMenuPreciosBase() {
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (!menu) return;
+        menu.style.display = (menu.style.display === "none" || !menu.style.display) ? "block" : "none";
+      }
+
+      document.addEventListener("click", (e) => {
+        const btn = document.getElementById("btn-opciones-precios");
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+          menu.style.display = "none";
+        }
+      });
+
+      function exportarPreciosBaseCsv() {
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (menu) menu.style.display = "none";
+        if (!ultimoReporte || !ultimoReporte.filas) return;
+        const lineas = ["mobile,memoria,mi_precio,msrp"];
+        ultimoReporte.filas.forEach(f => {
+          lineas.push(`"${(f.mobile||'').replace(/"/g, '""')}","${(f.memoria||'').replace(/"/g, '""')}",${f.mi_precio || ''},${f.msrp || ''}`);
+        });
+        const blob = new Blob([lineas.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `precios_base_${paisActual.toUpperCase()}_${new Date().toISOString().slice(0,10)}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Archivo de precios base exportado", "success");
+      }
+
+      function importarPreciosBaseCsv(input) {
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (menu) menu.style.display = "none";
+        const file = input.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const text = e.target.result;
+          const rows = text.split(/\r?\n/);
+          let actualizados = 0;
+          rows.forEach(r => {
+            const parts = r.split(",");
+            if (parts.length >= 3) {
+              const mob = parts[0].replace(/"/g, '').trim();
+              const mem = parts[1].replace(/"/g, '').trim();
+              const pr = parseFloat(parts[2].replace(/"/g, '').trim());
+              if (mob && !isNaN(pr) && pr > 0) {
+                guardarPrecioLocal(mob, mem, pr);
+                actualizados++;
+              }
+            }
+          });
+          input.value = "";
+          showToast(`Se importaron ${actualizados} precios base exitosamente`, "success", 2500);
+          cargarDatos(true);
+        };
+        reader.readAsText(file);
+      }
+
+      function restaurarMsrpOficial() {
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (menu) menu.style.display = "none";
+        if (!confirm(`¿Deseas restaurar todos los precios base al MSRP oficial para ${paisActual.toUpperCase()}?`)) return;
+        try {
+          localStorage.removeItem("mis_precios_personalizados_" + paisActual);
+        } catch(e) {}
+        
+        document.querySelectorAll(".mi-precio-input").forEach(inp => {
+          inp.value = "";
+          inp.classList.add("valor-auto");
+          inp.classList.remove("modified");
+          inp.dataset.personalizado = "0";
+        });
+
+        ejecutarGuardarPrecios(false);
+        showToast("Precios base restaurados al MSRP oficial", "info", 2000);
+        cargarDatos(true);
+      }
+
+      // Detección automática de precios remotos publicados por otros miembros del equipo
+      let ultimaVersionRemotaConocida = (typeof window.BUILD_TIMESTAMP !== "undefined") ? window.BUILD_TIMESTAMP : 0;
+
+      async function verificarActualizacionesRemotas() {
+        if (window.location.protocol === "file:") return;
+        try {
+          const resp = await fetch("version.json?_t=" + Date.now(), { cache: "no-store" });
+          if (resp.ok) {
+            const vData = await resp.json();
+            if (vData.version && ultimaVersionRemotaConocida && vData.version > ultimaVersionRemotaConocida) {
+              mostrarBannerNuevaVersion(vData.fecha || "recientemente");
+            }
+          }
+        } catch (e) {}
+      }
+
+      function mostrarBannerNuevaVersion(fecha) {
+        if (document.getElementById("banner-actualizacion-remota")) return;
+        const banner = document.createElement("div");
+        banner.id = "banner-actualizacion-remota";
+        banner.className = "banner-alerta-version";
+        banner.innerHTML = `
+          <div class="banner-alerta-content">
+            <span>🔔 <strong>Precios actualizados:</strong> Se detectó una nueva versión con cambios del equipo (${fecha}).</span>
+            <div>
+              <button class="btn btn-primary btn-xs" onclick="window.location.reload(true)" style="background:#ffffff; color:#1e40af; font-weight:700; border:none; padding:4px 10px; border-radius:6px; cursor:pointer;">🔄 Cargar nuevos precios</button>
+              <button class="btn btn-ghost btn-xs" onclick="document.getElementById('banner-actualizacion-remota').remove()" style="color:#ffffff; margin-left:8px; background:transparent; border:none; cursor:pointer; font-size:14px;">✕</button>
+            </div>
+          </div>
+        `;
+        document.body.prepend(banner);
+      }
+
+      // Monitoreo remoto cada 60 segundos y al cambiar de pestaña
+      setInterval(verificarActualizacionesRemotas, 60000);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") verificarActualizacionesRemotas();
+      });
+
+</script>
 </body>
 </html>

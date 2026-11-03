@@ -64,6 +64,7 @@ def main():
       window.AUTH_CONFIG = {auth_config_json};
       window.DATOS_OFFLINE = {datos_json};
       window.HISTORICO_METRICAS = {historico_json};
+      window.BUILD_TIMESTAMP = {int(datetime.now().timestamp())};
       console.log("Modo Autónomo y Protegido: Datos y autenticación activos");
     </script>
 """
@@ -139,6 +140,16 @@ def main():
     INDEX_ROOT = BASE_DIR / "index.html"
     INDEX_ROOT.write_text(html, encoding="utf-8")
     print(f"Generado {INDEX_ROOT} ({len(html)} bytes)")
+
+    # Guardar version.json para detección de cambios remotos en GitHub Pages
+    version_info = {
+        "version": int(datetime.now().timestamp()),
+        "fecha": fecha_hoy
+    }
+    v_str = json.dumps(version_info, indent=2)
+    (OUTPUT_WEB_DIR / "version.json").write_text(v_str, encoding="utf-8")
+    (BASE_DIR / "version.json").write_text(v_str, encoding="utf-8")
+    print("Generado version.json para auto-detección remota.")
 
     # Copiar carpeta static
     static_src = BASE_DIR / "static"
