@@ -7662,5 +7662,21 @@
     "diferencia": 3500.0,
     "pct_cambio": 100.0,
     "tipo": "subida"
+  },
+  {
+    "id": "1793729296_HN_walmart_hn_Galaxy S25 Ultra_12+512GB",
+    "fecha": "2026-11-03 12:08:16",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_hn",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 43595.0,
+    "precio_nuevo": 31388.4,
+    "diferencia": -12206.6,
+    "pct_cambio": -28.0,
+    "tipo": "baja"
   }
 ]

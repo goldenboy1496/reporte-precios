@@ -15,8 +15,9 @@
     "duracion_segundos": 69.6
   },
   "diunsa": {
-    "estado": "corriendo",
-    "inicio": 1793729243.8094044
+    "estado": "ok",
+    "ultima_actualizacion": 1793729289.3417325,
+    "duracion_segundos": 45.5
   },
   "elektra_hn": {
     "estado": "ok",
@@ -54,8 +55,8 @@
   },
   "walmart_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1793722486.3810155,
-    "duracion_segundos": 24.7
+    "ultima_actualizacion": 1793729295.068779,
+    "duracion_segundos": 4.7
   },
   "walmart_gt": {
     "estado": "ok",
