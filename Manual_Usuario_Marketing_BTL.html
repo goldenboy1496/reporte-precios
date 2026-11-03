@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Usuario — Dashboard de Ventas & Activaciones BTL (Marketing)</title>
+<style>
+  :root {
+    --navy: #0f172a;
+    --blue: #2563eb;
+    --teal: #0d9488;
+    --amber: #d97706;
+    --green: #16a34a;
+    --red: #dc2626;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 28px 18px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 65%, #0d9488 100%);
+    color: #fff;
+    padding: 28px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .hero h1 {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .hero p {
+    margin: 0;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .btn-print {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-print:hover { background: rgba(255,255,255,0.26); }
+  .content { padding: 28px 34px; }
+  h2 {
+    font-size: 17px;
+    color: var(--navy);
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    margin-top: 28px;
+    margin-bottom: 12px;
+  }
+  h2:first-child { margin-top: 0; }
+  h3 {
+    font-size: 14px;
+    color: #1e3a8a;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  p, li { font-size: 13.5px; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; }
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: #eff6ff;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .callout.teal {
+    border-left-color: var(--teal);
+    background: #f0fdfa;
+  }
+  .callout.amber {
+    border-left-color: var(--amber);
+    background: #fffbeb;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 12.5px;
+  }
+  th {
+    background: #f1f5f9;
+    color: #334155;
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 700;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .b-green { background: #dcfce7; color: #15803d; }
+  .b-blue { background: #dbeafe; color: #1d4ed8; }
+  .b-amber { background: #fef3c7; color: #b45309; }
+  .b-red { background: #fee2e2; color: #b91c1c; }
+  .step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .step-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: #f8fafc;
+  }
+  .step-card strong {
+    display: block;
+    font-size: 13px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  code {
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    color: #0f172a;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .container { box-shadow: none; border: none; }
+    .btn-print { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div>
+      <h1>📘 Manual de Usuario — Dashboard de Ventas & Activaciones BTL</h1>
+      <p>Guía Rápida para el Equipo de Marketing · SLC Trade (Guatemala, El Salvador, Honduras)</p>
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+  </div>
+
+  <div class="content">
+    <h2>1. ¿Cómo abrir el Dashboard?</h2>
+    <div class="step-grid">
+      <div class="step-card">
+        <strong>Opción A: Archivo directo (OneDrive / Teams / Correo)</strong>
+        Haz doble clic sobre el archivo <code>Dashboard_BTL_Ventas.html</code>. Se abrirá en tu navegador (Chrome o Edge) sin necesidad de instalar programas adicionales.
+      </div>
+      <div class="step-card">
+        <strong>Opción B: Modo App Conectada (<code>iniciar_tablero_btl.bat</code>)</strong>
+        Al abrirlo desde el lanzador local (<code>http://127.0.0.1:8095</code>), cada activación que guardes actualizará automáticamente el archivo Excel maestro <code>Activaciones_BTL.xlsx</code>.
+      </div>
+    </div>
+
+    <h2>2. Cómo usar los Filtros Superiores</h2>
+    <ul>
+      <li><strong>País:</strong> Filtra entre <code>Todos (NCA)</code>, <code>Guatemala (GT)</code>, <code>El Salvador (SV)</code> o <code>Honduras (HN)</code>.</li>
+      <li><strong>Formato:</strong> Te permite ver todo el Retail junto (<code>SMS + SES + Kiosco</code>) o aislar únicamente <code>Solo SMS</code>, <code>Solo SES</code> o <code>Solo Kioscos</code> (los kioscos siempre aparecen con el prefijo <code>Kiosco ...</code> para distinguirlos de las tiendas SMS del mismo centro comercial).</li>
+      <li><strong>Mes Rápido / Desde – Hasta:</strong> Haz clic en cualquier botón de mes (ej. <code>Oct 2026</code>) o elige un rango personalizado de fechas en los selectores <strong>Desde</strong> y <strong>Hasta</strong>.</li>
+      <li><strong>Días de Semana:</strong> Puedes elegir <code>Solo Fin de Semana (Vie–Dom)</code> para evaluar el tráfico de fin de semana sin mezclar días lunes a jueves.</li>
+    </ul>
+
+    <h2>3. ¿Cómo registrar tus Activaciones BTL?</h2>
+    <p>Ingresa a la primera pestaña <strong>🎯 1. Registro & Evaluación de Activaciones BTL</strong>. Puedes registrar tus actividades de dos maneras:</p>
+
+    <h3>A. Desde el Formulario en Pantalla (Individual)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Campo</th>
+          <th>¿Qué debes ingresar?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>País y Tienda</strong></td>
+          <td>Elige el país (<code>GT</code>, <code>SV</code>, <code>HN</code>) y la tienda exacta donde se ejecutó el BTL (ej. <code>[SMS] SMS Oakland Place</code> o <code>[Kiosco] Kiosco Miraflores</code>).</td>
+        </tr>
+        <tr>
+          <td><strong>Nombre de la Activación</strong></td>
+          <td>Nombre identificable de la actividad (ej. <em>Activación Quincena Galaxy AI</em>, <em>Ruleta Fin de Semana</em>).</td>
+        </tr>
+        <tr>
+          <td><strong>Tipo de Activación BTL</strong></td>
+          <td>Selecciona si fue <em>Experiencial / Promotoría</em>, <em>Dinámica / Ruleta / Premios</em>, <em>Evento en Mall</em>, <em>Trade-In / Canje</em>, <em>Impulsadoras</em> o <em>Lanzamiento</em>.</td>
+        </tr>
+        <tr>
+          <td><strong>Fecha Inicio y Fecha Fin</strong></td>
+          <td>El rango exacto de días que duró la activación (ej. viernes <code>16/10/2026</code> a domingo <code>18/10/2026</code>). Si fue de un solo día, coloca la misma fecha en ambos campos.</td>
+        </tr>
+        <tr>
+          <td><strong>Inversión BTL (USD)</strong></td>
+          <td>Costo total en dólares del evento (montaje, promotoras, premios). Sirve para que el tablero calcule el retorno <code>ROAS</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Responsable y Notas</strong></td>
+          <td>Persona o agencia a cargo y breve resumen de la dinámica o premios entregados.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Al presionar <strong>💾 Guardar y Evaluar Activación</strong>, el evento se agrega al Scorecard inferior y calcula inmediatamente todos los indicadores. Si necesitas corregir algún dato, presiona el botón <strong>✏️</strong> en la fila correspondiente.</p>
+
+    <h3>B. Desde la Plantilla de Excel (Masivo)</h3>
+    <div class="callout teal">
+      1. Haz clic en el botón <strong>📥 Plantilla Excel BTL</strong> arriba a la derecha para descargar el formato oficial (<code>Activaciones_BTL.xlsx</code>).<br>
+      2. Llena tus filas en Excel respetando los nombres de tienda y fechas.<br>
+      3. Haz clic en <strong>📤 Subir Excel BTL</strong> para cargar todas las activaciones de una sola vez.
+    </div>
+
+    <h2>4. ¿Cómo interpretar los Resultados de cada Activación?</h2>
+    <p>Para saber con certeza si una activación funcionó —y no confundirla con una subida normal por quincena—, el Scorecard evalúa cada activación con <strong>6 métricas</strong>:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Columna en el Tablero</th>
+          <th>¿Contra qué compara?</th>
+          <th>¿Cómo se interpreta?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>% Lift vs Base 4S</strong></td>
+          <td>Promedio de las <strong>4 semanas previas en esos mismos días de la semana</strong> (ej. los 4 viernes–domingo anteriores en esa misma tienda).</td>
+          <td>Mide cuánto creció la tienda frente a su propio ritmo reciente de fin de semana. Ej: <code>+28%</code> significa que vendió 28% más que en sus 4 fines de semana previos.</td>
+        </tr>
+        <tr>
+          <td><strong>% WoW (Sem Ant)</strong></td>
+          <td>Los mismos días de la semana inmediata anterior (<code>7 días antes</code>).</td>
+          <td>Muestra el salto inmediato respecto a la semana pasada.</td>
+        </tr>
+        <tr>
+          <td><strong>% YoY Misma Fecha (Calendario)</strong></td>
+          <td>Las mismas fechas exactas del año pasado (ej. <code>16–18 Oct 2026</code> vs <code>16–18 Oct 2025</code>).</td>
+          <td>Compara fecha calendario contra fecha calendario (útil en días fijos de quincena <code>15</code> o <code>30</code>).</td>
+        </tr>
+        <tr>
+          <td><strong>% YoY Día Equiv (-364d)</strong></td>
+          <td>Los mismos días de la semana del año pasado (<code>52 semanas atrás</code>, ej. <code>Vie–Dom Sem 42 2026</code> vs <code>Vie–Dom Sem 42 2025</code>).</td>
+          <td>Corrige el desfase del calendario para comparar siempre viernes–domingo contra viernes–domingo del año anterior.</td>
+        </tr>
+        <tr>
+          <td><strong>Efecto Neto vs Control</strong></td>
+          <td>Compara el Lift de la tienda activada menos el Lift del <strong>resto de tiendas Retail del país en esos mismos días</strong>.</td>
+          <td><strong>Indicador clave de Marketing:</strong> Si la tienda con BTL subió <code>+30%</code> y el resto del país subió <code>+10%</code> por quincena, el <strong>Efecto Neto es <code>+20%</code></strong> a favor del BTL.</td>
+        </tr>
+        <tr>
+          <td><strong>Venta Increm. (ROAS BTL)</strong></td>
+          <td><code>(Venta Real - Base 4 Semanas) / Inversión BTL</code>.</td>
+          <td>Indica cuántos dólares adicionales de venta generó cada <code>$1</code> invertido en la activación (ej. <code>4.2x</code> = <code>$4.20</code> de venta incremental por cada <code>$1</code> de BTL).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Significado del Semáforo de Evaluación:</strong></p>
+    <ul>
+      <li><span class="badge b-green">🚀 Alto Impacto</span> La tienda creció <code>+15%</code> o más sobre su base de 4 semanas y superó al resto de tiendas del país por al menos <code>+5%</code>.</li>
+      <li><span class="badge b-blue">✅ Positivo</span> La tienda creció sobre su base de 4 semanas y tuvo desempeño igual o superior al grupo control del país.</li>
+      <li><span class="badge b-amber">⚠️ Moderado (Efecto Quincena)</span> La tienda subió frente a sus semanas previas, pero subió menos que el promedio del resto de tiendas del país en esos mismos días.</li>
+      <li><span class="badge b-red">🔻 Sin Lift</span> La venta durante los días de la activación quedó por debajo del promedio de las 4 semanas anteriores.</li>
+    </ul>
+
+    <div class="callout amber">
+      <strong>💡 Tip — Radiografía por Modelo y Familia (Botón <code>🔍 Detalle</code>):</strong><br>
+      Haz clic en el botón <strong>🔍 Detalle</strong> al final de cualquier fila del Scorecard para ver la venta desglosada día por día, qué familias de producto se movieron más (<em>Serie S/Fold</em>, <em>Serie A</em>, <em>Ecosistema</em>, <em>Accesorios</em>) y cuáles fueron los <strong>modelos más vendidos</strong> en esa tienda durante esa semana.
+    </div>
+
+    <h2>5. Uso de las Pestañas de Comparación Semanal y por Período</h2>
+    <ul>
+      <li><strong>📈 Pestaña 2 (Comparativo Semana a Semana WoW & YoY):</strong> Visualiza las 52 semanas del año (<code>W01</code> a <code>W52</code>) comparando 2026 vs 2025. Las semanas donde hubo activación aparecen marcadas en color naranja y con el ícono <code>🎯</code> en la tabla inferior.</li>
+      <li><strong>📅 Pestaña 3 (Explorador por Período y Mismas Fechas 2026 vs 2025):</strong> Te permite elegir cualquier rango de fechas en los filtros superiores y ver al instante la comparativa dual contra 2025 (<em>Mismas Fechas Calendario</em> vs <em>Mismos Días de Semana Equivalentes</em>), el mix por familia de producto y el detalle día por día.</li>
+      <li><strong>🏬 Pestaña 4 (Ranking de Tiendas):</strong> Compara el crecimiento <code>WoW</code> y <code>YoY</code> de todas las tiendas Retail y te permite presionar <strong>➕ Registrar BTL</strong> en cualquier tienda para cargarla directamente en el formulario de activaciones.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
+
