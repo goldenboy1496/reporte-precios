@@ -564,5 +564,23 @@ def api_catalogo_importar_excel():
     })
 
 
+@app.route("/api/exportar-ppt", methods=["GET"])
+def api_exportar_ppt():
+    pais = request.args.get("pais", "gt").lower()
+    from datetime import datetime
+    from exportar_ppt_desfases import crear_presentacion_desfases
+    
+    filename = f"Reporte_Desfases_{pais.upper()}_{datetime.now().strftime('%Y%m%d')}.pptx"
+    file_path = BASE_DIR / filename
+    crear_presentacion_desfases(pais=pais, output_path=file_path)
+    
+    return send_file(
+        file_path,
+        mimetype="application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        as_attachment=True,
+        download_name=filename
+    )
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, threaded=True, use_reloader=False)
