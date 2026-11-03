@@ -440,9 +440,11 @@ def es_accesorio(nombre: str, cat_tipo: str) -> bool:
             return True
 
     if cat_tipo == "Tablets":
-        if any(w in t for w in ["SMART BOOK COVER PARA", "BOOK COVER PARA", "FRAME COVER PARA", "TECLADO PRO PARA", "TECLADO PARA"]):
+        if any(w in t for w in ["ESTUCHE", "FUNDA", "COBERTOR", "PROTECTOR", "TECLADO PARA", "KEYBOARD PARA", "FOLIO", "CASE PARA", "MICA"]):
             return True
-        if re.search(r"\b(?:COVER|ESTUCHE|FUNDA|TECLADO)\s+PARA\b", t):
+        if any(w in t for w in ["SMART BOOK COVER", "BOOK COVER PARA", "FRAME COVER PARA", "TECLADO PRO"]):
+            return True
+        if re.search(r"\b(?:COVER|ESTUCHE|FUNDA|TECLADO)\b.*?\bPARA\b", t):
             return True
 
     if cat_tipo == "Smartphones":

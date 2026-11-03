@@ -3587,23 +3587,59 @@
             const bandera = ultimoReporte.bandera || "🌎";
             const fechaStr = new Date().toLocaleDateString("es-GT");
 
-            const todasFilas = ultimoReporte.filas || [];
+            // FILTRADO ESTRICTO POR CATEGORÍAS ACTIVAS (ej. Solo Celulares)
+            const filasActivas = (ultimoReporte.filas || []).filter(f => {
+              const cat = f.categoria || "Smartphones";
+              return (categoriasSeleccionadas && categoriasSeleccionadas.length > 0)
+                ? categoriasSeleccionadas.includes(cat)
+                : (cat === "Smartphones");
+            });
+
+            const catTag = (categoriasSeleccionadas.length === 1 && categoriasSeleccionadas[0] === "Smartphones")
+              ? " (Solo Celulares)"
+              : (categoriasSeleccionadas.length === 3 ? " (Catálogo Completo)" : "");
+
             const retObj = ultimoReporte.retailers || PAISES_INFO[paisActual]?.retailers || {};
             const retKeys = Object.keys(retObj);
-            const alertas = obtenerAlertasFiltradas() || [];
             
+            // Recalcular alertas exactas de las filas activas en caliente
+            const alertas = [];
             let totalEvaluados = 0;
             let totalOk = 0;
-            todasFilas.forEach(f => {
+
+            filasActivas.forEach(f => {
               let evalFila = false;
               let filaOk = false;
+              const base = (f.mi_precio !== null && f.mi_precio !== undefined && f.mi_precio > 0) ? f.mi_precio : (f.msrp || null);
+
               retKeys.forEach(k => {
-                if (f[k + "_estado"] === "ok") { filaOk = true; evalFila = true; }
-                else if (f[k + "_estado"] === "alerta" || f[k + "_estado"] === "menor") { evalFila = true; }
+                const st = f[k + "_estado"];
+                const pRet = f[k];
+                const diff = f[k + "_diff_pct"];
+
+                if (st === "ok") { filaOk = true; evalFila = true; }
+                else if (st === "alerta" || st === "menor") {
+                  evalFila = true;
+                  if (pRet !== null && pRet !== undefined && base !== null && base > 0) {
+                    alertas.push({
+                      retailer: retObj[k] || k,
+                      retailer_key: k,
+                      mobile: f.mobile,
+                      memoria: f.memoria,
+                      precio_retailer: pRet,
+                      base: base,
+                      diff_pct: diff !== null ? diff : 0,
+                      categoria: f.categoria || "Smartphones"
+                    });
+                  }
+                }
               });
+
               if (evalFila) totalEvaluados++;
               if (filaOk) totalOk++;
             });
+
+            alertas.sort((a,b) => a.diff_pct - b.diff_pct);
             const pctOk = totalEvaluados ? Math.round((totalOk / totalEvaluados) * 100) : 0;
             const totalAlertas = alertas.length;
 
@@ -3628,7 +3664,7 @@
             s1.addText(
               [
                 { text: `SAMSUNG RETAIL · REPORTE EJECUTIVO DE DESFASES ${bandera}\n`, options: { fontSize: 11, bold: true, color: C_CYAN } },
-                { text: `Monitoreo de Precios en Retailers — ${paisNom}\n`, options: { fontSize: 20, bold: true, color: C_TEXT } },
+                { text: `Monitoreo de Precios en Retailers — ${paisNom}${catTag}\n`, options: { fontSize: 20, bold: true, color: C_TEXT } },
                 { text: `Fecha de emisión: ${fechaStr} | Base de comparación: Samsung Shop & MSRP Oficial`, options: { fontSize: 9.5, color: C_MUTED } }
               ],
               { x: 0.6, y: 0.5, w: 12.1, h: 1.1, margin: 0 }
@@ -3641,7 +3677,7 @@
               [
                 { text: `${totalEvaluados}\n`, options: { fontSize: 24, bold: true, color: C_TEXT, align: "center" } },
                 { text: "MODELOS MONITOREADOS\n", options: { fontSize: 8.5, bold: true, color: C_MUTED, align: "center" } },
-                { text: `Catálogo total: ${todasFilas.length} modelos`, options: { fontSize: 8, color: C_MUTED, align: "center" } }
+                { text: `Catálogo activo: ${filasActivas.length} modelos`, options: { fontSize: 8, color: C_MUTED, align: "center" } }
               ],
               { x: 0.6, y: 1.82, w: 3.8, h: 1.15 }
             );
@@ -3669,7 +3705,7 @@
             );
 
             // Tabla Resumen de Cadenas en Slide 1
-            s1.addText("Desglose de Desfases por Cadena Comercial", { x: 0.6, y: 3.25, w: 12.1, h: 0.35, fontSize: 13, bold: true, color: C_CYAN });
+            s1.addText(`Desglose de Desfases por Cadena Comercial${catTag}`, { x: 0.6, y: 3.25, w: 12.1, h: 0.35, fontSize: 13, bold: true, color: C_CYAN });
 
             const filasTablaRet = [
               [
@@ -3720,7 +3756,7 @@
             s2.addText(
               [
                 { text: `SAMSUNG RETAIL · AUDITORÍA DE PRECIOS ${bandera}\n`, options: { fontSize: 11, bold: true, color: C_CYAN } },
-                { text: "Top Modelos con Mayor Desfase (Precios por debajo de MSRP / Shop)\n", options: { fontSize: 20, bold: true, color: C_TEXT } },
+                { text: "Modelos con Mayor Desfase${catTag} (Precios por debajo de MSRP / Shop)\n", options: { fontSize: 20, bold: true, color: C_TEXT } },
                 { text: "Modelos prioritarios ordenados por mayor impacto porcentual de desfase", options: { fontSize: 9.5, color: C_MUTED } }
               ],
               { x: 0.6, y: 0.5, w: 12.1, h: 1.1, margin: 0 }
@@ -4975,6 +5011,7 @@
       function aplicarReporte(reporte) {
         aplicarPreciosLocalesAlReporte(reporte);
         ultimoReporte = reporte;
+        actualizarKpisYConsolidadoEnCaliente();
         if (reporte.pais) paisActual = reporte.pais;
         if (reporte.resumen?.tolerancia_pct !== undefined) {
           actualizarVisualTolerancia(reporte.resumen.tolerancia_pct);
