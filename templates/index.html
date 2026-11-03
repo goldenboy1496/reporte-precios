@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     
     /* ============================================================
@@ -2375,17 +2376,20 @@
           <button id="btn-opciones-precios" class="btn btn-secondary btn-sm" onclick="toggleMenuPreciosBase()" title="Opciones para compartir, exportar o restaurar precios base">
             ⚙️ Precios Base ▾
           </button>
-          <div id="dropdown-menu-precios" style="display:none; position:absolute; right:0; top:calc(100% + 6px); background:var(--bg-card); border:1px solid var(--border); border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.18); min-width:230px; z-index:9999; padding:6px 0;">
-            <a href="javascript:void(0)" onclick="exportarPreciosBaseCsv()" style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--text-main); text-decoration:none; font-size:12.5px; font-weight:600;">
-              📤 Exportar mis precios base (CSV)
+          <div id="dropdown-menu-precios" style="display:none; position:absolute; right:0; top:calc(100% + 6px); background:var(--bg-card); border:1px solid var(--border); border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.18); min-width:275px; z-index:9999; padding:6px 0;">
+            <a href="javascript:void(0)" onclick="descargarPlantillaPreciosBase()" style="display:flex; align-items:center; gap:8px; padding:9px 14px; color:var(--text-main); text-decoration:none; font-size:12.5px; font-weight:600;">
+              📥 Descargar Plantilla Precios Base (Excel/CSV)
             </a>
-            <label style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--text-main); font-size:12.5px; font-weight:600; cursor:pointer; margin:0;">
-              📥 Importar precios base (CSV)
-              <input type="file" id="input-importar-precios-csv" accept=".csv" style="display:none;" onchange="importarPreciosBaseCsv(this)">
+            <label style="display:flex; align-items:center; gap:8px; padding:9px 14px; color:var(--text-main); font-size:12.5px; font-weight:600; cursor:pointer; margin:0;">
+              📤 Cargar Plantilla Precios Base
+              <input type="file" id="input-importar-precios-csv" accept=".csv,.txt,.xlsx,.xls" style="display:none;" onchange="importarPlantillaPreciosBase(this)">
             </label>
             <div style="height:1px; background:var(--border); margin:4px 0;"></div>
+            <a href="javascript:void(0)" onclick="exportarPreciosBaseCsv()" style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--text-muted); text-decoration:none; font-size:12px;">
+              💾 Exportar mis precios actuales (CSV)
+            </a>
             <a href="javascript:void(0)" onclick="restaurarMsrpOficial()" style="display:flex; align-items:center; gap:8px; padding:8px 14px; color:var(--rose-text, #ef4444); text-decoration:none; font-size:12.5px; font-weight:600;">
-              ↺ Restaurar a MSRP Oficial
+              ↺ Restaurar todos a MSRP Oficial
             </a>
           </div>
         </div>
@@ -4016,25 +4020,83 @@
       function renderMejorOferta(f) {
         const retObj = ultimoReporte?.retailers || PAISES_INFO[paisActual]?.retailers || {};
         const precios = [];
+
+        // Precios detectados en retailers externos
         for (const [k, name] of Object.entries(retObj)) {
-          if (f[k] !== null && f[k] !== undefined) {
-            precios.push({ tienda: name, precio: f[k] });
+          if (f[k] !== null && f[k] !== undefined && f[k] > 0) {
+            precios.push({ tienda: name, precio: f[k], esShop: false, key: k });
           }
+        }
+
+        // Precio base activo en Samsung Shop (Promo propia o MSRP oficial de lista si no hay promo)
+        const base = (f.mi_precio !== null && f.mi_precio !== undefined && f.mi_precio > 0)
+          ? f.mi_precio
+          : (f.msrp || null);
+
+        // Si tenemos precio activo en Samsung Shop, agregarlo a la competencia por el precio más bajo
+        if (base !== null && base > 0) {
+          const esPromo = Boolean(f.mi_precio_personalizado && f.mi_precio > 0);
+          precios.push({
+            tienda: "Samsung Shop",
+            precio: base,
+            esShop: true,
+            esPromo: esPromo
+          });
         }
 
         if (!precios.length) return '<td><span class="price-empty">—</span></td>';
 
-        precios.sort((a, b) => a.precio - b.precio);
+        // Ordenar de menor a mayor precio. Si hay empate, dar prioridad a Samsung Shop
+        precios.sort((a, b) => {
+          if (a.precio !== b.precio) return a.precio - b.precio;
+          if (a.esShop) return -1;
+          if (b.esShop) return 1;
+          return 0;
+        });
+
         const mejor = precios[0];
-        const base = f.mi_precio || f.msrp;
         const moneda = ultimoReporte?.moneda || "Q";
+
+        // Caso 1: ¡Samsung Shop es el más barato o empata en primer lugar!
+        if (mejor.esShop) {
+          const empatados = precios.filter(p => !p.esShop && p.precio === mejor.precio);
+          let tagExtra = "";
+          if (mejor.esPromo && f.msrp && f.msrp > mejor.precio) {
+            const ahorroPromo = f.msrp - mejor.precio;
+            tagExtra = '<div style="font-size: 10px; color: var(--emerald-text, #059669); font-weight:700;">⭐ Promo Shop (-' + formatoMoneda(Math.round(ahorroPromo), moneda) + ' vs MSRP)</div>';
+          } else {
+            tagExtra = '<div style="font-size: 10px; color: var(--emerald-text, #059669); font-weight:700;">⭐ ¡Tenemos el mejor precio!</div>';
+          }
+          if (empatados.length > 0) {
+            tagExtra += '<div style="font-size: 9.5px; color: var(--text-muted);">(Empate con: ' + empatados.map(e => e.tienda).join(", ") + ')</div>';
+          }
+
+          return '<td>' +
+            '<div style="font-size: 12px; font-weight: 700; color: var(--emerald-text, #10b981);">' +
+              formatoMoneda(mejor.precio, moneda) +
+              ' <span class="badge-samsung-shop" style="display:inline-block; margin-left:4px; padding:2px 6px; font-size:10px; font-weight:700; background:rgba(16,185,129,0.15); color:var(--emerald-text, #059669); border-radius:4px; border:1px solid rgba(16,185,129,0.3);">' +
+                '★ Samsung Shop' +
+              '</span>' +
+            '</div>' +
+            tagExtra +
+          '</td>';
+        }
+
+        // Caso 2: Un retailer externo tiene mejor precio que Samsung Shop
         let tagExtra = "";
         if (base && mejor.precio < base) {
           const ahorro = base - mejor.precio;
-          tagExtra = '<div style="font-size: 10px; color: var(--rose-text); font-weight:700;">-' + formatoMoneda(Math.round(ahorro), moneda) + ' vs base</div>';
+          const diffPct = (((mejor.precio - base) / base) * 100).toFixed(1);
+          tagExtra = '<div style="font-size: 10px; color: var(--rose-text, #ef4444); font-weight:700;">-' + formatoMoneda(Math.round(ahorro), moneda) + ' vs Shop (' + diffPct + '%)</div>';
         }
 
-        return '<td><div style="font-size: 12px; font-weight: 700;">' + formatoMoneda(mejor.precio, moneda) + ' <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(' + mejor.tienda + ')</span></div>' + tagExtra + '</td>';
+        return '<td>' +
+          '<div style="font-size: 12px; font-weight: 700;">' +
+            formatoMoneda(mejor.precio, moneda) +
+            ' <span style="font-size: 11px; font-weight: 500; color: var(--text-muted);">(' + mejor.tienda + ')</span>' +
+          '</div>' +
+          tagExtra +
+        '</td>';
       }
 
       // ==========================================
@@ -4325,28 +4387,42 @@
         try {
           const keyStorage = "mis_precios_personalizados_" + (reporte.pais || paisActual);
           const raw = localStorage.getItem(keyStorage);
-          if (!raw) return;
-          const dict = JSON.parse(raw);
+          const dict = raw ? JSON.parse(raw) : {};
           const tol = Math.abs(parseFloat(toleranciaDescuentoActual || 5.0));
           const retObj = reporte.retailers || PAISES_INFO[reporte.pais || paisActual]?.retailers || {};
           const retKeys = Object.keys(retObj);
 
           reporte.filas.forEach(f => {
             const itemKey = f.mobile + "__" + f.memoria;
-            if (dict[itemKey] !== undefined && dict[itemKey] !== null) {
+            const tieneCustom = dict[itemKey] !== undefined && dict[itemKey] !== null && parseFloat(dict[itemKey]) > 0;
+            
+            if (tieneCustom) {
               const customPrice = parseFloat(dict[itemKey]);
-              if (!isNaN(customPrice) && customPrice > 0) {
-                f.mi_precio = customPrice;
-                f.mi_precio_personalizado = true;
-                retKeys.forEach(k => {
-                  const pRet = f[k];
-                  if (pRet !== null && pRet !== undefined) {
-                    const diff = ((pRet - customPrice) / customPrice) * 100;
-                    f[k + "_diff_pct"] = diff;
-                    f[k + "_estado"] = (diff < -tol) ? "menor" : "ok";
-                  }
-                });
-              }
+              f.mi_precio = customPrice;
+              f.mi_precio_personalizado = true;
+              retKeys.forEach(k => {
+                const pRet = f[k];
+                if (pRet !== null && pRet !== undefined) {
+                  const diff = ((pRet - customPrice) / customPrice) * 100;
+                  f[k + "_diff_pct"] = diff;
+                  f[k + "_estado"] = (diff < -tol) ? "menor" : "ok";
+                }
+              });
+            } else {
+              // Si no tiene precio base propio en el dict (o se dejó en blanco), toma MSRP oficial automáticamente
+              f.mi_precio = f.msrp || null;
+              f.mi_precio_personalizado = false;
+              retKeys.forEach(k => {
+                const pRet = f[k];
+                if (pRet !== null && pRet !== undefined && f.msrp && f.msrp > 0) {
+                  const diff = ((pRet - f.msrp) / f.msrp) * 100;
+                  f[k + "_diff_pct"] = diff;
+                  f[k + "_estado"] = (diff < -tol) ? "menor" : "ok";
+                } else if (pRet !== null && pRet !== undefined) {
+                  f[k + "_diff_pct"] = null;
+                  f[k + "_estado"] = "sin_base";
+                }
+              });
             }
           });
         } catch (e) {}
@@ -4763,31 +4839,69 @@
       async function ejecutarGuardarPrecios(notificar = true) {
         const inputs = document.querySelectorAll(".mi-precio-input");
         const filas = [];
+        const dict = {};
+
         inputs.forEach(inp => {
           const mobile = inp.dataset.mobile;
           const memoria = inp.dataset.memoria;
           const val = inp.value.trim();
+          const num = parseFloat(val);
           filas.push({ mobile, memoria, mi_precio: val || null });
+          if (!isNaN(num) && num > 0) {
+            dict[mobile + "__" + memoria] = num;
+          }
         });
 
+        // Guardar siempre en localStorage (inmune a modo estático / GitHub Pages)
         try {
-          const resp = await fetch("/api/mis-precios?pais=" + paisActual, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ filas })
-          });
-          const data = await resp.json();
-          if (data.ok) {
-            aplicarReporte(data.report);
-            const statusPill = document.getElementById("live-save-status");
-            if (statusPill) {
-              statusPill.className = "live-status-pill saved";
-              statusPill.textContent = "\u2713 Precios guardados";
-              setTimeout(() => {
-                statusPill.className = "live-status-pill";
-                statusPill.textContent = "\u2713 Sincronizado";
-              }, 2500);
+          const keyStorage = "mis_precios_personalizados_" + paisActual;
+          localStorage.setItem(keyStorage, JSON.stringify(dict));
+        } catch (e) {}
+
+        const statusPill = document.getElementById("live-save-status");
+
+        // Detección de GitHub Pages / Modo Autónomo
+        const esGithubPages = window.location.hostname.includes("github.io") || window.location.protocol === "file:" || Boolean(window.DATOS_OFFLINE);
+
+        if (!esGithubPages) {
+          try {
+            const resp = await fetch("/api/mis-precios?pais=" + paisActual, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ filas })
+            });
+            if (resp.ok) {
+              const data = await resp.json();
+              if (data.ok) {
+                aplicarReporte(data.report);
+                if (statusPill) {
+                  statusPill.className = "live-status-pill saved";
+                  statusPill.textContent = "\u2713 Sincronizado";
+                  setTimeout(() => {
+                    statusPill.className = "live-status-pill";
+                    statusPill.textContent = "\u2713 Sincronizado";
+                  }, 2500);
+                }
+                if (notificar) showToast("Precios base guardados en el servidor", "success");
+                return;
+              }
             }
+          } catch (e) {
+            // Servidor apagado o inaccesible, se mantiene sincronización local sin error
+          }
+        }
+
+        // Si estamos en GitHub Pages o modo local estático
+        if (statusPill) {
+          statusPill.className = "live-status-pill saved";
+          statusPill.textContent = "\u2713 Guardado en tu navegador";
+          setTimeout(() => {
+            statusPill.className = "live-status-pill";
+            statusPill.textContent = "\u2713 Sincronizado local";
+          }, 2500);
+        }
+        if (notificar) showToast("Precios base guardados en tu navegador", "success");
+      }
             if (notificar) showToast("Tus precios base se guardaron correctamente", "success");
           }
         } catch (e) {
@@ -5722,33 +5836,209 @@
         showToast("Archivo de precios base exportado", "success");
       }
 
-      function importarPreciosBaseCsv(input) {
+      function descargarPlantillaPreciosBase() {
+        const menu = document.getElementById("dropdown-menu-precios");
+        if (menu) menu.style.display = "none";
+        if (!ultimoReporte || !ultimoReporte.filas) {
+          showToast("No hay datos de catálogo cargados", "warning");
+          return;
+        }
+
+        const paisNom = (ultimoReporte.pais_nombre || paisActual).toUpperCase();
+        const moneda = ultimoReporte.moneda || "Q";
+
+        // Si SheetJS (XLSX) está activo en el navegador, descargamos Excel (.xlsx) nativo
+        if (typeof XLSX !== "undefined") {
+          try {
+            const dataExcel = [];
+            ultimoReporte.filas.forEach(f => {
+              dataExcel.push({
+                "SKU_O_MODELO": f.mobile || "",
+                "MEMORIA": f.memoria || "",
+                "CATEGORIA": f.categoria || "Smartphones",
+                "PRECIO_BASE_PROMO": (f.mi_precio_personalizado && f.mi_precio) ? f.mi_precio : "",
+                "MSRP_OFICIAL_REFERENCIA": f.msrp || ""
+              });
+            });
+
+            const ws = XLSX.utils.json_to_sheet(dataExcel);
+            ws['!cols'] = [{ wch: 26 }, { wch: 14 }, { wch: 16 }, { wch: 22 }, { wch: 25 }];
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Precios Base " + paisActual.toUpperCase());
+            XLSX.writeFile(wb, `Plantilla_Precios_Base_${paisActual.toUpperCase()}_${new Date().toISOString().slice(0,10)}.xlsx`);
+            showToast("Plantilla Excel (.xlsx) descargada", "success");
+            return;
+          } catch(err) {
+            console.warn("Fallo exportando XLSX, usando CSV:", err);
+          }
+        }
+
+        // Fallback a CSV universal
+        const lineas = [
+          "# PLANTILLA DE PRECIOS BASE - SAMSUNG RETAIL (" + paisNom + ")",
+          "# REGLA: Llena PRECIO_BASE con tu promo para Samsung Shop. Si dejas el campo en blanco o eliminas el SKU, tomara automaticamente el MSRP oficial.",
+          "SKU_O_MODELO,MEMORIA,PRECIO_BASE,MSRP_OFICIAL_REFERENCIA"
+        ];
+        ultimoReporte.filas.forEach(f => {
+          const promo = (f.mi_precio_personalizado && f.mi_precio) ? f.mi_precio : "";
+          const msrp = f.msrp || "";
+          lineas.push(`"${(f.mobile||'').replace(/"/g, '""')}","${(f.memoria||'').replace(/"/g, '""')}",${promo},${msrp}`);
+        });
+
+        const blob = new Blob(["\uFEFF" + lineas.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `Plantilla_Precios_Base_${paisActual.toUpperCase()}_${new Date().toISOString().slice(0,10)}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Plantilla CSV descargada", "success");
+      }
+
+      function normalizarClaveSku(txt) {
+        if (!txt) return "";
+        return String(txt).toUpperCase().replace(/[^A-Z0-9]/g, "");
+      }
+
+      async function importarPlantillaPreciosBase(input) {
         const menu = document.getElementById("dropdown-menu-precios");
         if (menu) menu.style.display = "none";
         const file = input.files?.[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const text = e.target.result;
-          const rows = text.split(/\r?\n/);
-          let actualizados = 0;
-          rows.forEach(r => {
-            const parts = r.split(",");
-            if (parts.length >= 3) {
-              const mob = parts[0].replace(/"/g, '').trim();
-              const mem = parts[1].replace(/"/g, '').trim();
-              const pr = parseFloat(parts[2].replace(/"/g, '').trim());
-              if (mob && !isNaN(pr) && pr > 0) {
-                guardarPrecioLocal(mob, mem, pr);
-                actualizados++;
+
+        showToast("Procesando plantilla " + file.name + "...", "info", 1800);
+
+        try {
+          let filasObjetos = [];
+          const fileName = file.name.toLowerCase();
+
+          if ((fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) && typeof XLSX !== "undefined") {
+            const dataBuffer = await file.arrayBuffer();
+            const wb = XLSX.read(dataBuffer, { type: "array" });
+            const sheetName = wb.SheetNames[0];
+            filasObjetos = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { defval: "" });
+          } else {
+            const text = await file.text();
+            const lines = text.split(/\r?\n/).filter(l => l.trim() && !l.trim().startsWith("#"));
+            if (!lines.length) throw new Error("El archivo está vacío");
+
+            const sep = lines[0].includes(";") ? ";" : ",";
+            const headerParts = lines[0].split(sep).map(h => h.replace(/["']/g, "").trim().toLowerCase());
+
+            let idxSku = headerParts.findIndex(h => /sku|modelo|mobile|producto|model/.test(h));
+            let idxMem = headerParts.findIndex(h => /memoria|memory|capacidad|ram|rom/.test(h));
+            let idxPrice = headerParts.findIndex(h => /precio_base|preciobase|promo|mi_precio|miprecio|precio|price|base/.test(h));
+
+            const startLine = (idxSku >= 0 || idxPrice >= 0) ? 1 : 0;
+            if (idxSku < 0) idxSku = 0;
+            if (idxMem < 0) idxMem = 1;
+            if (idxPrice < 0) idxPrice = (idxMem === 1 && lines[0].split(sep).length >= 3) ? 2 : 1;
+
+            for (let i = startLine; i < lines.length; i++) {
+              const parts = lines[i].split(sep).map(p => p.replace(/^["']|["']$/g, "").trim());
+              if (!parts.length || !parts[idxSku]) continue;
+              filasObjetos.push({
+                sku: parts[idxSku] || "",
+                memoria: idxMem >= 0 ? (parts[idxMem] || "") : "",
+                precio: idxPrice >= 0 ? (parts[idxPrice] || "") : ""
+              });
+            }
+          }
+
+          // Mapa normalizado de la plantilla
+          const mapaPlantilla = {};
+          const mapaPlantillaSoloSku = {};
+
+          filasObjetos.forEach(row => {
+            let rawSku = row.sku || row.SKU_O_MODELO || row.SKU || row.Modelo || row.MOBILE || row.Producto || "";
+            let rawMem = row.memoria || row.MEMORIA || row.Memoria || row.Memory || "";
+            let rawPrecio = row.precio || row.PRECIO_BASE_PROMO || row.PRECIO_BASE || row.Mi_Precio || row.Promo || row.Precio || "";
+
+            if (!rawSku) {
+              for (const k of Object.keys(row)) {
+                if (/sku|modelo|mobile|producto/.test(k.toLowerCase()) && row[k]) { rawSku = row[k]; break; }
               }
             }
+            if (!rawPrecio) {
+              for (const k of Object.keys(row)) {
+                const lk = k.toLowerCase();
+                if (/precio|promo|base|price/.test(lk) && !/msrp|oficial/.test(lk) && row[k] !== "") { rawPrecio = row[k]; break; }
+              }
+            }
+
+            const skuNorm = normalizarClaveSku(rawSku);
+            const memNorm = normalizarClaveSku(rawMem);
+            if (!skuNorm) return;
+
+            let parsedPrice = null;
+            if (rawPrecio !== undefined && rawPrecio !== null && String(rawPrecio).trim() !== "") {
+              const cleanStr = String(rawPrecio).replace(/[^0-9.]/g, "");
+              const num = parseFloat(cleanStr);
+              if (!isNaN(num) && num > 0) parsedPrice = num;
+            }
+
+            if (memNorm) mapaPlantilla[skuNorm + "__" + memNorm] = parsedPrice;
+            mapaPlantillaSoloSku[skuNorm] = parsedPrice;
           });
+
+          // ========================================================
+          // REGLA SOLICITADA:
+          // Si no hay precio base o no está el SKU en la plantilla, que tome el MSRP
+          // ========================================================
+          if (!ultimoReporte || !ultimoReporte.filas) throw new Error("No hay catálogo activo");
+
+          let conPromo = 0;
+          let conMsrp = 0;
+          const dictPreciosNuevos = {};
+
+          ultimoReporte.filas.forEach(f => {
+            const skuNorm = normalizarClaveSku(f.mobile);
+            const memNorm = normalizarClaveSku(f.memoria);
+            const comboKey = skuNorm + "__" + memNorm;
+
+            let precioEnPlantilla = undefined;
+            if (mapaPlantilla.hasOwnProperty(comboKey)) {
+              precioEnPlantilla = mapaPlantilla[comboKey];
+            } else if (mapaPlantillaSoloSku.hasOwnProperty(skuNorm)) {
+              precioEnPlantilla = mapaPlantillaSoloSku[skuNorm];
+            }
+
+            // 1. Si está en la plantilla y tiene precio numérico mayor a 0:
+            if (precioEnPlantilla !== undefined && precioEnPlantilla !== null && precioEnPlantilla > 0) {
+              dictPreciosNuevos[f.mobile + "__" + f.memoria] = precioEnPlantilla;
+              conPromo++;
+            } else {
+              // 2. Si no tiene precio base (en blanco/0) O no está el SKU en la plantilla:
+              // NO se guarda en dict -> toma MSRP oficial automáticamente
+              conMsrp++;
+            }
+          });
+
+          // Guardar en almacenamiento del navegador
+          const keyStorage = "mis_precios_personalizados_" + paisActual;
+          localStorage.setItem(keyStorage, JSON.stringify(dictPreciosNuevos));
+
+          // Actualizar vista completa al instante
+          aplicarPreciosLocalesAlReporte(ultimoReporte);
+          pintarTabla();
+          pintarKpis(ultimoReporte);
+          actualizarKpisYConsolidadoEnCaliente();
+
+          // Sincronizar al servidor silenciosamente si está encendido
+          ejecutarGuardarPrecios(false);
+
+          showToast(`Plantilla aplicada: ${conPromo} promos asignadas en Shop, ${conMsrp} modelos tomando MSRP oficial`, "success", 4500);
+
+        } catch (err) {
+          console.error("Error importando plantilla:", err);
+          showToast("Error al procesar plantilla: " + err.message, "error", 4500);
+        } finally {
           input.value = "";
-          showToast(`Se importaron ${actualizados} precios base exitosamente`, "success", 2500);
-          cargarDatos(true);
-        };
-        reader.readAsText(file);
+        }
+      }
+
+      function importarPreciosBaseCsv(input) {
+        importarPlantillaPreciosBase(input);
       }
 
       function restaurarMsrpOficial() {
@@ -5809,7 +6099,8 @@
       document.addEventListener("visibilitychange", () => {
         if (document.visibilityState === "visible") verificarActualizacionesRemotas();
       });
-
+
+
 </script>
 </body>
 </html>
