@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
   <style>
     
     /* ============================================================
@@ -3561,6 +3562,226 @@
           if (document.body.contains(clone)) document.body.removeChild(clone);
           showToast('No se pudo generar la imagen del histórico', 'error');
         });
+      }
+
+      // ==========================================
+      // GENERADOR CLIENT-SIDE DE POWERPOINT (.PPTX)
+      // Genera la presentación nativa 16:9 en cualquier navegador (incluyendo GitHub Pages)
+      // ==========================================
+      async function descargarPresentacionPptx() {
+        if (!ultimoReporte || !ultimoReporte.filas) {
+          showToast("No hay datos cargados para generar la presentación", "warning");
+          return;
+        }
+
+        // Si PptxGenJS está disponible en el navegador, generamos el archivo .pptx directamente
+        if (typeof PptxGenJS !== "undefined") {
+          try {
+            showToast("📊 Generando presentación PowerPoint 16:9...", "info", 2000);
+            
+            const pptx = new PptxGenJS();
+            pptx.layout = "LAYOUT_16x9"; // Widescreen ejecutiva
+            
+            const paisNom = (ultimoReporte.pais_nombre || paisActual).toUpperCase();
+            const moneda = ultimoReporte.moneda || "Q";
+            const bandera = ultimoReporte.bandera || "🌎";
+            const fechaStr = new Date().toLocaleDateString("es-GT");
+
+            const todasFilas = ultimoReporte.filas || [];
+            const retObj = ultimoReporte.retailers || PAISES_INFO[paisActual]?.retailers || {};
+            const retKeys = Object.keys(retObj);
+            const alertas = obtenerAlertasFiltradas() || [];
+            
+            let totalEvaluados = 0;
+            let totalOk = 0;
+            todasFilas.forEach(f => {
+              let evalFila = false;
+              let filaOk = false;
+              retKeys.forEach(k => {
+                if (f[k + "_estado"] === "ok") { filaOk = true; evalFila = true; }
+                else if (f[k + "_estado"] === "alerta" || f[k + "_estado"] === "menor") { evalFila = true; }
+              });
+              if (evalFila) totalEvaluados++;
+              if (filaOk) totalOk++;
+            });
+            const pctOk = totalEvaluados ? Math.round((totalOk / totalEvaluados) * 100) : 0;
+            const totalAlertas = alertas.length;
+
+            // Colores Corporativos Samsung
+            const C_BG = "0B0F19";
+            const C_CARD = "1A2234";
+            const C_BORDER = "2E3A59";
+            const C_TEXT = "F8FAFC";
+            const C_MUTED = "94A3B8";
+            const C_BLUE = "034EA2";
+            const C_CYAN = "38BDF8";
+            const C_RED = "EF4444";
+            const C_GREEN = "10B981";
+
+            // ----------------------------------------------------
+            // SLIDE 1: RESUMEN EJECUTIVO & SALUD DE MERCADO
+            // ----------------------------------------------------
+            const s1 = pptx.addSlide();
+            s1.background = { color: C_BG };
+
+            // Título
+            s1.addText(
+              [
+                { text: `SAMSUNG RETAIL · REPORTE EJECUTIVO DE DESFASES ${bandera}\n`, options: { fontSize: 11, bold: true, color: C_CYAN } },
+                { text: `Monitoreo de Precios en Retailers — ${paisNom}\n`, options: { fontSize: 20, bold: true, color: C_TEXT } },
+                { text: `Fecha de emisión: ${fechaStr} | Base de comparación: Samsung Shop & MSRP Oficial`, options: { fontSize: 9.5, color: C_MUTED } }
+              ],
+              { x: 0.6, y: 0.5, w: 12.1, h: 1.1, margin: 0 }
+            );
+
+            // 3 KPI Cards
+            // Card 1
+            s1.addShape(pptx.ShapeType.roundRect, { x: 0.6, y: 1.75, w: 3.8, h: 1.25, fill: { color: C_CARD }, line: { color: C_BORDER, width: 1 }, rectRadius: 0.1 });
+            s1.addText(
+              [
+                { text: `${totalEvaluados}\n`, options: { fontSize: 24, bold: true, color: C_TEXT, align: "center" } },
+                { text: "MODELOS MONITOREADOS\n", options: { fontSize: 8.5, bold: true, color: C_MUTED, align: "center" } },
+                { text: `Catálogo total: ${todasFilas.length} modelos`, options: { fontSize: 8, color: C_MUTED, align: "center" } }
+              ],
+              { x: 0.6, y: 1.82, w: 3.8, h: 1.15 }
+            );
+
+            // Card 2
+            s1.addShape(pptx.ShapeType.roundRect, { x: 4.75, y: 1.75, w: 3.8, h: 1.25, fill: { color: C_CARD }, line: { color: C_BORDER, width: 1 }, rectRadius: 0.1 });
+            s1.addText(
+              [
+                { text: `${pctOk}%\n`, options: { fontSize: 24, bold: true, color: (pctOk >= 75 ? C_GREEN : C_RED), align: "center" } },
+                { text: "CUMPLIMIENTO EN REGLA\n", options: { fontSize: 8.5, bold: true, color: C_MUTED, align: "center" } },
+                { text: `${totalOk} evaluaciones alineadas`, options: { fontSize: 8, color: C_MUTED, align: "center" } }
+              ],
+              { x: 4.75, y: 1.82, w: 3.8, h: 1.15 }
+            );
+
+            // Card 3
+            s1.addShape(pptx.ShapeType.roundRect, { x: 8.9, y: 1.75, w: 3.8, h: 1.25, fill: { color: C_CARD }, line: { color: C_BORDER, width: 1 }, rectRadius: 0.1 });
+            s1.addText(
+              [
+                { text: `${totalAlertas}\n`, options: { fontSize: 24, bold: true, color: C_RED, align: "center" } },
+                { text: "DESFASES DETECTADOS\n", options: { fontSize: 8.5, bold: true, color: C_MUTED, align: "center" } },
+                { text: "Precios por debajo de MSRP/Shop", options: { fontSize: 8, color: C_MUTED, align: "center" } }
+              ],
+              { x: 8.9, y: 1.82, w: 3.8, h: 1.15 }
+            );
+
+            // Tabla Resumen de Cadenas en Slide 1
+            s1.addText("Desglose de Desfases por Cadena Comercial", { x: 0.6, y: 3.25, w: 12.1, h: 0.35, fontSize: 13, bold: true, color: C_CYAN });
+
+            const filasTablaRet = [
+              [
+                { text: "RETAILER / CADENA", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "DESFASES", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "MAYOR DESCUENTO", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "MODELO MÁS AGRESIVO", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "ESTADO COMERCIAL", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } }
+              ]
+            ];
+
+            for (const [k, nombre] of Object.entries(retObj)) {
+              const alRet = alertas.filter(a => a.retailer_key === k || a.retailer === nombre);
+              const numDesfases = alRet.length;
+              let peorDesc = 0;
+              let peorModelo = "Alineado";
+              
+              if (numDesfases > 0) {
+                alRet.sort((a,b) => a.diff_pct - b.diff_pct);
+                peorDesc = alRet[0].diff_pct;
+                peorModelo = `${alRet[0].mobile} (${moneda} ${alRet[0].precio_retailer})`;
+              }
+
+              filasTablaRet.push([
+                { text: nombre, options: { fontSize: 9.5, color: C_TEXT, fill: { color: C_CARD } } },
+                { text: `${numDesfases} productos`, options: { fontSize: 9.5, bold: numDesfases > 0, color: (numDesfases > 0 ? C_RED : C_TEXT), fill: { color: C_CARD } } },
+                { text: numDesfases > 0 ? `${peorDesc.toFixed(1)}%` : "0%", options: { fontSize: 9.5, bold: numDesfases > 0, color: (numDesfases > 0 ? C_RED : C_TEXT), fill: { color: C_CARD } } },
+                { text: peorModelo, options: { fontSize: 9, color: C_MUTED, fill: { color: C_CARD } } },
+                { text: numDesfases > 0 ? "🔴 Alerta Comercial" : "🟢 Alineado", options: { fontSize: 9, bold: true, color: (numDesfases > 0 ? C_RED : C_GREEN), fill: { color: C_CARD } } }
+              ]);
+            }
+
+            s1.addTable(filasTablaRet, {
+              x: 0.6,
+              y: 3.7,
+              w: 12.1,
+              colW: [3.1, 2.0, 2.0, 2.8, 2.2],
+              rowH: 0.35,
+              border: { pt: 0.5, color: C_BORDER }
+            });
+
+            // ----------------------------------------------------
+            // SLIDE 2: TOP MODELOS CON MAYOR DESFASE
+            // ----------------------------------------------------
+            const s2 = pptx.addSlide();
+            s2.background = { color: C_BG };
+
+            s2.addText(
+              [
+                { text: `SAMSUNG RETAIL · AUDITORÍA DE PRECIOS ${bandera}\n`, options: { fontSize: 11, bold: true, color: C_CYAN } },
+                { text: "Top Modelos con Mayor Desfase (Precios por debajo de MSRP / Shop)\n", options: { fontSize: 20, bold: true, color: C_TEXT } },
+                { text: "Modelos prioritarios ordenados por mayor impacto porcentual de desfase", options: { fontSize: 9.5, color: C_MUTED } }
+              ],
+              { x: 0.6, y: 0.5, w: 12.1, h: 1.1, margin: 0 }
+            );
+
+            const topAlertas = [...alertas].sort((a,b) => a.diff_pct - b.diff_pct).slice(0, 11);
+            const filasTop = [
+              [
+                { text: "MODELO", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "MEMORIA", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "RETAILER", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "PRECIO TIENDA", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "PRECIO BASE/MSRP", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "DIFERENCIA", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } },
+                { text: "DESFASE %", options: { bold: true, fill: { color: C_BLUE }, color: "FFFFFF", fontSize: 9.5 } }
+              ]
+            ];
+
+            topAlertas.forEach(al => {
+              const difMon = (al.base && al.precio_retailer) ? (al.base - al.precio_retailer) : 0;
+              filasTop.push([
+                { text: al.mobile || "", options: { fontSize: 9, color: C_TEXT, fill: { color: C_CARD } } },
+                { text: al.memoria || "", options: { fontSize: 9, color: C_MUTED, fill: { color: C_CARD } } },
+                { text: al.retailer || "", options: { fontSize: 9, color: C_TEXT, fill: { color: C_CARD } } },
+                { text: `${moneda} ${al.precio_retailer}`, options: { fontSize: 9, bold: true, color: C_TEXT, fill: { color: C_CARD } } },
+                { text: `${moneda} ${al.base}`, options: { fontSize: 9, color: C_MUTED, fill: { color: C_CARD } } },
+                { text: `-${moneda} ${Math.round(difMon)}`, options: { fontSize: 9, bold: true, color: C_RED, fill: { color: C_CARD } } },
+                { text: `${al.diff_pct.toFixed(1)}%`, options: { fontSize: 9, bold: true, color: C_RED, fill: { color: C_CARD } } }
+              ]);
+            });
+
+            s2.addTable(filasTop, {
+              x: 0.6,
+              y: 1.7,
+              w: 12.1,
+              colW: [2.7, 1.2, 2.1, 1.6, 1.6, 1.4, 1.5],
+              rowH: 0.35,
+              border: { pt: 0.5, color: C_BORDER }
+            });
+
+            const fileNamePptx = `Reporte_Desfases_${paisActual.toUpperCase()}_${new Date().toISOString().slice(0,10)}.pptx`;
+            await pptx.writeFile({ fileName: fileNamePptx });
+            showToast(`✅ Presentación ${fileNamePptx} descargada exitosamente`, "success", 4000);
+            return;
+
+          } catch (err) {
+            console.error("Error generando PPTX con PptxGenJS:", err);
+          }
+        }
+
+        // Si estamos en entorno servidor local con endpoint activo:
+        const esModoEstatico = window.location.hostname.includes("github.io") || window.location.protocol === "file:" || Boolean(window.DATOS_OFFLINE);
+        if (!esModoEstatico) {
+          showToast("Descargando presentación PowerPoint desde el servidor...", "info", 2000);
+          window.location.href = "/api/exportar-ppt?pais=" + paisActual;
+          return;
+        }
+
+        // Si falló PptxGenJS y estamos en GitHub Pages, usamos la copia gráfica en portapapeles
+        copiarConsolidadoGeneralImagen();
+        showToast("📸 Gráfica copiada para pegar con Ctrl+V en tu PPT. (En local puedes usar generar_ppt.bat)", "info", 5000);
       }
 
       function copiarConsolidadoGeneralImagen() {

@@ -29,3 +29,4 @@ for %%f in (Reporte_Desfases_GT_*.pptx) do (
 :fin
 echo Listo. Presiona cualquier tecla para salir.
 pause > nul
+
