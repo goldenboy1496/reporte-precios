@@ -8,8 +8,8 @@
     "ultima_actualizacion": 1793896815.6543405
   },
   "max": {
-    "estado": "corriendo",
-    "inicio": 1793896815.9709716
+    "estado": "ok",
+    "ultima_actualizacion": 1793896862.0613039
   },
   "diunsa": {
     "estado": "ok",
@@ -42,8 +42,8 @@
     "duracion_segundos": 95.4
   },
   "walmart": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793203547.201684
+    "estado": "corriendo",
+    "inicio": 1793896862.5188515
   },
   "walmart_sv": {
     "estado": "ok",
