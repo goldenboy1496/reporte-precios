@@ -4,13 +4,12 @@
     "ultima_actualizacion": 1793896770.459982
   },
   "gallo": {
-    "estado": "corriendo",
-    "inicio": 1793896770.92945
+    "estado": "ok",
+    "ultima_actualizacion": 1793896815.6543405
   },
   "max": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793728878.2321577,
-    "duracion_segundos": 69.6
+    "estado": "corriendo",
+    "inicio": 1793896815.9709716
   },
   "diunsa": {
     "estado": "ok",
