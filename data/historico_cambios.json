@@ -7966,5 +7966,37 @@
     "diferencia": 300.0,
     "pct_cambio": 10.0,
     "tipo": "subida"
+  },
+  {
+    "id": "1793910623_GT_max_Galaxy-A17_8+256",
+    "fecha": "2026-11-05 14:30:23",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy-A17",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 2496.0,
+    "precio_nuevo": 2695.0,
+    "diferencia": 199.0,
+    "pct_cambio": 7.97,
+    "tipo": "subida"
+  },
+  {
+    "id": "1793910623_GT_max_Galaxy-A27 5G_8+256",
+    "fecha": "2026-11-05 14:30:23",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy-A27 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3749.0,
+    "precio_nuevo": 3499.0,
+    "diferencia": -250.0,
+    "pct_cambio": -6.67,
+    "tipo": "baja"
   }
 ]

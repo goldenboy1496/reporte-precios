@@ -2,12 +2,12 @@ id,nombre,precio,url
 SMS741BZV,"Samsung Galaxy S26 FE, 8+256GB, Dual SIM, Liberado (Violeta)",Q7795,https://www.max.com.gt/samsung-galaxy-s26-fe-8-256gb-dual-sim-liberado-violeta-samsung-sms741bzv
 SMS741BLGJ,"Samsung Galaxy S26 FE, 8+128GB, Dual SIM, Liberado (Verde)",Q6799,https://www.max.com.gt/samsung-galaxy-s26-fe-8-128gb-dual-sim-liberado-verde-samsung-sms741blgj
 SMA376BZWJ,"Samsung Galaxy A37 5G, 6+128GB, Dual SIM, Liberado (Blanco)",Q3196,https://www.max.com.gt/samsung-galaxy-a37-5g-6-128gb-dual-sim-liberado-blanco-samsung-sma376bzwj
+SMA175FZK,"Samsung Galaxy A17, 8+256GB, Dual SIM, Liberado (Negro)",Q2695,https://www.max.com.gt/samsung-galaxy-a17-8-256gb-dual-sim-liberado-negro-samsung-sma175fzk
 SMA576BZA,"Samsung Galaxy A57 5G, 8+256GB, Dual SIM, Liberado (Gris)",Q4296,https://www.max.com.gt/samsung-galaxy-a57-5g-8-256gb-dual-sim-liberado-gris-samsung-sma576bza
-SMS948BZKJ,"Samsung, Galaxy S26 Ultra, 12+256GB, Dual SIM, Liberado (Negro)",Q9499,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-256gb-dual-sim-liberado-negro-samsung-sms948bzkj
 SMS948BZVJ,"Samsung, Galaxy S26 Ultra, 12+256GB, Dual SIM, Liberado (Morado)",Q9499,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-256gb-dual-sim-liberado-morado-samsung-sms948bzvj
 SMA576BDB,"Samsung Galaxy A57 5G, 8+256GB, Dual SIM, Liberado (Azul)",Q4296,https://www.max.com.gt/samsung-galaxy-a57-5g-8-256gb-dual-sim-liberado-azul-samsung-sma576bdb
 SMA576BLB,"Samsung Galaxy A57 5G, 8+256GB, Dual SIM, Liberado (Celeste)",Q4296,https://www.max.com.gt/samsung-galaxy-a57-5g-8-256gb-dual-sim-liberado-celeste-samsung-sma576blb
-SMF971BLV,"Samsung, Galaxy Z Fold8, 12+256GB, Dual SIM + E-SIM, Liberado (Lila)",Q13995,https://www.max.com.gt/samsung-galaxy-z-fold8-12-256gb-dual-sim-e-sim-liberado-lila-samsung-smf971blv
+SMS938BZKK,"Samsung, S25 Ultra, 12+256GB, Dual SIM, Liberado (Titanium Black)",Q8399,https://www.max.com.gt/samsung-s25-ultra-12-256gb-dual-sim-liberado-titanium-black-samsung-sms938bzkk
 SMA576BZV,"Samsung Galaxy A57 5G, 8+256GB, Dual SIM, Liberado (Violeta)",Q4296,https://www.max.com.gt/samsung-galaxy-a57-5g-8-256gb-dual-sim-liberado-violeta-samsung-sma576bzv
 SMA376BDG,"Samsung Galaxy A37 5G, 8+256GB, Dual SIM, Liberado (Verde)",Q3296,https://www.max.com.gt/samsung-galaxy-a37-5g-8-256gb-dual-sim-liberado-verde-samsung-sma376bdg
 SMA376BLV,"Samsung Galaxy A37 5G, 8+256GB, Dual SIM, Liberado (Violeta)",Q3296,https://www.max.com.gt/samsung-galaxy-a37-5g-8-256gb-dual-sim-liberado-violeta-samsung-sma376blv
@@ -15,15 +15,26 @@ SMA376BZA,"Samsung Galaxy A37 5G, 8+256GB, Dual SIM, Liberado (Negro)",Q3296,htt
 SMA576BDBK,"Samsung Galaxy A57 5G, 12+512GB, Dual SIM, Liberado (Azul)",Q5496,https://www.max.com.gt/samsung-galaxy-a57-5g-12-512gb-dual-sim-liberado-azul-samsung-sma576bdbk
 SMA576BZAK,"Samsung Galaxy A57 5G, 12+512GB, Dual SIM, Liberado (Gris)",Q5496,https://www.max.com.gt/samsung-galaxy-a57-5g-12-512gb-dual-sim-liberado-gris-samsung-sma576bzak
 SMS948BLBJ,"Samsung, Galaxy S26 Ultra, 12+256GB, Dual SIM, Liberado (Celeste)",Q9499,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-256gb-dual-sim-liberado-celeste-samsung-sms948blbj
-SMS938BZKK,"Samsung, S25 Ultra, 12+256GB, Dual SIM, Liberado (Titanium Black)",Q8399,https://www.max.com.gt/samsung-s25-ultra-12-256gb-dual-sim-liberado-titanium-black-samsung-sms938bzkk
+SMF971BLV,"Samsung, Galaxy Z Fold8, 12+256GB, Dual SIM + E-SIM, Liberado (Lila)",Q13995,https://www.max.com.gt/samsung-galaxy-z-fold8-12-256gb-dual-sim-e-sim-liberado-lila-samsung-smf971blv
 SMA576BZVK,"Samsung Galaxy A57 5G, 12+512GB, Dual SIM, Liberado (Violeta)",Q5496,https://www.max.com.gt/samsung-galaxy-a57-5g-12-512gb-dual-sim-liberado-violeta-samsung-sma576bzvk
+SMS948BZKJ,"Samsung, Galaxy S26 Ultra, 12+256GB, Dual SIM, Liberado (Negro)",Q9499,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-256gb-dual-sim-liberado-negro-samsung-sms948bzkj
 SMA276BZKK,"Samsung Galaxy A27 5G, 6+128GB, Dual SIM, Liberado (Negro)",Q2899,https://www.max.com.gt/samsung-galaxy-a27-5g-6-128gb-dual-sim-liberado-negro-samsung-sma276bzkk
-SMA175FZAF,"Samsung Galaxy A17, 4+128GB, Dual SIM, Liberado (Gris)",Q1899,https://www.max.com.gt/samsung-galaxy-a17-4-128gb-dual-sim-liberado-gris-samsung-sma175fzaf
 SMS731BZK15,"Samsung Galaxy S25 FE, 8+256GB, Dual SIM, Liberado (Negro)",Q5399,https://www.max.com.gt/samsung-galaxy-s25-fe-8-256gb-dual-sim-liberado-negro-samsung-sms731bzk15
-SMA276BLIK,"Samsung Galaxy A27 5G, 6+128GB, Dual SIM, Liberado (Rosado)",Q2899,https://www.max.com.gt/samsung-galaxy-a27-5g-6-128gb-dual-sim-liberado-rosado-samsung-sma276blik
 SMA366ELG,"Samsung Galaxy A36 5G, 8+256GB, Dual SIM, Liberado (Verde)",Q3249,https://www.max.com.gt/samsung-galaxy-a36-5g-8-256gb-dual-sim-liberado-verde-samsung-sma366elg
 SMA376BLVJ,"Samsung Galaxy A37 5G, 6+128GB, Dual SIM, Liberado (Violeta)",Q3196,https://www.max.com.gt/samsung-galaxy-a37-5g-6-128gb-dual-sim-liberado-violeta-samsung-sma376blvj
 SMA376BDGJ,"Samsung Galaxy A37 5G, 6+128GB, Dual SIM, Liberado (Verde)",Q3196,https://www.max.com.gt/samsung-galaxy-a37-5g-6-128gb-dual-sim-liberado-verde-samsung-sma376bdgj
+SMS731BDB,"Samsung Galaxy S25 FE, 8+256GB, Dual SIM, Liberado (Azul)",Q5399,https://www.max.com.gt/samsung-galaxy-s25-fe-8-256gb-dual-sim-liberado-azul-samsung-sms731bdb
+SMS942BZV,"Samsung, Galaxy S26, 12+256GB, Dual SIM, Liberado (Morado)",Q7999,https://www.max.com.gt/samsung-galaxy-s26-12-256gb-dual-sim-liberado-morado-samsung-sms942bzv
+SMF766BZK,"Galaxy Z Flip7 12+512GB, Dual SIM + E-SIM liberado color negro",Q9999,https://www.max.com.gt/samsung-galaxy-z-flip7-12-512gb-dual-sim-liberado-negro-samsung-smf766bzk
+SMA276BLIQ,"Samsung Galaxy A27 5G, 8+256GB, Dual SIM, Liberado (Rosado)",Q3499,https://www.max.com.gt/samsung-galaxy-a27-5g-8-256gb-dual-sim-liberado-rosado-samsung-sma276bliq
+SMA276BZKQ,"Samsung Galaxy A27 5G, 8+256GB, Dual SIM, Liberado (Negro)",Q3499,https://www.max.com.gt/samsung-galaxy-a27-5g-8-256gb-dual-sim-liberado-negro-samsung-sma276bzkq
+SMA376BZAJ,"Samsung Galaxy A37 5G, 6+128GB, Dual SIM, Liberado (Negro)",Q3196,https://www.max.com.gt/samsung-galaxy-a37-5g-6-128gb-dual-sim-liberado-negro-samsung-sma376bzaj
+SMF966BZK,"Galaxy Z Fold7 12+512GB, Dual SIM + E-SIM liberado color negro",Q14999,https://www.max.com.gt/samsung-galaxy-z-fold7-12-512gb-dual-sim-liberado-negro-samsung-smf966bzk
+SMS948BZW,"Samsung, Galaxy S26 Ultra, 12+512GB, Dual SIM, Liberado (Blanco)",Q12346,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-512gb-dual-sim-liberado-blanco-samsung-sms948bzw
+SMS948BLB,"Samsung, Galaxy S26 Ultra, 12+512GB, Dual SIM, Liberado (Celeste)",Q12346,https://www.max.com.gt/samsung-galaxy-s26-ultra-12-512gb-dual-sim-liberado-celeste-samsung-sms948blb
+SMA276BZB,"Samsung Galaxy A27 5G, 8+256GB, Dual SIM, Liberado (Azul)",Q3499,https://www.max.com.gt/samsung-galaxy-a27-5g-8-256gb-dual-sim-liberado-azul-samsung-sma276bzb
+SMF766BZR,"Galaxy Z Flip7 12+512GB, Dual SIM + E-SIM liberado color rojo",Q9999,https://www.max.com.gt/samsung-galaxy-z-flip7-12-512gb-dual-sim-liberado-rojo-samsung-smf766bzr
+SMS942BZW,"Samsung, Galaxy S26, 12+256GB, Dual SIM, Liberado (Blanco)",Q7999,https://www.max.com.gt/samsung-galaxy-s26-12-256gb-dual-sim-liberado-blanco-samsung-sms942bzw
 SMR420NZK,Audífonos Samsung Galaxy Buds 3 FE In-Ear Inalámbricos con Cancelación Activa de Ruido (Negro),Q1199,https://www.max.com.gt/audifonos-samsung-galaxy-buds-3-fe-in-ear-inalambricos-con-cancelacion-activa-de-ruido-negro-samsung-smr420nzk
 SMR410NZW,Audífonos Samsung Galaxy Buds Core In-Ear Inalámbricos con Cancelación Activa de Ruido (Blanco),Q399,https://www.max.com.gt/audifonos-samsung-galaxy-buds-core-in-ear-inalambricos-con-cancelacion-activa-de-ruido-blanco-samsung-smr410nzw
 SMR640NZK,Audífonos Samsung Galaxy Buds4 Pro In-Ear con Cancelación de Ruido y Sonido Hi-Fi (Negro),Q1799,https://www.max.com.gt/audifonos-samsung-galaxy-buds4-pro-in-ear-con-cancelacion-de-ruido-y-sonido-hi-fi-negro-samsung-smr640nzk
