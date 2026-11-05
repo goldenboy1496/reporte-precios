@@ -1,13 +1,11 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1793728807.6516404,
-    "duracion_segundos": 5.4
+    "ultima_actualizacion": 1793896770.459982
   },
   "gallo": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793728920.600039,
-    "duracion_segundos": 41.3
+    "estado": "corriendo",
+    "inicio": 1793896770.92945
   },
   "max": {
     "estado": "ok",
