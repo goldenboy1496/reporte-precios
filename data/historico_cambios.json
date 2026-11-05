@@ -7934,5 +7934,37 @@
     "diferencia": -3.0,
     "pct_cambio": -0.23,
     "tipo": "baja"
+  },
+  {
+    "id": "1793910494_GT_elektra_Galaxy Watch Ultra_",
+    "fecha": "2026-11-05 14:28:14",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Watch Ultra",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 2999.0,
+    "precio_nuevo": 3299.0,
+    "diferencia": 300.0,
+    "pct_cambio": 10.0,
+    "tipo": "subida"
+  },
+  {
+    "id": "1793910494_GT_elektra_Galaxy Watch Ultra Refresh_",
+    "fecha": "2026-11-05 14:28:14",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Watch Ultra Refresh",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 2999.0,
+    "precio_nuevo": 3299.0,
+    "diferencia": 300.0,
+    "pct_cambio": 10.0,
+    "tipo": "subida"
   }
 ]
