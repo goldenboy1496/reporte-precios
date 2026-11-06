@@ -7998,5 +7998,21 @@
     "diferencia": -250.0,
     "pct_cambio": -6.67,
     "tipo": "baja"
+  },
+  {
+    "id": "1793978649_GT_max_Galaxy-A07s_64GB",
+    "fecha": "2026-11-06 09:24:09",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy-A07s",
+    "memoria": "64GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 1446.0,
+    "precio_nuevo": 1449.0,
+    "diferencia": 3.0,
+    "pct_cambio": 0.21,
+    "tipo": "subida"
   }
 ]
