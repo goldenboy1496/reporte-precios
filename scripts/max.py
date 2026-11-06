@@ -68,14 +68,28 @@ def main():
         "https://www.max.com.gt/catalogsearch/result/?q=samsung+galaxy+fit",
     ]
 
-    driver = webdriver.Chrome(options=options)
+    from selenium.webdriver.chrome.service import Service
+    service = Service()
+    if sys.platform == "win32" and "--visible" not in sys.argv:
+        service.creation_flags = 0x08000000
+
+    options.add_argument("--log-level=3")
+    options.add_argument("--silent")
+    options.add_argument("--disable-logging")
+
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.set_page_load_timeout(35)
+    driver.set_script_timeout(35)
     productos = []
     vistos = set()
 
     try:
         for url in urls:
             print(f"\nConsultando MAX: {url} ...")
-            driver.get(url)
+            try:
+                driver.get(url)
+            except Exception as e_get:
+                print(f"  [Aviso] Timeout o error al cargar {url}: {e_get}")
             time.sleep(1.2)
             scroll_down(driver)
 

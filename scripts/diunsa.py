@@ -87,7 +87,18 @@ def main():
     })
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-    driver = webdriver.Chrome(options=options)
+    options.add_argument("--log-level=3")
+    options.add_argument("--silent")
+    options.add_argument("--disable-logging")
+
+    from selenium.webdriver.chrome.service import Service
+    service = Service()
+    if sys.platform == "win32" and not visible:
+        service.creation_flags = 0x08000000
+
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.set_page_load_timeout(35)
+    driver.set_script_timeout(35)
     productos_dict = {}
 
     urls = [
@@ -103,7 +114,10 @@ def main():
     try:
         for url in urls:
             print(f"Consultando Diunsa: {url} ...")
-            driver.get(url)
+            try:
+                driver.get(url)
+            except Exception as e_get:
+                print(f"  [Aviso] Timeout o error al cargar {url}: {e_get}")
             time.sleep(2)
 
             # Scroll progresivo para hidratar componentes Angular

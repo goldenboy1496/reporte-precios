@@ -54,12 +54,26 @@ def main():
         "galaxy fit",
     ]
 
+    options.add_argument("--log-level=3")
+    options.add_argument("--silent")
+    options.add_argument("--disable-logging")
+
+    from selenium.webdriver.chrome.service import Service
+    service = Service()
+    if sys.platform == "win32" and not visible:
+        service.creation_flags = 0x08000000
+
     try:
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(service=service, options=options)
+        driver.set_page_load_timeout(35)
+        driver.set_script_timeout(35)
         for q in queries:
             url = f"https://www.prado.com.sv/catalogsearch/result/?q={q.replace(' ', '+')}"
             print(f"Buscando en Prado: {url} ...")
-            driver.get(url)
+            try:
+                driver.get(url)
+            except Exception as e_get:
+                print(f"  [Aviso] Timeout o error al cargar {url}: {e_get}")
             time.sleep(3.5)
 
             for _ in range(2):

@@ -200,13 +200,14 @@ def publicar_a_github_sync():
         from datetime import datetime
         export_script = BASE_DIR / "exportar_reporte_estatico.py"
         if export_script.exists():
-            subprocess.run([sys.executable, str(export_script)], cwd=str(BASE_DIR), capture_output=True, text=True)
+            win_flags = 0x08000000 if sys.platform == "win32" else 0
+            subprocess.run([sys.executable, str(export_script)], cwd=str(BASE_DIR), capture_output=True, text=True, creationflags=win_flags)
         repo_dir = BASE_DIR if (BASE_DIR / ".git").exists() else BASE_DIR.parent / "reporte_web"
         if repo_dir.exists():
-            subprocess.run(["git", "add", "-A"], cwd=str(repo_dir), capture_output=True)
+            subprocess.run(["git", "add", "-A"], cwd=str(repo_dir), capture_output=True, creationflags=win_flags)
             msg = f"Auto-sincronizacion desde dashboard ({datetime.now().strftime('%d/%m/%Y %H:%M')})"
-            subprocess.run(["git", "commit", "-m", msg], cwd=str(repo_dir), capture_output=True)
-            res = subprocess.run(["git", "push", "origin", "main"], cwd=str(repo_dir), capture_output=True, text=True)
+            subprocess.run(["git", "commit", "-m", msg], cwd=str(repo_dir), capture_output=True, creationflags=win_flags)
+            res = subprocess.run(["git", "push", "origin", "main"], cwd=str(repo_dir), capture_output=True, text=True, creationflags=win_flags)
             return res.returncode == 0
     except Exception as e:
         print("[!] Error en publicar_a_github:", e)
@@ -240,12 +241,14 @@ def actualizar(retailer):
     try:
         import subprocess
 
+        win_flags = 0x08000000 if sys.platform == "win32" else 0
         result = subprocess.run(
             [sys.executable, str(info["script"])],
             cwd=str(BASE_DIR),
             capture_output=True,
             text=True,
             timeout=900,
+            creationflags=win_flags,
         )
         ok = result.returncode == 0 and info["csv"].exists()
         status = load_status()

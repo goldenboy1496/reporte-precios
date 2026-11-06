@@ -107,9 +107,23 @@ def main():
     else:
         print("Iniciando Gallo más Gallo con navegador VISIBLE en pantalla...")
 
-    driver = webdriver.Chrome(options=options)
+    from selenium.webdriver.chrome.service import Service
+    service = Service()
+    if sys.platform == "win32" and "--visible" not in sys.argv:
+        service.creation_flags = 0x08000000
+
+    options.add_argument("--log-level=3")
+    options.add_argument("--silent")
+    options.add_argument("--disable-logging")
+
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.set_page_load_timeout(35)
+    driver.set_script_timeout(35)
     try:
-        driver.get("https://www.elgallomasgallo.com.gt/productos/celulares-y-tablets/telefonos-celulares/samsung")
+        try:
+            driver.get("https://www.elgallomasgallo.com.gt/productos/celulares-y-tablets/telefonos-celulares/samsung")
+        except Exception as e_get:
+            print(f"  [Aviso] Timeout o error al cargar: {e_get}")
         time.sleep(4)
         close_flash_sale_popup(driver)
 
