@@ -8046,5 +8046,53 @@
     "diferencia": -500.0,
     "pct_cambio": -14.29,
     "tipo": "baja"
+  },
+  {
+    "id": "1794240711_GT_max_Galaxy Watch Ultra_",
+    "fecha": "2026-11-09 10:11:51",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy Watch Ultra",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 3396.0,
+    "precio_nuevo": 3499.0,
+    "diferencia": 103.0,
+    "pct_cambio": 3.03,
+    "tipo": "subida"
+  },
+  {
+    "id": "1794240711_GT_max_Galaxy Watch Ultra Refresh_",
+    "fecha": "2026-11-09 10:11:51",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy Watch Ultra Refresh",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 3396.0,
+    "precio_nuevo": 3499.0,
+    "diferencia": 103.0,
+    "pct_cambio": 3.03,
+    "tipo": "subida"
+  },
+  {
+    "id": "1794240711_GT_max_Watch8 40mm BT_",
+    "fecha": "2026-11-09 10:11:51",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Watch8 40mm BT",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 1296.0,
+    "precio_nuevo": 1299.0,
+    "diferencia": 3.0,
+    "pct_cambio": 0.23,
+    "tipo": "subida"
   }
 ]
