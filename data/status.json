@@ -33,13 +33,11 @@
   },
   "curacao_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1793729099.97955,
-    "duracion_segundos": 154.9
+    "ultima_actualizacion": 1794241347.5469818
   },
   "prado": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793729196.3506799,
-    "duracion_segundos": 95.4
+    "estado": "corriendo",
+    "inicio": 1794241347.7394853
   },
   "walmart": {
     "estado": "ok",

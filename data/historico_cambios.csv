@@ -510,3 +510,16 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1794240715_GT_walmart_Galaxy S25 Ultra_12+256,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S25 Ultra,12+256,Smartphones,10295.0,8395.0,-1900.0,-18.46,baja
 1794240715_GT_walmart_Galaxy S26+_12+256,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S26+,12+256,Smartphones,11595.0,9895.0,-1700.0,-14.66,baja
 1794240715_GT_walmart_Galaxy S26 Ultra_12+512GB,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S26 Ultra,12+512GB,Smartphones,15495.0,12795.0,-2700.0,-17.42,baja
+1794241347_SV_curacao_sv_Galaxy-A07_4+128,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy-A07,4+128,Smartphones,189.0,139.0,-50.0,-26.46,baja
+1794241347_SV_curacao_sv_Galaxy-A17_4+128,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,210.0,180.0,-30.0,-14.29,baja
+1794241347_SV_curacao_sv_Galaxy-A17_8+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy-A17,8+256,Smartphones,269.0,349.0,80.0,29.74,subida
+1794241347_SV_curacao_sv_Galaxy-A27 5G_8+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy-A27 5G,8+256,Smartphones,539.0,489.0,-50.0,-9.28,baja
+1794241347_SV_curacao_sv_Galaxy-A57 5G_8+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy-A57 5G,8+256,Smartphones,709.0,565.0,-144.0,-20.31,baja
+1794241347_SV_curacao_sv_Galaxy S25 Ultra_12+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy S25 Ultra,12+256,Smartphones,1145.0,1100.0,-45.0,-3.93,baja
+1794241347_SV_curacao_sv_Galaxy S26 Ultra_256GB,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy S26 Ultra,256GB,Smartphones,1369.0,1305.0,-64.0,-4.67,baja
+1794241347_SV_curacao_sv_Galaxy Z Fold8 Ultra_12GB_256GB,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy Z Fold8 Ultra,12GB_256GB,Smartphones,1799.0,2199.0,400.0,22.23,subida
+1794241347_SV_curacao_sv_Glaxy Tab A11 Wifi (No Bookcover)_4+64GB,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Glaxy Tab A11 Wifi (No Bookcover),4+64GB,Tablets,159.0,169.0,10.0,6.29,subida
+1794241347_SV_curacao_sv_Galaxy Tab A11 LTE (No Bookcover)_4+64GB,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy Tab A11 LTE (No Bookcover),4+64GB,Tablets,199.0,219.0,20.0,10.05,subida
+1794241347_SV_curacao_sv_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,Tablets,464.0,559.0,95.0,20.47,subida
+1794241347_SV_curacao_sv_Galaxy Tab S12+ WIFI (No Keyboard Inbox)_12+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy Tab S12+ WIFI (No Keyboard Inbox),12+256,Tablets,1689.0,1459.0,-230.0,-13.62,baja
+1794241347_SV_curacao_sv_Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)_12+256,2026-11-09 10:22:27,SV,$,La Curacao,curacao_sv,Galaxy Tab S12Ultra WIFI (No Keyboard Inbox),12+256,Tablets,1969.0,1699.0,-270.0,-13.71,baja
