@@ -27,8 +27,8 @@
     "duracion_segundos": 34.4
   },
   "siman": {
-    "estado": "corriendo",
-    "inicio": 1794241433.121115
+    "estado": "ok",
+    "ultima_actualizacion": 1794241444.8151193
   },
   "curacao_sv": {
     "estado": "ok",
@@ -43,9 +43,8 @@
     "ultima_actualizacion": 1794240715.782903
   },
   "walmart_sv": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793729202.9877608,
-    "duracion_segundos": 5.6
+    "estado": "corriendo",
+    "inicio": 1794241445.008453
   },
   "walmart_hn": {
     "estado": "ok",
