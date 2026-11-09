@@ -505,3 +505,8 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1794240711_GT_max_Galaxy Watch Ultra_,2026-11-09 10:11:51,GT,Q,MAX,max,Galaxy Watch Ultra,,Wearables,3396.0,3499.0,103.0,3.03,subida
 1794240711_GT_max_Galaxy Watch Ultra Refresh_,2026-11-09 10:11:51,GT,Q,MAX,max,Galaxy Watch Ultra Refresh,,Wearables,3396.0,3499.0,103.0,3.03,subida
 1794240711_GT_max_Watch8 40mm BT_,2026-11-09 10:11:51,GT,Q,MAX,max,Watch8 40mm BT,,Wearables,1296.0,1299.0,3.0,0.23,subida
+1794240715_GT_walmart_Galaxy-A57 5G_12+512,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy-A57 5G,12+512,Smartphones,6595.0,6295.0,-300.0,-4.55,baja
+1794240715_GT_walmart_Galaxy S26_12+256,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S26,12+256,Smartphones,9195.0,7995.0,-1200.0,-13.05,baja
+1794240715_GT_walmart_Galaxy S25 Ultra_12+256,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S25 Ultra,12+256,Smartphones,10295.0,8395.0,-1900.0,-18.46,baja
+1794240715_GT_walmart_Galaxy S26+_12+256,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S26+,12+256,Smartphones,11595.0,9895.0,-1700.0,-14.66,baja
+1794240715_GT_walmart_Galaxy S26 Ultra_12+512GB,2026-11-09 10:11:55,GT,Q,Walmart,walmart,Galaxy S26 Ultra,12+512GB,Smartphones,15495.0,12795.0,-2700.0,-17.42,baja
