@@ -8014,5 +8014,37 @@
     "diferencia": 3.0,
     "pct_cambio": 0.21,
     "tipo": "subida"
+  },
+  {
+    "id": "1794240598_GT_elektra_Galaxy-A27 5G_8+256",
+    "fecha": "2026-11-09 10:09:58",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A27 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3745.0,
+    "precio_nuevo": 3695.0,
+    "diferencia": -50.0,
+    "pct_cambio": -1.34,
+    "tipo": "baja"
+  },
+  {
+    "id": "1794240598_GT_elektra_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB",
+    "fecha": "2026-11-09 10:09:58",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Tab S10 FE Wifi (Book Cover  Inbox)",
+    "memoria": "128GB",
+    "categoria": "Tablets",
+    "precio_anterior": 3499.0,
+    "precio_nuevo": 2999.0,
+    "diferencia": -500.0,
+    "pct_cambio": -14.29,
+    "tipo": "baja"
   }
 ]

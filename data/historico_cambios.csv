@@ -500,3 +500,5 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1793910623_GT_max_Galaxy-A17_8+256,2026-11-05 14:30:23,GT,Q,MAX,max,Galaxy-A17,8+256,Smartphones,2496.0,2695.0,199.0,7.97,subida
 1793910623_GT_max_Galaxy-A27 5G_8+256,2026-11-05 14:30:23,GT,Q,MAX,max,Galaxy-A27 5G,8+256,Smartphones,3749.0,3499.0,-250.0,-6.67,baja
 1793978649_GT_max_Galaxy-A07s_64GB,2026-11-06 09:24:09,GT,Q,MAX,max,Galaxy-A07s,64GB,Smartphones,1446.0,1449.0,3.0,0.21,subida
+1794240598_GT_elektra_Galaxy-A27 5G_8+256,2026-11-09 10:09:58,GT,Q,Elektra,elektra,Galaxy-A27 5G,8+256,Smartphones,3745.0,3695.0,-50.0,-1.34,baja
+1794240598_GT_elektra_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB,2026-11-09 10:09:58,GT,Q,Elektra,elektra,Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,Tablets,3499.0,2999.0,-500.0,-14.29,baja
