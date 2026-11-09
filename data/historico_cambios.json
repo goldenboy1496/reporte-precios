@@ -8718,5 +8718,21 @@
     "diferencia": -124.0,
     "pct_cambio": -16.12,
     "tipo": "baja"
+  },
+  {
+    "id": "1794242744_HN_diunsa_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-11-09 10:45:44",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Diunsa",
+    "retailer_key": "diunsa",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 29990.0,
+    "precio_nuevo": 28990.0,
+    "diferencia": -1000.0,
+    "pct_cambio": -3.33,
+    "tipo": "baja"
   }
 ]
