@@ -27,17 +27,16 @@
     "duracion_segundos": 34.4
   },
   "siman": {
-    "estado": "ok",
-    "ultima_actualizacion": 1793728943.9767852,
-    "duracion_segundos": 16.8
+    "estado": "corriendo",
+    "inicio": 1794241433.121115
   },
   "curacao_sv": {
     "estado": "ok",
     "ultima_actualizacion": 1794241347.5469818
   },
   "prado": {
-    "estado": "corriendo",
-    "inicio": 1794241347.7394853
+    "estado": "ok",
+    "ultima_actualizacion": 1794241432.8698418
   },
   "walmart": {
     "estado": "ok",
