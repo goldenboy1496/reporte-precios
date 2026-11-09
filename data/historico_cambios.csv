@@ -545,3 +545,10 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1794241450_SV_walmart_sv_Watch8 40mm BT_,2026-11-09 10:24:10,SV,$,Walmart,walmart_sv,Watch8 40mm BT,,Wearables,379.0,259.0,-120.0,-31.66,baja
 1794241450_SV_walmart_sv_Galaxy Watch Ultra2_,2026-11-09 10:24:10,SV,$,Walmart,walmart_sv,Galaxy Watch Ultra2,,Wearables,769.0,645.0,-124.0,-16.12,baja
 1794242744_HN_diunsa_Galaxy S25 Ultra_12+256,2026-11-09 10:45:44,HN,L,Diunsa,diunsa,Galaxy S25 Ultra,12+256,Smartphones,29990.0,28990.0,-1000.0,-3.33,baja
+1794242748_HN_elektra_hn_Galaxy-A07_4+128,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy-A07,4+128,Smartphones,4099.0,3499.0,-600.0,-14.64,baja
+1794242748_HN_elektra_hn_Galaxy-A17_4+128,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy-A17,4+128,Smartphones,5999.0,6199.0,200.0,3.33,subida
+1794242748_HN_elektra_hn_Galaxy-A27 5G_6+128,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy-A27 5G,6+128,Smartphones,9999.0,10199.0,200.0,2.0,subida
+1794242748_HN_elektra_hn_Galaxy-A37 5G_8+256,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy-A37 5G,8+256,Smartphones,13799.0,13999.0,200.0,1.45,subida
+1794242748_HN_elektra_hn_Galaxy-A57 5G_8+256,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy-A57 5G,8+256,Smartphones,17699.0,15799.0,-1900.0,-10.74,baja
+1794242748_HN_elektra_hn_Galaxy S25 Ultra_12+256,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy S25 Ultra,12+256,Smartphones,31299.0,29799.0,-1500.0,-4.79,baja
+1794242748_HN_elektra_hn_Galaxy S26 Ultra_256GB,2026-11-09 10:45:48,HN,L,Elektra HN,elektra_hn,Galaxy S26 Ultra,256GB,Smartphones,36799.0,35299.0,-1500.0,-4.08,baja
