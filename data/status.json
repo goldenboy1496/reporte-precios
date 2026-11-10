@@ -24,16 +24,16 @@
     "ultima_actualizacion": 1794242782.876849
   },
   "siman": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794241444.8151193
+    "estado": "corriendo",
+    "inicio": 1794324539.1120822
   },
   "curacao_sv": {
     "estado": "ok",
     "ultima_actualizacion": 1794324455.0840352
   },
   "prado": {
-    "estado": "corriendo",
-    "inicio": 1794324455.2750113
+    "estado": "ok",
+    "ultima_actualizacion": 1794324538.9021618
   },
   "walmart": {
     "estado": "ok",
