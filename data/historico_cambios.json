@@ -9118,5 +9118,21 @@
     "diferencia": 2700.0,
     "pct_cambio": 21.1,
     "tipo": "subida"
+  },
+  {
+    "id": "1794324455_SV_curacao_sv_Galaxy Tab A11 LTE (No Bookcover)_4+64GB",
+    "fecha": "2026-11-10 09:27:35",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "La Curacao",
+    "retailer_key": "curacao_sv",
+    "mobile": "Galaxy Tab A11 LTE (No Bookcover)",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 219.0,
+    "precio_nuevo": 169.0,
+    "diferencia": -50.0,
+    "pct_cambio": -22.83,
+    "tipo": "baja"
   }
 ]
