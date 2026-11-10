@@ -8958,5 +8958,21 @@
     "diferencia": -996.0,
     "pct_cambio": -10.49,
     "tipo": "baja"
+  },
+  {
+    "id": "1794323972_GT_max_Galaxy S26 Ultra_12+512GB",
+    "fecha": "2026-11-10 09:19:32",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 12346.0,
+    "precio_nuevo": 12396.0,
+    "diferencia": 50.0,
+    "pct_cambio": 0.4,
+    "tipo": "subida"
   }
 ]
