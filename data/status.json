@@ -24,8 +24,8 @@
     "ultima_actualizacion": 1794242782.876849
   },
   "siman": {
-    "estado": "corriendo",
-    "inicio": 1794324539.1120822
+    "estado": "ok",
+    "ultima_actualizacion": 1794324548.192571
   },
   "curacao_sv": {
     "estado": "ok",
@@ -40,8 +40,8 @@
     "ultima_actualizacion": 1794323976.2896066
   },
   "walmart_sv": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794241450.183506
+    "estado": "corriendo",
+    "inicio": 1794324548.3962405
   },
   "walmart_hn": {
     "estado": "ok",
