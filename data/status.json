@@ -20,8 +20,8 @@
     "ultima_actualizacion": 1794327016.8508031
   },
   "jetstereo": {
-    "estado": "corriendo",
-    "inicio": 1794327016.988751
+    "estado": "ok",
+    "ultima_actualizacion": 1794327051.942333
   },
   "siman": {
     "estado": "ok",
@@ -44,8 +44,8 @@
     "ultima_actualizacion": 1794324552.5322409
   },
   "walmart_hn": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794242787.5296545
+    "estado": "corriendo",
+    "inicio": 1794327052.0729797
   },
   "walmart_gt": {
     "estado": "ok",
