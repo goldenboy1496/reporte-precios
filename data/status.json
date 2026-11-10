@@ -16,12 +16,12 @@
     "ultima_actualizacion": 1794327014.0979455
   },
   "elektra_hn": {
-    "estado": "corriendo",
-    "inicio": 1794327014.2417333
+    "estado": "ok",
+    "ultima_actualizacion": 1794327016.8508031
   },
   "jetstereo": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794242782.876849
+    "estado": "corriendo",
+    "inicio": 1794327016.988751
   },
   "siman": {
     "estado": "ok",
