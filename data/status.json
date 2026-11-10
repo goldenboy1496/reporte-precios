@@ -13,11 +13,11 @@
   },
   "diunsa": {
     "estado": "ok",
-    "ultima_actualizacion": 1794242744.7147424
+    "ultima_actualizacion": 1794327014.0979455
   },
   "elektra_hn": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794242748.4862301
+    "estado": "corriendo",
+    "inicio": 1794327014.2417333
   },
   "jetstereo": {
     "estado": "ok",
