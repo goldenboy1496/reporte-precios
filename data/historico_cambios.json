@@ -10622,5 +10622,21 @@
     "diferencia": -48.95,
     "pct_cambio": -1.0,
     "tipo": "baja"
+  },
+  {
+    "id": "1794521176_GT_elektra_Galaxy Tab A11 LTE (No Bookcover)_4+64GB",
+    "fecha": "2026-11-12 16:06:16",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Tab A11 LTE (No Bookcover)",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 1699.0,
+    "precio_nuevo": 1696.0,
+    "diferencia": -3.0,
+    "pct_cambio": -0.18,
+    "tipo": "baja"
   }
 ]

@@ -1,48 +1,48 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520055.583907,
-    "duracion_segundos": 3.9
+    "ultima_actualizacion": 1794520720.0847218,
+    "duracion_segundos": 6.7
   },
   "gallo": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520161.1532197,
-    "duracion_segundos": 40.5
+    "ultima_actualizacion": 1794520844.5817442,
+    "duracion_segundos": 74.0
   },
   "max": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520119.664414,
-    "duracion_segundos": 63.0
+    "ultima_actualizacion": 1794520769.5540588,
+    "duracion_segundos": 48.4
   },
   "diunsa": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520520.1036584,
-    "duracion_segundos": 48.2
+    "ultima_actualizacion": 1794521168.5160098,
+    "duracion_segundos": 50.2
   },
   "elektra_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520470.84357,
-    "duracion_segundos": 4.2
+    "ultima_actualizacion": 1794521117.2673657,
+    "duracion_segundos": 3.3
   },
   "jetstereo": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520465.576249,
-    "duracion_segundos": 34.9
+    "ultima_actualizacion": 1794521112.9240816,
+    "duracion_segundos": 36.4
   },
   "siman": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520187.3208256,
-    "duracion_segundos": 20.0
+    "ultima_actualizacion": 1794520873.576301,
+    "duracion_segundos": 21.9
   },
   "curacao_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520323.9840438,
-    "duracion_segundos": 135.6
+    "ultima_actualizacion": 1794520964.8879771,
+    "duracion_segundos": 90.3
   },
   "prado": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520424.7613463,
-    "duracion_segundos": 99.7
+    "ultima_actualizacion": 1794521070.0585966,
+    "duracion_segundos": 104.1
   },
   "walmart": {
     "estado": "ok",
@@ -50,17 +50,17 @@
   },
   "walmart_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520429.672694,
-    "duracion_segundos": 3.9
+    "ultima_actualizacion": 1794521075.4907122,
+    "duracion_segundos": 4.4
   },
   "walmart_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520524.6553578,
-    "duracion_segundos": 3.5
+    "ultima_actualizacion": 1794521174.2173471,
+    "duracion_segundos": 4.6
   },
   "walmart_gt": {
     "estado": "ok",
-    "ultima_actualizacion": 1794520166.2212873,
-    "duracion_segundos": 4.0
+    "ultima_actualizacion": 1794520850.645197,
+    "duracion_segundos": 5.0
   }
 }
