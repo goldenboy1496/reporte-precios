@@ -1,4 +1,4 @@
-﻿__pycache__/
+__pycache__/
 *.py[cod]
 *$py.class
 *.log
@@ -8,3 +8,9 @@ data/*_page_source.html
 data/debug_page_source.html
 reporte_publico.html
 .tempmediaStorage/
+# Base de precios y datos sensibles (no se publican)
+data/precios.db
+data/precios.db-wal
+data/precios.db-shm
+data/planificador.log
+data/usuarios.json

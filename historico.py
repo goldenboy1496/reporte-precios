@@ -66,6 +66,13 @@ def registrar_cambios_desde_reporte(reporte: dict, fecha_hora_str: str = None):
     if not fecha_hora_str:
         fecha_hora_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+    # Serie completa en SQLite (data/precios.db). Si falla, el historico sigue igual.
+    try:
+        import precios_db
+        precios_db.registrar(reporte, fecha_hora_str)
+    except Exception as e:
+        print("[!] Aviso precios_db:", e)
+
     pais = (reporte.get("pais") or "gt").upper()
     moneda = reporte.get("moneda") or "Q"
     ret_dict = reporte.get("retailers", {})

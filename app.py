@@ -116,6 +116,13 @@ RETAILERS = {
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+# Centro de Control de Precios (vista nueva en /control, API en /api/v2)
+try:
+    from control import bp as control_bp
+    app.register_blueprint(control_bp)
+except Exception as _e:
+    print("[!] No se pudo cargar el Centro de Control:", _e)
+
 
 def load_status():
     if STATUS_FILE.exists():
@@ -586,4 +593,9 @@ def api_exportar_ppt():
 
 
 if __name__ == "__main__":
+    try:
+        import planificador
+        planificador.iniciar()
+    except Exception as _e:
+        print("[!] No se pudo iniciar el planificador:", _e)
     app.run(host="0.0.0.0", port=5000, threaded=True, use_reloader=False)

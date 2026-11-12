@@ -10590,5 +10590,37 @@
     "diferencia": -100.0,
     "pct_cambio": -2.86,
     "tipo": "baja"
+  },
+  {
+    "id": "1794520527_GT_elektra_Galaxy S26 Ultra_256GB",
+    "fecha": "2026-11-12 15:55:26",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "256GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 8499.0,
+    "precio_nuevo": 9499.0,
+    "diferencia": 1000.0,
+    "pct_cambio": 11.77,
+    "tipo": "subida"
+  },
+  {
+    "id": "1794520527_HN_walmart_hn_Galaxy Tab A11 LTE (No Bookcover)_4+64GB",
+    "fecha": "2026-11-12 15:55:27",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_hn",
+    "mobile": "Galaxy Tab A11 LTE (No Bookcover)",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 4895.0,
+    "precio_nuevo": 4846.05,
+    "diferencia": -48.95,
+    "pct_cambio": -1.0,
+    "tipo": "baja"
   }
 ]

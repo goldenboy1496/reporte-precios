@@ -1,0 +1,428 @@
+{% raw %}<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samsung MX • Centro de Control de Precios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--font:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,Roboto,sans-serif;--font-ui:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+  --blue:#2563EB;--r1:#3B82F6;--r2:#FB923C;--r3:#A855F7;--r4:#34D399;--gt:#3B82F6;--sv:#FB923C;--hn:#34D399}
+[data-theme="dark"]{--page:#0C0E14;--surface:#151922;--surface2:#1E2430;--border:rgba(255,255,255,.12);--border2:rgba(255,255,255,.08);--grid:#242C3D;
+  --tx:#F8FAFC;--se:#94A3B8;--mu:#7C8BA1;--good:#10B981;--good-bg:rgba(16,185,129,.18);--crit:#F87171;--crit-bg:rgba(248,113,113,.18);
+  --sky:#38BDF8;--pur:#A855F7;--ora:#FB923C;--link:#C084FC;--hdr:linear-gradient(#0B1120 0%,#0F172A 100%);--hse:#94A3B8;--soft:rgba(255,255,255,.06);--nd:#55627A;
+  --okfg:#CBD5E1;--b1bg:rgba(251,146,60,.16);--b1fg:#FDBA74;--b2bg:rgba(251,146,60,.38);--b2fg:#FFE2C2;--b3bg:#DC2626;--ovbg:rgba(59,130,246,.20);--ovfg:#93C5FD;
+  --zone:rgba(16,185,129,.14);--sel:rgba(168,85,247,.12)}
+[data-theme="light"]{--page:#F4F4F1;--surface:#FCFCFB;--surface2:#F2F1ED;--border:rgba(11,11,11,.12);--border2:rgba(11,11,11,.08);--grid:#E3E1D8;
+  --tx:#14140F;--se:#52514E;--mu:#6F6E68;--good:#0A7F0A;--good-bg:rgba(12,163,12,.12);--crit:#C03030;--crit-bg:rgba(208,59,59,.12);
+  --sky:#0369A1;--pur:#9333EA;--ora:#C2410C;--link:#7E22CE;--hdr:#1E2761;--hse:#C3CAE8;--soft:rgba(11,11,11,.05);--nd:#A3A29B;
+  --okfg:#3A3936;--b1bg:#FDEBD0;--b1fg:#7A4300;--b2bg:#F8C99A;--b2fg:#5A2A00;--b3bg:#C62828;--ovbg:#DDE8FB;--ovfg:#1E40AF;
+  --zone:rgba(12,163,12,.12);--sel:rgba(147,51,234,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--tx);font-family:var(--font);letter-spacing:-.16px;font-variant-numeric:tabular-nums;font-size:13px}
+a{color:var(--link)}
+button,select,input{font-family:inherit;letter-spacing:inherit}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+header.top{background:var(--hdr);box-shadow:0 4px 24px rgba(0,0,0,.35);padding:12px 0 14px;color:#F8FAFC}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.samsung{background:#0C4DA2;color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;border-radius:4px;padding:3px 10px}
+.hchip{font-size:11px;font-weight:600;color:var(--hse);background:rgba(255,255,255,.08);border-radius:12px;padding:2px 8px}
+.live{font-size:11px;font-weight:700;color:#10B981;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:2px 9px}
+.live.warn{color:#FB923C;background:rgba(251,146,60,.12);border-color:rgba(251,146,60,.35)}
+.sync{font-size:11px;font-weight:600;color:#F8FAFC;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:3px 10px}
+.mode{display:inline-flex;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:2px}
+.mode button{font-size:11.5px;font-weight:700;min-height:30px;padding:6px 12px;border:0;border-radius:999px;background:transparent;color:#CBD5E1;cursor:pointer}
+.mode button.on{background:#A855F7;color:#fff}
+.hbtn{font-size:11.5px;font-weight:700;min-height:32px;padding:6px 13px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.06);color:#F8FAFC;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.hbtn:hover{background:rgba(255,255,255,.12)}
+.hbtn.theme{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.14)}
+.kicker{font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#38BDF8}
+h1{font-family:var(--font-ui);margin:4px 0 2px;font-size:21px;font-weight:800;letter-spacing:-.4px}
+.sub{margin:0;font-size:12.5px;color:var(--hse)}
+.micro{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:8px;padding:6px 12px;display:flex;flex-direction:column;gap:2px}
+.micro .l{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--hse)}
+.micro .v{font-size:12.5px;font-weight:700;color:#F8FAFC}
+.micro.act{border-color:rgba(56,189,248,.45)}.micro.act .l{color:#38BDF8}
+.micro.warn{border-color:rgba(251,146,60,.45)}.micro.warn .l{color:#FB923C}
+.micro button{font-size:12.5px;font-weight:700;padding:2px 8px;border:0;border-radius:6px;background:transparent;color:var(--hse);cursor:pointer}
+.micro button.on{color:#F8FAFC;background:rgba(56,189,248,.18)}
+.micro select{background:transparent;border:0;color:#F8FAFC;font-size:12.5px;font-weight:700;padding:0;cursor:pointer}
+.micro select option{color:#14140F}
+nav.tabs{display:flex;flex-wrap:wrap;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:5px}
+nav.tabs button{font-family:var(--font-ui);flex:1 1 auto;font-size:13px;font-weight:700;padding:10px 14px;border:0;border-radius:9px;background:transparent;color:var(--hse);cursor:pointer}
+nav.tabs button.on{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.4)}
+main{padding:22px 0 56px;display:flex;flex-direction:column;gap:16px}
+h2{font-family:var(--font-ui);margin:0;font-size:18px;font-weight:800;letter-spacing:-.3px}
+.ctx{margin:4px 0 0;font-size:12px;color:var(--se)}
+.cards{display:flex;flex-wrap:wrap;gap:12px}
+.card{flex:1 1 220px;min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+.card.total{border:2px solid var(--pur)}
+.card .hd{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:4px}
+.card .nm{font-size:14px;font-weight:800}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.pill{font-size:11px;font-weight:700;border-radius:12px;padding:2px 9px;white-space:nowrap}
+.pill.bad{color:var(--crit);background:var(--crit-bg)}.pill.good{color:var(--good);background:var(--good-bg)}.pill.neu{color:var(--se);background:var(--soft)}
+.kv{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border2)}
+.kv:last-child{border-bottom:0}
+.kv .k{font-size:12.5px;color:var(--se)}
+.kv .v{text-align:right;font-size:16px;font-weight:800}
+.kv .v small{display:block;font-size:10.5px;font-weight:400;color:var(--se)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel .ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+h3{margin:0;font-size:14px;font-weight:700}
+.hint{margin:-4px 0 0;font-size:12px;color:var(--se)}
+.plink{font-size:12px;font-weight:600;background:none;border:0;color:var(--link);cursor:pointer;text-decoration:underline;padding:0}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{padding:8px;text-align:right;font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--mu);box-shadow:0 1px 0 var(--border);white-space:nowrap}
+th.l,td.l{text-align:left}
+td{padding:5px 8px;border-bottom:1px solid var(--border2);font-size:12.5px;text-align:right}
+td.mod{font-weight:700;text-align:left;white-space:nowrap}
+td.mod span,td .s{font-weight:400;color:var(--se)}
+tr.grp td{text-align:left;padding:12px 8px 6px;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--sky);border-bottom:1px solid var(--border)}
+tr.grp td span{font-weight:600;letter-spacing:0;text-transform:none;color:var(--se)}
+tr.rowk{cursor:pointer}tr.rowk:hover{background:var(--soft)}
+tr.sel{background:var(--sel)}tr.sel td.mod{box-shadow:inset 3px 0 0 var(--pur)}
+.cell{border-radius:6px;padding:5px 8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;min-width:118px;white-space:nowrap}
+.cell b{font-size:12.5px;font-weight:700}.cell i{font-style:normal;font-size:11.5px;font-weight:600}
+.cell a{color:inherit;text-decoration:none;font-size:11px;opacity:.8}
+.b-ok{color:var(--okfg)}.b-b1{background:var(--b1bg);color:var(--b1fg)}.b-b2{background:var(--b2bg);color:var(--b2fg)}.b-b3{background:var(--b3bg);color:#fff}
+.b-over{background:var(--ovbg);color:var(--ovfg)}.b-chk{border:1px dashed var(--mu);color:var(--se)}
+.nd{color:var(--nd)}
+.tag{font-size:11.5px;font-weight:700;border-radius:6px;padding:3px 8px;white-space:nowrap;display:inline-block}
+.subs{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.subtab{font-size:12px;font-weight:700;min-height:32px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--se);cursor:pointer}
+.subtab.on{border-color:rgba(56,189,248,.55);background:rgba(56,189,248,.14);color:var(--tx)}
+.sep{width:1px;align-self:stretch;background:var(--border);margin:0 6px}
+.inp{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--tx);font-size:12.5px;min-height:32px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding-top:4px}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--se)}
+.legend i{width:22px;height:12px;border-radius:4px;display:inline-block}
+.split{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.split>.grow{flex:999 1 680px;min-width:0}
+aside.det{flex:1 1 320px;min-width:0;max-width:370px;background:var(--surface);border:2px solid var(--pur);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;position:sticky;top:12px}
+.det .lab{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sky)}
+.det h3{font-family:var(--font-ui);font-size:17px;font-weight:800;margin-top:3px}
+.rl{display:grid;grid-template-columns:12px 1fr auto auto;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2)}
+.rl .n{font-size:12.5px;font-weight:700}.rl .n small{display:block;font-size:10.5px;font-weight:400;color:var(--se)}
+.rl .p{font-size:14px;font-weight:800}
+.evl{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--se);padding:4px 0}
+.evl b{color:var(--tx);font-weight:600}
+.mini{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu)}
+.note{margin:0;font-size:11.5px;color:var(--se);line-height:1.45}
+ul.msg{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.5}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:600;display:none;z-index:9}
+.empty{padding:18px;text-align:center;color:var(--se);font-size:12.5px}
+.up{color:var(--good);font-weight:700}.down{color:var(--crit);font-weight:700}
+@media (max-width:900px){aside.det{position:static;max-width:none}}
+@media print{header.top .row.ctl,nav.tabs{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:10px">
+    <div class="row">
+      <span class="samsung">SAMSUNG</span><span style="color:var(--hse)">/</span><span style="font-size:12.5px;font-weight:600;color:var(--hse)">Mobile eXperience</span>
+      <span class="hchip">NCA • GT · SV · HN</span><span id="live" class="live">En línea</span><span id="sync" class="sync">Actualizado: —</span>
+    </div>
+    <div class="row ctl" style="gap:8px">
+      <span class="mode" role="group" aria-label="Nivel de detalle"><button type="button" id="m-exec" class="on">Ejecutivo</button><button type="button" id="m-ana">Analista</button></span>
+      <button type="button" class="hbtn" id="b-export">Exportar CSV</button>
+      <button type="button" class="hbtn" id="b-run">Actualizar tiendas</button>
+      <a class="hbtn" href="/">Versión anterior</a>
+      <button type="button" class="hbtn theme" id="b-theme">Vista clara</button>
+    </div>
+    <div style="padding-top:22px">
+      <div class="kicker">Pricing &amp; competencia</div>
+      <h1>Centro de Control de Precios</h1>
+      <p class="sub">Precio publicado por tienda contra MSRP y regla de descuento — Guatemala, El Salvador y Honduras</p>
+    </div>
+    <div class="row" style="gap:8px">
+      <div class="micro"><span class="l">Regla de descuento</span><span class="v"><select id="s-tol" aria-label="Regla de descuento"><option value="3">3% sobre MSRP</option><option value="5" selected>5% sobre MSRP</option><option value="7">7% sobre MSRP</option><option value="10">10% sobre MSRP</option></select></span></div>
+      <div class="micro act"><span class="l">País</span><span id="paises" style="display:flex;gap:2px"></span></div>
+      <div class="micro"><span class="l">Categoría</span><span class="v" id="mi-cat">—</span></div>
+      <div class="micro"><span class="l">Última corrida</span><span class="v" id="mi-run">—</span></div>
+      <div class="micro"><span class="l">Tiendas</span><span class="v" id="mi-st">—</span></div>
+      <div class="micro warn"><span class="l">Revisión de datos</span><span class="v" id="mi-rev">—</span></div>
+    </div>
+    <nav class="tabs" aria-label="Vistas" id="tabs"></nav>
+  </div>
+</header>
+<div class="wrap"><main id="main"><div class="empty">Cargando…</div></main></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+"use strict";
+const PAISES = {gt:"Guatemala", sv:"El Salvador", hn:"Honduras"};
+const RCOL = ["var(--r1)","var(--r2)","var(--r3)","var(--r4)"];
+const CATS = [["Smartphones","Celulares"],["Tablets","Tablets"],["Wearables","Wearables"]];
+const VISTAS = [["resumen","Resumen"],["historico","Histórico"],["regional","Regional"],["calidad","Calidad de datos"]];
+const S = {pais:"gt", cat:"Smartphones", filtro:"todos", vista:"resumen", sel:null, dias:35, modo:"exec", tol:null, q:"", hDias:35, hTienda:"", hTipo:"", hReb:true};
+let T = null, REG = null, SALUD = null, SERIE = null;
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => (/^https?:\/\//i.test(u || "") ? u : "");
+const clean = m => String(m).replace("Galaxy-", "Galaxy ");
+const money = (v, cur) => v == null ? "—" : (cur || T.moneda) + Number(v).toLocaleString("en-US", {maximumFractionDigits: (v % 1) ? 2 : 0});
+const pct = g => Math.abs(g) < 0.5 ? "en precio" : (g > 0 ? "+" : "−") + Math.abs(g).toFixed(1) + "%";
+const fdt = ts => { if (!ts) return "—"; const d = new Date(ts * 1000); return d.toLocaleDateString("es-GT", {day:"2-digit", month:"2-digit", year:"numeric"}) + " " + d.toLocaleTimeString("es-GT", {hour:"2-digit", minute:"2-digit"}); };
+const fev = f => f.slice(8,10) + "/" + f.slice(5,7) + " " + f.slice(11,16);
+function band(c, tol) { if (!c || c.gap == null) return "nd"; if (c.revisar) return "chk"; if (c.gap > 0.5) return "over"; if (c.gap >= -tol) return "ok"; if (c.gap >= -10) return "b1"; if (c.gap >= -20) return "b2"; return "b3"; }
+const fuera = (c, tol) => c && !c.revisar && c.gap != null && c.gap < -tol;
+function toast(t) { const e = $("toast"); e.textContent = t; e.style.display = "block"; clearTimeout(toast.t); toast.t = setTimeout(() => e.style.display = "none", 3200); }
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+async function getJSON(u, opt) { const r = await fetch(u, opt); if (!r.ok && r.status !== 409) throw new Error("HTTP " + r.status); return r.json(); }
+
+function setTheme(t) { document.documentElement.setAttribute("data-theme", t); $("b-theme").textContent = t === "dark" ? "Vista clara" : "Vista oscura"; store("ccp_tema", t); if (S.sel && S.vista === "resumen") drawChart(); }
+
+async function cargar(silencioso) {
+  try {
+    const q = "/api/v2/tablero?pais=" + S.pais + (S.tol ? "&tolerancia=" + S.tol : "");
+    T = await getJSON(q);
+    if (!S.tol) $("s-tol").value = String(Math.round(T.tolerancia));
+    render();
+  } catch (e) { if (!silencioso) $("main").innerHTML = '<div class="empty">No se pudo cargar el tablero: ' + esc(e.message) + '</div>'; }
+}
+
+/* ---------- cálculos ---------- */
+function filasCat() { return T.filas.filter(f => f.cat === S.cat && f.base); }
+function celdas(rows) { const out = []; rows.forEach(f => Object.entries(f.c).forEach(([rk, c]) => { if (c && !c.revisar && c.gap != null) out.push({f, rk, c}); })); return out; }
+function indice(cs) { return cs.length ? 100 + cs.reduce((a, x) => a + x.c.gap, 0) / cs.length : null; }
+function peor(f) { const v = Object.values(f.c).filter(c => c && !c.revisar && c.gap != null).map(c => c.gap); return v.length ? Math.min(...v) : 0; }
+function movs24() {
+  const lim = Date.now() - 24 * 3600 * 1000, keys = new Set(filasCat().map(f => f.m + "|" + f.g));
+  const ok = e => (e.tipo === "baja" || e.tipo === "subida") && e.mismo_producto !== 0 && e.confirmado !== -1 && keys.has(e.mobile + "|" + e.memoria);
+  const all = (T.eventos || []).filter(ok);
+  const d = all.filter(e => new Date(e.fecha.replace(" ", "T")).getTime() >= lim);
+  return {lista: d.length ? d : all.slice(0, 8), es24: d.length > 0, total: d.length};
+}
+function baseDe(m, g) { const f = T.filas.find(x => x.m === m && x.g === g); return f ? f.base : null; }
+
+/* ---------- render ---------- */
+function render() {
+  const rks = Object.keys(T.retailers);
+  $("paises").innerHTML = Object.entries(PAISES).map(([k, n]) => `<button type="button" data-p="${k}" class="${k === S.pais ? "on" : ""}">${n}</button>`).join("");
+  $("tabs").innerHTML = VISTAS.map(([k, n]) => `<button type="button" data-v="${k}" class="${k === S.vista ? "on" : ""}">${n}</button>`).join("");
+  const ts = Math.max(0, ...rks.map(k => (T.estado_tiendas[k] || {}).ts || 0));
+  const horas = ts ? (Date.now() / 1000 - ts) / 3600 : null;
+  $("sync").textContent = "Actualizado: " + fdt(ts);
+  $("mi-run").textContent = fdt(ts);
+  const live = $("live"); const atras = horas == null || horas > 6;
+  live.textContent = atras ? "Datos con " + (horas == null ? "?" : Math.round(horas)) + " h" : "En línea"; live.className = "live" + (atras ? " warn" : "");
+  const conDatos = rks.filter(k => T.filas.some(f => f.c[k]));
+  $("mi-st").textContent = conDatos.length + " de " + rks.length + " con datos";
+  const rev = T.filas.reduce((a, f) => a + Object.values(f.c).filter(c => c && c.revisar).length, 0);
+  const sinc = Object.values(T.sin_coincidencia).reduce((a, l) => a + l.length, 0);
+  $("mi-rev").textContent = (rev + sinc) ? (rev + " por revisar · " + sinc + " sin emparejar") : "OK";
+  const cat = CATS.find(c => c[0] === S.cat);
+  $("mi-cat").textContent = cat[1] + " · " + filasCat().length + " modelos";
+  const m = $("main");
+  if (S.vista === "resumen") m.innerHTML = vResumen();
+  else if (S.vista === "historico") m.innerHTML = vHistorico();
+  else if (S.vista === "regional") { m.innerHTML = REG ? vRegional() : '<div class="empty">Cargando vista regional…</div>'; if (!REG) getJSON("/api/v2/regional").then(d => { REG = d; if (S.vista === "regional") render(); }).catch(() => {}); }
+  else { m.innerHTML = SALUD ? vCalidad() : '<div class="empty">Cargando…</div>'; if (!SALUD) getJSON("/api/v2/salud").then(d => { SALUD = d; if (S.vista === "calidad") render(); }).catch(() => {}); }
+  if (S.vista === "resumen" && S.sel) cargarSerie();
+}
+
+function cardHTML(nombre, color, cs, movs, total) {
+  const tol = T.tolerancia, idx = indice(cs);
+  if (idx == null) return `<div class="card"><div class="hd">${color ? `<span class="dot" style="background:${color}"></span>` : ""}<span class="nm">${esc(nombre)}</span><span class="pill neu">sin datos</span></div><div class="kv"><span class="k">Índice de precio</span><span class="v nd">—<small>la tienda no entregó precios</small></span></div></div>`;
+  const out = cs.filter(x => x.c.gap < -tol), deep = cs.reduce((a, x) => x.c.gap < a.c.gap ? x : a, cs[0]), d = idx - 100;
+  return `<div class="card${total ? " total" : ""}"><div class="hd">${color ? `<span class="dot" style="background:${color}"></span>` : ""}<span class="nm">${esc(nombre)}</span>
+    <span class="pill ${d < -0.05 ? "bad" : "good"}">${d < -0.05 ? "▼" : "▲"} ${Math.abs(d).toFixed(1)}% vs MSRP</span></div>
+    <div class="kv"><span class="k">Índice de precio</span><span class="v" style="color:${idx < 95 ? "var(--crit)" : "inherit"}">${idx.toFixed(1)}<small>MSRP = 100</small></span></div>
+    <div class="kv"><span class="k">Fuera de regla</span><span class="v" style="color:${out.length ? "var(--ora)" : "inherit"}">${out.length} de ${cs.length}<small>${Math.round(out.length / cs.length * 100)}% de los precios</small></span></div>
+    <div class="kv"><span class="k">Brecha más profunda</span><span class="v" style="color:${deep.c.gap < -10 ? "var(--crit)" : "inherit"}">${pct(deep.c.gap)}<small>${esc(clean(deep.f.m))} ${esc(deep.f.g)}${total ? " · " + esc(T.retailers[deep.rk]) : ""}</small></span></div>
+    <div class="kv"><span class="k">Movimientos 24 h</span><span class="v">${movs}</span></div></div>`;
+}
+function tagBand(gap, cellLike) { const b = band(cellLike || {gap, revisar: false}, T.tolerancia); return `<span class="tag b-${b}" ${b === "ok" ? 'style="background:var(--soft)"' : ""}>${pct(gap)} vs MSRP</span>`; }
+
+function vResumen() {
+  const rks = Object.keys(T.retailers), rows = filasCat(), tol = T.tolerancia, all = celdas(rows), mv = movs24();
+  const mvPor = k => mv.es24 ? mv.lista.filter(e => e.retailer === k).length : 0;
+  let cards = cardHTML("Mercado " + T.pais_nombre, null, all, mv.es24 ? mv.total : 0, true);
+  const orden = rks.map((k, i) => ({k, i, cs: all.filter(x => x.rk === k)})).sort((a, b) => (indice(a.cs) ?? 999) - (indice(b.cs) ?? 999));
+  orden.forEach(o => cards += cardHTML(T.retailers[o.k], RCOL[o.i % 4], o.cs, mvPor(o.k)));
+  const mvRows = mv.lista.slice(0, 8).map(e => { const b = baseDe(e.mobile, e.memoria), gap = b ? (e.precio_nuevo - b) / b * 100 : null, i = rks.indexOf(e.retailer), d = e.pct;
+    return `<tr><td class="l s">${fev(e.fecha)}</td><td class="l"><span class="dot" style="background:${RCOL[(i < 0 ? 0 : i) % 4]};margin-right:6px"></span>${esc(e.retailer_nombre || T.retailers[e.retailer] || e.retailer)}</td>
+      <td class="mod">${esc(clean(e.mobile))} <span>${esc(e.memoria)}</span></td><td class="s" style="text-decoration:line-through">${money(e.precio_anterior)}</td><td><b>${money(e.precio_nuevo)}</b></td>
+      <td class="${d < 0 ? "down" : "up"}">${d < 0 ? "▼" : "▲"} ${Math.abs(d).toFixed(1)}%</td><td>${gap == null ? "—" : tagBand(gap)}</td></tr>`; }).join("");
+  const movPanel = `<section class="panel"><div class="ph"><h3>${mv.es24 ? "Movimientos de las últimas 24 h" : "Últimos movimientos registrados"}</h3><button type="button" class="plink" data-v="historico">Ver el histórico completo →</button></div>
+    <p class="hint">${mv.es24 ? mv.total + " cambios de precio entre corridas." : "No hubo cambios en las últimas 24 h; estos son los más recientes."} Bajó en rojo, subió en verde. No incluye rebotes ni cambios de producto emparejado.</p>
+    ${mvRows ? `<div class="scroll"><table><thead><tr><th class="l">Momento</th><th class="l">Tienda</th><th class="l">Modelo</th><th>Antes</th><th>Ahora</th><th>Cambio</th><th>Posición</th></tr></thead><tbody>${mvRows}</tbody></table></div>` : '<div class="empty">Aún no hay movimientos registrados para esta categoría.</div>'}</section>`;
+  // matriz
+  const q = S.q.trim().toLowerCase();
+  let vis = rows.filter(f => !q || (clean(f.m) + " " + f.g).toLowerCase().includes(q));
+  if (S.filtro === "fuera") vis = vis.filter(f => Object.values(f.c).some(c => fuera(c, tol)));
+  if (S.filtro === "sin") vis = vis.filter(f => Object.values(f.c).some(c => !c));
+  const fams = [...new Set(rows.map(f => f.fam))].sort((a, b) => { const o = ["Serie Z", "Serie S", "Serie A"]; return (o.indexOf(a) + 9) % 9 - (o.indexOf(b) + 9) % 9; });
+  let body = "";
+  fams.forEach(F => { const fr = vis.filter(f => f.fam === F).sort((a, b) => peor(a) - peor(b)); if (!fr.length) return;
+    const nd = fr.filter(f => peor(f) < -tol).length;
+    body += `<tr class="grp"><td colspan="${rks.length + 4}">${esc(F)} <span>· ${fr.length} modelos, ${nd} con desfase</span></td></tr>`;
+    fr.forEach(f => { const pr = Object.entries(f.c).filter(([, c]) => c && !c.revisar && c.gap != null);
+      let minT = '<span class="nd">sin dato</span>', dT = "—";
+      if (pr.length) { const mn = pr.reduce((a, x) => x[1].p < a[1].p ? x : a), w = pr.reduce((a, x) => x[1].gap < a[1].gap ? x : a);
+        minT = `<b>${money(mn[1].p)}</b><br><span class="s" style="font-size:10.5px">${esc(T.retailers[mn[0]])}</span>`;
+        if (w[1].gap < -tol) dT = w[1].dias == null ? "—" : (w[1].dias === 0 && !w[1].dias_min ? "hoy" : w[1].dias + (w[1].dias_min ? "+" : "") + " d"); }
+      const sel = S.sel && S.sel.m === f.m && S.sel.g === f.g;
+      body += `<tr class="rowk${sel ? " sel" : ""}" data-m="${esc(f.m)}" data-g="${esc(f.g)}" tabindex="0"><td class="mod">${esc(clean(f.m))} <span>${esc(f.g)}</span></td><td>${money(f.base)}</td>` +
+        rks.map(k => { const c = f.c[k]; if (!c) return '<td class="nd">—</td>'; const b = band(c, tol), u = safeUrl(c.url);
+          const extra = S.modo === "ana" ? `<span style="font-size:10.5px;opacity:.85">${esc(c.color || "")}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener" title="${esc(c.nombre || "")}">ver ↗</a>` : ""}</span>` : "";
+          return `<td><div class="cell b-${b}" title="${esc(c.nombre || "")}"><b>${money(c.p)}</b>${extra}<i>${b === "chk" ? "revisar" : pct(c.gap)}</i></div></td>`; }).join("") +
+        `<td style="line-height:1.25;white-space:nowrap">${minT}</td><td class="s">${dT}</td></tr>`; }); });
+  const nFuera = rows.filter(f => Object.values(f.c).some(c => fuera(c, tol))).length;
+  const matrix = `<section class="panel"><div class="ph"><h3>Precio por modelo y tienda</h3><span class="hint" style="margin:0">Clic en un modelo para ver su evolución</span></div>
+    <p class="hint">Agrupado por familia y ordenado por peor brecha. Cada celda muestra el precio publicado y su diferencia contra el MSRP.</p>
+    <div class="subs">${CATS.map(([k, n]) => `<button type="button" class="subtab${k === S.cat ? " on" : ""}" data-cat="${k}">${n} · ${T.filas.filter(f => f.cat === k).length}</button>`).join("")}<span class="sep"></span>
+      <button type="button" class="subtab${S.filtro === "todos" ? " on" : ""}" data-f="todos">Todos</button><button type="button" class="subtab${S.filtro === "fuera" ? " on" : ""}" data-f="fuera">Fuera de regla · ${nFuera}</button><button type="button" class="subtab${S.filtro === "sin" ? " on" : ""}" data-f="sin">Con faltantes</button>
+      <input class="inp" id="q" type="search" placeholder="Buscar modelo o memoria" aria-label="Buscar modelo" value="${esc(S.q)}" style="margin-left:auto;min-width:200px"></div>
+    <div class="scroll"><table><thead><tr><th class="l">Modelo</th><th>MSRP</th>${rks.map((k, i) => `<th class="l"><span class="dot" style="background:${RCOL[i % 4]};margin-right:6px"></span>${esc(T.retailers[k])}</th>`).join("")}<th>Mín. mercado</th><th>En desfase</th></tr></thead>
+    <tbody>${body || `<tr><td colspan="${rks.length + 4}" class="empty">Sin modelos para este filtro.</td></tr>`}</tbody></table></div>
+    <div class="legend"><span><i style="border:1px solid var(--border)"></i>En regla (hasta −${tol}%)</span><span><i class="b-b1"></i>hasta −10%</span><span><i class="b-b2"></i>−10 a −20%</span><span><i class="b-b3"></i>Más de −20%</span><span><i class="b-over"></i>Sobre MSRP</span><span><i class="b-chk"></i>±${T.umbral_revisar}% o más: revisar emparejamiento</span></div></section>`;
+  const ctx = `Corrida del ${$("mi-run").textContent} · ${CATS.find(c => c[0] === S.cat)[1].toLowerCase()} · regla ${tol}% · índice = precio promedio contra MSRP (100 = en precio)`;
+  return `<div><h2>Resumen de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">${ctx}</p></div><div class="cards">${cards}</div>${movPanel}
+    <div class="split"><div class="grow">${matrix}</div>${S.sel ? detHTML() : ""}</div>`;
+}
+
+function detHTML() {
+  return `<aside class="det" aria-label="Detalle del modelo seleccionado"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><div><div class="lab">Modelo seleccionado</div><h3>${esc(clean(S.sel.m))} <span style="font-weight:400;color:var(--se)">${esc(S.sel.g)}</span></h3></div><button type="button" class="subtab" id="det-x" aria-label="Cerrar detalle">Cerrar</button></div>
+    <div class="subs">${[[35, "35 días"], [90, "90 días"], [365, "Año"]].map(([d, n]) => `<button type="button" class="subtab${S.dias === d ? " on" : ""}" data-d="${d}">${n}</button>`).join("")}</div>
+    <div id="chart"><div class="empty">Cargando serie…</div></div><div id="det-rows"></div><div id="det-ev"></div></aside>`;
+}
+async function cargarSerie() {
+  try { SERIE = await getJSON(`/api/v2/serie?pais=${S.pais}&mobile=${encodeURIComponent(S.sel.m)}&memoria=${encodeURIComponent(S.sel.g)}&dias=${S.dias}`); drawChart(); } catch (e) { const c = $("chart"); if (c) c.innerHTML = '<div class="empty">No se pudo cargar la serie.</div>'; }
+}
+function drawChart() {
+  const box = $("chart"); if (!box || !SERIE || !S.sel) return;
+  const f = T.filas.find(x => x.m === S.sel.m && x.g === S.sel.g); if (!f) return;
+  const rks = Object.keys(T.retailers), tol = T.tolerancia, base = f.base, now = Date.now();
+  const by = {}; SERIE.puntos.forEach(p => { (by[p.retailer] = by[p.retailer] || []).push({t: new Date(p.fecha.replace(" ", "T")).getTime(), p: p.precio}); });
+  const act = rks.filter(k => f.c[k] && !f.c[k].revisar);
+  let t0 = now - S.dias * 864e5; const firsts = Object.values(by).map(a => a[0].t); if (firsts.length) t0 = Math.max(t0, Math.min(...firsts));
+  if (now - t0 < 864e5) t0 = now - 864e5;
+  const vals = [base, base * (1 - tol / 100)]; act.forEach(k => vals.push(f.c[k].p)); Object.values(by).forEach(a => a.forEach(x => vals.push(x.p)));
+  let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * 0.12 || base * 0.05; lo -= pad; hi += pad;
+  const W = 340, H = 180, X = t => 6 + (t - t0) / (now - t0) * (W - 12), Y = v => 8 + (hi - v) / (hi - lo) * (H - 16);
+  let paths = "";
+  act.forEach(k => { const i = rks.indexOf(k), pts = (by[k] || []).filter(x => x.t >= t0), prev = (by[k] || []).filter(x => x.t < t0).pop();
+    let v = prev ? prev.p : (pts.length ? pts[0].p : f.c[k].p), d = `M${X(t0).toFixed(1)} ${Y(v).toFixed(1)}`;
+    pts.forEach(x => { d += ` L${X(x.t).toFixed(1)} ${Y(v).toFixed(1)} L${X(x.t).toFixed(1)} ${Y(x.p).toFixed(1)}`; v = x.p; });
+    d += ` L${X(now).toFixed(1)} ${Y(v).toFixed(1)} L${X(now).toFixed(1)} ${Y(f.c[k].p).toFixed(1)}`;
+    paths += `<path d="${d}" fill="none" style="stroke:${RCOL[i % 4]}" stroke-width="2"></path><circle cx="${X(now).toFixed(1)}" cy="${Y(f.c[k].p).toFixed(1)}" r="3.5" style="fill:${RCOL[i % 4]}"></circle>`; });
+  const tk = [0.12, 0.5, 0.94].map(r => { const t = t0 + (now - t0) * r, d = new Date(t); return `<text x="${X(t).toFixed(0)}" y="${H + 14}" font-size="10" text-anchor="middle" style="fill:var(--se)">${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}</text>`; }).join("");
+  const yb = Y(base), yl = Y(base * (1 - tol / 100));
+  box.innerHTML = `<svg role="img" aria-label="Precio por tienda en el tiempo contra el MSRP y la zona permitida por la regla" viewBox="0 0 ${W} ${H + 18}" style="width:100%;height:auto;font-family:var(--font)">
+    <rect x="6" y="${yb.toFixed(1)}" width="${W - 12}" height="${(yl - yb).toFixed(1)}" style="fill:var(--zone)"></rect>
+    <line x1="6" y1="${yb.toFixed(1)}" x2="${W - 6}" y2="${yb.toFixed(1)}" stroke-width="1" stroke-dasharray="4 3" style="stroke:var(--tx)"></line>
+    <text x="8" y="${(yb - 5).toFixed(1)}" font-size="10" font-weight="700" style="fill:var(--tx)">MSRP ${money(base)}</text>
+    <text x="${W - 8}" y="${((yb + yl) / 2 + 3).toFixed(1)}" font-size="9.5" text-anchor="end" style="fill:var(--good)">zona permitida (hasta −${tol}%)</text>
+    <text x="8" y="${(yl + 12).toFixed(1)}" font-size="9.5" style="fill:var(--se)">debajo de ${money(base * (1 - tol / 100))} = fuera de regla</text>${paths}${tk}</svg>`;
+  const evs = (T.eventos || []).filter(e => e.mobile === S.sel.m && e.memoria === S.sel.g);
+  $("det-rows").innerHTML = rks.map((k, i) => { const c = f.c[k]; if (!c) return `<div class="rl"><span class="dot" style="background:${RCOL[i % 4]};width:10px;height:10px"></span><span class="n">${esc(T.retailers[k])}<small>sin precio en esta corrida</small></span><span class="p nd">—</span><span></span></div>`;
+    const n = evs.filter(e => e.retailer === k && (e.tipo === "baja" || e.tipo === "subida")).length, b = band(c, tol), u = safeUrl(c.url);
+    return `<div class="rl"><span class="dot" style="background:${RCOL[i % 4]};width:10px;height:10px"></span><span class="n">${esc(T.retailers[k])}<small>${n} cambios en 35 d${c.dias != null && fuera(c, tol) ? " · " + c.dias + " d fuera de regla" : ""}${u ? ` · <a href="${esc(u)}" target="_blank" rel="noopener">ver producto</a>` : ""}</small></span><span class="p">${money(c.p)}</span><span class="tag b-${b}" ${b === "ok" ? 'style="background:var(--soft)"' : ""}>${b === "chk" ? "revisar" : pct(c.gap)}</span></div>`; }).join("");
+  $("det-ev").innerHTML = `<div class="mini" style="margin-bottom:2px">Últimos movimientos</div>` + (evs.slice(0, 6).map(e => `<div class="evl"><span>${fev(e.fecha)} · ${esc(e.retailer_nombre || T.retailers[e.retailer] || e.retailer)}${e.confirmado === -1 ? " · rebote" : ""}</span><b>${e.tipo === "agotado" ? "sin precio" : money(e.precio_anterior) + " → " + money(e.precio_nuevo)}</b></div>`).join("") || '<p class="note">Sin movimientos registrados.</p>');
+}
+
+function estadoEv(e) { if (e.tipo === "agotado") return '<span class="pill neu">dejó de aparecer</span>'; if (e.mismo_producto === 0) return '<span class="pill neu">cambió el producto emparejado</span>'; if (e.confirmado === -1) return '<span class="pill neu">rebote</span>'; if (e.confirmado === 1) return '<span class="pill good">confirmado</span>'; return '<span class="pill neu">por confirmar</span>'; }
+function evFiltrados() { const lim = Date.now() - S.hDias * 864e5; return (T.eventos || []).filter(e => new Date(e.fecha.replace(" ", "T")).getTime() >= lim && (!S.hTienda || e.retailer === S.hTienda) && (!S.hTipo || e.tipo === S.hTipo) && (!S.hReb || (e.confirmado !== -1 && e.mismo_producto !== 0))); }
+function vHistorico() {
+  const rks = Object.keys(T.retailers), ev = evFiltrados(), bajas = ev.filter(e => e.tipo === "baja").length, sub = ev.filter(e => e.tipo === "subida").length;
+  const porT = rks.map(k => ({k, n: ev.filter(e => e.retailer === k).length})).sort((a, b) => b.n - a.n);
+  const dias = {}; ev.forEach(e => { const d = e.fecha.slice(0, 10); dias[d] = (dias[d] || 0) + 1; });
+  const rows = ev.slice(0, 400).map(e => { const i = rks.indexOf(e.retailer), d = e.pct;
+    return `<tr><td class="l s">${fev(e.fecha)}</td><td class="l"><span class="dot" style="background:${RCOL[(i < 0 ? 0 : i) % 4]};margin-right:6px"></span>${esc(e.retailer_nombre || T.retailers[e.retailer] || e.retailer)}</td><td class="mod">${esc(clean(e.mobile))} <span>${esc(e.memoria)}</span></td><td class="l">${esc(e.tipo)}</td>
+      <td class="s">${money(e.precio_anterior)}</td><td><b>${e.precio_nuevo == null ? "—" : money(e.precio_nuevo)}</b></td><td class="${d == null ? "" : d < 0 ? "down" : "up"}">${d == null ? "—" : (d < 0 ? "▼ " : "▲ ") + Math.abs(d).toFixed(1) + "%"}</td><td>${estadoEv(e)}</td></tr>`; }).join("");
+  return `<div><h2>Histórico de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">Cada cambio detectado entre corridas. Un cambio se confirma cuando el precio se mantiene en la corrida siguiente; si regresa al valor anterior se marca como rebote.</p></div>
+    <div class="cards"><div class="card total"><div class="hd"><span class="nm">Movimientos</span></div><div class="kv"><span class="k">En el periodo</span><span class="v">${ev.length}<small>${Object.keys(dias).length} días con actividad</small></span></div><div class="kv"><span class="k">Bajas</span><span class="v" style="color:var(--crit)">${bajas}</span></div><div class="kv"><span class="k">Subidas</span><span class="v" style="color:var(--good)">${sub}</span></div></div>
+      ${porT.map(o => `<div class="card"><div class="hd"><span class="dot" style="background:${RCOL[rks.indexOf(o.k) % 4]}"></span><span class="nm">${esc(T.retailers[o.k])}</span></div><div class="kv"><span class="k">Movimientos</span><span class="v">${o.n}<small>${ev.length ? Math.round(o.n / ev.length * 100) : 0}% del total</small></span></div><div class="kv"><span class="k">Bajas / subidas</span><span class="v">${ev.filter(e => e.retailer === o.k && e.tipo === "baja").length} / ${ev.filter(e => e.retailer === o.k && e.tipo === "subida").length}</span></div></div>`).join("")}</div>
+    <section class="panel"><div class="ph"><h3>Detalle de movimientos</h3><button type="button" class="plink" id="h-csv">Exportar CSV →</button></div>
+      <div class="subs">${[[7, "7 días"], [35, "35 días"], [90, "90 días"], [365, "Año"]].map(([d, n]) => `<button type="button" class="subtab${S.hDias === d ? " on" : ""}" data-hd="${d}">${n}</button>`).join("")}<span class="sep"></span>
+        <select class="inp" id="h-t" aria-label="Tienda"><option value="">Todas las tiendas</option>${rks.map(k => `<option value="${k}"${S.hTienda === k ? " selected" : ""}>${esc(T.retailers[k])}</option>`).join("")}</select>
+        <select class="inp" id="h-tipo" aria-label="Tipo"><option value="">Todos los tipos</option>${["baja", "subida", "nuevo", "agotado", "reaparece"].map(t => `<option${S.hTipo === t ? " selected" : ""}>${t}</option>`).join("")}</select>
+        <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--se)"><input type="checkbox" id="h-reb"${S.hReb ? " checked" : ""}> Ocultar rebotes y cambios de producto</label></div>
+      ${rows ? `<div class="scroll"><table><thead><tr><th class="l">Momento</th><th class="l">Tienda</th><th class="l">Modelo</th><th class="l">Tipo</th><th>Antes</th><th>Ahora</th><th>Cambio</th><th>Estado</th></tr></thead><tbody>${rows}</tbody></table></div>${ev.length > 400 ? '<p class="note">Se muestran los 400 más recientes; el CSV trae todos.</p>' : ""}` : '<div class="empty">Sin movimientos para este filtro.</div>'}</section>`;
+}
+
+function vRegional() {
+  const tol = T.tolerancia, PC = {gt: "var(--gt)", sv: "var(--sv)", hn: "var(--hn)"};
+  const info = REG.paises.map(P => { const rows = P.filas.filter(f => f.cat === S.cat && f.base), rks = Object.keys(P.retailers), cs = [];
+    rows.forEach(f => Object.entries(f.c).forEach(([rk, c]) => { if (c && !c.revisar && c.gap != null) cs.push({f, rk, c}); })); return {P, rows, rks, cs}; });
+  const cards = info.map(o => { const idx = indice(o.cs), out = o.cs.filter(x => x.c.gap < -tol).length, d = idx == null ? 0 : idx - 100;
+    const per = o.rks.map(k => { const c = o.cs.filter(x => x.rk === k), i = indice(c); return {k, i, n: c.length, out: c.filter(x => x.c.gap < -tol).length}; }).sort((a, b) => (a.i ?? 999) - (b.i ?? 999));
+    return `<div class="card"><div class="hd"><span class="dot" style="background:${PC[o.P.pais]}"></span><span class="nm">${esc(o.P.pais_nombre)}</span>${idx == null ? "" : `<span class="pill ${d < -0.05 ? "bad" : "good"}">${d < -0.05 ? "▼" : "▲"} ${Math.abs(d).toFixed(1)}% vs MSRP</span>`}</div>
+      <div class="kv"><span class="k">Índice del mercado</span><span class="v" style="color:${idx != null && idx < 95 ? "var(--crit)" : "inherit"}">${idx == null ? "—" : idx.toFixed(1)}<small>${out} de ${o.cs.length} precios fuera de regla</small></span></div>
+      <div class="mini" style="padding-top:10px">Índice por tienda</div>${per.map(x => `<div class="kv"><span class="k">${esc(o.P.retailers[x.k])}</span><span class="v" style="color:${x.i == null ? "var(--se)" : x.i < 95 ? "var(--crit)" : "inherit"}">${x.i == null ? "sin datos" : x.i.toFixed(1)}<small>${x.i == null ? "la tienda no entregó precios" : x.out + " de " + x.n + " fuera de regla"}</small></span></div>`).join("")}</div>`; }).join("");
+  const low = []; info.forEach(o => o.rks.forEach(k => { const i = indice(o.cs.filter(x => x.rk === k)); low.push({n: o.P.retailers[k], p: o.P.pais_nombre, cod: o.P.pais.toUpperCase(), i}); }));
+  const conI = low.filter(x => x.i != null).sort((a, b) => a.i - b.i), sinD = low.filter(x => x.i == null);
+  const msgs = []; if (conI.length) { msgs.push(`Índice más bajo de la región: ${esc(conI[0].n)} en ${esc(conI[0].p)} con ${conI[0].i.toFixed(1)}.`); const b95 = conI.filter(x => x.i < 95); if (b95.length) msgs.push(`Tiendas por debajo de 95: ${b95.map(x => esc(x.n) + " " + x.cod + " (" + x.i.toFixed(1) + ")").join(", ")}.`); msgs.push(`Índice más alto: ${esc(conI[conI.length - 1].n)} en ${esc(conI[conI.length - 1].p)} con ${conI[conI.length - 1].i.toFixed(1)}.`); }
+  sinD.forEach(x => msgs.push(`${esc(x.n)} (${esc(x.p)}) no entregó precios en la última corrida.`));
+  const keys = info[0].rows.map(f => [f.m, f.g, f.fam]);
+  const best = (o, m, g) => { const f = o.rows.find(x => x.m === m && x.g === g); if (!f) return null; const pr = Object.entries(f.c).filter(([, c]) => c && !c.revisar && c.gap != null); if (!pr.length) return null; const w = pr.reduce((a, x) => x[1].gap < a[1].gap ? x : a); return {gap: w[1].gap, n: o.P.retailers[w[0]], revisar: false}; };
+  const lines = keys.map(([m, g, fam]) => { const bs = info.map(o => best(o, m, g)); return {m, g, fam, bs, w: Math.min(0, ...bs.filter(Boolean).map(b => b.gap))}; });
+  let body = ""; [...new Set(keys.map(k => k[2]))].forEach(F => { body += `<tr class="grp"><td colspan="5">${esc(F)}</td></tr>`;
+    lines.filter(l => l.fam === F).sort((a, b) => a.w - b.w).forEach(l => { const no = l.bs.filter(b => b && b.gap < -tol).length;
+      body += `<tr><td class="mod">${esc(clean(l.m))} <span>${esc(l.g)}</span></td>${l.bs.map(b => b ? `<td><div class="cell b-${band(b, tol)}"><b>${pct(b.gap)}</b><i style="font-weight:500">${esc(b.n)}</i></div></td>` : '<td class="nd">—</td>').join("")}<td style="font-weight:${no ? 700 : 400};color:${no >= 2 ? "var(--ora)" : no ? "inherit" : "var(--se)"}">${no} de 3</td></tr>`; }); });
+  return `<div><h2>Vista regional — NCA</h2><p class="ctx">${CATS.find(c => c[0] === S.cat)[1]} · regla ${tol}% · cada país contra su propio MSRP</p></div><div class="cards">${cards}</div>
+    <section class="panel"><h3>Mensajes clave</h3><ul class="msg">${msgs.map(m => `<li>${m}</li>`).join("")}</ul></section>
+    <section class="panel"><h3>Peor brecha por modelo y país</h3><p class="hint">Brecha contra el MSRP de cada país y la tienda que la tiene. Ordenado por peor brecha regional.</p>
+      <div class="subs">${CATS.map(([k, n]) => `<button type="button" class="subtab${k === S.cat ? " on" : ""}" data-cat="${k}">${n}</button>`).join("")}</div>
+      <div class="scroll"><table><thead><tr><th class="l">Modelo</th>${info.map(o => `<th class="l"><span class="dot" style="background:${PC[o.P.pais]};margin-right:6px"></span>${esc(o.P.pais_nombre)}</th>`).join("")}<th>Países en desfase</th></tr></thead><tbody>${body}</tbody></table></div></section>`;
+}
+
+function vCalidad() {
+  const rks = Object.keys(T.retailers), pl = SALUD.planificador || {}, tot = SALUD.totales || {};
+  const sal = k => (SALUD.tiendas || []).find(s => s.pais === T.pais && s.retailer === k);
+  const filasT = rks.map((k, i) => { const n = T.filas.filter(f => f.c[k]).length, st = T.estado_tiendas[k] || {}, s = sal(k), malo = n === 0 || st.estado === "error" || (s && s.fallo);
+    return `<tr><td class="mod"><span class="dot" style="background:${RCOL[i % 4]};margin-right:6px"></span>${esc(T.retailers[k])}</td><td class="l s">${fdt(st.ts)}</td><td>${n} de ${T.filas.length}</td><td>${Math.round(n / T.filas.length * 100)}%</td><td>${(T.sin_coincidencia[k] || []).length}</td><td>${malo ? '<span class="pill bad">revisar scraper</span>' : '<span class="pill good">OK</span>'}</td></tr>`; }).join("");
+  const rev = []; T.filas.forEach(f => Object.entries(f.c).forEach(([k, c]) => { if (c && c.revisar) rev.push({f, k, c}); }));
+  const revRows = rev.map(x => `<tr><td class="mod">${esc(clean(x.f.m))} <span>${esc(x.f.g)}</span></td><td class="l">${esc(T.retailers[x.k])}</td><td>${money(x.c.p)}</td><td class="s">${money(x.f.base)}</td><td>${pct(x.c.gap)}</td><td class="l s" style="white-space:normal;max-width:420px">${esc(x.c.nombre || "")}</td></tr>`).join("");
+  const sinc = rks.map(k => (T.sin_coincidencia[k] || []).map(n => `<tr><td class="l">${esc(T.retailers[k])}</td><td class="l s" style="white-space:normal">${esc(n)}</td></tr>`).join("")).join("");
+  return `<div><h2>Calidad de datos — ${esc(T.pais_nombre)}</h2><p class="ctx">Estado de cada scraper, cobertura del catálogo y emparejamientos que conviene revisar antes de reportar.</p></div>
+    <div class="cards"><div class="card total"><div class="hd"><span class="nm">Monitoreo</span><span class="pill ${pl.atrasado ? "bad" : "good"}">${pl.atrasado ? "atrasado" : "al día"}</span></div>
+      <div class="kv"><span class="k">Última actualización</span><span class="v">${pl.horas_desde_ultima == null ? "—" : pl.horas_desde_ultima.toFixed(1) + " h"}<small>se relanza sola si pasa de ${pl.horas_max} h</small></span></div>
+      <div class="kv"><span class="k">Corrida en curso</span><span class="v">${pl.en_curso ? "Sí" : "No"}<small>ventana ${pl.ventana ? pl.ventana[0] + ":00 a " + pl.ventana[1] + ":00" : ""}</small></span></div></div>
+      <div class="card"><div class="hd"><span class="nm">Base de precios</span></div><div class="kv"><span class="k">Observaciones</span><span class="v">${(tot.obs || 0).toLocaleString("en-US")}<small>desde ${tot.desde ? fev(tot.desde).slice(0, 5) : "—"}</small></span></div><div class="kv"><span class="k">Eventos</span><span class="v">${(tot.ev || 0).toLocaleString("en-US")}</span></div></div>
+      <div class="card"><div class="hd"><span class="nm">Pendientes</span></div><div class="kv"><span class="k">Por revisar</span><span class="v" style="color:${rev.length ? "var(--ora)" : "inherit"}">${rev.length}<small>brecha de ±${T.umbral_revisar}% o más</small></span></div><div class="kv"><span class="k">Sin emparejar</span><span class="v">${Object.values(T.sin_coincidencia).reduce((a, l) => a + l.length, 0)}<small>productos de tienda fuera del catálogo</small></span></div></div></div>
+    <section class="panel"><h3>Tiendas</h3><p class="hint">Cobertura = modelos del catálogo con precio en la tienda. Una tienda sin precios se marca para revisar aunque el scraper termine sin error.</p><div class="scroll"><table><thead><tr><th class="l">Tienda</th><th class="l">Última actualización</th><th>Con precio</th><th>Cobertura</th><th>Sin emparejar</th><th>Estado</th></tr></thead><tbody>${filasT}</tbody></table></div></section>
+    <section class="panel"><h3>Emparejamientos por revisar</h3><p class="hint">Precios con una brecha de ±${T.umbral_revisar}% o más contra el MSRP. No entran en índices ni alertas hasta confirmar que es el mismo producto.</p>${revRows ? `<div class="scroll"><table><thead><tr><th class="l">Modelo</th><th class="l">Tienda</th><th>Precio</th><th>MSRP</th><th>Brecha</th><th class="l">Nombre publicado</th></tr></thead><tbody>${revRows}</tbody></table></div>` : '<div class="empty">Nada por revisar.</div>'}</section>
+    <section class="panel"><h3>Productos de tienda sin emparejar</h3><p class="hint">Aparecen en la tienda pero no coinciden con ningún modelo del catálogo.</p>${sinc ? `<div class="scroll"><table><thead><tr><th class="l">Tienda</th><th class="l">Nombre publicado</th></tr></thead><tbody>${sinc}</tbody></table></div>` : '<div class="empty">Todo emparejado.</div>'}</section>`;
+}
+
+/* ---------- exportes ---------- */
+function bajar(nombre, filas) { const csv = "﻿" + filas.map(r => r.map(v => { const s = String(v == null ? "" : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(",")).join("\r\n"); const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], {type: "text/csv;charset=utf-8"})); a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+function exportarMatriz() { const rks = Object.keys(T.retailers), head = ["Modelo", "Memoria", "Categoria", "MSRP"]; rks.forEach(k => head.push(T.retailers[k], T.retailers[k] + " %", T.retailers[k] + " dias fuera de regla"));
+  const rows = [head]; T.filas.forEach(f => { const r = [clean(f.m), f.g, f.cat, f.base]; rks.forEach(k => { const c = f.c[k]; r.push(c ? c.p : "", c && c.gap != null ? c.gap.toFixed(1) : "", c && c.dias != null ? c.dias : ""); }); rows.push(r); });
+  bajar("precios_" + T.pais + "_" + new Date().toISOString().slice(0, 10) + ".csv", rows); }
+function exportarEventos() { const rows = [["Fecha", "Pais", "Tienda", "Modelo", "Memoria", "Tipo", "Precio anterior", "Precio nuevo", "Cambio %", "Confirmado", "Mismo producto"]]; evFiltrados().forEach(e => rows.push([e.fecha, e.pais, e.retailer_nombre || e.retailer, clean(e.mobile), e.memoria, e.tipo, e.precio_anterior, e.precio_nuevo, e.pct, e.confirmado, e.mismo_producto])); bajar("movimientos_" + T.pais + ".csv", rows); }
+
+/* ---------- eventos de interfaz ---------- */
+document.addEventListener("click", ev => {
+  const t = ev.target.closest("button, tr.rowk"); if (!t) return;
+  if (t.dataset.p) { S.pais = t.dataset.p; S.sel = null; SALUD = null; cargar(); }
+  else if (t.dataset.v) { S.vista = t.dataset.v; if (S.vista === "calidad") SALUD = null; render(); window.scrollTo({top: 0}); }
+  else if (t.dataset.cat) { S.cat = t.dataset.cat; S.sel = null; render(); }
+  else if (t.dataset.f) { S.filtro = t.dataset.f; render(); }
+  else if (t.dataset.d) { S.dias = +t.dataset.d; render(); }
+  else if (t.dataset.hd) { S.hDias = +t.dataset.hd; render(); }
+  else if (t.id === "det-x") { S.sel = null; render(); }
+  else if (t.id === "h-csv") exportarEventos();
+  else if (t.classList.contains("rowk")) { if (ev.target.closest("a")) return; S.sel = {m: t.dataset.m, g: t.dataset.g}; render(); }
+});
+document.addEventListener("keydown", ev => { if (ev.key === "Enter" && ev.target.classList && ev.target.classList.contains("rowk")) { S.sel = {m: ev.target.dataset.m, g: ev.target.dataset.g}; render(); } });
+document.addEventListener("change", ev => { const t = ev.target; if (t.id === "h-t") { S.hTienda = t.value; render(); } else if (t.id === "h-tipo") { S.hTipo = t.value; render(); } else if (t.id === "h-reb") { S.hReb = t.checked; render(); } else if (t.id === "s-tol") { S.tol = t.value; REG = null; cargar(); } });
+document.addEventListener("input", ev => { if (ev.target.id === "q") { S.q = ev.target.value; clearTimeout(render.t); render.t = setTimeout(() => { render(); const q = $("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }, 250); } });
+$("b-theme").addEventListener("click", () => setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"));
+$("m-exec").addEventListener("click", () => { S.modo = "exec"; $("m-exec").className = "on"; $("m-ana").className = ""; render(); });
+$("m-ana").addEventListener("click", () => { S.modo = "ana"; $("m-ana").className = "on"; $("m-exec").className = ""; render(); });
+$("b-export").addEventListener("click", () => { if (T) (S.vista === "historico" ? exportarEventos : exportarMatriz)(); });
+$("b-run").addEventListener("click", async () => { try { const r = await getJSON("/api/v2/actualizar", {method: "POST"}); toast(r.mensaje + (r.ok ? ". Tarda unos 9 minutos." : "")); } catch (e) { toast("No se pudo iniciar la corrida"); } });
+setTheme(store("ccp_tema") === "light" ? "light" : "dark");
+cargar();
+setInterval(() => { if (!document.hidden && !(document.activeElement && document.activeElement.id === "q")) cargar(true); }, 60000);
+</script>
+</body>
+</html>
+{% endraw %}
