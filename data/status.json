@@ -1,18 +1,15 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1794497379.0938544,
-    "duracion_segundos": 11.6
+    "ultima_actualizacion": 1794498030.7950196
   },
   "gallo": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794497507.7075856,
-    "duracion_segundos": 71.9
+    "estado": "corriendo",
+    "inicio": 1794498029.0574758
   },
   "max": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794497434.798514,
-    "duracion_segundos": 54.7
+    "estado": "corriendo",
+    "inicio": 1794498028.3925729
   },
   "diunsa": {
     "estado": "ok",
@@ -45,8 +42,8 @@
     "duracion_segundos": 99.2
   },
   "walmart": {
-    "estado": "ok",
-    "ultima_actualizacion": 1794323976.2896066
+    "estado": "corriendo",
+    "inicio": 1794498029.738901
   },
   "walmart_sv": {
     "estado": "ok",
