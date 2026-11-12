@@ -1958,6 +1958,176 @@
       font-size: 11px;
       color: var(--text-sub);
     }
+    /* Gráficas Interactivas en Modal Histórico */
+    .historico-charts-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 14px 24px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      max-height: 240px;
+      transition: all 0.3s ease;
+    }
+    .historico-charts-panel.collapsed {
+      display: none !important;
+    }
+    @media (max-width: 900px) {
+      .historico-charts-panel {
+        grid-template-columns: 1fr;
+        max-height: none;
+      }
+    }
+    .hist-chart-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 180px;
+    }
+    .hist-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hist-chart-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hist-chart-sub {
+      font-size: 10.5px;
+      color: var(--text-sub);
+    }
+    .hist-bars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 150px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .hist-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .hist-bar-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .hist-bar-item.selected {
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+    }
+    .hist-bar-label {
+      width: 120px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-main);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hist-bar-track {
+      flex: 1;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .hist-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+    .hist-bar-val {
+      min-width: 55px;
+      text-align: right;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--emerald);
+    }
+    .hist-timeline-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 135px;
+      padding-top: 10px;
+      padding-bottom: 2px;
+      overflow-x: auto;
+    }
+    .hist-timeline-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 32px;
+      height: 100%;
+      justify-content: flex-end;
+      gap: 4px;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 2px;
+      transition: background 0.15s;
+    }
+    .hist-timeline-col:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .hist-timeline-val {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--emerald);
+      font-family: monospace;
+    }
+    .hist-timeline-bar {
+      width: 100%;
+      max-width: 24px;
+      background: linear-gradient(180deg, #10b981, #047857);
+      border-radius: 4px 4px 0 0;
+      transition: all 0.25s ease;
+      min-height: 4px;
+    }
+    .hist-timeline-label {
+      font-size: 9.5px;
+      color: var(--text-sub);
+      white-space: nowrap;
+      font-family: monospace;
+    }
+    .btn-toggle-graficas {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .btn-toggle-graficas:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
     .historico-toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -2212,6 +2382,9 @@
           <button class="btn btn-secondary btn-sm" id="btn-copiar-imagen-historico" onclick="copiarHistoricoComoImagen()" title="Copiar informe gráfico del histórico como imagen para compartir en WhatsApp" style="display:inline-flex; align-items:center; gap:6px; border-color:var(--primary); color:var(--primary); font-weight:700;">
             <span>📸 Copiar Imagen</span>
           </button>
+          <button class="btn-toggle-graficas" id="btn-toggle-hist-charts" onclick="toggleGraficasHistorico()" title="Mostrar u ocultar gráficos">
+            📊 Gráficas
+          </button>
           <button class="btn btn-secondary btn-sm" onclick="descargarHistoricoCsv()" title="Exportar histórico a archivo CSV / Excel">
             📥 Exportar CSV
           </button>
@@ -2258,6 +2431,29 @@
             <span style="color:var(--rose);" id="hist-kpi-subidas">🔴 0</span>
           </div>
           <div class="historico-kpi-foot" id="hist-kpi-tendencia-sub">Proporción del mes</div>
+        </div>
+      </div>
+
+      <!-- Panel de Gráficas Interactivas -->
+      <div class="historico-charts-panel" id="hist-charts-panel">
+        <div class="hist-chart-card">
+          <div class="hist-chart-header">
+            <span class="hist-chart-title">🏬 Rebajas por Tienda / Shop</span>
+            <span class="hist-chart-sub" id="hist-chart-shop-sub">Clic en barra para filtrar</span>
+          </div>
+          <div class="hist-bars-list" id="hist-chart-shop-bars">
+            <!-- Barras inyectadas dinámicamente -->
+          </div>
+        </div>
+
+        <div class="hist-chart-card">
+          <div class="hist-chart-header">
+            <span class="hist-chart-title">📅 Tendencia Diaria de Variaciones</span>
+            <span class="hist-chart-sub" id="hist-chart-timeline-sub">Frecuencia por fecha</span>
+          </div>
+          <div class="hist-timeline-chart" id="hist-chart-timeline">
+            <!-- Columnas inyectadas dinámicamente -->
+          </div>
         </div>
       </div>
 
@@ -5896,11 +6092,133 @@
       });
 
       renderTablaHistorico(filtrados);
+      renderGraficasHistorico(filtrados);
 
       const elMostrando = document.getElementById("hist-footer-mostrando");
       if (elMostrando) elMostrando.textContent = filtrados.length;
       const elTotal = document.getElementById("hist-footer-total");
       if (elTotal) elTotal.textContent = items.length;
+    }
+
+    function toggleGraficasHistorico() {
+      const panel = document.getElementById("hist-charts-panel");
+      const btn = document.getElementById("btn-toggle-hist-charts");
+      if (!panel) return;
+      const isHidden = panel.classList.toggle("collapsed");
+      if (btn) {
+        btn.innerHTML = isHidden ? "📊 Ver Gráficas" : "📊 Ocultar Gráficas";
+      }
+    }
+
+    function renderGraficasHistorico(items) {
+      const barsContainer = document.getElementById("hist-chart-shop-bars");
+      const timelineContainer = document.getElementById("hist-chart-timeline");
+      const shopSub = document.getElementById("hist-chart-shop-sub");
+      const timelineSub = document.getElementById("hist-chart-timeline-sub");
+      if (!barsContainer || !timelineContainer) return;
+
+      if (!items || items.length === 0) {
+        barsContainer.innerHTML = '<div style="color:var(--text-sub); font-size:12px; text-align:center; padding:20px;">Sin datos con los filtros actuales</div>';
+        timelineContainer.innerHTML = '<div style="color:var(--text-sub); font-size:12px; text-align:center; padding:20px; width:100%;">Sin datos</div>';
+        return;
+      }
+
+      const flags = { "GT": "🇬🇹", "SV": "🇸🇻", "HN": "🇭🇳" };
+
+      // 1. Gráfica de Barras por Tienda (Shop)
+      const porTienda = {};
+      items.forEach(c => {
+        const ret = c.retailer || "Desconocido";
+        const key = c.retailer_key || ret.toLowerCase();
+        const pais = c.pais || "GT";
+        if (!porTienda[key]) {
+          porTienda[key] = { nombre: ret, pais: pais, key: key, count: 0, bajas: 0, subidas: 0 };
+        }
+        porTienda[key].count++;
+        if (c.tipo === "baja") porTienda[key].bajas++;
+        else porTienda[key].subidas++;
+      });
+
+      const arrTiendas = Object.values(porTienda).sort((a, b) => b.count - a.count);
+      const maxCountTienda = arrTiendas.length > 0 ? arrTiendas[0].count : 1;
+      const retActual = (document.getElementById("hist-select-retailer")?.value || "todos").toLowerCase();
+
+      barsContainer.innerHTML = arrTiendas.map(t => {
+        const pct = Math.max(8, Math.round((t.count / maxCountTienda) * 100));
+        const flag = flags[t.pais] || "🌍";
+        const isSelected = retActual === t.key.toLowerCase();
+        const barColor = (historicoFiltroTipo === "subidas") ? "linear-gradient(90deg, #f43f5e, #be123c)" : "linear-gradient(90deg, #10b981, #059669)";
+        const valColor = (historicoFiltroTipo === "subidas") ? "var(--rose)" : "var(--emerald)";
+
+        return `
+          <div class="hist-bar-item ${isSelected ? 'selected' : ''}" onclick="seleccionarTiendaDesdeGrafica('${t.key}')" title="Filtrar por ${t.nombre} (${t.count} cambios)">
+            <div class="hist-bar-label">
+              <span>${flag}</span>
+              <span>${t.nombre}</span>
+            </div>
+            <div class="hist-bar-track">
+              <div class="hist-bar-fill" style="width: ${pct}%; background: ${barColor};"></div>
+            </div>
+            <div class="hist-bar-val" style="color: ${valColor};">${t.count} mov.</div>
+          </div>
+        `;
+      }).join("");
+
+      if (shopSub) {
+        shopSub.textContent = `${arrTiendas.length} tiendas activas (${items.length} total)`;
+      }
+
+      // 2. Gráfica Cronológica por Fecha (Día)
+      const porFecha = {};
+      items.forEach(c => {
+        const fStr = (c.fecha || "").slice(0, 10);
+        if (!fStr) return;
+        porFecha[fStr] = (porFecha[fStr] || 0) + 1;
+      });
+
+      const fechasSorted = Object.keys(porFecha).sort(); // cronológico ascendente
+      const maxCountFecha = fechasSorted.length > 0 ? Math.max(...Object.values(porFecha)) : 1;
+
+      timelineContainer.innerHTML = fechasSorted.map(f => {
+        const cnt = porFecha[f];
+        const pctH = Math.max(12, Math.round((cnt / maxCountFecha) * 100));
+        const diaMes = f.slice(5).replace("-", "/"); // MM/DD
+        const barGrad = (historicoFiltroTipo === "subidas") ? "linear-gradient(180deg, #f43f5e, #be123c)" : "linear-gradient(180deg, #10b981, #047857)";
+
+        return `
+          <div class="hist-timeline-col" onclick="seleccionarFechaDesdeGrafica('${f}')" title="Fecha: ${f} (${cnt} movimientos)">
+            <div class="hist-timeline-val">${cnt}</div>
+            <div class="hist-timeline-bar" style="height: ${pctH}%; background: ${barGrad};"></div>
+            <div class="hist-timeline-label">${diaMes}</div>
+          </div>
+        `;
+      }).join("");
+
+      if (timelineSub) {
+        timelineSub.textContent = `${fechasSorted.length} días con actividad`;
+      }
+    }
+
+    function seleccionarTiendaDesdeGrafica(retailerKey) {
+      const sel = document.getElementById("hist-select-retailer");
+      if (!sel) return;
+      if (sel.value === retailerKey) {
+        sel.value = "todos"; // Deseleccionar
+      } else {
+        sel.value = retailerKey;
+      }
+      filtrarHistorico();
+    }
+
+    function seleccionarFechaDesdeGrafica(fechaStr) {
+      const inp = document.getElementById("hist-search-input");
+      if (!inp) return;
+      if (inp.value === fechaStr) {
+        inp.value = "";
+      } else {
+        inp.value = fechaStr;
+      }
+      filtrarHistorico();
     }
 
     function renderTablaHistorico(items) {
