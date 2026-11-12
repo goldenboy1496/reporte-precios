@@ -1,39 +1,48 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1794335198.356275
+    "ultima_actualizacion": 1794497379.0938544,
+    "duracion_segundos": 11.6
   },
   "gallo": {
     "estado": "ok",
-    "ultima_actualizacion": 1794323927.7033722
+    "ultima_actualizacion": 1794497507.7075856,
+    "duracion_segundos": 71.9
   },
   "max": {
     "estado": "ok",
-    "ultima_actualizacion": 1794323972.3044474
+    "ultima_actualizacion": 1794497434.798514,
+    "duracion_segundos": 54.7
   },
   "diunsa": {
     "estado": "ok",
-    "ultima_actualizacion": 1794327014.0979455
+    "ultima_actualizacion": 1794497887.3758998,
+    "duracion_segundos": 55.2
   },
   "elektra_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1794327016.8508031
+    "ultima_actualizacion": 1794497831.1269813,
+    "duracion_segundos": 21.0
   },
   "jetstereo": {
     "estado": "ok",
-    "ultima_actualizacion": 1794327051.942333
+    "ultima_actualizacion": 1794497809.0641787,
+    "duracion_segundos": 36.4
   },
   "siman": {
     "estado": "ok",
-    "ultima_actualizacion": 1794324548.192571
+    "ultima_actualizacion": 1794497529.2172616,
+    "duracion_segundos": 14.8
   },
   "curacao_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1794324455.0840352
+    "ultima_actualizacion": 1794497665.9612882,
+    "duracion_segundos": 135.7
   },
   "prado": {
     "estado": "ok",
-    "ultima_actualizacion": 1794324538.9021618
+    "ultima_actualizacion": 1794497766.1487503,
+    "duracion_segundos": 99.2
   },
   "walmart": {
     "estado": "ok",
@@ -41,15 +50,17 @@
   },
   "walmart_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1794324552.5322409
+    "ultima_actualizacion": 1794497771.6327715,
+    "duracion_segundos": 4.4
   },
   "walmart_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1794327055.6308298
+    "ultima_actualizacion": 1794497892.3533216,
+    "duracion_segundos": 3.9
   },
   "walmart_gt": {
     "estado": "ok",
-    "ultima_actualizacion": 1793728926.1641595,
-    "duracion_segundos": 4.5
+    "ultima_actualizacion": 1794497513.4146538,
+    "duracion_segundos": 4.7
   }
 }
