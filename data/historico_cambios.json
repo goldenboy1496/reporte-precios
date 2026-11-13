@@ -10638,5 +10638,53 @@
     "diferencia": -3.0,
     "pct_cambio": -0.18,
     "tipo": "baja"
+  },
+  {
+    "id": "1794584013_GT_elektra_Galaxy Watch Ultra_",
+    "fecha": "2026-11-13 09:33:33",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Watch Ultra",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 3799.0,
+    "precio_nuevo": 2949.0,
+    "diferencia": -850.0,
+    "pct_cambio": -22.37,
+    "tipo": "baja"
+  },
+  {
+    "id": "1794584013_GT_elektra_Galaxy Watch Ultra Refresh_",
+    "fecha": "2026-11-13 09:33:33",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy Watch Ultra Refresh",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 3799.0,
+    "precio_nuevo": 2949.0,
+    "diferencia": -850.0,
+    "pct_cambio": -22.37,
+    "tipo": "baja"
+  },
+  {
+    "id": "1794584013_SV_curacao_sv_Galaxy S26 FE_8+128",
+    "fecha": "2026-11-13 09:33:33",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "La Curacao",
+    "retailer_key": "curacao_sv",
+    "mobile": "Galaxy S26 FE",
+    "memoria": "8+128",
+    "categoria": "Smartphones",
+    "precio_anterior": 949.0,
+    "precio_nuevo": 859.0,
+    "diferencia": -90.0,
+    "pct_cambio": -9.48,
+    "tipo": "baja"
   }
 ]

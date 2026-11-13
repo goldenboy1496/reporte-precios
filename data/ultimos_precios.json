@@ -87,7 +87,7 @@
   "SV|prado|Galaxy-A57 5G|8+256": 565.0,
   "SV|siman|Galaxy-A57 5G|12+512": 809.0,
   "SV|siman|Galaxy S26 FE|8+128": 859.0,
-  "SV|curacao_sv|Galaxy S26 FE|8+128": 949.0,
+  "SV|curacao_sv|Galaxy S26 FE|8+128": 859.0,
   "SV|prado|Galaxy S26 FE|8+256": 984.0,
   "SV|siman|Galaxy S26|12+256": 1079.0,
   "SV|prado|Galaxy S26|12+256": 1079.0,
@@ -361,9 +361,9 @@
   "GT|max|Galaxy Buds4 Pro|": 1796.0,
   "GT|elektra|Watch7 40mm|": 1699.0,
   "GT|max|Watch7 40mm|": 1699.0,
-  "GT|elektra|Galaxy Watch Ultra|": 3799.0,
+  "GT|elektra|Galaxy Watch Ultra|": 2949.0,
   "GT|max|Galaxy Watch Ultra|": 3396.0,
-  "GT|elektra|Galaxy Watch Ultra Refresh|": 3799.0,
+  "GT|elektra|Galaxy Watch Ultra Refresh|": 2949.0,
   "GT|max|Galaxy Watch Ultra Refresh|": 3396.0,
   "GT|max|Watch8 Classic 46mm BT|": 3899.0,
   "GT|max|Watch8 44mm BT|": 2696.0,
@@ -432,5 +432,10 @@
   "SV|walmart_sv|Galaxy-A18|4+128": 283.22,
   "SV|prado|Galaxy Tab S10 FE Wifi (Book Cover  Inbox)|128GB": 474.0,
   "SV|walmart_sv|Galaxy Tab S10 FE Wifi (Book Cover  Inbox)|128GB": 470.25,
-  "SV|prado|Buds Core|": 54.0
+  "SV|prado|Buds Core|": 54.0,
+  "GT|max|Galaxy-A08|4+64": 1645.0,
+  "GT|max|Galaxy-A18|4+128": 2345.0,
+  "GT|max|Galaxy Z Fold8|12GB_512GB": 15995.0,
+  "GT|max|Galaxy Z Fold8 Ultra|12GB_512GB": 19999.0,
+  "SV|curacao_sv|Galaxy S25 FE|8+256": 705.0
 }
