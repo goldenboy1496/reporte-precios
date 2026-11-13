@@ -42,8 +42,8 @@
     "duracion_segundos": 97.5
   },
   "walmart": {
-    "estado": "corriendo",
-    "inicio": 1794585002.5683737
+    "estado": "ok",
+    "ultima_actualizacion": 1794585007.3682122
   },
   "walmart_sv": {
     "estado": "ok",
