@@ -257,7 +257,12 @@ def actualizar(retailer):
             timeout=900,
             creationflags=win_flags,
         )
-        ok = result.returncode == 0 and info["csv"].exists()
+        try:
+            with open(info["csv"], encoding="utf-8", errors="ignore") as _f:
+                n_filas = max(0, sum(1 for _l in _f if _l.strip()) - 1)
+        except Exception:
+            n_filas = 0
+        ok = result.returncode == 0 and n_filas > 0
         status = load_status()
         if ok:
             status[retailer] = {"estado": "ok", "ultima_actualizacion": time.time()}

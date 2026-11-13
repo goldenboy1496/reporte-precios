@@ -16,7 +16,10 @@ if hasattr(sys.stdout, "reconfigure"):
 
 def main():
     print("Iniciando scraping de Elektra Honduras (API VTEX con filtro de existencias)...")
-    url = "https://www.elektra.com.hn/api/catalog_system/pub/products/search/telefonia/telefonos/samsung?_from=0&_to=49"
+    # Antes solo consultaba telefonia (50 resultados). Ahora toda la busqueda "samsung", paginada,
+    # y se quedan celulares, tablets y wearables.
+    base_url = "https://www.elektra.com.hn/api/catalog_system/pub/products/search/samsung?_from={i}&_to={j}"
+    claves = ["CELULAR", "TELEFONO", "TELÉFONO", "SMARTPHONE", "TABLET", "GALAXY", "BUDS", "WATCH", "SMARTWATCH", "FIT", "AUDIFONO", "AUDÍFONO"]
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json",
@@ -25,14 +28,20 @@ def main():
 
     productos = []
     try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            raw = resp.read()
-            try:
-                txt = gzip.decompress(raw).decode("utf-8")
-            except Exception:
-                txt = raw.decode("utf-8", errors="ignore")
-            data = json.loads(txt)
+        data = []
+        for i in range(0, 500, 50):
+            req = urllib.request.Request(base_url.format(i=i, j=i + 49), headers=headers)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                raw = resp.read()
+                try:
+                    txt = gzip.decompress(raw).decode("utf-8")
+                except Exception:
+                    txt = raw.decode("utf-8", errors="ignore")
+                pagina = json.loads(txt)
+            if not pagina:
+                break
+            data.extend(pagina)
+        data = [p for p in data if any(k in p.get("productName", "").upper() for k in claves)]
 
         print(f"Productos recibidos de Elektra HN: {len(data)}")
         for p in data:

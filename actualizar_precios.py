@@ -154,6 +154,15 @@ def guardar_status(status):
         log_mensaje(f"Error guardando status.json: {e}")
 
 
+def filas_csv(csv_path):
+    """Cantidad de productos en el CSV de una tienda (0 si no existe o esta vacio)."""
+    try:
+        with open(csv_path, encoding="utf-8", errors="ignore") as f:
+            return max(0, sum(1 for linea in f if linea.strip()) - 1)
+    except Exception:
+        return 0
+
+
 def ejecutar_scraper(retailer_info, modo_visible=False):
     r_id = retailer_info["id"]
     r_nombre = retailer_info["nombre"]
@@ -187,7 +196,8 @@ def ejecutar_scraper(retailer_info, modo_visible=False):
             creationflags=creationflags,
         )
         duracion = round(time.time() - t_inicio, 1)
-        ok = resultado.returncode == 0 and csv_path.exists()
+        n_filas = filas_csv(csv_path)
+        ok = resultado.returncode == 0 and n_filas > 0
 
         status = cargar_status()
         if ok:
@@ -198,8 +208,8 @@ def ejecutar_scraper(retailer_info, modo_visible=False):
             }
             log_mensaje(f"✓ {r_nombre} completado con éxito ({duracion}s)")
         else:
-            log_err = ""
-            if resultado.stdout or resultado.stderr:
+            log_err = "El scraper termino sin productos (CSV vacio)" if resultado.returncode == 0 else ""
+            if resultado.returncode != 0 and (resultado.stdout or resultado.stderr):
                 log_err = ((resultado.stdout or "")[-1500:] + "\n" + (resultado.stderr or "")[-1500:]).strip()
             status[r_id] = {
                 "estado": "error",
@@ -207,7 +217,7 @@ def ejecutar_scraper(retailer_info, modo_visible=False):
                 "duracion_segundos": duracion,
                 "log": log_err,
             }
-            log_mensaje(f"✗ Error en {r_nombre} (código {resultado.returncode})")
+            log_mensaje(f"✗ Error en {r_nombre} (código {resultado.returncode}, {n_filas} productos)")
 
         guardar_status(status)
         return ok

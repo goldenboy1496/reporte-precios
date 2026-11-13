@@ -78,14 +78,14 @@ h3{margin:0;font-size:14px;font-weight:700}
 table{width:100%;border-collapse:collapse}
 th{padding:8px;text-align:right;font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--mu);box-shadow:0 1px 0 var(--border);white-space:nowrap}
 th.l,td.l{text-align:left}
-td{padding:5px 8px;border-bottom:1px solid var(--border2);font-size:12.5px;text-align:right}
+td{padding:4px 6px;border-bottom:1px solid var(--border2);font-size:12.5px;text-align:right}
 td.mod{font-weight:700;text-align:left;white-space:nowrap}
 td.mod span,td .s{font-weight:400;color:var(--se)}
 tr.grp td{text-align:left;padding:12px 8px 6px;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--sky);border-bottom:1px solid var(--border)}
 tr.grp td span{font-weight:600;letter-spacing:0;text-transform:none;color:var(--se)}
 tr.rowk{cursor:pointer}tr.rowk:hover{background:var(--soft)}
 tr.sel{background:var(--sel)}tr.sel td.mod{box-shadow:inset 3px 0 0 var(--pur)}
-.cell{border-radius:6px;padding:5px 8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;min-width:118px;white-space:nowrap}
+.cell{border-radius:6px;padding:4px 7px;display:flex;justify-content:space-between;align-items:baseline;gap:6px;min-width:100px;white-space:nowrap}
 .cell b{font-size:12.5px;font-weight:700}.cell i{font-style:normal;font-size:11.5px;font-weight:600}
 .cell a{color:inherit;text-decoration:none;font-size:11px;opacity:.8}
 .b-ok{color:var(--okfg)}.b-b1{background:var(--b1bg);color:var(--b1fg)}.b-b2{background:var(--b2bg);color:var(--b2fg)}.b-b3{background:var(--b3bg);color:#fff}
@@ -101,8 +101,8 @@ tr.sel{background:var(--sel)}tr.sel td.mod{box-shadow:inset 3px 0 0 var(--pur)}
 .legend span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--se)}
 .legend i{width:22px;height:12px;border-radius:4px;display:inline-block}
 .split{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
-.split>.grow{flex:999 1 680px;min-width:0}
-aside.det{flex:1 1 320px;min-width:0;max-width:370px;background:var(--surface);border:2px solid var(--pur);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;position:sticky;top:12px}
+.split>.grow{flex:999 1 640px;min-width:0}
+aside.det{flex:1 1 300px;min-width:0;max-width:330px;background:var(--surface);border:2px solid var(--pur);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;position:sticky;top:12px}
 .det .lab{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--sky)}
 .det h3{font-family:var(--font-ui);font-size:17px;font-weight:800;margin-top:3px}
 .rl{display:grid;grid-template-columns:12px 1fr auto auto;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border2)}
@@ -113,6 +113,45 @@ aside.det{flex:1 1 320px;min-width:0;max-width:370px;background:var(--surface);b
 .mini{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu)}
 .note{margin:0;font-size:11.5px;color:var(--se);line-height:1.45}
 ul.msg{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.5}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.dcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.dcard .hd{display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.dcard .nm{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dcard .hd .pill{margin-left:auto}
+.di{display:grid;grid-template-columns:minmax(0,1fr) auto 62px;column-gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border2)}
+.di:last-of-type{border-bottom:0}
+.di .m{font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.di .d{grid-column:1 / 3;font-size:11px;color:var(--se);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.di .p{font-size:13px;font-weight:800;text-align:right}
+.di .tag{grid-row:1 / 3;grid-column:3;text-align:center;font-size:11.5px;padding:4px 0}
+.dcard .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid var(--border)}
+.dcard .acts{display:flex;gap:6px}
+.dcard .acts button{font-size:11.5px;font-weight:700;min-height:30px;padding:5px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--tx);cursor:pointer}
+.dcard .acts button:hover{border-color:var(--pur)}
+.dcard .stamp{display:none;font-size:10.5px;color:var(--se);padding-top:6px}
+.dcard .empty-d{font-size:12px;color:var(--se);padding:14px 0}
+.capturing .acts{display:none}.capturing .stamp{display:block}
+.kcard{flex:1 1 230px;min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.kcard.total{border:2px solid var(--pur);padding:13px 15px}
+.kc-hd{display:flex;align-items:center;gap:8px;min-height:22px}
+.kc-hd .pill{margin-left:auto}
+.kc-nm{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kc-lab{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu);margin-top:6px}
+.kc-lab span{text-transform:none;letter-spacing:0;font-weight:500}
+.kc-big{font-family:var(--font-ui);font-size:30px;font-weight:600;line-height:1;letter-spacing:-.5px}
+.kc-bar{display:flex;gap:2px;height:8px;border-radius:4px;overflow:hidden;margin-top:6px;background:var(--surface2)}
+.kc-seg{display:block;min-width:4px}
+.s-ok{background:var(--grid)}.s-over{background:var(--ovbg)}.s-b1{background:var(--b1bg)}.s-b2{background:var(--b2bg)}.s-b3{background:var(--b3bg)}
+[data-theme="dark"] .s-b1{background:rgba(251,146,60,.45)}[data-theme="dark"] .s-b2{background:rgba(251,146,60,.85)}[data-theme="dark"] .s-over{background:rgba(59,130,246,.55)}
+[data-theme="light"] .s-b1{background:#F5C98E}[data-theme="light"] .s-b2{background:#E8893A}[data-theme="light"] .s-ok{background:#D9D7CE}
+.kc-cap{font-size:11.5px;color:var(--se)}.kc-cap span{color:var(--mu)}
+.kc-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--border2);padding-top:9px;margin-top:4px}
+.kc-k{font-size:11.5px;color:var(--se)}
+.kc-v{font-size:16px;font-weight:800}
+.kc-sub{font-size:11px;color:var(--se);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:-4px}
+.kc-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:1px solid var(--border2);padding-top:9px;margin-top:2px}
+.kc-foot div{display:flex;flex-direction:column;gap:2px}
+.kc-foot b{font-size:16px;font-weight:800}
 .toast{position:fixed;right:20px;bottom:20px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:600;display:none;z-index:9}
 .empty{padding:18px;text-align:center;color:var(--se);font-size:12.5px}
 .up{color:var(--good);font-weight:700}.down{color:var(--crit);font-weight:700}
@@ -227,16 +266,72 @@ function render() {
 
 function cardHTML(nombre, color, cs, movs, total) {
   const tol = T.tolerancia, idx = indice(cs);
-  if (idx == null) return `<div class="card"><div class="hd">${color ? `<span class="dot" style="background:${color}"></span>` : ""}<span class="nm">${esc(nombre)}</span><span class="pill neu">sin datos</span></div><div class="kv"><span class="k">Índice de precio</span><span class="v nd">—<small>la tienda no entregó precios</small></span></div></div>`;
-  const out = cs.filter(x => x.c.gap < -tol), deep = cs.reduce((a, x) => x.c.gap < a.c.gap ? x : a, cs[0]), d = idx - 100;
-  return `<div class="card${total ? " total" : ""}"><div class="hd">${color ? `<span class="dot" style="background:${color}"></span>` : ""}<span class="nm">${esc(nombre)}</span>
-    <span class="pill ${d < -0.05 ? "bad" : "good"}">${d < -0.05 ? "▼" : "▲"} ${Math.abs(d).toFixed(1)}% vs MSRP</span></div>
-    <div class="kv"><span class="k">Índice de precio</span><span class="v" style="color:${idx < 95 ? "var(--crit)" : "inherit"}">${idx.toFixed(1)}<small>MSRP = 100</small></span></div>
-    <div class="kv"><span class="k">Fuera de regla</span><span class="v" style="color:${out.length ? "var(--ora)" : "inherit"}">${out.length} de ${cs.length}<small>${Math.round(out.length / cs.length * 100)}% de los precios</small></span></div>
-    <div class="kv"><span class="k">Brecha más profunda</span><span class="v" style="color:${deep.c.gap < -10 ? "var(--crit)" : "inherit"}">${pct(deep.c.gap)}<small>${esc(clean(deep.f.m))} ${esc(deep.f.g)}${total ? " · " + esc(T.retailers[deep.rk]) : ""}</small></span></div>
-    <div class="kv"><span class="k">Movimientos 24 h</span><span class="v">${movs}</span></div></div>`;
+  const head = `<div class="kc-hd">${color ? `<span class="dot" style="background:${color}"></span>` : ""}<span class="kc-nm">${esc(nombre)}</span>`;
+  if (idx == null) return `<div class="kcard">${head}</div><div class="kc-lab">Índice de precio</div><div class="kc-big nd">—</div><p class="note">La tienda no entregó precios en la última corrida.</p></div>`;
+  const d = idx - 100, n = cs.length, dist = {ok: 0, b1: 0, b2: 0, b3: 0, over: 0};
+  cs.forEach(x => { dist[band(x.c, tol)]++; });
+  const out = dist.b1 + dist.b2 + dist.b3, deep = cs.reduce((a, x) => x.c.gap < a.c.gap ? x : a, cs[0]);
+  const seg = [["ok", "En regla"], ["over", "Sobre MSRP"], ["b1", `−${tol} a −10%`], ["b2", "−10 a −20%"], ["b3", "Más de −20%"]].filter(([k]) => dist[k])
+    .map(([k, t]) => `<span class="kc-seg s-${k}" style="flex:${dist[k]}" title="${t}: ${dist[k]}"></span>`).join("");
+  const deepTxt = esc(clean(deep.f.m)) + " " + esc(deep.f.g) + (total ? " · " + esc(T.retailers[deep.rk]) : "");
+  return `<div class="kcard${total ? " total" : ""}">${head}<span class="pill ${d < -0.05 ? "bad" : "good"}">${d < -0.05 ? "▼" : "▲"} ${Math.abs(d).toFixed(1)}%</span></div>
+    <div class="kc-lab">Índice de precio <span>· MSRP = 100</span></div>
+    <div class="kc-big" style="color:${idx < 95 ? "var(--crit)" : "inherit"}">${idx.toFixed(1)}</div>
+    <div class="kc-bar" aria-hidden="true">${seg}</div>
+    <div class="kc-cap"><b style="color:${out ? "var(--ora)" : "var(--good)"}">${out} de ${n}</b> precios fuera de regla <span>(${Math.round(out / n * 100)}%)</span></div>
+    <div class="kc-row"><span class="kc-k">Peor brecha</span><span class="kc-v" style="color:${deep.c.gap < -10 ? "var(--crit)" : deep.c.gap < -tol ? "var(--ora)" : "inherit"}">${pct(deep.c.gap)}</span></div>
+    <div class="kc-sub" title="${deepTxt}">${deepTxt}</div>
+    <div class="kc-foot"><div><span class="kc-k">Movimientos 24 h</span><b>${movs}</b></div><div><span class="kc-k">Precios evaluados</span><b>${n}</b></div></div></div>`;
 }
 function tagBand(gap, cellLike) { const b = band(cellLike || {gap, revisar: false}, T.tolerancia); return `<span class="tag b-${b}" ${b === "ok" ? 'style="background:var(--soft)"' : ""}>${pct(gap)} vs MSRP</span>`; }
+
+function desfasesTienda(rk) {
+  const tol = T.tolerancia, out = [], rev = [];
+  filasCat().forEach(f => { const c = f.c[rk]; if (!c) return; if (c.revisar) rev.push({f, c}); else if (c.gap != null && c.gap < -tol) out.push({f, c}); });
+  out.sort((a, b) => a.c.gap - b.c.gap);
+  return {out, rev};
+}
+function textoTienda(rk) {
+  const {out} = desfasesTienda(rk), tol = T.tolerancia, cat = CATS.find(c => c[0] === S.cat)[1].toLowerCase();
+  if (!out.length) return `*${T.retailers[rk]} · ${T.pais_nombre}*\nSin precios fuera de regla en ${cat} (regla ${tol}%).`;
+  return `*${T.retailers[rk]} · ${T.pais_nombre}* — ${out.length} ${out.length === 1 ? "precio" : "precios"} fuera de regla en ${cat} (regla ${tol}% sobre MSRP)\n` +
+    out.map(x => `• ${clean(x.f.m)} ${x.f.g}: ${money(x.c.p)} vs MSRP ${money(x.f.base)} (${pct(x.c.gap)})${x.c.dias ? " · " + x.c.dias + (x.c.dias_min ? "+" : "") + " d" : ""}`).join("\n");
+}
+function desfasesHTML() {
+  const rks = Object.keys(T.retailers), tol = T.tolerancia;
+  const datos = rks.map((k, i) => ({k, i, ...desfasesTienda(k), tiene: T.filas.some(f => f.c[k])})).sort((a, b) => b.out.length - a.out.length);
+  const total = datos.reduce((a, d) => a + d.out.length, 0);
+  const cards = datos.map(d => {
+    const pill = !d.tiene ? '<span class="pill neu">sin datos</span>' : d.out.length ? `<span class="pill bad">${d.out.length} fuera de regla</span>` : '<span class="pill good">en regla</span>';
+    const body = !d.tiene ? '<div class="empty-d">La tienda no entregó precios en la última corrida.</div>' : !d.out.length ? '<div class="empty-d">Todos los precios dentro de la regla.</div>' :
+      d.out.map(x => { const b = band(x.c, tol), dias = x.c.dias == null ? "hoy" : (x.c.dias === 0 && !x.c.dias_min ? "hoy" : x.c.dias + (x.c.dias_min ? "+" : "") + " d");
+        return `<div class="di"><span class="m" title="${esc(x.c.nombre || "")}">${esc(clean(x.f.m))}</span><span class="p">${money(x.c.p)}</span><span class="tag b-${b}">${pct(x.c.gap)}</span>
+          <span class="d">${esc(x.f.g)} · MSRP ${money(x.f.base)} · ${dias === "hoy" ? "desde hoy" : dias + " fuera de regla"}</span></div>`; }).join("");
+    return `<div class="dcard" id="dc-${d.k}"><div class="hd"><span class="dot" style="background:${RCOL[d.i % 4]}"></span><span class="nm">${esc(T.retailers[d.k])}</span>${pill}</div>
+      <div class="stamp">${esc(T.pais_nombre)} · ${CATS.find(c => c[0] === S.cat)[1]} · regla ${tol}% · ${$("mi-run").textContent}</div>${body}
+      <div class="foot"><span class="acts"><button type="button" data-copy="${d.k}">Copiar</button><button type="button" data-img="${d.k}">Imagen</button><button type="button" data-csv="${d.k}">CSV</button></span><span class="hint" style="margin:0;font-size:11px">${d.rev.length ? d.rev.length + " por revisar" : ""}</span></div></div>`;
+  }).join("");
+  return `<section class="panel"><div class="ph"><h3>Desfases por tienda</h3><button type="button" class="plink" id="copy-all">Copiar todo para WhatsApp →</button></div>
+    <p class="hint">${total} precios con descuento mayor a la regla de ${tol}% sobre MSRP, ordenados por brecha. Los días cuentan desde que el precio cruzó el límite; "+" indica que ya estaba así cuando empezó el registro.</p><div class="dgrid">${cards}</div></section>`;
+}
+async function copiar(txt) {
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement("textarea"); t.value = txt; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
+  toast("Copiado. Listo para pegar en WhatsApp.");
+}
+function cargarH2C() { return window.html2canvas ? Promise.resolve() : new Promise((ok, no) => { const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
+async function imagenTienda(rk) {
+  const el = $("dc-" + rk); if (!el) return;
+  try { await cargarH2C(); } catch (e) { toast("No se pudo cargar el generador de imagen (requiere internet)."); return; }
+  const prev = el.getAttribute("data-theme"); el.setAttribute("data-theme", "light"); el.classList.add("capturing");
+  try {
+    const cv = await html2canvas(el, {backgroundColor: "#FCFCFB", scale: 2});
+    const blob = await new Promise(r => cv.toBlob(r, "image/png"));
+    try { await navigator.clipboard.write([new ClipboardItem({"image/png": blob})]); toast("Imagen copiada. Pégala en WhatsApp."); }
+    catch (e) { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "desfases_" + rk + "_" + T.pais + ".png"; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); toast("Imagen descargada."); }
+  } finally { el.classList.remove("capturing"); if (prev) el.setAttribute("data-theme", prev); else el.removeAttribute("data-theme"); }
+}
+function csvTienda(rk) { const rows = [["Tienda", "Pais", "Modelo", "Memoria", "Precio", "MSRP", "Brecha %", "Dias fuera de regla"]]; desfasesTienda(rk).out.forEach(x => rows.push([T.retailers[rk], T.pais_nombre, clean(x.f.m), x.f.g, x.c.p, x.f.base, x.c.gap.toFixed(1), x.c.dias == null ? "" : x.c.dias])); bajar("desfases_" + rk + "_" + T.pais + ".csv", rows); }
 
 function vResumen() {
   const rks = Object.keys(T.retailers), rows = filasCat(), tol = T.tolerancia, all = celdas(rows), mv = movs24();
@@ -282,7 +377,7 @@ function vResumen() {
     <tbody>${body || `<tr><td colspan="${rks.length + 4}" class="empty">Sin modelos para este filtro.</td></tr>`}</tbody></table></div>
     <div class="legend"><span><i style="border:1px solid var(--border)"></i>En regla (hasta −${tol}%)</span><span><i class="b-b1"></i>hasta −10%</span><span><i class="b-b2"></i>−10 a −20%</span><span><i class="b-b3"></i>Más de −20%</span><span><i class="b-over"></i>Sobre MSRP</span><span><i class="b-chk"></i>±${T.umbral_revisar}% o más: revisar emparejamiento</span></div></section>`;
   const ctx = `Corrida del ${$("mi-run").textContent} · ${CATS.find(c => c[0] === S.cat)[1].toLowerCase()} · regla ${tol}% · índice = precio promedio contra MSRP (100 = en precio)`;
-  return `<div><h2>Resumen de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">${ctx}</p></div><div class="cards">${cards}</div>${movPanel}
+  return `<div><h2>Resumen de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">${ctx}</p></div><div class="cards">${cards}</div>${desfasesHTML()}${movPanel}
     <div class="split"><div class="grow">${matrix}</div>${S.sel ? detHTML() : ""}</div>`;
 }
 
@@ -409,6 +504,10 @@ document.addEventListener("click", ev => {
   else if (t.dataset.hd) { S.hDias = +t.dataset.hd; render(); }
   else if (t.id === "det-x") { S.sel = null; render(); }
   else if (t.id === "h-csv") exportarEventos();
+  else if (t.dataset.copy) copiar(textoTienda(t.dataset.copy));
+  else if (t.dataset.img) imagenTienda(t.dataset.img);
+  else if (t.dataset.csv) csvTienda(t.dataset.csv);
+  else if (t.id === "copy-all") copiar(Object.keys(T.retailers).filter(k => T.filas.some(f => f.c[k])).sort((a, b) => desfasesTienda(b).out.length - desfasesTienda(a).out.length).map(textoTienda).join("\n\n"));
   else if (t.classList.contains("rowk")) { if (ev.target.closest("a")) return; S.sel = {m: t.dataset.m, g: t.dataset.g}; render(); }
 });
 document.addEventListener("keydown", ev => { if (ev.key === "Enter" && ev.target.classList && ev.target.classList.contains("rowk")) { S.sel = {m: ev.target.dataset.m, g: ev.target.dataset.g}; render(); } });
