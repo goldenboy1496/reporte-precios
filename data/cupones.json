@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cupon_elektra_s25_ultra",
+    "retailer": "elektra",
+    "retailer_nombre": "Elektra",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "",
+    "pais": "gt",
+    "tipo": "fijo",
+    "valor": 1400.0,
+    "codigo": "CUPON1400",
+    "descripcion": "Cupón de descuento Elektra en S25 Ultra",
+    "activo": true,
+    "fecha_creacion": "2026-11-13"
+  }
+]

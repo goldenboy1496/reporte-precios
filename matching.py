@@ -679,6 +679,84 @@ PAISES_CONFIG = {
 }
 
 
+
+def load_cupones(data_dir: Path):
+    path = data_dir / "cupones.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return [c for c in data if isinstance(c, dict)]
+    except Exception as e:
+        print(f"[Aviso] Error leyendo cupones.json: {e}")
+        return []
+
+
+def save_cupones(data_dir: Path, cupones: list):
+    path = data_dir / "cupones.json"
+    try:
+        path.write_text(json.dumps(cupones, ensure_ascii=False, indent=2), encoding="utf-8")
+        return True
+    except Exception as e:
+        print(f"[Aviso] Error guardando cupones.json: {e}")
+        return False
+
+
+def normalizar_para_cupon(txt: str) -> str:
+    if not txt:
+        return ""
+    return re.sub(r"[^A-Z0-9]", "", txt.upper())
+
+
+def obtener_cupon_aplicable(cupones: list, retailer_key: str, mobile: str, memoria: str = "", pais: str = "gt"):
+    """
+    Busca si existe un cupón activo que aplique a la combinación:
+    - retailer_key (ej. 'elektra', 'max', 'all', 'shop')
+    - mobile (ej. 'Galaxy S25 Ultra')
+    - memoria (si se especificó en el cupón)
+    - pais ('gt', 'sv', 'hn', o 'all')
+    """
+    if not cupones:
+        return None
+
+    r_norm = retailer_key.lower().strip()
+    p_norm = pais.lower().strip()
+    mob_norm = normalizar_para_cupon(mobile)
+    mem_norm = normalizar_para_cupon(memoria)
+
+    for c in cupones:
+        if not c.get("activo", True):
+            continue
+
+        # Validar país
+        c_pais = (c.get("pais") or "all").lower().strip()
+        if c_pais not in ("all", "*", "") and c_pais != p_norm:
+            continue
+
+        # Validar retailer
+        c_ret = (c.get("retailer") or "all").lower().strip()
+        if c_ret not in ("all", "*", "") and c_ret != r_norm:
+            continue
+
+        # Validar modelo
+        c_mob = c.get("mobile", "").strip()
+        if c_mob and c_mob.lower() not in ("all", "*"):
+            c_mob_norm = normalizar_para_cupon(c_mob)
+            if c_mob_norm not in mob_norm and mob_norm not in c_mob_norm:
+                continue
+
+        # Validar memoria (si está definida en el cupón)
+        c_mem = c.get("memoria", "").strip()
+        if c_mem and c_mem.lower() not in ("all", "*"):
+            c_mem_norm = normalizar_para_cupon(c_mem)
+            if c_mem_norm != mem_norm:
+                continue
+
+        return c
+
+    return None
+
+
 def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt"):
     if tolerancia_pct is None:
         tolerancia_pct = load_config(data_dir)
@@ -687,6 +765,7 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
     cfg = PAISES_CONFIG.get(pais, PAISES_CONFIG["gt"])
     catalogo = load_catalogo(data_dir, pais=pais)
     mis_precios = load_mis_precios(data_dir, pais=pais)
+    cupones = load_cupones(data_dir)
 
     if not catalogo:
         return {
@@ -730,14 +809,59 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
             "mi_precio_personalizado": mi_precio_editado is not None,
         }
 
+        # Evaluar cupón propio de Samsung Shop si aplica
+        cupon_shop = obtener_cupon_aplicable(cupones, "shop", cat["mobile"], cat["memoria"], pais) or obtener_cupon_aplicable(cupones, "samsung", cat["mobile"], cat["memoria"], pais)
+        if cupon_shop and mi_precio_base is not None and mi_precio_base > 0:
+            val_s = float(cupon_shop.get("valor", 0))
+            desc_s = round(mi_precio_base * (val_s / 100.0), 2) if cupon_shop.get("tipo") == "porcentaje" else val_s
+            base_con_cupon = max(0.0, round(mi_precio_base - desc_s, 2))
+            fila["mi_precio_cupon"] = {
+                "id": cupon_shop.get("id"),
+                "monto": desc_s,
+                "valor": val_s,
+                "tipo": cupon_shop.get("tipo", "fijo"),
+                "codigo": cupon_shop.get("codigo", ""),
+                "descripcion": cupon_shop.get("descripcion", ""),
+                "precio_publicado": mi_precio_base,
+                "precio_final": base_con_cupon,
+            }
+            mi_precio_base = base_con_cupon
+            fila["mi_precio"] = base_con_cupon
+
         for r_key, r_info in retailers_dict.items():
             matched = ret_matches[r_key].get(idx, {})
-            precio = matched.get("precio")
+            precio_publicado = matched.get("precio")
             nombre_ret = matched.get("nombre")
             color_ret = matched.get("color")
 
+            # Evaluar si aplica cupón de descuento al retailer
+            cupon = obtener_cupon_aplicable(cupones, r_key, cat["mobile"], cat["memoria"], pais)
+            cupon_aplicado = None
+            if cupon and precio_publicado is not None and precio_publicado > 0:
+                val = float(cupon.get("valor", 0))
+                if cupon.get("tipo") == "porcentaje":
+                    desc_monto = round(precio_publicado * (val / 100.0), 2)
+                else:
+                    desc_monto = val
+                precio_efectivo = max(0.0, round(precio_publicado - desc_monto, 2))
+                cupon_aplicado = {
+                    "id": cupon.get("id"),
+                    "monto": desc_monto,
+                    "valor": val,
+                    "tipo": cupon.get("tipo", "fijo"),
+                    "codigo": cupon.get("codigo", ""),
+                    "descripcion": cupon.get("descripcion", ""),
+                    "precio_publicado": precio_publicado,
+                    "precio_final": precio_efectivo,
+                }
+                precio = precio_efectivo
+            else:
+                precio = precio_publicado
+
             estado, diff_pct = evaluar_precio(precio, mi_precio_base, tolerancia_pct=tolerancia_pct)
             fila[r_key] = precio
+            fila[f"{r_key}_precio_publicado"] = precio_publicado
+            fila[f"{r_key}_cupon"] = cupon_aplicado
             fila[f"{r_key}_estado"] = estado
             fila[f"{r_key}_diff_pct"] = diff_pct
             fila[f"{r_key}_nombre"] = nombre_ret
@@ -758,6 +882,8 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
                             "mobile": cat["mobile"],
                             "memoria": cat["memoria"],
                             "precio_retailer": precio,
+                            "precio_publicado": precio_publicado,
+                            "cupon": cupon_aplicado,
                             "base": mi_precio_base,
                             "diff_pct": diff_pct,
                             "color": color_ret,
@@ -807,5 +933,6 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
         "moneda": cfg["moneda"],
         "moneda_codigo": cfg["moneda_codigo"],
         "retailers": {k: v["nombre"] for k, v in retailers_dict.items()},
+        "cupones": cupones,
         "paises_disponibles": {k: {"nombre": v["nombre"], "bandera": v["bandera"], "moneda": v["moneda"]} for k, v in PAISES_CONFIG.items()}
     }

@@ -327,6 +327,27 @@ def api_publicar_github():
         return jsonify({"ok": True, "mensaje": "Reporte compilado y publicado exitosamente en GitHub Pages"})
     return jsonify({"ok": False, "error": "No se pudo subir a GitHub. Revisa la conexion o credenciales."}), 500
 
+
+@app.route("/api/cupones", methods=["GET", "POST"])
+def api_cupones():
+    try:
+        import matching
+        if request.method == "POST":
+            payload = request.get_json(force=True) or {}
+            cupones = payload.get("cupones", [])
+            matching.save_cupones(DATA_DIR, cupones)
+            pais = request.args.get("pais", "gt").lower()
+            report = matching.build_report(DATA_DIR, pais=pais)
+            report["status"] = load_status()
+            publicar_a_github_async()
+            return jsonify({"ok": True, "cupones": cupones, "report": report})
+
+        cupones = matching.load_cupones(DATA_DIR)
+        return jsonify({"ok": True, "cupones": cupones})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/mis-precios", methods=["POST"])
 def guardar_mis_precios():
     pais = request.args.get("pais", "gt").lower()

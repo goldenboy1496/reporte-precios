@@ -2364,6 +2364,125 @@
 
   
   <!-- MODAL HISTÓRICO DE VARIACIÓN DE PRECIOS Y REGLA 24H -->
+  <!-- Modal Gestión de Cupones de Descuento -->
+  <div id="modal-cupones" class="modal-historico-backdrop" style="display:none;" onclick="handleModalCuponesBackdrop(event)">
+    <div class="modal-historico-dialog" style="max-width: 960px;" onclick="event.stopPropagation()">
+      <div class="modal-historico-header">
+        <div class="modal-historico-title-wrap">
+          <div class="modal-historico-icon" style="background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.3); font-size: 20px;">🎟️</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h2 class="modal-historico-title">Gestión de Cupones de Descuento</h2>
+              <span class="badge" style="background:#ec4899; color:#fff; font-size:10px; font-weight:800; padding:2px 7px; border-radius:9999px;">Promociones Activas</span>
+            </div>
+            <p class="modal-historico-sub">Registra cupones aplicables en tiendas para calcular el precio efectivo final que paga el consumidor.</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="exportarCuponesJson()" title="Descargar lista de cupones en JSON">📥 Exportar</button>
+          <button class="btn-historico-close" onclick="cerrarModalCupones()" title="Cerrar ventana">✕</button>
+        </div>
+      </div>
+
+      <!-- Formulario para agregar nuevo cupón -->
+      <div style="padding: 16px 24px; background: var(--bg-card); border-bottom: 1px solid var(--border);">
+        <div style="font-size:12.5px; font-weight:700; color:var(--text-main); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+          <span>➕ Agregar Nuevo Cupón de Descuento</span>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) 120px; gap:10px; align-items:end;">
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">🏬 Tienda / Shop</label>
+            <select id="form-cupon-retailer" class="hist-select" style="width:100%;">
+              <option value="elektra">Elektra</option>
+              <option value="max">MAX</option>
+              <option value="gallo">El Gallo más Gallo</option>
+              <option value="walmart">Walmart (GT)</option>
+              <option value="siman">Siman</option>
+              <option value="curacao_sv">La Curacao</option>
+              <option value="prado">Prado</option>
+              <option value="walmart_sv">Walmart (SV)</option>
+              <option value="diunsa">Diunsa</option>
+              <option value="jetstereo">Jetstereo</option>
+              <option value="elektra_hn">Elektra HN</option>
+              <option value="walmart_hn">Walmart (HN)</option>
+              <option value="shop">Samsung Shop (Propio)</option>
+              <option value="all">🌍 Todas las Tiendas</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">📱 Modelo Samsung</label>
+            <input type="text" id="form-cupon-mobile" class="search-input" placeholder="ej. Galaxy S25 Ultra" style="width:100%; font-size:12px; padding:6px 10px;" value="Galaxy S25 Ultra">
+          </div>
+
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">🔢 Tipo Descuento</label>
+            <select id="form-cupon-tipo" class="hist-select" style="width:100%;">
+              <option value="fijo">Monto Fijo ($ / Q / L)</option>
+              <option value="porcentaje">Porcentaje (%)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">💰 Valor Descuento</label>
+            <input type="number" id="form-cupon-valor" class="search-input" placeholder="ej. 1400" style="width:100%; font-size:12px; padding:6px 10px;" value="1400">
+          </div>
+
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">🏷️ Código / Nota</label>
+            <input type="text" id="form-cupon-codigo" class="search-input" placeholder="ej. CUPON1400" style="width:100%; font-size:12px; padding:6px 10px;">
+          </div>
+
+          <div>
+            <label style="display:block; font-size:11px; font-weight:600; color:var(--text-muted); margin-bottom:4px;">🌍 País</label>
+            <select id="form-cupon-pais" class="hist-select" style="width:100%;">
+              <option value="gt">🇬🇹 Guatemala</option>
+              <option value="sv">🇸🇻 El Salvador</option>
+              <option value="hn">🇭🇳 Honduras</option>
+              <option value="all">🌍 Todos</option>
+            </select>
+          </div>
+
+          <div>
+            <button class="btn btn-primary btn-sm" onclick="agregarCuponDesdeForm()" style="width:100%; height:34px; font-weight:700; background:linear-gradient(135deg, #ec4899, #db2777); border:none; cursor:pointer;">
+              ➕ Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de Cupones Existentes -->
+      <div style="flex:1; overflow-y:auto; padding:16px 24px; max-height:400px;">
+        <table class="historico-table" style="width:100%;">
+          <thead>
+            <tr>
+              <th style="width:140px;">Tienda</th>
+              <th>Modelo Aplica</th>
+              <th style="width:120px;">Descuento</th>
+              <th style="width:100px;">País</th>
+              <th style="width:120px;">Código / Nota</th>
+              <th style="width:90px; text-align:center;">Estado</th>
+              <th style="width:70px; text-align:center;">Acción</th>
+            </tr>
+          </thead>
+          <tbody id="cupones-tbody">
+            <!-- Filas inyectadas dinámicamente -->
+          </tbody>
+        </table>
+        <div id="cupones-empty-state" style="display:none; text-align:center; padding:30px; color:var(--text-muted);">
+          No hay cupones registrados. Agrega uno con el formulario de arriba.
+        </div>
+      </div>
+
+      <div class="historico-footer" style="padding:12px 24px; border-top:1px solid var(--border); background:var(--bg-elevated); display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-size:11.5px; color:var(--text-muted);">
+          ℹ️ Los cupones recalculan el precio final consumidor y las alertas de desfase en tiempo real.
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="cerrarModalCupones()">Listo / Cerrar</button>
+      </div>
+    </div>
+  </div>
+
   <div id="modal-historico" class="modal-historico-backdrop" style="display:none;" onclick="handleModalHistoricoBackdrop(event)">
     <div class="modal-historico-dialog" onclick="event.stopPropagation()">
       <!-- Header -->
@@ -2563,6 +2682,11 @@
         <button id="btn-modal-historico" class="btn btn-secondary btn-sm" onclick="abrirModalHistorico()" title="Historial de variaciones y regla de precios de 24 horas" style="display:inline-flex; align-items:center; gap:6px; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.08); color: var(--text-main);">
           <span>⏱️ Histórico 24h / Mes</span>
           <span id="badge-historico-header" style="display:none; background: var(--amber); color: #000; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 9999px;">0</span>
+        </button>
+
+        <button id="btn-modal-cupones" class="btn btn-secondary btn-sm" onclick="abrirModalCupones()" title="Gestionar cupones de descuento activos en tiendas" style="display:inline-flex; align-items:center; gap:6px; border-color: rgba(236, 72, 153, 0.4); background: rgba(236, 72, 153, 0.08); color: var(--text-main);">
+          <span>🎟️ Cupones</span>
+          <span id="badge-cupones-header" style="background: #db2777; color: #fff; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 9999px;">0</span>
         </button>
 
         <button id="btn-guardar-precios" class="btn btn-success" title="Guardar cambios y recalcular">
@@ -4399,7 +4523,7 @@
       }
 
 
-      function renderCeldaRetailer(precio, estado, diffPct, nombreProducto, miPrecio, retailerKey, modeloNombre, color, prodUrl, memoria = "") {
+      function renderCeldaRetailer(precio, estado, diffPct, nombreProducto, miPrecio, retailerKey, modeloNombre, color, prodUrl, memoria = "", cupon = null, precioPublicado = null) {
         if (precio === null || precio === undefined) {
           const fnSearch = RETAILER_SEARCH_URLS[retailerKey];
           const nomTienda = obtenerRetailerNombre(retailerKey);
@@ -4436,7 +4560,16 @@
         const colorTag = color ? ' <span class="pill-color-tag">' + color + '</span>' : '';
         const linkBtn = linkUrl ? ' <a href="' + linkUrl + '" target="_blank" rel="noopener" class="pill-link-icon" title="Ver en tienda oficial ' + nomTienda + '" style="margin-left:4px; font-size:11px; text-decoration:none; opacity:0.85;">🔗</a>' : '';
 
-        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + '><span>' + formatoMoneda(precio) + '</span>' + subText + badge24h + colorTag + linkBtn + '</div></td>';
+        let cuponBadge = "";
+        if (cupon) {
+          const moneda = ultimoReporte?.moneda || "Q";
+          const tipoStr = cupon.tipo === "porcentaje" ? (cupon.valor + "%") : formatoMoneda(cupon.monto, moneda);
+          const pPub = (precioPublicado !== null && precioPublicado !== undefined) ? precioPublicado : (precio + (cupon.monto || 0));
+          const tipCupon = `🎟️ Cupón de descuento: -${tipoStr} | Precio web regular: ${formatoMoneda(pPub, moneda)} ➔ Precio final consumidor: ${formatoMoneda(precio, moneda)}${cupon.codigo ? ' (Código: ' + cupon.codigo + ')' : ''}`;
+          cuponBadge = `<div class="pill-cupon-tag" title="${tipCupon}" style="font-size:9.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, #ec4899, #db2777); padding:1.5px 5px; border-radius:4px; margin-top:3px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 1px 3px rgba(219,39,119,0.25); cursor:pointer;" onclick="event.stopPropagation(); abrirModalCupones();"><span style="font-size:10px;">🎟️</span> -${tipoStr} <span style="text-decoration:line-through; opacity:0.8; font-size:9px; margin-left:2px;">${formatoMoneda(pPub, moneda)}</span></div>`;
+        }
+
+        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + '><span>' + formatoMoneda(precio) + '</span>' + subText + badge24h + colorTag + linkBtn + cuponBadge + '</div></td>';
       }
 
       function _unused_old_renderCeldaRetailer_() {
@@ -4701,7 +4834,7 @@
           const rowCls = tienePrecio ? "" : "row-sin-precio";
 
           const retailerCeldas = retKeys.map(k =>
-            renderCeldaRetailer(f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria)
+            renderCeldaRetailer(f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria, f[k + "_cupon"], f[k + "_precio_publicado"])
           ).join("");
 
           let catBadge = '';
@@ -5209,6 +5342,10 @@
         ultimoReporte = reporte;
         actualizarKpisYConsolidadoEnCaliente();
         if (reporte.pais) paisActual = reporte.pais;
+        if (reporte.cupones) {
+          listaCupones = reporte.cupones;
+          actualizarBadgeCupones();
+        }
         if (reporte.resumen?.tolerancia_pct !== undefined) {
           actualizarVisualTolerancia(reporte.resumen.tolerancia_pct);
         }
@@ -5357,6 +5494,181 @@
         }
         if (notificar) showToast("Precios base guardados en tu navegador", "success");
       }
+
+
+    // ==========================================
+    // SISTEMA DE GESTIÓN DE CUPONES DE DESCUENTO
+    // ==========================================
+    let listaCupones = [];
+
+    async function cargarCupones() {
+      try {
+        if (ultimoReporte && ultimoReporte.cupones) {
+          listaCupones = ultimoReporte.cupones;
+        } else {
+          const resp = await fetch("/api/cupones");
+          if (resp.ok) {
+            const data = await resp.json();
+            listaCupones = data.cupones || [];
+          }
+        }
+      } catch (e) {
+        console.warn("Aviso cargando cupones:", e);
+      }
+      actualizarBadgeCupones();
+    }
+
+    function actualizarBadgeCupones() {
+      const badge = document.getElementById("badge-cupones-header");
+      if (!badge) return;
+      const activos = (listaCupones || []).filter(c => c.activo !== false).length;
+      badge.textContent = activos;
+      badge.style.display = activos > 0 ? "inline-block" : "none";
+    }
+
+    function abrirModalCupones() {
+      const modal = document.getElementById("modal-cupones");
+      if (!modal) return;
+      if (ultimoReporte && ultimoReporte.cupones) {
+        listaCupones = ultimoReporte.cupones;
+      }
+      renderTablaCupones();
+      actualizarBadgeCupones();
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function cerrarModalCupones() {
+      const modal = document.getElementById("modal-cupones");
+      if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    }
+
+    function handleModalCuponesBackdrop(e) {
+      if (e.target && e.target.id === "modal-cupones") {
+        cerrarModalCupones();
+      }
+    }
+
+    function renderTablaCupones() {
+      const tbody = document.getElementById("cupones-tbody");
+      const emptyState = document.getElementById("cupones-empty-state");
+      if (!tbody) return;
+
+      if (!listaCupones || listaCupones.length === 0) {
+        tbody.innerHTML = "";
+        if (emptyState) emptyState.style.display = "block";
+        return;
+      }
+      if (emptyState) emptyState.style.display = "none";
+
+      const flags = { "gt": "🇬🇹 GT", "sv": "🇸🇻 SV", "hn": "🇭🇳 HN", "all": "🌍 Todos" };
+
+      tbody.innerHTML = listaCupones.map((c, idx) => {
+        const retNom = obtenerRetailerNombre(c.retailer) || (c.retailer === "all" ? "Todas las Tiendas" : (c.retailer === "shop" ? "Samsung Shop" : c.retailer));
+        const tipoStr = c.tipo === "porcentaje" ? `${c.valor}%` : `${formatoMoneda(c.valor, ultimoReporte?.moneda || "Q")}`;
+        const paisStr = flags[c.pais?.toLowerCase()] || c.pais?.toUpperCase() || "🌍 Todos";
+        const isActivo = c.activo !== false;
+        const statusBadge = isActivo 
+          ? '<span style="background:rgba(16,185,129,0.15); color:var(--emerald); padding:2px 8px; border-radius:4px; font-weight:700; font-size:11px; cursor:pointer;" onclick="toggleCupon(' + idx + ')">✓ Activo</span>'
+          : '<span style="background:rgba(148,163,184,0.15); color:var(--text-muted); padding:2px 8px; border-radius:4px; font-weight:700; font-size:11px; cursor:pointer;" onclick="toggleCupon(' + idx + ')">⏸ Pausado</span>';
+
+        return `
+          <tr>
+            <td><strong>${retNom}</strong></td>
+            <td><span style="font-weight:600; color:var(--text-main);">${c.mobile || "Todos los modelos"}</span></td>
+            <td><strong style="color:#ec4899; font-size:13px;">-${tipoStr}</strong></td>
+            <td>${paisStr}</td>
+            <td><span style="font-family:monospace; font-size:11px; color:var(--text-muted);">${c.codigo || c.descripcion || "—"}</span></td>
+            <td style="text-align:center;">${statusBadge}</td>
+            <td style="text-align:center;">
+              <button class="btn btn-ghost btn-sm" style="color:var(--rose); padding:2px 6px;" onclick="eliminarCupon(${idx})" title="Eliminar cupón">🗑️</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function agregarCuponDesdeForm() {
+      const ret = document.getElementById("form-cupon-retailer")?.value || "all";
+      const mob = (document.getElementById("form-cupon-mobile")?.value || "").trim();
+      const tipo = document.getElementById("form-cupon-tipo")?.value || "fijo";
+      const valorStr = document.getElementById("form-cupon-valor")?.value || "0";
+      const cod = (document.getElementById("form-cupon-codigo")?.value || "").trim();
+      const pais = document.getElementById("form-cupon-pais")?.value || "all";
+      const valor = parseFloat(valorStr);
+
+      if (isNaN(valor) || valor <= 0) {
+        showToast("Ingresa un valor de descuento válido mayor a 0", "warning");
+        return;
+      }
+
+      const nuevoCupon = {
+        id: "cupon_" + Date.now(),
+        retailer: ret,
+        retailer_nombre: obtenerRetailerNombre(ret) || ret,
+        mobile: mob || "all",
+        memoria: "",
+        pais: pais,
+        tipo: tipo,
+        valor: valor,
+        codigo: cod,
+        descripcion: cod ? `Cupón ${cod}` : `Descuento ${ret}`,
+        activo: true,
+        fecha_creacion: new Date().toISOString().slice(0, 10)
+      };
+
+      listaCupones.unshift(nuevoCupon);
+      renderTablaCupones();
+      actualizarBadgeCupones();
+      await guardarCuponesServidor();
+      showToast("Cupón de descuento agregado y aplicado al reporte", "success");
+    }
+
+    async function toggleCupon(idx) {
+      if (!listaCupones[idx]) return;
+      listaCupones[idx].activo = !listaCupones[idx].activo;
+      renderTablaCupones();
+      actualizarBadgeCupones();
+      await guardarCuponesServidor();
+    }
+
+    async function eliminarCupon(idx) {
+      if (!confirm("¿Deseas eliminar este cupón de descuento?")) return;
+      listaCupones.splice(idx, 1);
+      renderTablaCupones();
+      actualizarBadgeCupones();
+      await guardarCuponesServidor();
+      showToast("Cupón eliminado", "info");
+    }
+
+    async function guardarCuponesServidor() {
+      try {
+        const resp = await fetch("/api/cupones?pais=" + paisActual, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cupones: listaCupones })
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.report) {
+            aplicarReporte(data.report);
+          }
+        }
+      } catch (e) {
+        console.warn("Aviso guardando cupones:", e);
+      }
+    }
+
+    function exportarCuponesJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(listaCupones, null, 2));
+      const a = document.createElement("a");
+      a.href = dataStr;
+      a.download = `cupones_descuento_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+    }
 
       function setupPolling() {
         const chk = document.getElementById("toggle-autopoll");

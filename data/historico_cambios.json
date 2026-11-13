@@ -10734,5 +10734,37 @@
     "diferencia": -50.0,
     "pct_cambio": -22.83,
     "tipo": "baja"
+  },
+  {
+    "id": "1794610560_GT_elektra_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-11-13 16:56:00",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 8199.0,
+    "precio_nuevo": 6799.0,
+    "diferencia": -1400.0,
+    "pct_cambio": -17.08,
+    "tipo": "baja"
+  },
+  {
+    "id": "1794610560_GT_elektra_Galaxy S25+_12+512GB",
+    "fecha": "2026-11-13 16:56:00",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S25+",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 7124.0,
+    "precio_nuevo": 5724.0,
+    "diferencia": -1400.0,
+    "pct_cambio": -19.65,
+    "tipo": "baja"
   }
 ]
