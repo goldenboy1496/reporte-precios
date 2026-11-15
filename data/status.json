@@ -1,54 +1,49 @@
 {
   "elektra": {
-    "estado": "error",
-    "ultima_actualizacion": 1794618165.8231103,
-    "duracion_segundos": 2.2,
-    "log": "El scraper termino sin productos (CSV vacio)"
+    "estado": "ok",
+    "ultima_actualizacion": 1794747632.1480334,
+    "duracion_segundos": 14.2
   },
   "gallo": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618280.5017571,
-    "duracion_segundos": 17.7
+    "ultima_actualizacion": 1794747711.7341468,
+    "duracion_segundos": 36.6
   },
   "max": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618261.7074888,
-    "duracion_segundos": 94.8
+    "ultima_actualizacion": 1794747674.095379,
+    "duracion_segundos": 40.9
   },
   "diunsa": {
-    "estado": "error",
-    "ultima_actualizacion": 1794618454.4365964,
-    "duracion_segundos": 30.1,
-    "log": "El scraper termino sin productos (CSV vacio)"
+    "estado": "ok",
+    "ultima_actualizacion": 1794747928.0082617,
+    "duracion_segundos": 37.8
   },
   "elektra_hn": {
-    "estado": "error",
-    "ultima_actualizacion": 1794618423.2919178,
-    "duracion_segundos": 1.9,
-    "log": "Iniciando scraping de Elektra Honduras (API VTEX con filtro de existencias)...\n[ERROR] Error al consultar Elektra HN: <urlopen error [Errno 11001] getaddrinfo failed>"
+    "estado": "ok",
+    "ultima_actualizacion": 1794747889.1701047,
+    "duracion_segundos": 3.8
   },
   "jetstereo": {
     "estado": "error",
-    "ultima_actualizacion": 1794618420.3628936,
-    "duracion_segundos": 35.1,
+    "ultima_actualizacion": 1794747884.3420782,
+    "duracion_segundos": 33.5,
     "log": "El scraper termino sin productos (CSV vacio)"
   },
   "siman": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618286.4157252,
-    "duracion_segundos": 1.9
+    "ultima_actualizacion": 1794747724.7383733,
+    "duracion_segundos": 6.9
   },
   "curacao_sv": {
-    "estado": "error",
-    "ultima_actualizacion": 1794618316.1513557,
-    "duracion_segundos": 28.7,
-    "log": "El scraper termino sin productos (CSV vacio)"
+    "estado": "ok",
+    "ultima_actualizacion": 1794747759.3296773,
+    "duracion_segundos": 33.5
   },
   "prado": {
-    "estado": "error",
-    "ultima_actualizacion": 1794618381.2997806,
-    "duracion_segundos": 64.1,
-    "log": "El scraper termino sin productos (CSV vacio)"
+    "estado": "ok",
+    "ultima_actualizacion": 1794747844.634705,
+    "duracion_segundos": 84.2
   },
   "walmart": {
     "estado": "ok",
@@ -56,17 +51,17 @@
   },
   "walmart_sv": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618384.1941555,
-    "duracion_segundos": 1.8
+    "ultima_actualizacion": 1794747849.7974265,
+    "duracion_segundos": 4.1
   },
   "walmart_hn": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618457.505731,
-    "duracion_segundos": 2.0
+    "ultima_actualizacion": 1794747933.206924,
+    "duracion_segundos": 4.1
   },
   "walmart_gt": {
     "estado": "ok",
-    "ultima_actualizacion": 1794618283.4608994,
-    "duracion_segundos": 1.9
+    "ultima_actualizacion": 1794747716.7267592,
+    "duracion_segundos": 3.9
   }
 }
