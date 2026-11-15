@@ -10926,5 +10926,21 @@
     "diferencia": -210.0,
     "pct_cambio": -55.41,
     "tipo": "baja"
+  },
+  {
+    "id": "1794780403_SV_siman_Watch8 40mm BT_",
+    "fecha": "2026-11-15 16:06:43",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Siman",
+    "retailer_key": "siman",
+    "mobile": "Watch8 40mm BT",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 169.0,
+    "precio_nuevo": 379.0,
+    "diferencia": 210.0,
+    "pct_cambio": 124.26,
+    "tipo": "subida"
   }
 ]
