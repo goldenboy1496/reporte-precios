@@ -152,6 +152,26 @@ ul.msg{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;fon
 .kc-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:1px solid var(--border2);padding-top:9px;margin-top:2px}
 .kc-foot div{display:flex;flex-direction:column;gap:2px}
 .kc-foot b{font-size:16px;font-weight:800}
+.skuwrap{position:relative}
+.skubtn{cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.skubtn.on{border-color:rgba(56,189,248,.55);background:rgba(56,189,248,.14)}
+.skupop{position:absolute;z-index:20;top:calc(100% + 6px);left:0;width:340px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.28);padding:10px;display:flex;flex-direction:column;gap:8px}
+.skupop .inp{width:100%}
+.skuacts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:11.5px;color:var(--se)}
+.skuacts button{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:7px;border:1px solid var(--border);background:var(--surface2);color:var(--tx);cursor:pointer}
+.skuacts label{display:inline-flex;align-items:center;gap:5px;margin-left:auto}
+.skulist{max-height:300px;overflow:auto;display:flex;flex-direction:column}
+.skug{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--sky);padding:8px 4px 4px}
+.skuit{display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:6px;padding:5px 4px;border-radius:6px;font-size:12.5px;cursor:pointer}
+.skuit:hover{background:var(--soft)}
+.skuit small{color:var(--se);font-weight:400}
+.skuit em{font-style:normal;font-size:11px;color:var(--mu)}
+.skuit[hidden],.skug[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 4px 3px 10px;border-radius:999px;background:var(--sel);border:1px solid var(--pur);color:var(--tx)}
+.chip button{border:0;background:transparent;color:var(--se);font-size:14px;line-height:1;cursor:pointer;padding:0 5px;min-height:22px}
+.chip button:hover{color:var(--tx)}
+td.fsku{cursor:pointer}td.fsku:hover{text-decoration:underline}
 .toast{position:fixed;right:20px;bottom:20px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:12.5px;font-weight:600;display:none;z-index:9}
 .empty{padding:18px;text-align:center;color:var(--se);font-size:12.5px}
 .up{color:var(--good);font-weight:700}.down{color:var(--crit);font-weight:700}
@@ -197,7 +217,8 @@ const PAISES = {gt:"Guatemala", sv:"El Salvador", hn:"Honduras"};
 const RCOL = ["var(--r1)","var(--r2)","var(--r3)","var(--r4)"];
 const CATS = [["Smartphones","Celulares"],["Tablets","Tablets"],["Wearables","Wearables"]];
 const VISTAS = [["resumen","Resumen"],["historico","Histórico"],["regional","Regional"],["calidad","Calidad de datos"]];
-const S = {pais:"gt", cat:"Smartphones", filtro:"todos", vista:"resumen", sel:null, dias:35, modo:"exec", tol:null, q:"", hDias:35, hTienda:"", hTipo:"", hReb:true};
+const S = {pais:"gt", cat:"Smartphones", filtro:"todos", vista:"resumen", sel:null, dias:35, modo:"exec", tol:null, q:"", hDias:35, hTienda:"", hTipo:"", hReb:true, hSkus:[], hOpen:false, hQ:"", hCon:false};
+let HEV = {key: null, list: null};
 let T = null, REG = null, SALUD = null, SERIE = null;
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -422,22 +443,49 @@ function drawChart() {
 }
 
 function estadoEv(e) { if (e.tipo === "agotado") return '<span class="pill neu">dejó de aparecer</span>'; if (e.mismo_producto === 0) return '<span class="pill neu">cambió el producto emparejado</span>'; if (e.confirmado === -1) return '<span class="pill neu">rebote</span>'; if (e.confirmado === 1) return '<span class="pill good">confirmado</span>'; return '<span class="pill neu">por confirmar</span>'; }
-function evFiltrados() { const lim = Date.now() - S.hDias * 864e5; return (T.eventos || []).filter(e => new Date(e.fecha.replace(" ", "T")).getTime() >= lim && (!S.hTienda || e.retailer === S.hTienda) && (!S.hTipo || e.tipo === S.hTipo) && (!S.hReb || (e.confirmado !== -1 && e.mismo_producto !== 0))); }
+function evBase() { return (HEV.key === T.pais + "|" + S.hDias && HEV.list) ? HEV.list : (T.eventos || []); }
+function cargarEventos() {
+  const key = T.pais + "|" + S.hDias; if (HEV.key === key && HEV.list) return; if (S.hDias <= 35) { HEV = {key, list: T.eventos || []}; return; }
+  HEV = {key, list: null}; getJSON(`/api/v2/eventos?pais=${T.pais}&dias=${S.hDias}`).then(d => { if (HEV.key === key) { HEV.list = d.eventos || []; if (S.vista === "historico") render(); } }).catch(() => {});
+}
+const skuK = e => e.mobile + "|" + e.memoria;
+function evFiltrados() { const lim = Date.now() - S.hDias * 864e5; return evBase().filter(e => new Date(e.fecha.replace(" ", "T")).getTime() >= lim && (!S.hTienda || e.retailer === S.hTienda) && (!S.hSkus.length || S.hSkus.includes(skuK(e))) && (!S.hTipo || e.tipo === S.hTipo) && (!S.hReb || (e.confirmado !== -1 && e.mismo_producto !== 0))); }
+function skuNombre(k) { const [m, g] = k.split("|"); return clean(m) + (g ? " " + g : ""); }
+function skuCtl() {
+  const lim = Date.now() - S.hDias * 864e5, cnt = {};
+  evBase().forEach(e => { if (new Date(e.fecha.replace(" ", "T")).getTime() >= lim && (!S.hReb || (e.confirmado !== -1 && e.mismo_producto !== 0))) cnt[skuK(e)] = (cnt[skuK(e)] || 0) + 1; });
+  const famOrd = ["Serie Z", "Serie S", "Serie A", "Tablets", "Wearables"];
+  const opts = T.filas.map(f => ({k: f.m + "|" + f.g, m: f.m, g: f.g, fam: f.fam, n: cnt[f.m + "|" + f.g] || 0}))
+    .sort((a, b) => ((famOrd.indexOf(a.fam) + 9) % 9) - ((famOrd.indexOf(b.fam) + 9) % 9) || clean(a.m).localeCompare(clean(b.m)) || a.g.localeCompare(b.g));
+  const q = S.hQ.trim().toLowerCase(), oculto = o => (q && !(clean(o.m) + " " + o.g).toLowerCase().includes(q)) || (S.hCon && !o.n);
+  let list = "", fam = null;
+  opts.forEach(o => { if (o.fam !== fam) { fam = o.fam; const vis = opts.some(x => x.fam === fam && !oculto(x)); list += `<div class="skug" data-fam="${esc(fam)}"${vis ? "" : " hidden"}>${esc(fam)}</div>`; }
+    list += `<label class="skuit" data-fam="${esc(o.fam)}" data-txt="${esc((clean(o.m) + " " + o.g).toLowerCase())}" data-n="${o.n}"${oculto(o) ? " hidden" : ""}><input type="checkbox" data-sku="${esc(o.k)}"${S.hSkus.includes(o.k) ? " checked" : ""}><span>${esc(clean(o.m))} <small>${esc(o.g)}</small></span><em>${o.n || ""}</em></label>`; });
+  const label = !S.hSkus.length ? "Todos los modelos" : S.hSkus.length === 1 ? skuNombre(S.hSkus[0]) : S.hSkus.length + " modelos";
+  return `<div class="skuwrap"><button type="button" class="inp skubtn${S.hSkus.length ? " on" : ""}" id="sku-tg" aria-expanded="${S.hOpen}" aria-haspopup="true">${esc(label)} ▾</button>
+    ${S.hOpen ? `<div class="skupop" role="dialog" aria-label="Filtrar por modelo"><input class="inp" id="sku-q" type="search" placeholder="Buscar modelo o memoria" aria-label="Buscar modelo" value="${esc(S.hQ)}" autocomplete="off">
+      <div class="skuacts"><button type="button" id="sku-all">Marcar visibles</button><button type="button" id="sku-clr">Limpiar</button><label><input type="checkbox" id="sku-con"${S.hCon ? " checked" : ""}> Solo con movimientos</label></div>
+      <div class="skulist" id="sku-list">${list}</div></div>` : ""}</div>`;
+}
 function vHistorico() {
+  cargarEventos();
+  if (HEV.key === T.pais + "|" + S.hDias && HEV.list === null) return '<div class="empty">Cargando movimientos del periodo…</div>';
   const rks = Object.keys(T.retailers), ev = evFiltrados(), bajas = ev.filter(e => e.tipo === "baja").length, sub = ev.filter(e => e.tipo === "subida").length;
   const porT = rks.map(k => ({k, n: ev.filter(e => e.retailer === k).length})).sort((a, b) => b.n - a.n);
   const dias = {}; ev.forEach(e => { const d = e.fecha.slice(0, 10); dias[d] = (dias[d] || 0) + 1; });
   const rows = ev.slice(0, 400).map(e => { const i = rks.indexOf(e.retailer), d = e.pct;
-    return `<tr><td class="l s">${fev(e.fecha)}</td><td class="l"><span class="dot" style="background:${RCOL[(i < 0 ? 0 : i) % 4]};margin-right:6px"></span>${esc(e.retailer_nombre || T.retailers[e.retailer] || e.retailer)}</td><td class="mod">${esc(clean(e.mobile))} <span>${esc(e.memoria)}</span></td><td class="l">${esc(e.tipo)}</td>
+    return `<tr><td class="l s">${fev(e.fecha)}</td><td class="l"><span class="dot" style="background:${RCOL[(i < 0 ? 0 : i) % 4]};margin-right:6px"></span>${esc(e.retailer_nombre || T.retailers[e.retailer] || e.retailer)}</td><td class="mod fsku" data-skuadd="${esc(skuK(e))}" title="Filtrar por este modelo">${esc(clean(e.mobile))} <span>${esc(e.memoria)}</span></td><td class="l">${esc(e.tipo)}</td>
       <td class="s">${money(e.precio_anterior)}</td><td><b>${e.precio_nuevo == null ? "—" : money(e.precio_nuevo)}</b></td><td class="${d == null ? "" : d < 0 ? "down" : "up"}">${d == null ? "—" : (d < 0 ? "▼ " : "▲ ") + Math.abs(d).toFixed(1) + "%"}</td><td>${estadoEv(e)}</td></tr>`; }).join("");
-  return `<div><h2>Histórico de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">Cada cambio detectado entre corridas. Un cambio se confirma cuando el precio se mantiene en la corrida siguiente; si regresa al valor anterior se marca como rebote.</p></div>
+  return `<div><h2>Histórico de precios — ${esc(T.pais_nombre)}</h2><p class="ctx">${S.hSkus.length ? "Filtrado por " + (S.hSkus.length === 1 ? esc(skuNombre(S.hSkus[0])) : S.hSkus.length + " modelos") + ". Clic en un modelo de la tabla para agregarlo al filtro. " : "Clic en un modelo de la tabla para filtrarlo. "}Un cambio se confirma cuando el precio se mantiene en la corrida siguiente; si regresa al valor anterior se marca como rebote.</p></div>
     <div class="cards"><div class="card total"><div class="hd"><span class="nm">Movimientos</span></div><div class="kv"><span class="k">En el periodo</span><span class="v">${ev.length}<small>${Object.keys(dias).length} días con actividad</small></span></div><div class="kv"><span class="k">Bajas</span><span class="v" style="color:var(--crit)">${bajas}</span></div><div class="kv"><span class="k">Subidas</span><span class="v" style="color:var(--good)">${sub}</span></div></div>
       ${porT.map(o => `<div class="card"><div class="hd"><span class="dot" style="background:${RCOL[rks.indexOf(o.k) % 4]}"></span><span class="nm">${esc(T.retailers[o.k])}</span></div><div class="kv"><span class="k">Movimientos</span><span class="v">${o.n}<small>${ev.length ? Math.round(o.n / ev.length * 100) : 0}% del total</small></span></div><div class="kv"><span class="k">Bajas / subidas</span><span class="v">${ev.filter(e => e.retailer === o.k && e.tipo === "baja").length} / ${ev.filter(e => e.retailer === o.k && e.tipo === "subida").length}</span></div></div>`).join("")}</div>
     <section class="panel"><div class="ph"><h3>Detalle de movimientos</h3><button type="button" class="plink" id="h-csv">Exportar CSV →</button></div>
       <div class="subs">${[[7, "7 días"], [35, "35 días"], [90, "90 días"], [365, "Año"]].map(([d, n]) => `<button type="button" class="subtab${S.hDias === d ? " on" : ""}" data-hd="${d}">${n}</button>`).join("")}<span class="sep"></span>
         <select class="inp" id="h-t" aria-label="Tienda"><option value="">Todas las tiendas</option>${rks.map(k => `<option value="${k}"${S.hTienda === k ? " selected" : ""}>${esc(T.retailers[k])}</option>`).join("")}</select>
         <select class="inp" id="h-tipo" aria-label="Tipo"><option value="">Todos los tipos</option>${["baja", "subida", "nuevo", "agotado", "reaparece"].map(t => `<option${S.hTipo === t ? " selected" : ""}>${t}</option>`).join("")}</select>
+        ${skuCtl()}
         <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--se)"><input type="checkbox" id="h-reb"${S.hReb ? " checked" : ""}> Ocultar rebotes y cambios de producto</label></div>
+      ${S.hSkus.length ? `<div class="chips">${S.hSkus.map(k => `<span class="chip">${esc(skuNombre(k))}<button type="button" data-skurm="${esc(k)}" aria-label="Quitar ${esc(skuNombre(k))}">×</button></span>`).join("")}<button type="button" class="plink" id="sku-clr2">Quitar filtro de modelos</button></div>` : ""}
       ${rows ? `<div class="scroll"><table><thead><tr><th class="l">Momento</th><th class="l">Tienda</th><th class="l">Modelo</th><th class="l">Tipo</th><th>Antes</th><th>Ahora</th><th>Cambio</th><th>Estado</th></tr></thead><tbody>${rows}</tbody></table></div>${ev.length > 400 ? '<p class="note">Se muestran los 400 más recientes; el CSV trae todos.</p>' : ""}` : '<div class="empty">Sin movimientos para este filtro.</div>'}</section>`;
 }
 
@@ -494,9 +542,21 @@ function exportarMatriz() { const rks = Object.keys(T.retailers), head = ["Model
 function exportarEventos() { const rows = [["Fecha", "Pais", "Tienda", "Modelo", "Memoria", "Tipo", "Precio anterior", "Precio nuevo", "Cambio %", "Confirmado", "Mismo producto"]]; evFiltrados().forEach(e => rows.push([e.fecha, e.pais, e.retailer_nombre || e.retailer, clean(e.mobile), e.memoria, e.tipo, e.precio_anterior, e.precio_nuevo, e.pct, e.confirmado, e.mismo_producto])); bajar("movimientos_" + T.pais + ".csv", rows); }
 
 /* ---------- eventos de interfaz ---------- */
+function renderSku() { const l = $("sku-list"), top = l ? l.scrollTop : 0; render(); const l2 = $("sku-list"); if (l2) l2.scrollTop = top; }
+function filtrarSkuDOM() {
+  const q = S.hQ.trim().toLowerCase(), l = $("sku-list"); if (!l) return;
+  l.querySelectorAll(".skuit").forEach(it => { it.hidden = (q && !it.dataset.txt.includes(q)) || (S.hCon && it.dataset.n === "0"); });
+  l.querySelectorAll(".skug").forEach(g => { g.hidden = ![...l.querySelectorAll(".skuit")].some(it => it.dataset.fam === g.dataset.fam && !it.hidden); });
+}
 document.addEventListener("click", ev => {
-  const t = ev.target.closest("button, tr.rowk"); if (!t) return;
-  if (t.dataset.p) { S.pais = t.dataset.p; S.sel = null; SALUD = null; cargar(); }
+  if (S.hOpen && !ev.target.closest(".skuwrap")) { S.hOpen = false; render(); }
+  const t = ev.target.closest("button, tr.rowk, [data-skuadd]"); if (!t) return;
+  if (t.id === "sku-tg") { S.hOpen = !S.hOpen; render(); if (S.hOpen) { const q = $("sku-q"); if (q) q.focus(); } return; }
+  if (t.id === "sku-all") { $("sku-list").querySelectorAll(".skuit:not([hidden]) input").forEach(i => { if (!S.hSkus.includes(i.dataset.sku)) S.hSkus.push(i.dataset.sku); }); renderSku(); return; }
+  if (t.id === "sku-clr" || t.id === "sku-clr2") { S.hSkus = []; renderSku(); return; }
+  if (t.dataset.skurm) { S.hSkus = S.hSkus.filter(k => k !== t.dataset.skurm); render(); return; }
+  if (t.dataset.skuadd) { if (!S.hSkus.includes(t.dataset.skuadd)) S.hSkus.push(t.dataset.skuadd); render(); return; }
+  if (t.dataset.p) { S.pais = t.dataset.p; S.sel = null; SALUD = null; HEV = {key: null, list: null}; cargar(); }
   else if (t.dataset.v) { S.vista = t.dataset.v; if (S.vista === "calidad") SALUD = null; render(); window.scrollTo({top: 0}); }
   else if (t.dataset.cat) { S.cat = t.dataset.cat; S.sel = null; render(); }
   else if (t.dataset.f) { S.filtro = t.dataset.f; render(); }
@@ -510,9 +570,9 @@ document.addEventListener("click", ev => {
   else if (t.id === "copy-all") copiar(Object.keys(T.retailers).filter(k => T.filas.some(f => f.c[k])).sort((a, b) => desfasesTienda(b).out.length - desfasesTienda(a).out.length).map(textoTienda).join("\n\n"));
   else if (t.classList.contains("rowk")) { if (ev.target.closest("a")) return; S.sel = {m: t.dataset.m, g: t.dataset.g}; render(); }
 });
-document.addEventListener("keydown", ev => { if (ev.key === "Enter" && ev.target.classList && ev.target.classList.contains("rowk")) { S.sel = {m: ev.target.dataset.m, g: ev.target.dataset.g}; render(); } });
-document.addEventListener("change", ev => { const t = ev.target; if (t.id === "h-t") { S.hTienda = t.value; render(); } else if (t.id === "h-tipo") { S.hTipo = t.value; render(); } else if (t.id === "h-reb") { S.hReb = t.checked; render(); } else if (t.id === "s-tol") { S.tol = t.value; REG = null; cargar(); } });
-document.addEventListener("input", ev => { if (ev.target.id === "q") { S.q = ev.target.value; clearTimeout(render.t); render.t = setTimeout(() => { render(); const q = $("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }, 250); } });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && S.hOpen) { S.hOpen = false; render(); const b = $("sku-tg"); if (b) b.focus(); return; } if (ev.key === "Enter" && ev.target.classList && ev.target.classList.contains("rowk")) { S.sel = {m: ev.target.dataset.m, g: ev.target.dataset.g}; render(); } });
+document.addEventListener("change", ev => { const t = ev.target; if (t.id === "h-t") { S.hTienda = t.value; render(); } else if (t.id === "h-tipo") { S.hTipo = t.value; render(); } else if (t.id === "h-reb") { S.hReb = t.checked; render(); } else if (t.dataset.sku) { const k = t.dataset.sku; S.hSkus = t.checked ? [...S.hSkus.filter(x => x !== k), k] : S.hSkus.filter(x => x !== k); renderSku(); } else if (t.id === "sku-con") { S.hCon = t.checked; filtrarSkuDOM(); } else if (t.id === "s-tol") { S.tol = t.value; REG = null; cargar(); } });
+document.addEventListener("input", ev => { if (ev.target.id === "sku-q") { S.hQ = ev.target.value; filtrarSkuDOM(); return; } if (ev.target.id === "q") { S.q = ev.target.value; clearTimeout(render.t); render.t = setTimeout(() => { render(); const q = $("q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }, 250); } });
 $("b-theme").addEventListener("click", () => setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"));
 $("m-exec").addEventListener("click", () => { S.modo = "exec"; $("m-exec").className = "on"; $("m-ana").className = ""; render(); });
 $("m-ana").addEventListener("click", () => { S.modo = "ana"; $("m-ana").className = "on"; $("m-exec").className = ""; render(); });
@@ -520,7 +580,7 @@ $("b-export").addEventListener("click", () => { if (T) (S.vista === "historico" 
 $("b-run").addEventListener("click", async () => { try { const r = await getJSON("/api/v2/actualizar", {method: "POST"}); toast(r.mensaje + (r.ok ? ". Tarda unos 9 minutos." : "")); } catch (e) { toast("No se pudo iniciar la corrida"); } });
 setTheme(store("ccp_tema") === "light" ? "light" : "dark");
 cargar();
-setInterval(() => { if (!document.hidden && !(document.activeElement && document.activeElement.id === "q")) cargar(true); }, 60000);
+setInterval(() => { if (!document.hidden && !S.hOpen && !(document.activeElement && document.activeElement.id === "q")) { HEV = {key: null, list: null}; cargar(true); } }, 60000);
 </script>
 </body>
 </html>
