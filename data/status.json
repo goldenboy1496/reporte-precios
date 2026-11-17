@@ -1,14 +1,11 @@
 {
   "elektra": {
     "estado": "ok",
-    "ultima_actualizacion": 1794929829.0553164,
-    "duracion_segundos": 14.9
+    "ultima_actualizacion": 1794930718.455718
   },
   "gallo": {
-    "estado": "error",
-    "ultima_actualizacion": 1794930120.9884698,
-    "duracion_segundos": 255.6,
-    "log": "Iniciando Gallo más Gallo en modo silencioso (headless)...\n  [Aviso] Timeout o error al cargar: Message: timeout: Timed out receiving message from renderer: 34.793\n  (Session info: chrome=157.0.8103.78)\nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t(No symbol) [0x7ff65f08d655]\n\t(No symbol) [0x7ff65ef84790]\n\t(No symbol) [0x7ff65edf2fb3]\n\t(No symbol) [0x7ff65f3891f1]\n\t(No symbol) [0x7ff65f388b0a]\n\t(No symbol) [0x7ff65ede65fd]\n\t(No symbol) [0x7ff65ede763f]\n\t(No symbol) [0x7ff65f5fee48]\n\t(No symbol) [0x7ff65edf8e95]\n\t(No symbol) [0x7ff65edf990a]\n\t(No symbol) [0x7ff65ede7bac]\n\t(No symbol) [0x7ff65edf8b25]\n\t(No symbol) [0x7ff65ee26d97]\n\t(No symbol) [0x7ff65ee0c109]\n\t(No symbol) [0x7ff65ee0d433]\n\t(No symbol) [0x7ff65f527041]\n\t(No symbol) [0x7ff65f545c76]\n\t(No symbol) [0x7ff65f53c340]\n\t(No symbol) [0x7ff65f1bc9be]\n\t(No symbol) [0x7ff65ef92fa5]\n\t(No symbol) [0x7ff65ef8e2d4]\n\t(No symbol) [0x7ff65ef8e464]\n\t(No symbol) [0x7ff65ef7731c]\n\t(No symbol) [0x7fff7e41dda7]\n\t(No symbol) [0x7fff7fa79c5c]\n\n\n^^^^^^^^^^\n  File \"C:\\Users\\Bryan Roblero\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 458, in execute\n    self.error_handler.check_response(response)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\Bryan Roblero\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 233, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.InvalidSessionIdException: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception\nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t(No symbol) [0x7ff65f08d655]\n\t(No symbol) [0x7ff65ef84790]\n\t(No symbol) [0x7ff65f38a76d]\n\t(No symbol) [0x7ff65ee0bef3]\n\t(No symbol) [0x7ff65ee1df92]\n\t(No symbol) [0x7ff65ee1bfa3]\n\t(No symbol) [0x7ff65ee1bb0c]\n\t(No symbol) [0x7ff65eddd97b]\n\t(No symbol) [0x7ff65edddb52]\n\t(No symbol) [0x7ff65edddd65]\n\t(No symbol) [0x7ff65f527041]\n\t(No symbol) [0x7ff65f545c76]\n\t(No symbol) [0x7ff65f53c340]\n\t(No symbol) [0x7ff65f1bc9be]\n\t(No symbol) [0x7ff65ef92fa5]\n\t(No symbol) [0x7ff65f5e5463]\n\t(No symbol) [0x7ff65eddc9e4]\n\t(No symbol) [0x7ff65f5924ff]\n\t(No symbol) [0x7fff7e41dda7]\n\t(No symbol) [0x7fff7fa79c5c]"
+    "estado": "corriendo",
+    "inicio": 1794930718.8709083
   },
   "max": {
     "estado": "ok",
