@@ -22,13 +22,11 @@ def parse_price(lines):
                 l_prices.append(num)
     if not l_prices:
         return None
-    return l_prices[-1]
+    # Si hay precio tachado y precio de oferta, el precio a pagar es el menor
+    return min(l_prices)
 
 
-def main():
-    visible = "--visible" in sys.argv
-    print(f"Iniciando scraping de Jetstereo Honduras (Modo: {'Visible' if visible else 'Invisible'})...")
-
+def create_driver(visible=False):
     opts = Options()
     if not visible:
         opts.add_argument("--headless=new")
@@ -37,15 +35,23 @@ def main():
     opts.add_argument("--log-level=3")
     opts.add_argument("--silent")
     opts.add_argument("--disable-logging")
-    opts.add_argument("user-agent=Mozilla/5.0")
+    opts.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+    opts.page_load_strategy = 'eager'
 
     service = Service()
     if sys.platform == "win32" and not visible:
         service.creation_flags = 0x08000000
 
     driver = webdriver.Chrome(service=service, options=opts)
-    driver.set_page_load_timeout(35)
-    driver.set_script_timeout(35)
+    driver.set_page_load_timeout(30)
+    driver.set_script_timeout(30)
+    return driver
+
+
+def main():
+    visible = "--visible" in sys.argv
+    print(f"Iniciando scraping de Jetstereo Honduras (Modo: {'Visible' if visible else 'Invisible'})...")
+
     productos = []
     vistos = set()
 
@@ -56,20 +62,32 @@ def main():
         "https://www.jetstereo.com/category/audio-portatil?brand=6&perPage=50&currentPage=1",
     ]
 
-    try:
-        for url in urls:
-            print(f"Cargando Jetstereo: {url} ...")
+    for url in urls:
+        print(f"Cargando Jetstereo: {url} ...")
+        driver = create_driver(visible=visible)
+        try:
             try:
                 driver.get(url)
             except Exception as e_get:
                 print(f"  [Aviso] Timeout o error al cargar {url}: {e_get}")
-            time.sleep(4)
 
-            for _ in range(3):
+            # Esperar brevemente a que termine el challenge si aparece
+            for _ in range(5):
+                if "momento" in driver.title.lower() or "just a moment" in driver.title.lower():
+                    time.sleep(1)
+                else:
+                    break
+
+            time.sleep(2)
+            for _ in range(2):
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(1)
 
-            cards = driver.find_elements(By.XPATH, "//div[contains(@class, 'rounded-lg') and contains(@class, 'shadow') and .//a[contains(@href, '/product/')]]")
+            # Tarjetas de producto en la estructura de Jetstereo (Next.js)
+            cards = driver.find_elements(By.XPATH, "//div[contains(@class, 'border') and .//a[contains(@href, '/product/')]]")
+            if not cards:
+                cards = driver.find_elements(By.XPATH, "//figure[.//a[contains(@href, '/product/')]]/..")
+
             print(f"Tarjetas encontradas: {len(cards)}")
 
             for c in cards:
@@ -103,6 +121,10 @@ def main():
                     h2 = c.find_elements(By.TAG_NAME, "h2")
                     if h2:
                         nombre = h2[0].text.strip()
+                if not nombre:
+                    aria = a.get_attribute("aria-label")
+                    if aria and "Ir al producto" in aria:
+                        nombre = aria.replace("Ir al producto", "").strip()
 
                 precio = parse_price(lines)
                 is_sam = ("samsung" in (nombre or "").lower() or "galaxy" in (nombre or "").lower() or "buds" in (nombre or "").lower()) and not (nombre or "").lower().startswith("reserva")
@@ -116,8 +138,8 @@ def main():
                         "url": href
                     })
                     print(f"  [Jetstereo OK] {nombre} -> L{precio:,.2f}")
-    finally:
-        driver.quit()
+        finally:
+            driver.quit()
 
     df = pd.DataFrame(productos)
     data_dir = Path(r"C:\Users\Bryan Roblero\Documents\reporte\data")

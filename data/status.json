@@ -22,10 +22,9 @@
     "duracion_segundos": 5.2
   },
   "jetstereo": {
-    "estado": "error",
-    "ultima_actualizacion": 1794930446.831086,
-    "duracion_segundos": 41.3,
-    "log": "El scraper termino sin productos (CSV vacio)"
+    "estado": "ok",
+    "ultima_actualizacion": 1794942459.9047458,
+    "duracion_segundos": 38.1
   },
   "siman": {
     "estado": "ok",
