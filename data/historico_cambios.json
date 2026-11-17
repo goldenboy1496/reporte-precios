@@ -12558,5 +12558,37 @@
     "diferencia": -4009.0,
     "pct_cambio": -25.06,
     "tipo": "baja"
+  },
+  {
+    "id": "1794930859_GT_max_Galaxy-A27 5G_8+256",
+    "fecha": "2026-11-17 09:54:19",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy-A27 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3749.0,
+    "precio_nuevo": 3496.0,
+    "diferencia": -253.0,
+    "pct_cambio": -6.75,
+    "tipo": "baja"
+  },
+  {
+    "id": "1794930859_GT_max_Galaxy S26 Ultra_12+512GB",
+    "fecha": "2026-11-17 09:54:19",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 12396.0,
+    "precio_nuevo": 11996.0,
+    "diferencia": -400.0,
+    "pct_cambio": -3.23,
+    "tipo": "baja"
   }
 ]
