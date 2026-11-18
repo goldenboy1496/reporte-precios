@@ -12926,5 +12926,53 @@
     "diferencia": 200.0,
     "pct_cambio": 15.4,
     "tipo": "subida"
+  },
+  {
+    "id": "1795026474_GT_elektra_Glaxy Tab A11 Wifi (No Bookcover)_4+64GB",
+    "fecha": "2026-11-18 12:27:54",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Glaxy Tab A11 Wifi (No Bookcover)",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 1499.0,
+    "precio_nuevo": 1299.0,
+    "diferencia": -200.0,
+    "pct_cambio": -13.34,
+    "tipo": "baja"
+  },
+  {
+    "id": "1795026474_HN_jetstereo_Galaxy Tab S10 FE+ WIFI (Book Cover Inbox)_128GB",
+    "fecha": "2026-11-18 12:27:54",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Jetstereo",
+    "retailer_key": "jetstereo",
+    "mobile": "Galaxy Tab S10 FE+ WIFI (Book Cover Inbox)",
+    "memoria": "128GB",
+    "categoria": "Tablets",
+    "precio_anterior": 16995.0,
+    "precio_nuevo": 15995.0,
+    "diferencia": -1000.0,
+    "pct_cambio": -5.88,
+    "tipo": "baja"
+  },
+  {
+    "id": "1795026474_HN_jetstereo_Galaxy Tab S11Ultra WIFI (Keyboard Inbox)_12+256",
+    "fecha": "2026-11-18 12:27:54",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Jetstereo",
+    "retailer_key": "jetstereo",
+    "mobile": "Galaxy Tab S11Ultra WIFI (Keyboard Inbox)",
+    "memoria": "12+256",
+    "categoria": "Tablets",
+    "precio_anterior": 38595.0,
+    "precio_nuevo": 36995.0,
+    "diferencia": -1600.0,
+    "pct_cambio": -4.15,
+    "tipo": "baja"
   }
 ]
