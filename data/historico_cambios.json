@@ -12910,5 +12910,21 @@
     "diferencia": 100.0,
     "pct_cambio": 1.52,
     "tipo": "subida"
+  },
+  {
+    "id": "1795022608_GT_elektra_Glaxy Tab A11 Wifi (No Bookcover)_4+64GB",
+    "fecha": "2026-11-18 11:23:28",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Glaxy Tab A11 Wifi (No Bookcover)",
+    "memoria": "4+64GB",
+    "categoria": "Tablets",
+    "precio_anterior": 1299.0,
+    "precio_nuevo": 1499.0,
+    "diferencia": 200.0,
+    "pct_cambio": 15.4,
+    "tipo": "subida"
   }
 ]
