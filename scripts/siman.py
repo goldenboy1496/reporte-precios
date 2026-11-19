@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Scraper de Siman El Salvador (API VTEX).
-Extrae únicamente productos que tengan existencia real (AvailableQuantity > 0 e IsAvailable = True)
-para evitar ofertas de colores o modelos agotados/tachados en la página.
+Scraper de Siman El Salvador (API VTEX + Endpoint de Promociones Credisiman).
+Extrae productos con existencias reales e incorpora el precio especial al crédito con Credisiman
+(obtenido del endpoint oficial de simulaciones batch de Siman).
 """
 import json
 import gzip
@@ -16,8 +16,47 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 
+def obtener_precios_credisiman(sku_ids):
+    """
+    Consulta en batch las promociones y precios con tarjeta Credisiman
+    desde el endpoint oficial de Siman.
+    """
+    if not sku_ids:
+        return {}
+    
+    url = "https://sv.siman.com/_v/credisiman-simulations-batch/"
+    payload = {str(sid): {"channelId": "1", "sellerId": "1"} for sid in sku_ids}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+
+    try:
+        req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        
+        precios = {}
+        for item in data:
+            skus = item.get("skuId", [])
+            tot = item.get("totalWithDiscount")
+            disc = item.get("discountValue")
+            if tot is not None and tot > 0:
+                for s in skus:
+                    precios[str(s)] = {
+                        "precio_credisiman": float(tot),
+                        "descuento_pct": disc,
+                        "promo_nombre": item.get("name", "")
+                    }
+        return precios
+    except Exception as e:
+        print(f"[!] Aviso al consultar promociones Credisiman: {e}")
+        return {}
+
+
 def main():
-    print("Iniciando scraping de Siman El Salvador (API VTEX - Catálogo con existencias reales)...")
+    print("Iniciando scraping de Siman El Salvador (API VTEX + Precios Crédito Credisiman)...")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json",
@@ -86,23 +125,55 @@ def main():
                             productos.append({
                                 "id": sku_id,
                                 "nombre": full_name,
-                                "precio": f"${price:,.2f}",
-                                "precio_num": price,
+                                "precio_contado": price,
                                 "link": prod_link
                             })
-                            print(f" [OK] {full_name[:85]} -> ${price:,.2f}")
             except Exception as e:
                 print(f"[!] Aviso en URL {url}: {e}")
 
     if productos:
-        df = pd.DataFrame(productos)
+        print(f"\nConsultando precios al crédito (Credisiman) para {len(productos)} SKUs...")
+        sku_list = [p["id"] for p in productos]
+        credisiman_data = obtener_precios_credisiman(sku_list)
+        print(f"-> Se encontraron {len(credisiman_data)} productos con precio promocional Credisiman.")
+
+        final_rows = []
+        for p in productos:
+            sid = str(p["id"])
+            p_contado = p["precio_contado"]
+            
+            # Si tiene precio especial con Credisiman, se toma como precio principal al credito
+            if sid in credisiman_data:
+                info_cred = credisiman_data[sid]
+                p_final = info_cred["precio_credisiman"]
+                p_credisiman_str = f"${p_final:,.2f}"
+                tiene_promo = "Sí"
+                print(f" [CREDISIMAN] {p['nombre'][:65]} -> Contado: ${p_contado:,.2f} | Credisiman: ${p_final:,.2f}")
+            else:
+                p_final = p_contado
+                p_credisiman_str = ""
+                tiene_promo = "No"
+                print(f" [OK] {p['nombre'][:65]} -> ${p_final:,.2f}")
+
+            final_rows.append({
+                "id": p["id"],
+                "nombre": p["nombre"],
+                "precio": f"${p_final:,.2f}",
+                "precio_num": p_final,
+                "precio_contado": f"${p_contado:,.2f}",
+                "precio_credisiman": p_credisiman_str,
+                "tiene_promo_credito": tiene_promo,
+                "link": p["link"]
+            })
+
+        df = pd.DataFrame(final_rows)
         data_dir = Path(r"C:\Users\Bryan Roblero\Documents\reporte\data")
         if data_dir.exists():
             df.to_csv(data_dir / "productos_siman.csv", index=False, encoding="utf-8")
         df.to_csv(r"C:\Users\Bryan Roblero\Documents\reporte\productos_siman.csv", index=False, encoding="utf-8")
-        print(f"\n[OK] Guardados {len(df)} SKUs en productos_siman.csv con inventario disponible")
+        print(f"\n[OK] Guardados {len(df)} SKUs en productos_siman.csv")
     else:
-        print("\n[!] No se encontraron celulares Samsung disponibles en Siman.")
+        print("\n[!] No se encontraron productos disponibles en Siman.")
 
 
 if __name__ == "__main__":
