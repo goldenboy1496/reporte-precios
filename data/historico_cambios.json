@@ -13342,5 +13342,37 @@
     "diferencia": 100.0,
     "pct_cambio": 6.25,
     "tipo": "subida"
+  },
+  {
+    "id": "1795124392_GT_elektra_Galaxy-A57 5G_8+256",
+    "fecha": "2026-11-19 15:39:52",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A57 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3949.0,
+    "precio_nuevo": 4545.0,
+    "diferencia": 596.0,
+    "pct_cambio": 15.09,
+    "tipo": "subida"
+  },
+  {
+    "id": "1795124392_GT_elektra_Galaxy S25+_12+512GB",
+    "fecha": "2026-11-19 15:39:52",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S25+",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 5724.0,
+    "precio_nuevo": 4599.0,
+    "diferencia": -1125.0,
+    "pct_cambio": -19.65,
+    "tipo": "baja"
   }
 ]
