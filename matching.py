@@ -474,6 +474,7 @@ def load_retailer_csv(path: Path, nombre_col, precio_cols):
             if precio is not None:
                 break
         url = row.get("url", "").strip() if "url" in row else ""
+        precio_credisiman = row.get("precio_credisiman", "").strip() if "precio_credisiman" in row else ""
         mod = extract_model(nombre)
         cat_tipo = get_categoria(mod, nombre)
         if es_accesorio(nombre, cat_tipo):
@@ -484,6 +485,7 @@ def load_retailer_csv(path: Path, nombre_col, precio_cols):
             "mem": extract_memory(nombre),
             "color": extract_color(nombre),
             "precio": precio,
+            "precio_credisiman": precio_credisiman,
             "url": url,
             "categoria": cat_tipo,
             "conectividad": extract_connectivity(nombre),
@@ -867,6 +869,7 @@ def build_report(data_dir: Path, tolerancia_pct: float = None, pais: str = "gt")
             fila[f"{r_key}_nombre"] = nombre_ret
             fila[f"{r_key}_color"] = color_ret
             fila[f"{r_key}_url"] = matched.get("url", "")
+            fila[f"{r_key}_precio_credisiman"] = matched.get("precio_credisiman", "")
 
             if estado in ("ok", "menor"):
                 total_evaluado += 1

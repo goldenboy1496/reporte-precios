@@ -141,19 +141,20 @@ def main():
         for p in productos:
             sid = str(p["id"])
             p_contado = p["precio_contado"]
+            # Siempre se usa el precio regular/web publicado que aparece en la tienda
+            p_final = p_contado
             
-            # Si tiene precio especial con Credisiman, se toma como precio principal al credito
+            # Detectar si tiene precio promocional con Credisiman para colocar tag
             if sid in credisiman_data:
                 info_cred = credisiman_data[sid]
-                p_final = info_cred["precio_credisiman"]
-                p_credisiman_str = f"${p_final:,.2f}"
+                p_cred_val = info_cred["precio_credisiman"]
+                p_credisiman_str = f"${p_cred_val:,.2f}"
                 tiene_promo = "Sí"
-                print(f" [CREDISIMAN] {p['nombre'][:65]} -> Contado: ${p_contado:,.2f} | Credisiman: ${p_final:,.2f}")
+                print(f" [CREDISIMAN TAG] {p['nombre'][:60]} -> Web: ${p_final:,.2f} | Credisiman: {p_credisiman_str}")
             else:
-                p_final = p_contado
                 p_credisiman_str = ""
                 tiene_promo = "No"
-                print(f" [OK] {p['nombre'][:65]} -> ${p_final:,.2f}")
+                print(f" [OK] {p['nombre'][:60]} -> ${p_final:,.2f}")
 
             final_rows.append({
                 "id": p["id"],

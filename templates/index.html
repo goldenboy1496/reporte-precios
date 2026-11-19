@@ -4523,7 +4523,7 @@
       }
 
 
-      function renderCeldaRetailer(precio, estado, diffPct, nombreProducto, miPrecio, retailerKey, modeloNombre, color, prodUrl, memoria = "", cupon = null, precioPublicado = null) {
+      function renderCeldaRetailer(precio, estado, diffPct, nombreProducto, miPrecio, retailerKey, modeloNombre, color, prodUrl, memoria = "", cupon = null, precioPublicado = null, precioCredisiman = "") {
         if (precio === null || precio === undefined) {
           const fnSearch = RETAILER_SEARCH_URLS[retailerKey];
           const nomTienda = obtenerRetailerNombre(retailerKey);
@@ -4569,7 +4569,13 @@
           cuponBadge = `<div class="pill-cupon-tag" title="${tipCupon}" style="font-size:9.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, #ec4899, #db2777); padding:1.5px 5px; border-radius:4px; margin-top:3px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 1px 3px rgba(219,39,119,0.25); cursor:pointer;" onclick="event.stopPropagation(); abrirModalCupones();"><span style="font-size:10px;">🎟️</span> -${tipoStr} <span style="text-decoration:line-through; opacity:0.8; font-size:9px; margin-left:2px;">${formatoMoneda(pPub, moneda)}</span></div>`;
         }
 
-        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + '><span>' + formatoMoneda(precio) + '</span>' + subText + badge24h + colorTag + linkBtn + cuponBadge + '</div></td>';
+        let credisimanBadge = "";
+        if (precioCredisiman) {
+          const tipCred = `💳 Precio al crédito con tarjeta Credisiman: ${precioCredisiman} (Contado web: ${formatoMoneda(precio)})`;
+          credisimanBadge = `<div class="pill-credisiman-tag" title="${tipCred}" style="font-size:9.5px; font-weight:800; color:#fff; background:linear-gradient(135deg, #001A70, #03499a); padding:1.5px 6px; border-radius:4px; margin-top:3px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 1px 3px rgba(3,73,154,0.3);"><span style="font-size:10px;">💳</span> Credisiman: ${precioCredisiman}</div>`;
+        }
+
+        return '<td><div class="price-pill ' + badgeClass + '"' + tooltip + '><span>' + formatoMoneda(precio) + '</span>' + subText + badge24h + colorTag + linkBtn + cuponBadge + credisimanBadge + '</div></td>';
       }
 
       function _unused_old_renderCeldaRetailer_() {
@@ -4834,7 +4840,7 @@
           const rowCls = tienePrecio ? "" : "row-sin-precio";
 
           const retailerCeldas = retKeys.map(k =>
-            renderCeldaRetailer(f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria, f[k + "_cupon"], f[k + "_precio_publicado"])
+            renderCeldaRetailer(f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria, f[k + "_cupon"], f[k + "_precio_publicado"], f[k + "_precio_credisiman"])
           ).join("");
 
           let catBadge = '';
@@ -4929,7 +4935,8 @@
             if (celdas[tdIndex]) {
               const htmlCelda = renderCeldaRetailer(
                 f[k], f[k + "_estado"], f[k + "_diff_pct"], f[k + "_nombre"], 
-                f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria
+                f.mi_precio, k, f.mobile, f[k + "_color"], f[k + "_url"], f.memoria,
+                f[k + "_cupon"], f[k + "_precio_publicado"], f[k + "_precio_credisiman"]
               );
               const temp = document.createElement("table");
               temp.innerHTML = "<tr>" + htmlCelda + "</tr>";
