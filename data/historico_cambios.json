@@ -13614,5 +13614,53 @@
     "diferencia": -3500.0,
     "pct_cambio": -50.0,
     "tipo": "baja"
+  },
+  {
+    "id": "1795206063_GT_elektra_Galaxy-A37 5G_8+256",
+    "fecha": "2026-11-20 14:21:03",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A37 5G",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 3995.0,
+    "precio_nuevo": 3695.0,
+    "diferencia": -300.0,
+    "pct_cambio": -7.51,
+    "tipo": "baja"
+  },
+  {
+    "id": "1795206063_HN_walmart_hn_Galaxy S26 Ultra_12+512GB",
+    "fecha": "2026-11-20 14:21:03",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_hn",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "12+512GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 39945.0,
+    "precio_nuevo": 34195.25,
+    "diferencia": -5749.75,
+    "pct_cambio": -14.39,
+    "tipo": "baja"
+  },
+  {
+    "id": "1795206063_HN_walmart_hn_Watch8 40mm BT_",
+    "fecha": "2026-11-20 14:21:03",
+    "pais": "HN",
+    "moneda": "L",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_hn",
+    "mobile": "Watch8 40mm BT",
+    "memoria": "",
+    "categoria": "Wearables",
+    "precio_anterior": 3500.0,
+    "precio_nuevo": 7000.0,
+    "diferencia": 3500.0,
+    "pct_cambio": 100.0,
+    "tipo": "subida"
   }
 ]
