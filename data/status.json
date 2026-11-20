@@ -16,13 +16,11 @@
   },
   "diunsa": {
     "estado": "ok",
-    "ultima_actualizacion": 1795190909.7445898,
-    "duracion_segundos": 56.3
+    "ultima_actualizacion": 1795194926.7466066
   },
   "elektra_hn": {
-    "estado": "ok",
-    "ultima_actualizacion": 1795190852.3952312,
-    "duracion_segundos": 3.5
+    "estado": "corriendo",
+    "inicio": 1795194927.0493531
   },
   "jetstereo": {
     "estado": "ok",
