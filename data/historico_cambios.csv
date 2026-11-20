@@ -835,3 +835,18 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1795112434_SV_siman_Galaxy Tab S12Ultra WIFI (No Keyboard Inbox)_12+256,2026-11-19 12:20:34,SV,$,Siman,siman,Galaxy Tab S12Ultra WIFI (No Keyboard Inbox),12+256,Tablets,1599.0,1699.0,100.0,6.25,subida
 1795124392_GT_elektra_Galaxy-A57 5G_8+256,2026-11-19 15:39:52,GT,Q,Elektra,elektra,Galaxy-A57 5G,8+256,Smartphones,3949.0,4545.0,596.0,15.09,subida
 1795124392_GT_elektra_Galaxy S25+_12+512GB,2026-11-19 15:39:52,GT,Q,Elektra,elektra,Galaxy S25+,12+512GB,Smartphones,5724.0,4599.0,-1125.0,-19.65,baja
+1795190916_SV_prado_Galaxy-A27 5G_6+128,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy-A27 5G,6+128,Smartphones,369.0,309.0,-60.0,-16.26,baja
+1795190916_SV_prado_Galaxy-A37 5G_6+128,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy-A37 5G,6+128,Smartphones,419.0,389.0,-30.0,-7.16,baja
+1795190916_SV_prado_Galaxy-A27 5G_8+256,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy-A27 5G,8+256,Smartphones,469.0,399.0,-70.0,-14.93,baja
+1795190916_SV_prado_Galaxy-A37 5G_8+256,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy-A37 5G,8+256,Smartphones,499.0,459.01,-39.99,-8.01,baja
+1795190916_SV_prado_Galaxy S26_12+256,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy S26,12+256,Smartphones,1079.0,969.0,-110.0,-10.19,baja
+1795190916_SV_siman_Galaxy S25 Ultra_12+256,2026-11-20 10:08:36,SV,$,Siman,siman,Galaxy S25 Ultra,12+256,Smartphones,1099.0,1049.0,-50.0,-4.55,baja
+1795190916_SV_prado_Galaxy S26+_12+256,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy S26+,12+256,Smartphones,1299.0,1189.0,-110.0,-8.47,baja
+1795190916_SV_curacao_sv_Galaxy Tab A11 LTE (No Bookcover)_4+64GB,2026-11-20 10:08:36,SV,$,La Curacao,curacao_sv,Galaxy Tab A11 LTE (No Bookcover),4+64GB,Tablets,209.0,169.0,-40.0,-19.14,baja
+1795190916_SV_siman_Galaxy Tab A11+ 5G (No Bookcover)_6+128GB,2026-11-20 10:08:36,SV,$,Siman,siman,Galaxy Tab A11+ 5G (No Bookcover),6+128GB,Tablets,379.0,449.0,70.0,18.47,subida
+1795190916_SV_prado_Galaxy S10lite WIFI (No Book Cover)_6+128GB,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy S10lite WIFI (No Book Cover),6+128GB,Tablets,389.0,339.0,-50.0,-12.85,baja
+1795190916_SV_prado_Galaxy S10lite WIFI (Book Cover Inbox)_6+128GB,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy S10lite WIFI (Book Cover Inbox),6+128GB,Tablets,389.0,339.0,-50.0,-12.85,baja
+1795190916_SV_prado_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB,2026-11-20 10:08:36,SV,$,Prado,prado,Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,Tablets,529.0,499.0,-30.0,-5.67,baja
+1795190916_SV_prado_Watch9 44mm BT_,2026-11-20 10:08:36,SV,$,Prado,prado,Watch9 44mm BT,,Wearables,384.0,374.0,-10.0,-2.6,baja
+1795190916_SV_prado_Watch9 40mm BT_,2026-11-20 10:08:36,SV,$,Prado,prado,Watch9 40mm BT,,Wearables,355.0,349.0,-6.0,-1.69,baja
+1795190916_HN_walmart_hn_Watch8 40mm BT_,2026-11-20 10:08:36,HN,L,Walmart,walmart_hn,Watch8 40mm BT,,Wearables,7000.0,3500.0,-3500.0,-50.0,baja
