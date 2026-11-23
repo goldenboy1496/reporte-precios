@@ -853,3 +853,16 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1795206063_GT_elektra_Galaxy-A37 5G_8+256,2026-11-20 14:21:03,GT,Q,Elektra,elektra,Galaxy-A37 5G,8+256,Smartphones,3995.0,3695.0,-300.0,-7.51,baja
 1795206063_HN_walmart_hn_Galaxy S26 Ultra_12+512GB,2026-11-20 14:21:03,HN,L,Walmart,walmart_hn,Galaxy S26 Ultra,12+512GB,Smartphones,39945.0,34195.25,-5749.75,-14.39,baja
 1795206063_HN_walmart_hn_Watch8 40mm BT_,2026-11-20 14:21:03,HN,L,Walmart,walmart_hn,Watch8 40mm BT,,Wearables,3500.0,7000.0,3500.0,100.0,subida
+1795448433_GT_gallo_Galaxy S26 FE_8+256,2026-11-23 09:40:33,GT,Q,El Gallo más Gallo,gallo,Galaxy S26 FE,8+256,Smartphones,7799.0,8998.0,1199.0,15.37,subida
+1795448433_GT_walmart_Galaxy S25 Ultra_12+256,2026-11-23 09:40:33,GT,Q,Walmart,walmart,Galaxy S25 Ultra,12+256,Smartphones,7749.33,7464.15,-285.18,-3.68,baja
+1795448433_SV_curacao_sv_Galaxy-A17_8+256,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy-A17,8+256,Smartphones,319.0,309.0,-10.0,-3.13,baja
+1795448433_SV_siman_Galaxy-A27 5G_8+256,2026-11-23 09:40:33,SV,$,Siman,siman,Galaxy-A27 5G,8+256,Smartphones,489.0,469.0,-20.0,-4.09,baja
+1795448433_SV_curacao_sv_Galaxy-A27 5G_8+256,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy-A27 5G,8+256,Smartphones,459.0,449.0,-10.0,-2.18,baja
+1795448433_SV_siman_Galaxy-A37 5G_8+256,2026-11-23 09:40:33,SV,$,Siman,siman,Galaxy-A37 5G,8+256,Smartphones,509.0,485.0,-24.0,-4.72,baja
+1795448433_SV_siman_Galaxy-A57 5G_8+256,2026-11-23 09:40:33,SV,$,Siman,siman,Galaxy-A57 5G,8+256,Smartphones,565.0,539.0,-26.0,-4.6,baja
+1795448433_SV_curacao_sv_Galaxy-A57 5G_8+256,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy-A57 5G,8+256,Smartphones,545.0,519.0,-26.0,-4.77,baja
+1795448433_SV_curacao_sv_Galaxy S25 FE_8+256,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy S25 FE,8+256,Smartphones,669.0,649.0,-20.0,-2.99,baja
+1795448433_SV_walmart_sv_Galaxy S26 FE_8+128,2026-11-23 09:40:33,SV,$,Walmart,walmart_sv,Galaxy S26 FE,8+128,Smartphones,831.0,809.0,-22.0,-2.65,baja
+1795448433_SV_curacao_sv_Galaxy S25 Ultra_12+256,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy S25 Ultra,12+256,Smartphones,1099.0,999.0,-100.0,-9.1,baja
+1795448433_SV_siman_Galaxy S26 Ultra_256GB,2026-11-23 09:40:33,SV,$,Siman,siman,Galaxy S26 Ultra,256GB,Smartphones,1305.0,1239.0,-66.0,-5.06,baja
+1795448433_SV_curacao_sv_Galaxy S26 Ultra_256GB,2026-11-23 09:40:33,SV,$,La Curacao,curacao_sv,Galaxy S26 Ultra,256GB,Smartphones,1299.0,1199.0,-100.0,-7.7,baja
