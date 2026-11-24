@@ -14558,5 +14558,21 @@
     "diferencia": 250.88,
     "pct_cambio": 26.53,
     "tipo": "subida"
+  },
+  {
+    "id": "1795558064_GT_elektra_Galaxy-A57 5G_12+512",
+    "fecha": "2026-11-24 16:07:44",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy-A57 5G",
+    "memoria": "12+512",
+    "categoria": "Smartphones",
+    "precio_anterior": 6295.0,
+    "precio_nuevo": 5999.0,
+    "diferencia": -296.0,
+    "pct_cambio": -4.7,
+    "tipo": "baja"
   }
 ]
