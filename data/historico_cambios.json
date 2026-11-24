@@ -13870,5 +13870,21 @@
     "diferencia": -100.0,
     "pct_cambio": -7.7,
     "tipo": "baja"
+  },
+  {
+    "id": "1795482150_GT_max_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB",
+    "fecha": "2026-11-23 19:02:30",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "MAX",
+    "retailer_key": "max",
+    "mobile": "Galaxy Tab S10 FE Wifi (Book Cover  Inbox)",
+    "memoria": "128GB",
+    "categoria": "Tablets",
+    "precio_anterior": 3996.0,
+    "precio_nuevo": 3696.0,
+    "diferencia": -300.0,
+    "pct_cambio": -7.51,
+    "tipo": "baja"
   }
 ]
