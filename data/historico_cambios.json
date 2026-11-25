@@ -14990,5 +14990,21 @@
     "diferencia": -114.0,
     "pct_cambio": -11.41,
     "tipo": "baja"
+  },
+  {
+    "id": "1795630115_SV_prado_Galaxy S26 Ultra_256GB",
+    "fecha": "2026-11-25 12:08:35",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Prado",
+    "retailer_key": "prado",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "256GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 2331.68,
+    "precio_nuevo": 1099.0,
+    "diferencia": -1232.68,
+    "pct_cambio": -52.87,
+    "tipo": "baja"
   }
 ]
