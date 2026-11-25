@@ -14974,5 +14974,21 @@
     "diferencia": 3500.0,
     "pct_cambio": 100.0,
     "tipo": "subida"
+  },
+  {
+    "id": "1795615691_SV_walmart_sv_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-11-25 08:08:11",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_sv",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 999.0,
+    "precio_nuevo": 885.0,
+    "diferencia": -114.0,
+    "pct_cambio": -11.41,
+    "tipo": "baja"
   }
 ]
