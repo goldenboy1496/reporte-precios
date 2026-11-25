@@ -15006,5 +15006,21 @@
     "diferencia": -1232.68,
     "pct_cambio": -52.87,
     "tipo": "baja"
+  },
+  {
+    "id": "1795644504_GT_elektra_Galaxy S25 Ultra_12+256",
+    "fecha": "2026-11-25 16:08:23",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S25 Ultra",
+    "memoria": "12+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 6799.0,
+    "precio_nuevo": 5595.0,
+    "diferencia": -1204.0,
+    "pct_cambio": -17.71,
+    "tipo": "baja"
   }
 ]
