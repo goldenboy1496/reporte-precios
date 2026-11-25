@@ -910,3 +910,28 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1795543717_SV_curacao_sv_Galaxy-A17_4+128,2026-11-24 12:08:37,SV,$,La Curacao,curacao_sv,Galaxy-A17,4+128,Smartphones,180.0,219.0,39.0,21.67,subida
 1795543717_SV_walmart_sv_Galaxy S26 Ultra_256GB,2026-11-24 12:08:37,SV,$,Walmart,walmart_sv,Galaxy S26 Ultra,256GB,Smartphones,945.7,1196.58,250.88,26.53,subida
 1795558064_GT_elektra_Galaxy-A57 5G_12+512,2026-11-24 16:07:44,GT,Q,Elektra,elektra,Galaxy-A57 5G,12+512,Smartphones,6295.0,5999.0,-296.0,-4.7,baja
+1795612311_GT_walmart_Galaxy-A37 5G_8+256,2026-11-25 07:11:51,GT,Q,Walmart,walmart,Galaxy-A37 5G,8+256,Smartphones,3147.65,3245.0,97.35,3.09,subida
+1795612311_GT_walmart_Galaxy S26_12+256,2026-11-25 07:11:51,GT,Q,Walmart,walmart,Galaxy S26,12+256,Smartphones,8919.15,9195.0,275.85,3.09,subida
+1795612311_GT_walmart_Galaxy S26 Ultra_12+512GB,2026-11-25 07:11:51,GT,Q,Walmart,walmart,Galaxy S26 Ultra,12+512GB,Smartphones,10665.15,10695.0,29.85,0.28,subida
+1795612311_GT_walmart_Galaxy Tab A11 LTE (No Bookcover)_4+64GB,2026-11-25 07:11:51,GT,Q,Walmart,walmart,Galaxy Tab A11 LTE (No Bookcover),4+64GB,Tablets,985.5,1095.0,109.5,11.11,subida
+1795612311_SV_walmart_sv_Galaxy-A08_4+128,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy-A08,4+128,Smartphones,234.22,239.0,4.78,2.04,subida
+1795612311_SV_walmart_sv_Galaxy-A18_4+128,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy-A18,4+128,Smartphones,279.3,285.0,5.7,2.04,subida
+1795612311_SV_walmart_sv_Galaxy-A27 5G_8+256,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy-A27 5G,8+256,Smartphones,421.4,430.0,8.6,2.04,subida
+1795612311_SV_prado_Galaxy S26 Ultra_256GB,2026-11-25 07:11:51,SV,$,Prado,prado,Galaxy S26 Ultra,256GB,Smartphones,1099.0,2331.68,1232.68,112.16,subida
+1795612311_SV_walmart_sv_Galaxy S26 Ultra_256GB,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy S26 Ultra,256GB,Smartphones,1196.58,1221.0,24.42,2.04,subida
+1795612311_SV_siman_Galaxy Z Fold8_12GB_256GB,2026-11-25 07:11:51,SV,$,Siman,siman,Galaxy Z Fold8,12GB_256GB,Smartphones,2399.0,2199.0,-200.0,-8.34,baja
+1795612311_SV_prado_Glaxy Tab A11 Wifi (No Bookcover)_4+64GB,2026-11-25 07:11:51,SV,$,Prado,prado,Glaxy Tab A11 Wifi (No Bookcover),4+64GB,Tablets,169.0,149.0,-20.0,-11.83,baja
+1795612311_SV_walmart_sv_Galaxy Tab A11 LTE (No Bookcover)_4+64GB,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy Tab A11 LTE (No Bookcover),4+64GB,Tablets,194.04,196.0,1.96,1.01,subida
+1795612311_SV_walmart_sv_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,Tablets,465.3,470.0,4.7,1.01,subida
+1795612311_SV_walmart_sv_Watch8 44mm BT_,2026-11-25 07:11:51,SV,$,Walmart,walmart_sv,Watch8 44mm BT,,Wearables,269.5,275.0,5.5,2.04,subida
+1795612311_HN_walmart_hn_Galaxy-A17_8+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy-A17,8+256,Smartphones,9595.0,6815.0,-2780.0,-28.97,baja
+1795612311_HN_walmart_hn_Galaxy-A27 5G_6+128,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy-A27 5G,6+128,Smartphones,7555.8,8995.0,1439.2,19.05,subida
+1795612311_HN_walmart_hn_Galaxy-A37 5G_8+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy-A37 5G,8+256,Smartphones,11890.0,10395.0,-1495.0,-12.57,baja
+1795612311_HN_walmart_hn_Galaxy-A57 5G_8+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy-A57 5G,8+256,Smartphones,16995.0,11795.0,-5200.0,-30.6,baja
+1795612311_HN_walmart_hn_Galaxy S25 FE_8+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy S25 FE,8+256,Smartphones,19236.75,29595.0,10358.25,53.85,subida
+1795612311_HN_walmart_hn_Galaxy-A57 5G_12+512,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy-A57 5G,12+512,Smartphones,11396.2,14995.0,3598.8,31.58,subida
+1795612311_HN_walmart_hn_Galaxy S25 Ultra_12+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy S25 Ultra,12+256,Smartphones,27355.25,28795.0,1439.75,5.26,subida
+1795612311_HN_walmart_hn_Galaxy S26+_12+256,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy S26+,12+256,Smartphones,35195.6,39995.0,4799.4,13.64,subida
+1795612311_HN_walmart_hn_Galaxy S26 Ultra_12+512GB,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Galaxy S26 Ultra,12+512GB,Smartphones,30395.25,31995.0,1599.75,5.26,subida
+1795612311_HN_diunsa_Galaxy Tab S10 FE Wifi (Book Cover  Inbox)_128GB,2026-11-25 07:11:51,HN,L,Diunsa,diunsa,Galaxy Tab S10 FE Wifi (Book Cover  Inbox),128GB,Tablets,12990.0,11990.0,-1000.0,-7.7,baja
+1795612311_HN_walmart_hn_Watch8 40mm BT_,2026-11-25 07:11:51,HN,L,Walmart,walmart_hn,Watch8 40mm BT,,Wearables,3500.0,7000.0,3500.0,100.0,subida
