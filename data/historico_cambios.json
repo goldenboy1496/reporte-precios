@@ -15214,5 +15214,21 @@
     "diferencia": -3500.0,
     "pct_cambio": -50.0,
     "tipo": "baja"
+  },
+  {
+    "id": "1795724232_SV_walmart_sv_Galaxy S26 Ultra_256GB",
+    "fecha": "2026-11-26 14:17:12",
+    "pais": "SV",
+    "moneda": "$",
+    "retailer": "Walmart",
+    "retailer_key": "walmart_sv",
+    "mobile": "Galaxy S26 Ultra",
+    "memoria": "256GB",
+    "categoria": "Smartphones",
+    "precio_anterior": 1221.0,
+    "precio_nuevo": 965.0,
+    "diferencia": -256.0,
+    "pct_cambio": -20.97,
+    "tipo": "baja"
   }
 ]
