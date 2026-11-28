@@ -15790,5 +15790,21 @@
     "diferencia": -11959.0,
     "pct_cambio": -29.2,
     "tipo": "baja"
+  },
+  {
+    "id": "1795896792_GT_elektra_Galaxy S25 FE_8+256",
+    "fecha": "2026-11-28 14:13:12",
+    "pais": "GT",
+    "moneda": "Q",
+    "retailer": "Elektra",
+    "retailer_key": "elektra",
+    "mobile": "Galaxy S25 FE",
+    "memoria": "8+256",
+    "categoria": "Smartphones",
+    "precio_anterior": 4999.0,
+    "precio_nuevo": 4799.0,
+    "diferencia": -200.0,
+    "pct_cambio": -4.0,
+    "tipo": "baja"
   }
 ]
