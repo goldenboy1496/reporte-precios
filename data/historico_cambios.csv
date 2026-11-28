@@ -951,3 +951,32 @@ id,fecha,pais,moneda,retailer,retailer_key,mobile,memoria,categoria,precio_anter
 1795707334_HN_walmart_hn_Galaxy S26 Ultra_12+512GB,2026-11-26 09:35:34,HN,L,Walmart,walmart_hn,Galaxy S26 Ultra,12+512GB,Smartphones,31995.0,30995.0,-1000.0,-3.13,baja
 1795707334_HN_walmart_hn_Watch8 40mm BT_,2026-11-26 09:35:34,HN,L,Walmart,walmart_hn,Watch8 40mm BT,,Wearables,7000.0,3500.0,-3500.0,-50.0,baja
 1795724232_SV_walmart_sv_Galaxy S26 Ultra_256GB,2026-11-26 14:17:12,SV,$,Walmart,walmart_sv,Galaxy S26 Ultra,256GB,Smartphones,1221.0,965.0,-256.0,-20.97,baja
+1795833847_GT_elektra_Galaxy-A57 5G_8+256,2026-11-27 20:44:07,GT,Q,Elektra,elektra,Galaxy-A57 5G,8+256,Smartphones,4545.0,3995.0,-550.0,-12.1,baja
+1795833847_GT_elektra_Galaxy-A57 5G_12+512,2026-11-27 20:44:07,GT,Q,Elektra,elektra,Galaxy-A57 5G,12+512,Smartphones,5999.0,4995.0,-1004.0,-16.74,baja
+1795833847_GT_elektra_Galaxy S26 Ultra_256GB,2026-11-27 20:44:07,GT,Q,Elektra,elektra,Galaxy S26 Ultra,256GB,Smartphones,9495.0,8895.0,-600.0,-6.32,baja
+1795833847_GT_elektra_Galaxy Buds 3FE_,2026-11-27 20:44:07,GT,Q,Elektra,elektra,Galaxy Buds 3FE,,Wearables,899.0,799.0,-100.0,-11.12,baja
+1795833847_GT_max_Galaxy Buds 3FE_,2026-11-27 20:44:07,GT,Q,MAX,max,Galaxy Buds 3FE,,Wearables,1096.0,897.0,-199.0,-18.16,baja
+1795833847_GT_max_Galaxy Buds4 Pro_,2026-11-27 20:44:07,GT,Q,MAX,max,Galaxy Buds4 Pro,,Wearables,1796.0,1697.0,-99.0,-5.51,baja
+1795833847_SV_prado_Galaxy-A17_8+256,2026-11-27 20:44:07,SV,$,Prado,prado,Galaxy-A17,8+256,Smartphones,339.0,299.0,-40.0,-11.8,baja
+1795833847_SV_siman_Galaxy-A27 5G_8+256,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy-A27 5G,8+256,Smartphones,469.0,449.0,-20.0,-4.26,baja
+1795833847_SV_curacao_sv_Galaxy-A27 5G_8+256,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy-A27 5G,8+256,Smartphones,449.0,429.0,-20.0,-4.45,baja
+1795833847_SV_siman_Galaxy-A37 5G_8+256,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy-A37 5G,8+256,Smartphones,485.0,469.0,-16.0,-3.3,baja
+1795833847_SV_curacao_sv_Galaxy-A37 5G_8+256,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy-A37 5G,8+256,Smartphones,469.0,449.0,-20.0,-4.26,baja
+1795833847_SV_siman_Galaxy-A57 5G_8+256,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy-A57 5G,8+256,Smartphones,539.0,519.0,-20.0,-3.71,baja
+1795833847_SV_siman_Galaxy S25 Ultra_12+256,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy S25 Ultra,12+256,Smartphones,1049.0,999.0,-50.0,-4.77,baja
+1795833847_SV_siman_Galaxy S26 Ultra_256GB,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy S26 Ultra,256GB,Smartphones,1239.0,1199.0,-40.0,-3.23,baja
+1795833847_SV_curacao_sv_Galaxy S26 Ultra_256GB,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy S26 Ultra,256GB,Smartphones,1199.0,969.0,-230.0,-19.18,baja
+1795833847_SV_walmart_sv_Galaxy S26 Ultra_256GB,2026-11-27 20:44:07,SV,$,Walmart,walmart_sv,Galaxy S26 Ultra,256GB,Smartphones,965.0,1221.0,256.0,26.53,subida
+1795833847_SV_curacao_sv_Galaxy Tab A11 LTE (No Bookcover)_4+64GB,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy Tab A11 LTE (No Bookcover),4+64GB,Tablets,169.0,209.0,40.0,23.67,subida
+1795833847_SV_curacao_sv_Galaxy Tab A11+ Wifi (No Bookover)_6+128GB,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy Tab A11+ Wifi (No Bookover),6+128GB,Tablets,329.0,289.0,-40.0,-12.16,baja
+1795833847_SV_curacao_sv_Galaxy Tab A11+ 5G (No Bookcover)_6+128GB,2026-11-27 20:44:07,SV,$,La Curacao,curacao_sv,Galaxy Tab A11+ 5G (No Bookcover),6+128GB,Tablets,329.0,289.0,-40.0,-12.16,baja
+1795833847_SV_siman_Galaxy Buds 3FE_,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy Buds 3FE,,Wearables,159.0,109.0,-50.0,-31.45,baja
+1795833847_SV_siman_Galaxy Buds 3 [Jelly]_,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy Buds 3 [Jelly],,Wearables,169.0,129.0,-40.0,-23.67,baja
+1795833847_SV_siman_Galaxy Buds 4_,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy Buds 4,,Wearables,179.0,149.0,-30.0,-16.76,baja
+1795833847_SV_siman_Galaxy Buds3 Pro [Paran]_,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy Buds3 Pro [Paran],,Wearables,229.0,159.0,-70.0,-30.57,baja
+1795833847_SV_siman_Watch8 Classic 46mm BT_,2026-11-27 20:44:07,SV,$,Siman,siman,Watch8 Classic 46mm BT,,Wearables,529.0,479.0,-50.0,-9.45,baja
+1795833847_SV_siman_Watch8 40mm BT_,2026-11-27 20:44:07,SV,$,Siman,siman,Watch8 40mm BT,,Wearables,379.0,159.0,-220.0,-58.05,baja
+1795833847_SV_siman_Galaxy Watch Ultra2_,2026-11-27 20:44:07,SV,$,Siman,siman,Galaxy Watch Ultra2,,Wearables,699.0,619.0,-80.0,-11.44,baja
+1795833847_SV_siman_Watch9 44mm BT_,2026-11-27 20:44:07,SV,$,Siman,siman,Watch9 44mm BT,,Wearables,409.0,369.0,-40.0,-9.78,baja
+1795833847_SV_siman_Watch9 40mm BT_,2026-11-27 20:44:07,SV,$,Siman,siman,Watch9 40mm BT,,Wearables,379.0,349.0,-30.0,-7.92,baja
+1795833847_HN_walmart_hn_Watch8 40mm BT_,2026-11-27 20:44:07,HN,L,Walmart,walmart_hn,Watch8 40mm BT,,Wearables,3500.0,7000.0,3500.0,100.0,subida
